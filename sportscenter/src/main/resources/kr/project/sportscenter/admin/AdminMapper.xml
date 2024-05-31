@@ -7,7 +7,7 @@
 		) VALUES (
 			#{adminname}, #{adminid}, MD5(#{adminpwd})
 		)
-		<selectKey order="AFTER" keyProperty="adminno" resultType="int">
+		<selectKey order="AFTER" keyProperty="adminnum" resultType="int">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>

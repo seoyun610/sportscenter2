@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.project.sportscenter.subject.SubjectMapper"> 
+	<insert id="regist" parameterType="kr.project.sportscenter.subject.SubjectVO">
+		INSERT INTO subject (
+			subjecttype, subjectcontent, subjectregdate, subjectregcnt
+			, subjectfilename_org, subjectfilename_real, adminno
+		) VALUES (
+			#{subjecttype}, #{subjectcontent}, now(), #{subjectregcnt}, 
+			#{subjectfilename_org}, #{subjectfilename_real}, #{adminno}
+		)
+		<selectKey order="AFTER" keyProperty="subjectid" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+</mapper>
