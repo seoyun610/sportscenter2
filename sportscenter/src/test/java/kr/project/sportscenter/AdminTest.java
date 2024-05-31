@@ -24,7 +24,7 @@ public class AdminTest {
 	public void regist() {
 		AdminVO vo = new AdminVO();
 		vo.setAdminname("관리자1");
-		vo.setAdminid("admin1");
+		vo.setAdminid("admin1"); 
 		vo.setAdminpwd("154");
 		mapper.regist(vo);
 	}

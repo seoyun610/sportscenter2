@@ -25,7 +25,8 @@ public class NoticeTest {
 		NoticeVO vo = new NoticeVO();
 		vo.setNoticetitle("공지사항 제목2");
 		vo.setNoticecontent("공지사항 이야기2");
-		vo.setNoticeregcnt(0); 
+		vo.setNoticeregcnt(0);
+		vo.setAdminnum(1);
 		mapper.regist(vo);
 	}
 
