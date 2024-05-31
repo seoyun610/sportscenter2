@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.project.sportscenter.admin.AdminMapper"> 
+	<insert id="regist" parameterType="kr.project.sportscenter.admin.AdminVO">
+		INSERT INTO admin (
+			adminname, adminid, adminpwd
+		) VALUES (
+			#{adminname}, #{adminid}, MD5(#{adminpwd})
+		)
+		<selectKey order="AFTER" keyProperty="adminno" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.project.sportscenter.class1.ClassMapper"> 
+	<insert id="regist" parameterType="kr.project.sportscenter.class1.ClassVO">
+		INSERT INTO class (
+			subtype, classyear, classmonth, classname, classlevel, classtime
+			, classdate, classprice, classlimit, classcnt
+		) VALUES (
+			#{subtype}, #{classyear}, #{classmonth}, #{classname}, #{classlevel}
+			, #{classtime}, #{classdate}, #{classprice}, #{classlimit}, #{classcnt}
+		)
+		<selectKey order="AFTER" keyProperty="classid" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+</mapper>

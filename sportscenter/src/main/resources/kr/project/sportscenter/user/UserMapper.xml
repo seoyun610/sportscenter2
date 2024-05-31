@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.project.sportscenter.user.UserMapper"> 
+	<insert id="regist" parameterType="kr.project.sportscenter.user.UserVO">
+		INSERT INTO user (
+			userid, username, pwd, hp, email, addr, addr2, birth, gender
+		) VALUES (
+			#{userid}, #{username}, MD5(#{pwd}), #{hp}, 
+			#{email}, #{addr}, #{addr2}, #{birth}, #{gender}
+		)
+		<selectKey order="AFTER" keyProperty="usernum" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+</mapper>
