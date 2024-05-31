@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import lombok.Data;
 
 @Data
-public class .subject.Subject {
+public class QnaVO {
 	private int qnaid;
 	private String qnatitle;
 	private String qnacontent;
