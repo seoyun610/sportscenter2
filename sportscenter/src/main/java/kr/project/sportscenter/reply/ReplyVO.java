@@ -10,7 +10,7 @@ public class ReplyVO {
 	private String replycontent;
 	private Timestamp regdate;
 	private int qnaid;
-	private int adminno;
+	private int adminnum;
 	
 
 }

@@ -3,13 +3,13 @@
 <mapper namespace="kr.project.sportscenter.reply.ReplyMapper"> 
 	<insert id="regist" parameterType="kr.project.sportscenter.reply.ReplyVO">
 		INSERT INTO reply (
-			replycontent, regdate, qnaid, adminno
+			replycontent, regdate, qnaid, adminnum
 		) VALUES (
 			#{replycontent}, now(), #{qnaid}, 
-			#{adminno}
+			#{adminnum}
 		)
 		<selectKey order="AFTER" keyProperty="replyid" resultType="int">
 			SELECT LAST_INSERT_ID()
-		</selectKey>
+		</selectKey> 
 	</insert>
 </mapper>

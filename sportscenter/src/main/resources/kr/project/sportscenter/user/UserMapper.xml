@@ -9,7 +9,7 @@
 			#{email}, #{addr}, #{addr2}, #{birth}, #{gender}
 		)
 		<selectKey order="AFTER" keyProperty="usernum" resultType="int">
-			SELECT LAST_INSERT_ID()
+			SELECT LAST_INSERT_ID() 
 		</selectKey>
 	</insert>
 </mapper>

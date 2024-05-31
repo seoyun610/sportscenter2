@@ -13,7 +13,7 @@ public class SubjectVO {
 	private int subjectregnct;
 	private String subjectfilename_org;
 	private String subjectfilename_real;
-	private int adminno;
+	private int adminnum;
 	
 	
 

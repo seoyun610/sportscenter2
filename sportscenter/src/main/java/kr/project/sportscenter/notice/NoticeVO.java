@@ -13,6 +13,6 @@ public class NoticeVO {
 	private int noticeregcnt;
 	private String noticefilename_org;
 	private String noticefilename_real;
-	private int adminno; 
+	private int adminnum; 
 
 }

@@ -4,10 +4,10 @@
 	<insert id="regist" parameterType="kr.project.sportscenter.subject.SubjectVO">
 		INSERT INTO subject (
 			subjecttype, subjectcontent, subjectregdate, subjectregcnt
-			, subjectfilename_org, subjectfilename_real, adminno
+			, subjectfilename_org, subjectfilename_real, adminnum
 		) VALUES (
 			#{subjecttype}, #{subjectcontent}, now(), #{subjectregcnt}, 
-			#{subjectfilename_org}, #{subjectfilename_real}, #{adminno}
+			#{subjectfilename_org}, #{subjectfilename_real}, #{adminnum}
 		)
 		<selectKey order="AFTER" keyProperty="subjectid" resultType="int">
 			SELECT LAST_INSERT_ID()
