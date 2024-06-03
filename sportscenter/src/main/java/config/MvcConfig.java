@@ -27,7 +27,7 @@ import util.LoginInterceptor;
 
  
 @Configuration
-@ComponentScan(basePackages = { "kr.project.sportscenter" })
+@ComponentScan(basePackages = { "kr.project.sportscenter" }) 
 @EnableWebMvc
 @MapperScan(basePackages = { "kr.project.sportscenter" }, annotationClass = Mapper.class) // 인터페이스 스캔
 @EnableTransactionManagement
@@ -67,7 +67,8 @@ public class MvcConfig implements WebMvcConfigurer {
 	// 비즈니스 로직이 필요없는 URL 매핑
 	@Override
 	public void addViewControllers(ViewControllerRegistry reg) {
-		reg.addViewController("/index.do");
+		reg.addViewController("/login.do");
+		reg.addViewController("/user/join.do");
 	}
 
 	// HikariCP
@@ -88,17 +89,8 @@ public class MvcConfig implements WebMvcConfigurer {
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean ssf = new SqlSessionFactoryBean();
 		ssf.setDataSource(dataSource()); // CP 객체 주입
-
-		// xml 파일(Mapper파일) 위치(경로)
-//			PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-//			ssf.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml"));
 		return ssf.getObject();
 	}
-	// DAO에서 주입받을 객체
-//		@Bean
-//		public SqlSessionTemplate sqlSessionTemplate() throws Exception {
-//			return new SqlSessionTemplate(sqlSessionFactory()); // MyBatis 객체(빈)를 주입
-//		}
 
 	// 트랜잭션 설정
 	@Bean
@@ -119,7 +111,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		// url 설정
 		registry.addInterceptor(loginInterception())
-				.addPathPatterns("/reply/**")
+				.addPathPatterns("/user/login.do")
 				.excludePathPatterns("/reply/index.do")
 				.excludePathPatterns("/reply/view.do")
 				.addPathPatterns("/member/edit.do");

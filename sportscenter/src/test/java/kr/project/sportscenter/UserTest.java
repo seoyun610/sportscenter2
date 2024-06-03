@@ -33,7 +33,7 @@ public class UserTest {
 		vo.setGender(0);
 		vo.setEmail("test3@gmail.com");
 		
-		mapper.regist(vo);
+		mapper.join(vo);
 	}
 
 }

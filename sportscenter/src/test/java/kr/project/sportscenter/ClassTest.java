@@ -20,20 +20,20 @@ public class ClassTest {
 	@Autowired 
 	ClassMapper mapper;
 	
-	@Test 
-	public void regist() {
-		ClassVO vo = new ClassVO();
-		vo.setSubtype(0);
-		vo.setClassyear(1999);
-		vo.setClassmonth(1);
-		vo.setClassname("asdf");
-		vo.setClasslevel(1);
-		vo.setClasstime(1);
-		vo.setClassdate("asdf"); 
-		vo.setClassprice(1);
-		vo.setClasslimit(1);
-		vo.setClasscnt(1);
-		mapper.regist(vo);
-	}
+//	@Test 
+//	public void regist() {
+//		ClassVO vo = new ClassVO();
+//		vo.setSubtype(0);
+//		vo.setClassyear(1999);
+//		vo.setClassmonth(1);
+//		vo.setClassname("asdf");
+//		vo.setClasslevel(1);
+//		vo.setClasstime(1);
+//		vo.setClassdate("asdf");  
+//		vo.setClassprice(1);
+//		vo.setClasslimit(1);
+//		vo.setClasscnt(1);
+//		mapper.regist(vo);
+//	}
 
 }

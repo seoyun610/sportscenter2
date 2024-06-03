@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.project.sportscenter.user.UserMapper"> 
-	<insert id="regist" parameterType="kr.project.sportscenter.user.UserVO">
+	<insert id="join" parameterType="kr.project.sportscenter.user.UserVO">
 		INSERT INTO user (
 			userid, username, pwd, hp, email, addr, addr2, birth, gender
 		) VALUES (
@@ -12,4 +12,17 @@
 			SELECT LAST_INSERT_ID() 
 		</selectKey>
 	</insert>
-</mapper>
+	
+	<select id="login" parameterType="kr.project.sportscenter.user.UserVO" resultType="kr.project.sportscenter.user.UserVO">
+		SELECT * FROM user WHERE userid=#{userid} AND pwd=MD5(#{pwd})
+	</select> 
+	
+	<select id="useridCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM user WHERE userid=#{userid}
+	</select>
+	
+	<select id="emailCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM user WHERE email=#{email}
+	</select>
+	
+</mapper> 
