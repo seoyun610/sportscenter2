@@ -1,6 +1,5 @@
 package kr.project.sportscenter.user;
 
-import java.sql.Date;
 
 import lombok.Data;
 

@@ -4,10 +4,10 @@
 	<insert id="regist" parameterType="kr.project.sportscenter.notice.NoticeVO">
 		INSERT INTO notice (
 			noticetitle, noticecontent, noticedate, noticeregcnt
-			, noticefilename_org, noticefilename_real
+			, noticefilename_org, noticefilename_real, adminnum
 		) VALUES (
 			#{noticetitle}, #{noticecontent}, now(), #{noticeregcnt}, 
-			#{noticefilename_org}, #{noticefilename_real}
+			#{noticefilename_org}, #{noticefilename_real}, #{adminnum}
 		)
 		<selectKey order="AFTER" keyProperty="noticeid" resultType="int">
 			SELECT LAST_INSERT_ID()
