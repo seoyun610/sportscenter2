@@ -87,7 +87,7 @@
     			$.ajax({
     				url:'/user/useridCheck.do',
     				data:{userid:$('#userid').val()},
-    				success:function(res) {
+    				success:function(res) { 
     					console.log(res);
 						if (res == '0') {
 							alert('사용 가능한 아이디입니다.');
