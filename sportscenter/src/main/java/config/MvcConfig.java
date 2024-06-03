@@ -69,6 +69,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry reg) {
 		reg.addViewController("/login.do");
 		reg.addViewController("/user/join.do");
+		reg.addViewController("/home.do");
 	}
 
 	// HikariCP

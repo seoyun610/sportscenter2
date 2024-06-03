@@ -26,8 +26,8 @@
 			</nav>
 			<!-- 사용자 옵션 (로그인, 회원가입) -->
 			<div class="user-options">
-				<a href="#">로그인</a>
-				<a href="#">회원가입</a>
+				<a href="/user/login.do">로그인</a>
+				<a href="/user/join.do">회원가입</a>
 				<!-- #에는 로그인, 회원가입 이동 링크 삽입 -->
 			</div>
 		</div>
