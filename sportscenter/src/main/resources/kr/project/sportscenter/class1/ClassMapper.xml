@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.project.sportscenter.class1.ClassMapper"> 
+
 	<insert id="regist" parameterType="kr.project.sportscenter.class1.ClassVO">
 		INSERT INTO class (
 			subtype, classyear, classmonth, classname, classlevel, classtime
@@ -13,4 +14,33 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	
+	
+	<sql id="searchSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+	
+	<!-- 목록 -->
+	<select id="list" parameterType="kr.project.sportscenter.class1.ClassVO" resultType="kr.project.sportscenter.class1.ClassVO">
+		SELECT * 
+		FROM class
+		ORDER BY classid DESC
+		LIMIT #{startIdx}, 10
+	</select>
+	<!-- 카운트 -->
+	<select id="count" parameterType="kr.project.sportscenter.class1.ClassVO" resultType="int">
+		SELECT COUNT(*) FROM class
+		<include refid="searchSql"/>
+	</select>
+	
 </mapper>

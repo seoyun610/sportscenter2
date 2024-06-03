@@ -1,8 +1,10 @@
 package kr.project.sportscenter.class1;
 
+import java.util.Map;
+
 
 public interface ClassService {
-	
-	boolean regist(ClassVO vo); 
+	Map<String, Object> list(ClassVO vo);
+	ClassVO regist(ClassVO vo);
 
 }
