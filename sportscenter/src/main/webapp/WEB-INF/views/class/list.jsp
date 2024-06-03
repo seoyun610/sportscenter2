@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+    java.util.Calendar calendar = java.util.Calendar.getInstance();
+    int currentDay = calendar.get(java.util.Calendar.DAY_OF_MONTH);
+    pageContext.setAttribute("currentDay", currentDay);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +17,7 @@
 		const today = new Date();
 	    const day = today.getDate();
 
-		if (day >= 2 && day <= 26) {
+		if (day >= 20 && day <= 26) {
 			if (classLimit > classCnt){
 				location.href = 'payCheck?classId=' + classId;
 			} else {
@@ -43,7 +48,7 @@
 			<td>${vo.classprice }</td>
 			<td>${vo.classlimit }</td>
 			<c:choose>
-                <c:when test="${day >= 2 && day <= 26}">
+                <c:when test="${currentDay >= 20 && currentDay <= 26}">
                     <c:choose>
                         <c:when test="${vo.classlimit > vo.classcnt }">
                             <td>신청 가능</td>
