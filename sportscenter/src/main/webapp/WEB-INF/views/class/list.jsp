@@ -21,7 +21,7 @@
 			if (classLimit > classCnt){
 				location.href = 'payCheck?classId=' + classId;
 			} else {
-				alert ('잔여석 없음')
+				alert ('잔여석이 없습니다.')
 			}
 	    } else {
 	        alert('신청 기간이 아닙니다.');
@@ -54,12 +54,12 @@
                             <td>신청 가능</td>
                         </c:when>
                         <c:otherwise>
-                            <td>신청 불가1</td>
+                            <td>신청 불가</td>
                         </c:otherwise>
                     </c:choose>
                 </c:when>
                 <c:otherwise>
-                    <td>신청 불가2</td>
+                    <td>신청 불가</td>
                 </c:otherwise>
             </c:choose>
 			<td> <button type="button" id="btn" onclick="classSelection(${vo.classid}, ${vo.classlimit}, ${vo.classcnt})" > 신청 </button> <td>
