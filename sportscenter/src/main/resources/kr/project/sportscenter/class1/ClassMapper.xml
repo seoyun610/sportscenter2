@@ -5,10 +5,10 @@
 	<insert id="regist" parameterType="kr.project.sportscenter.class1.ClassVO">
 		INSERT INTO class (
 			subtype, classyear, classmonth, classname, classlevel, classtime
-			, classdate, classprice, classlimit, classcnt
+			, classday, classprice, classlimit, classcnt
 		) VALUES (
 			#{subtype}, #{classyear}, #{classmonth}, #{classname}, #{classlevel}
-			, #{classtime}, #{classdate}, #{classprice}, #{classlimit}, #{classcnt}
+			, #{classtime}, #{classday}, #{classprice}, #{classlimit}, #{classcnt}
 		)
 		<selectKey order="AFTER" keyProperty="classid" resultType="int">
 			SELECT LAST_INSERT_ID()
@@ -18,14 +18,36 @@
 	
 	<sql id="searchSql">
 		<where>
-			<if test="searchWord != null and searchWord != ''">
-				<if test="searchType == 'all'">
-					title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%'
-				</if>
-				<if test="searchType != 'all'">
-					${searchType} LIKE '%${searchWord}%'
-				</if>
-			</if>
+			<choose>
+				<when test="subtype != 0">
+					AND subtype = #{subtype}
+				</when>
+				<otherwise></otherwise>
+			</choose>
+			<choose>
+				<when test="classtime != 0">
+					AND classtime = #{classtime}
+				</when>
+				<otherwise></otherwise>
+			</choose>
+			<choose>
+				<when test="classlevel != 0">
+					AND classlevel = #{classlevel}
+				</when>
+				<otherwise></otherwise>
+			</choose>
+			<choose>
+				<when test="classyear != null and classyear != ''">
+					AND classyear = #{classyear}
+				</when>
+				<otherwise></otherwise>
+			</choose>
+			<choose>
+				<when test="classmonth != null and classmonth != ''">
+					AND classmonth = #{classmonth}
+				</when>
+				<otherwise></otherwise>
+			</choose>
 		</where>
 	</sql>
 	
@@ -34,6 +56,7 @@
 	<select id="list" parameterType="kr.project.sportscenter.class1.ClassVO" resultType="kr.project.sportscenter.class1.ClassVO">
 		SELECT * 
 		FROM class
+		<include refid="searchSql"/>
 		ORDER BY classid DESC
 		LIMIT #{startIdx}, 10
 	</select>

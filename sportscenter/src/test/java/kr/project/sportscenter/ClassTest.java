@@ -17,23 +17,23 @@ import lombok.extern.log4j.Log4j;
 @WebAppConfiguration
 public class ClassTest { 
 	
-	@Autowired 
+	@Autowired
 	ClassMapper mapper;
 	
-//	@Test 
-//	public void regist() {
-//		ClassVO vo = new ClassVO();
-//		vo.setSubtype(0);
-//		vo.setClassyear(1999);
-//		vo.setClassmonth(1);
-//		vo.setClassname("asdf");
-//		vo.setClasslevel(1);
-//		vo.setClasstime(1);
-//		vo.setClassdate("asdf");  
-//		vo.setClassprice(1);
-//		vo.setClasslimit(1);
-//		vo.setClasscnt(1);
-//		mapper.regist(vo);
-//	}
+	@Test 
+	public void regist() {
+		ClassVO vo = new ClassVO();
+		vo.setSubtype(1);
+		vo.setClassyear(2024);
+		vo.setClassmonth(6);
+		vo.setClassname("수영 13시 고급");
+		vo.setClasslevel(3);
+		vo.setClasstime(13);
+		vo.setClassday("1^2^3^4^5"); 
+		vo.setClassprice(70000);
+		vo.setClasslimit(30);
+		vo.setClasscnt(28);
+		mapper.regist(vo);
+	}
 
 }

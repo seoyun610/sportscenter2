@@ -11,4 +11,5 @@ public interface ClassMapper {
 	int count(ClassVO vo);
 	List<ClassVO> list(ClassVO vo);
 	ClassVO detail(ClassVO vo);
+	int regist(ClassVO vo);
 }
