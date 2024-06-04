@@ -60,6 +60,7 @@
 		ORDER BY classid DESC
 		LIMIT #{startIdx}, 10
 	</select>
+	
 	<!-- 카운트 -->
 	<select id="count" parameterType="kr.project.sportscenter.class1.ClassVO" resultType="int">
 		SELECT COUNT(*) FROM class

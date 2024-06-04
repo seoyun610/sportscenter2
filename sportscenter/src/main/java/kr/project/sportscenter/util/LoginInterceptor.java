@@ -1,4 +1,4 @@
-package util;
+package kr.project.sportscenter.util;
 
 import java.io.PrintWriter;
 
