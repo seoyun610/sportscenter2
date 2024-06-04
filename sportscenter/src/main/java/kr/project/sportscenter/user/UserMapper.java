@@ -20,12 +20,14 @@ public interface UserMapper {
 	int emailCheck(String email);
 	
 	// 아이디 찾기 
-	int findId(@Param("username")String username,@Param("birth") String birth, @Param("hp") String hp);
+	UserVO findId(UserVO vo);
 	
 	// 비밀번호 찾기 
-	int findPassword(@Param("userId")String userId, @Param("birth") String birth, @Param("hp") String hp); 
+	UserVO findPassword(UserVO vo); 
 	
 	
 	//비밀번호 업데이트 
-	int updatePassword(@Param("pwd") String pwd); 
+	UserVO updatePassword(String pwd);
+
+	
 }

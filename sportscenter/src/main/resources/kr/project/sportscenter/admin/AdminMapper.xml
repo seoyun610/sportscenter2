@@ -11,4 +11,8 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	
+	<select id="adminlogin" parameterType="kr.project.sportscenter.admin.AdminVO" resultType="kr.project.sportscenter.admin.AdminVO">
+		SELECT * FROM user WHERE adminid=#{adminid} AND adminpwd=MD5(#{adminpwd})
+	</select> 
 </mapper>

@@ -13,14 +13,14 @@
     <script src="/js/script.js"></script>
     <script>
     function loginCheck() {
-    	if ($("#userid").val() == '') {
+    	if ($("#adminid").val() == '') {
     		alert("아이디를 입력해 주세요");
-    		$("#email").focus();
+    		$("#adminid").focus();
     		return false;
     	}
-    	if ($("#pwd").val() == '') {
+    	if ($("#adminpwd").val() == '') {
     		alert("비밀번호를 입력해 주세요");
-    		$("#pwd").focus();
+    		$("#adminpwd").focus();
     		return false;
     	}
     }
@@ -28,7 +28,7 @@
 </head> 
 <body>
     <div class="wrap">
-        <form action="login.do" method="post" id="login" name="login" onsubmit="return loginCheck();">
+        <form action="home.do" method="post" id="login" name="login" onsubmit="return loginCheck();">
             <div class="sub">
                 <div class="size">
                     <h3 class="sub_title">로그인</h3>
@@ -37,17 +37,13 @@
                         <div class="box">
                             <fieldset class="login_form">
                                 <ul>
-                                    <li><input type="text" id="userid" name="userid" placeholder="아이디"></li>
-                                    <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호"></li>
+                                    <li><input type="text" id="adminid" name="adminid" placeholder="아이디"></li>
+                                    <li><input type="password" id="adminpwd" name="adminpwd" placeholder="비밀번호"></li>
                                     <li><label><input type="checkbox" name="reg1" id="reg1"/> 아이디저장</label></li>
                                 </ul>
                                 <div class="login_btn"><input type="submit" value="로그인" alt="로그인" /></div>
                             </fieldset>
                             <div class="btnSet clear">
-                                <div>
-                                    <a href="findId.do" class="btn">아이디/비밀번호 찾기</a> 
-                                    <a href="join.do" class="btn">회원가입</a>
-                                </div>
                             </div>
                         </div>
                     </div>

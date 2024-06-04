@@ -9,8 +9,44 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>스포츠 문화센터</title>
-	<link rel="stylesheet" href="css/index.css">
 </head>
+<script>
+//로그인 여부 확인 함수
+function isLoggedIn() {
+  // 로그인 상태 확인 로직 구현
+  // 예: 세션 정보, 쿠키 등을 확인하여 로그인 여부 판단
+  return true; // 로그인 상태라고 가정
+}
+
+// 사용자 옵션 메뉴 생성 함수
+function renderUserOptions() {
+  const userOptionsDiv = document.querySelector('.user-options');
+  userOptionsDiv.innerHTML = '';
+
+  if (isLoggedIn()) {
+    // 로그인 상태인 경우 "정보수정" 메뉴만 생성
+    const editLink = document.createElement('a');
+    editLink.href = '/mypage/edit.do';
+    editLink.textContent = '정보수정';
+    userOptionsDiv.appendChild(editLink);
+  } else {
+    // 로그인 상태가 아닌 경우 "로그인", "회원가입" 메뉴 생성
+    const loginLink = document.createElement('a');
+    loginLink.href = '/user/login.do';
+    loginLink.textContent = '로그인';
+    userOptionsDiv.appendChild(loginLink);
+
+    const joinLink = document.createElement('a');
+    joinLink.href = '/user/join.do';
+    joinLink.textContent = '회원가입';
+    userOptionsDiv.appendChild(joinLink);
+  }
+}
+
+// 페이지 로드 시 사용자 옵션 메뉴 생성
+window.addEventListener('load', renderUserOptions);
+</script>
+
 <body>
 	<!-- Header -->
 	<header>
@@ -28,6 +64,7 @@
 			<div class="user-options">
 				<a href="/user/login.do">로그인</a>
 				<a href="/user/join.do">회원가입</a>
+				<a href="/mypage/edit.do">정보수정</a>
 				<!-- #에는 로그인, 회원가입 이동 링크 삽입 -->
 			</div>
 		</div>

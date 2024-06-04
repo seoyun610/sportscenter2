@@ -16,4 +16,9 @@ public class AdminServiceImpl implements AdminService {
 		return mapper.regist(vo) == 0 ? false : true;
 	}
 
+	@Override
+	public AdminVO adminlogin(AdminVO vo) {
+		return mapper.adminlogin(vo);
+	}
+
 }

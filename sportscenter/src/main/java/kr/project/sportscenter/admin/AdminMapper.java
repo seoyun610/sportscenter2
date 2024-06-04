@@ -6,5 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AdminMapper {
 	
 	int regist(AdminVO vo);
+	
+	AdminVO adminlogin(AdminVO vo); 
 
 }
