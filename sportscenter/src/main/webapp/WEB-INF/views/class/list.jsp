@@ -45,43 +45,19 @@
 				<form method="get" name="searchForm" id="searchForm" action="list.do">
 					<span class="srchSelect">
 						<select id="subtype" name="subtype" size="1">
-							<option value="0">종목</option>
-							<option value="1">수영</option>
-							<option value="2">헬스</option>
-							<option value="3">스쿼시</option>
-							<option value="4">줌바댄스</option>
-							<option value="5">아쿠아로빅</option>
-							<option value="6">스피닝</option>
-							<option value="7">필라테스</option>
-							<option value="8">점핑 트램플린</option>
-							<option value="9">플라잉요가</option>
+							<c:forEach var="vo" items="${smap.list }">
+								<option value="${vo.sportid }" ${vo.sportid == 99 ? 'selected disabled hidden' : ''}>${vo.sporttxt }</option>
+							</c:forEach>
 						</select>
 						<select id="classtime" name="classtime" size="1">
-							<option value="0">시간</option>
-							<option value="6">06시</option>
-							<option value="7">07시</option>
-							<option value="8">08시</option>
-							<option value="9">09시</option>
-							<option value="10">10시</option>
-							<option value="11">11시</option>
-							<option value="12">12시</option>
-							<option value="13">13시</option>
-							<option value="14">14시</option>
-							<option value="15">15시</option>
-							<option value="16">16시</option>
-							<option value="17">17시</option>
-							<option value="18">18시</option>
-							<option value="19">19시</option>
-							<option value="20">20시</option>
-							<option value="21">21시</option>							
+							<c:forEach var="vo" items="${tmap.list }">
+								<option value="${vo.timeid }" ${vo.timeid == 99 ? 'selected disabled hidden' : ''}>${vo.timetxt }</option>
+							</c:forEach>
 						</select>
 						<select id="classlevel" name="classlevel" size="1">
-							<option value="0">등급</option>
-							<option value="1">초급</option>
-							<option value="2">중급</option>
-							<option value="3">고급</option>
-							<option value="4">연수</option>
-							<option value="5">FREE</option>
+							<c:forEach var="vo" items="${lmap.list }">
+								<option value="${vo.levelid }" ${vo.levelid == 99 ? 'selected disabled hidden': ''}>${vo.leveltxt}</option>
+							</c:forEach>
 						</select>
 						<input type="hidden" id="classyear" name="classyear" value="<%=currentYear %>">
 						<input type="hidden" id="classmonth" name="classmonth" value="<%=nextMonth%>">
