@@ -67,13 +67,13 @@ public class UserController {
 	    public String findId(@RequestParam("username") String username,
 	                         @RequestParam("birth") String birth,
 	                         @RequestParam("hp") String hp) {
-	        int result = findId(username, birth, hp);
-	        if (result > 0) {
+	        UserVO result = service.findId(username, birth, hp);
+	        if (result != null) {
 	            // 아이디가 존재할 경우 아이디 반환
-	            return "찾으시는 아이디는 " + username + "입니다.";
+	            return result.getUserid();
 	        } else {
 	            // 아이디가 존재하지 않을 경우 메시지 반환
-	            return "일치하는 회원 정보가 없습니다.";
+	            return "fail";
 	        }
 	  } 
 	  		//비밀번호 찾기 
@@ -82,13 +82,12 @@ public class UserController {
 	  		public String findPassword(@RequestParam("userid")String userid,
 	  								   @RequestParam("birth")String birth, 
 	  								   @RequestParam("hp")String hp) {
-	  			int result = UserService.findPassword(userid, birth, hp); 
-	  			if (result > 0) {
-	  				// 비밀번호가 초기화 완료 된 후 이메일로 새로운 이메일 전송한다고 가정 
-	  				return "비밀번호 초기화가 완료되었습니다. 새로운 비밀번호를 이메일로 전송했습니다.";
+	  			UserVO result = service.findPassword(userid, birth, hp); 
+	  			if (result != null) {
+	  				return result.getPwd();
 	  			} else {
 	  				// 아이디와 회원정보가 일치하지 않을 경우 
-	  				return "일치하는 회원 정보가 없습니다.";	
+	  				return "fail";	
 	  			}
 	  		}
 }

@@ -31,14 +31,22 @@ public class UserServiceImpl implements UserService{
 	
 	//아이디 찾기 
 	@Override
-	public int findId(String usernaem, String birth, String hp) {
-		return mapper.findId(usernaem, birth, hp);
+	public UserVO findId(String username, String birth, String hp) {
+		UserVO vo = new UserVO();
+		vo.setUsername(username);;
+		vo.setBirth(birth);
+		vo.setHp(hp);
+		return mapper.findId(vo);
 	}
 	
 	//비밀번호 찾기 
 	@Override
-	public int findPassword(String userid, String birth, String hp) {
-		return mapper.findPassword(userid, birth, hp);
+	public UserVO findPassword(String userid, String birth, String hp) {
+		UserVO vo = new UserVO();
+		vo.setUserid(userid);;
+		vo.setBirth(birth);
+		vo.setHp(hp);
+		return mapper.findPassword(vo);
 		}
 	
 }
