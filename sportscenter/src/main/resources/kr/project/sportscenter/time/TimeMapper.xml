@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.project.sportscenter.time.TimeMapper">
+	<insert id="regist" parameterType="kr.project.sportscenter.time.TimeVO">
+		INSERT INTO time (
+			timeid, timetxt
+		) VALUES (
+			#{timeid}, #{timetxt}
+		)
+	</insert>
+	<select id="list" parameterType="kr.project.sportscenter.time.TimeVO" resultType="kr.project.sportscenter.time.TimeVO">
+		SELECT *
+		FROM time
+		ORDER BY timeid ASC
+	</select>
+</mapper>
