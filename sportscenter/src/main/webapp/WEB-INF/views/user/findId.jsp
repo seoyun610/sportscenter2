@@ -76,7 +76,7 @@
     </script>
 </head>
 <body>
-    <div>
+  <div>
         <button type="button" class="btn btn-primary" onclick="showForm('findId_container')">아이디 찾기</button>
         <button type="button" class="btn btn-primary" onclick="showForm('findPassword_container')">비밀번호 찾기</button>
     </div>
@@ -84,19 +84,18 @@
     <div id="findId_container" class="form-container">
         <form class="form-horizontal" role="form" onsubmit="findId(); return false;">
             <div class="form-group">
-                <label for="username">이름:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" placeholder="이름을 입력해주세요." required autofocus>
             </div>
             <div class="form-group">
-                <label for="birth">생년월일:</label>
-                <input type="text" id="birth" name="birth" required>
+                <input type="text" id="birth" name="birth" placeholder="생년월일 8자리를 입력해주세요." required>
             </div>
             <div class="form-group">
-                <label for="hp">전화번호:</label>
-                <input type="text" id="hp" name="hp" required>
-            </div>
-            <div class="form-group">
+                <input type="text" id="hp" name="hp" placeholder="휴대전화번호를 입력해주세요." required>
                 <button type="submit" class="btn btn-primary">아이디 찾기</button>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">비밀번호 찾기</button>
+                <button type="submit" class="btn btn-primary">로그인 하기</button>
             </div>
         </form>
     </div>
@@ -104,19 +103,17 @@
     <div id="findPassword_container" class="form-container">
         <form class="form-horizontal" role="form" onsubmit="findPassword(); return false;">
             <div class="form-group">
-                <label for="userid">아이디:</label>
-                <input type="text" id="userid" name="userid" required>
+                <input type="text" id="userid" name="userid" placeholder="아이디를 입력해주세요." required autofocus>
             </div>
             <div class="form-group">
-                <label for="birth">생년월일:</label>
-                <input type="text" id="birth" name="birth" required>
+                <input type="text" id="birth" name="birth" placeholder="생년월일 8자리를 입력해주세요." required>
             </div>
             <div class="form-group">
-                <label for="hp">전화번호:</label>
-                <input type="text" id="hp" name="hp" required>
+                <input type="text" id="hp" name="hp" placeholder="휴대전화번호를 입력해주세요." required>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">비밀번호 찾기</button>
+                <button type="submit" class="btn btn-primary">확인</button>
+                <button type="submit" class="btn btn-primary">로그인 찾기</button>
             </div>
         </form>
     </div>
