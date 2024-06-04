@@ -14,21 +14,21 @@ public class AdminController {
 	@Autowired
 	AdminService service;
 	
-	@GetMapping("/admin/adlogin.do")
-	public void login() {
+	@GetMapping("/admin/adminLogin.do")
+	public void adminLogin() {
 		
 	}
 	
-	@PostMapping("/admin/adlogin.do")
-	public String login(Model model, AdminVO vo, HttpSession sess) { 
+	@PostMapping("/admin/adminLogin.do")
+	public String adminLogin(Model model, AdminVO vo, HttpSession sess) { 
 		AdminVO login = service.adminlogin(vo);
 		if(login == null) {
 			model.addAttribute("msg", "아이디와 비밀번호를 확인해주세요.");
-			model.addAttribute("url", "/user/login.do");
+			model.addAttribute("url", "/admin/adminLogin.do");
 			return "common/alert";
 		}else {
 			sess.setAttribute("login", login);
-			return "redirect:home.do";
+			return "redirect:/home.do";
 		}
 	}
 

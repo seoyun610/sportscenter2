@@ -34,7 +34,7 @@ public class UserController {
 			return "common/alert";
 		}else {
 			sess.setAttribute("login", login);
-			return "redirect:/main.do";
+			return "redirect:/home.do";
 		}
 	}
 	

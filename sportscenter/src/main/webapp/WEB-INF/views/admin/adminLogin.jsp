@@ -17,7 +17,7 @@
     		alert("아이디를 입력해 주세요");
     		$("#adminid").focus();
     		return false;
-    	}
+    	} 
     	if ($("#adminpwd").val() == '') {
     		alert("비밀번호를 입력해 주세요");
     		$("#adminpwd").focus();
@@ -28,7 +28,7 @@
 </head> 
 <body>
     <div class="wrap">
-        <form action="home.do" method="post" id="login" name="login" onsubmit="return loginCheck();">
+        <form action="adminlogin.do" method="post" id="adminlogin" onsubmit="return loginCheck();">
             <div class="sub">
                 <div class="size">
                     <h3 class="sub_title">로그인</h3>

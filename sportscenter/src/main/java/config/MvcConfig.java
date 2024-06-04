@@ -23,7 +23,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-import util.LoginInterceptor; 
+import kr.project.sportscenter.util.LoginInterceptor; 
 
  
 @Configuration
