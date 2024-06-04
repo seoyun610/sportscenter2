@@ -13,4 +13,63 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM notice WHERE noticeid=#{noticeid}
+	</delete>
+	
+	<update id="update" parameterType="kr.project.sportscenter.notice.NoticeVO">
+		UPDATE notice SET 
+			noticetitle=#{noticetitle}
+			, noticecontent=#{noticecontent}
+			<if test="noticefilename_org != null">
+			, noticefilename_org=#{noticefilename_org}
+			, noticefilename_real=#{noticefilename_real}
+			</if> 
+		WHERE noticeid=#{noticeid}
+	</update>
+	
+	
+	<sql id="searchSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					noticetitle LIKE '%${searchWord}%' OR noticecontent LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 목록 -->
+	<select id="list" parameterType="kr.project.sportscenter.notice.NoticeVO" resultType="kr.project.sportscenter.notice.NoticeVO">
+		SELECT *,
+			(SELECT adminname FROM admin WHERE adminnum = notice.adminnum) as adminname
+		FROM notice
+		<include refid="searchSql"/>
+		ORDER BY noticeid DESC
+		LIMIT #{startIdx}, 10
+	</select>
+	
+	<!-- 카운트 -->
+	<select id="count" parameterType="kr.project.sportscenter.notice.NoticeVO" resultType="int">
+		SELECT COUNT(*) FROM notice
+		<include refid="searchSql"/>
+	</select>
+	
+	<!-- 상세 -->
+	<select id="detail" parameterType="kr.project.sportscenter.notice.NoticeVO" resultType="kr.project.sportscenter.notice.NoticeVO">
+		SELECT * FROM notice WHERE noticeid=#{noticeid}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="increaseReadcnt" parameterType="int">
+		UPDATE notice SET noticeregcnt=noticeregcnt+1 WHERE noticeid=#{noticeid}
+	</update>
+	
+	<update id="fileDelete" parameterType="int">
+		UPDATE notice SET noticefilename_org=null, noticefilename_real=null WHERE noticeid=#{noticeid}
+	</update>
 </mapper>
