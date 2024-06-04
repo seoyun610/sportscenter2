@@ -37,4 +37,24 @@
 	<update id="updatePassword">
 		UPDATE user SET pwd=MD5(#{pwd}) where userid=#{userid}
 	</update>
+	
+	<select id="detail" resultType="kr.project.sportscenter.user.UserVO" parameterType="int">
+		SELECT * FROM user WHERE usernum=#{usernum}
+	</select>
+	
+	<!-- 개인정보 수정 -->
+	<update id="update" parameterType="kr.project.sportscenter.user.UserVO">
+	    UPDATE user
+	    <set>
+	        <if test="pwd != ''">
+	            pwd = MD5(#{pwd}),
+	        </if>
+			pwd = MD5(#{pwd}),
+			zipcode = #{zipcode},
+	        hp = #{hp},
+	        addr1 = #{addr1},
+	        addr2 = #{addr2}
+	    </set>
+	    WHERE usernum = #{usernum}
+	</update>
 </mapper> 

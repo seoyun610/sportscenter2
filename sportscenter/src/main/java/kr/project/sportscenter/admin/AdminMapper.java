@@ -7,6 +7,6 @@ public interface AdminMapper {
 	
 	int regist(AdminVO vo);
 	
-	AdminVO adminlogin(AdminVO vo); 
+	AdminVO adminLogin(AdminVO vo); 
 
 }

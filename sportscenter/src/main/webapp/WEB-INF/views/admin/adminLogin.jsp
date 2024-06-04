@@ -28,7 +28,7 @@
 </head> 
 <body>
     <div class="wrap">
-        <form action="adminlogin.do" method="post" id="adminlogin" onsubmit="return loginCheck();">
+        <form action="adminLogin.do" method="post" id="adminLogin" onsubmit="return loginCheck();">
             <div class="sub">
                 <div class="size">
                     <h3 class="sub_title">로그인</h3>

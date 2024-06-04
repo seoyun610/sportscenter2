@@ -5,6 +5,6 @@ public interface AdminService {
 	
 	boolean regist(AdminVO vo);
 
-	AdminVO adminlogin(AdminVO vo); 
+	AdminVO adminLogin(AdminVO vo); 
 
 }

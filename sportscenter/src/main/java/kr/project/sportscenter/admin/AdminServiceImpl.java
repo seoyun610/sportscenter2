@@ -17,8 +17,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public AdminVO adminlogin(AdminVO vo) {
-		return mapper.adminlogin(vo);
+	public AdminVO adminLogin(AdminVO vo) {
+		return mapper.adminLogin(vo);
 	}
 
 }

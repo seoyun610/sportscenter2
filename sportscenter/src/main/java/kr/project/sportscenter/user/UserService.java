@@ -15,5 +15,11 @@ public interface UserService {
 	
 	// 비밀번호 찾기 
 	UserVO findPassword(String userid, String birth, String hp);
+	
+	// 회원정보 조회
+	UserVO detail(UserVO vo);
+	
+	// 회원정보 수정
+	int update(UserVO vo);
 
 }
