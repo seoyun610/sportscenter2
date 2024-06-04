@@ -23,6 +23,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import kr.project.sportscenter.util.AdminLoginInterceptor;
 import kr.project.sportscenter.util.LoginInterceptor; 
 
  
@@ -106,6 +107,12 @@ public class MvcConfig implements WebMvcConfigurer {
 	public LoginInterceptor loginInterception() {
 		return new LoginInterceptor();
 	} 
+	
+	// 로그인인터셉터 admin 빈등록
+	@Bean
+	public AdminLoginInterceptor AdminloginInterception() {
+		return new AdminLoginInterceptor();
+	} 
 
 	// 인터셉터 설정
 	@Override
@@ -116,11 +123,21 @@ public class MvcConfig implements WebMvcConfigurer {
 				.excludePathPatterns("/reply/index.do")
 				.excludePathPatterns("/reply/view.do")
 				.addPathPatterns("/member/edit.do");
+		
+		registry.addInterceptor(AdminloginInterception())
+				.addPathPatterns("/notice/edit.do")
+				.addPathPatterns("/admin/**")
+				.excludePathPatterns("/admin/adminLogin.do");
+		
+		
 		/*
 		 * 관리자페이지 .addPathPatterns("/admin/**") .excludePathPatterns("/admin/login.do")
 		 */
 	}
-
+	
+	
+	
+	
 	// properties 설정
 	@Bean
 	public static PropertyPlaceholderConfigurer propreties() {

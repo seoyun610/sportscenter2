@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.project.sportscenter.notice.NoticeMapper"> 
-	<insert id="regist" parameterType="kr.project.sportscenter.notice.NoticeVO">
+	<insert id="insert" parameterType="kr.project.sportscenter.notice.NoticeVO">
 		INSERT INTO notice (
 			noticetitle, noticecontent, noticedate, noticeregcnt
 			, noticefilename_org, noticefilename_real, adminnum

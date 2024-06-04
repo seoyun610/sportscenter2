@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	
 	@Override
-	public int insert(NoticeVO vo, MultipartFile file, HttpServletRequest request) {
+	public int insert(NoticeVO vo, HttpSession sess, MultipartFile file, HttpServletRequest request) {
 		if (!file.isEmpty()) {
 	        // 파일명
 	        String org = file.getOriginalFilename();
@@ -38,7 +39,7 @@ public class NoticeServiceImpl implements NoticeService {
 	        try {
 	            file.transferTo(new File(path));
 	        } catch (Exception e) {
-	            e.printStackTrace();
+	            e.printStackTrace(); 
 	            return 0;
 	        }
 

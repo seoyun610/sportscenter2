@@ -38,7 +38,7 @@
             <div>
 				<div>
 				<a href="index.do" class="btn">목록</a>
-                <c:if test="${not empty login and login.adminnum == vo.adminnum}">
+                <c:if test="${not empty adminLogin}">
                 	<a href="edit.do?noticeid=${vo.noticeid}" class="btn">수정</a>
                     <a href="javascript:del();" class="btn">삭제</a>
                 </c:if>

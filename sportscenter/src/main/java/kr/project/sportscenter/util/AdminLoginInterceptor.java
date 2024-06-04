@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import kr.project.sportscenter.admin.AdminVO;
-import kr.project.sportscenter.user.UserVO;
 
 public class AdminLoginInterceptor implements HandlerInterceptor{
 	
@@ -25,7 +24,7 @@ public class AdminLoginInterceptor implements HandlerInterceptor{
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('로그인 후 사용가능합니다.');");
-			out.print("location.href='/admin/adminlogin.do';");
+			out.print("location.href='/admin/adminLogin.do';");
 			out.print("</script>");
 			out.close();
 			return false; // 못가

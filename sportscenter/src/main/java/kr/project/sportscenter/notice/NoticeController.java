@@ -27,14 +27,15 @@ public class NoticeController {
 	@GetMapping("/notice/write.do")
 	public String write() {
 		return "notice/write";
+		
 	}
 	@PostMapping("/notice/insert.do")
-	public String insert(Model model, HttpServletRequest request, NoticeVO vo, MultipartFile file) {
-		HttpSession sess = request.getSession();
-		AdminVO login = (AdminVO)sess.getAttribute("login");
-		
+	public String insert(Model model, HttpSession sess, HttpServletRequest request, NoticeVO vo, MultipartFile file) {
+		System.out.println(sess);
+		AdminVO login = (AdminVO)sess.getAttribute("adminLogin");
+		System.out.println(sess.getAttribute("adminLogin"));
 		vo.setAdminnum(login.getAdminnum());
-		int r = service.insert(vo, file, request);
+		int r = service.insert(vo, sess, file, request);
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 저장되었습니다.");
