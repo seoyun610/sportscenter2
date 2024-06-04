@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.project.sportscenter.sport.SportMapper">
+	<insert id="regist" parameterType="kr.project.sportscenter.sport.SportVO">
+		INSERT INTO sport (
+			sportid, sporttxt
+		) VALUES (
+			#{sportid}, #{sporttxt}
+		)
+	</insert>
+	
+	<select id="list" parameterType="kr.project.sportscenter.sport.SportVO" resultType="kr.project.sportscenter.sport.SportVO">
+		SELECT *
+		FROM sport
+		ORDER BY sportid ASC
+	</select>
+</mapper>
