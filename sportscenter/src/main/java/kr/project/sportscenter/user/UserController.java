@@ -76,6 +76,7 @@ public class UserController {
 	            return "fail";
 	        }
 	  } 
+	  
 	  		//비밀번호 찾기 
 	  		@PostMapping("/user/findPassword.do")
 	  		@ResponseBody
