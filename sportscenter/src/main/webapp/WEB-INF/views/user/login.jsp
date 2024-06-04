@@ -45,7 +45,7 @@
                             </fieldset>
                             <div class="btnSet clear">
                                 <div>
-                                    <a href="idcheck.do" class="btn">아이디/비밀번호 찾기</a> 
+                                    <a href="findId.do" class="btn">아이디/비밀번호 찾기</a> 
                                     <a href="join.do" class="btn">회원가입</a>
                                 </div>
                             </div>
