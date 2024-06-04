@@ -10,5 +10,10 @@ public interface UserService {
 	
 	int emailCheck(String email);
 	 
+	// 아이디 찾기 
+	int findId(String username, String birth, String hp); 
+	
+	// 비밀번호 찾기 
+	int findPassword(String userid, String birth, String hp);
 
 }

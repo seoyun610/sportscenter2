@@ -1,5 +1,6 @@
 package kr.project.sportscenter.user;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -57,11 +61,37 @@ public class UserController {
 		}
 		return "common/alert";
 	}
-	
-	
-	
-	
+	 // 아이디 찾기 
+	  @PostMapping("/user/findId.do")
+	   @ResponseBody
+	    public String findId(@RequestParam("username") String username,
+	                         @RequestParam("birth") String birth,
+	                         @RequestParam("hp") String hp) {
+	        int result = findId(username, birth, hp);
+	        if (result > 0) {
+	            // 아이디가 존재할 경우 아이디 반환
+	            return "찾으시는 아이디는 " + username + "입니다.";
+	        } else {
+	            // 아이디가 존재하지 않을 경우 메시지 반환
+	            return "일치하는 회원 정보가 없습니다.";
+	        }
+	  } 
+	  		//비밀번호 찾기 
+	  		@PostMapping("/user/findPassword.do")
+	  		@ResponseBody
+	  		public String findPassword(@RequestParam("userid")String userid,
+	  								   @RequestParam("birth")String birth, 
+	  								   @RequestParam("hp")String hp) {
+	  			int result = UserService.findPassword(userid, birth, hp); 
+	  			if (result > 0) {
+	  				// 비밀번호가 초기화 완료 된 후 이메일로 새로운 이메일 전송한다고 가정 
+	  				return "비밀번호 초기화가 완료되었습니다. 새로운 비밀번호를 이메일로 전송했습니다.";
+	  			} else {
+	  				// 아이디와 회원정보가 일치하지 않을 경우 
+	  				return "일치하는 회원 정보가 없습니다.";	
+	  			}
+	  		}
+}
 	
 	
 
-}
