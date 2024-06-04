@@ -28,5 +28,17 @@ public class UserServiceImpl implements UserService{
 	public int emailCheck(String email) {
 		return mapper.emailCheck(email);
 	}
-
+	
+	//아이디 찾기 
+	@Override
+	public int findId(String usernaem, String birth, String hp) {
+		return mapper.findId(usernaem, birth, hp);
+	}
+	
+	//비밀번호 찾기 
+	@Override
+	public int findPassword(String userid, String birth, String hp) {
+		return mapper.findPassword(userid, birth, hp);
+		}
+	
 }
