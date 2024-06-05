@@ -127,16 +127,8 @@ public class MvcConfig implements WebMvcConfigurer {
 		registry.addInterceptor(AdminloginInterception())
 				.addPathPatterns("/notice/edit.do")
 				.addPathPatterns("/admin/**")
-				.excludePathPatterns("/admin/adminLogin.do");
-		
-		
-		/*
-		 * 관리자페이지 .addPathPatterns("/admin/**") .excludePathPatterns("/admin/login.do")
-		 */
+				.excludePathPatterns("/admin/adminLogin.do");		 
 	}
-	
-	
-	
 	
 	// properties 설정
 	@Bean

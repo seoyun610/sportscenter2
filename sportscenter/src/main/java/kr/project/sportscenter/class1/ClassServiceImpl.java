@@ -44,8 +44,9 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public boolean regist(ClassVO vo) {
-
+		
 		return mapper.regist(vo) == 0 ? false : true;
 	}
+
 
 }
