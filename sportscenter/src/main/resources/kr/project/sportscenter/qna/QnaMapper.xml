@@ -3,14 +3,73 @@
 <mapper namespace="kr.project.sportscenter.qna.QnaMapper"> 
 	<insert id="regist" parameterType="kr.project.sportscenter.qna.QnaVO">
 		INSERT INTO qna (
-			qnatitle, qnacontent, qnadate, qnacnt
+			qnaid, qnatitle, qnacontent, qnadate, qnacnt
 			, qnafilename_org, qnafilename_real, usernum
 		) VALUES (
-			#{qnatitle}, #{qnacontent}, now(), #{qnacnt}, 
+			#{qnaid},#{qnatitle}, #{qnacontent}, NOW(), #{qnacnt}, 
 			#{qnafilename_org}, #{qnafilename_real}, #{usernum}
 		)
 		<selectKey order="AFTER" keyProperty="qnaid" resultType="int">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM qna WHERE qnaid=#{qnaid}
+	</delete>
+	
+	<update id="update" parameterType="kr.project.sportscenter.qna.QnaVO">
+		UPDATE qna SET 
+			qnatitle=#{qnatitle}
+			, qnacontent=#{qnacontent}
+			<if test="qnafilename_org != null">
+			, qnafilename_org=#{qnafilename_org}
+			, qnafilename_real=#{qnafilename_real}
+			</if> 
+		WHERE qnaid=#{qnaid}
+	</update>
+	
+	
+	<sql id="searchSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					qnatitle LIKE '%${searchWord}%' OR qnacontent LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 목록 -->
+	<select id="list" parameterType="kr.project.sportscenter.qna.QnaVO" resultType="kr.project.sportscenter.qna.QnaVO">
+		SELECT *,
+			(SELECT username FROM user WHERE usernum = qna.usernum) as username
+		FROM qna
+		<include refid="searchSql"/>
+		ORDER BY qnaid DESC
+		LIMIT #{startIdx}, 10
+	</select>
+	
+	<!-- 카운트 -->
+	<select id="count" parameterType="kr.project.sportscenter.qna.QnaVO" resultType="int">
+		SELECT COUNT(*) FROM qna
+		<include refid="searchSql"/>
+	</select>
+	
+	<!-- 상세 -->
+	<select id="detail" parameterType="kr.project.sportscenter.qna.QnaVO" resultType="kr.project.sportscenter.qna.QnaVO">
+		SELECT * FROM qna WHERE qnaid=#{qnaid}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="increaseReadcnt" parameterType="int">
+		UPDATE qna SET qnacnt=qnacnt+1 WHERE qnaid=#{qnaid}
+	</update>
+	
+	<update id="fileDelete" parameterType="int">
+		UPDATE qna SET qnafilename_org=null, qnafilename_real=null WHERE qnaid=#{qnaid}
+	</update>
 </mapper>
