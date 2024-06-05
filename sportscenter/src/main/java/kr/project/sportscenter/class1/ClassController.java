@@ -1,5 +1,7 @@
 package kr.project.sportscenter.class1;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -34,6 +36,11 @@ public class ClassController {
 	
 	@GetMapping("/class/list.do")
 	public String list(Model model, ClassVO cvo, SportVO svo, LevelVO lvo, TimeVO tvo) {
+		if(cvo.getClassmonth()<1) {
+			LocalDate now = LocalDate.now();
+			cvo.setClassyear(now.getYear());
+			cvo.setClassmonth(now.getMonthValue()+1);
+		}
 		model.addAttribute("map", cservice.list(cvo));
 		model.addAttribute("smap", sservice.list(svo));
 		model.addAttribute("lmap", lservice.list(lvo));
@@ -43,6 +50,7 @@ public class ClassController {
 	
 	@GetMapping("/admin/list.do")
 	public String adminList(Model model, ClassVO cvo, SportVO svo, LevelVO lvo, TimeVO tvo) {
+		
 		model.addAttribute("map", cservice.list(cvo));
 		model.addAttribute("smap", sservice.list(svo));
 		model.addAttribute("lmap", lservice.list(lvo));
