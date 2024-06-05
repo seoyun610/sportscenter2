@@ -39,7 +39,6 @@
                                 <ul>
                                     <li><input type="text" id="userid" name="userid" placeholder="아이디"></li>
                                     <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호"></li>
-                                    <li><label><input type="checkbox" name="reg1" id="reg1"/> 아이디저장</label></li>
                                 </ul>
                                 <div class="login_btn"><input type="submit" value="로그인" alt="로그인" /></div>
                             </fieldset>

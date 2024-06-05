@@ -58,5 +58,10 @@ public class UserServiceImpl implements UserService{
 	public int update(UserVO vo) {
 		return mapper.update(vo);
 	}
+
+	@Override
+	public int verifyPassword(UserVO vo) {
+		return mapper.verifyPassword(vo);
+	}
 	
 }

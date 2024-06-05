@@ -21,7 +21,7 @@ public class AdminController {
 	
 	@PostMapping("/admin/adminLogin.do")
 	public String adminLogin(Model model, AdminVO vo, HttpSession sess) { 
-		AdminVO login = service.adminLogin(vo);
+		AdminVO login = (AdminVO)service.adminLogin(vo);
 		if(login == null) {
 			model.addAttribute("msg", "아이디와 비밀번호를 확인해주세요.");
 			model.addAttribute("url", "/admin/adminLogin.do");

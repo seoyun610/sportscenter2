@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <!-- 한글 깨지는 거 방지(아래) -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,8 +9,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>스포츠 문화센터</title>
 </head>
-
-
 <body>
 	<!-- Header -->
 	<header>
@@ -25,12 +22,17 @@
 					<li><a href="#">커뮤니티</a>
 				</ul>
 			</nav>
-			<!-- 사용자 옵션 (로그인, 회원가입) -->
 			<div class="user-options">
-				<a href="/user/login.do">로그인</a>
-				<a href="/user/join.do">회원가입</a>
-				<a href="/mypage/edit.do">정보수정</a>
-				<!-- #에는 로그인, 회원가입 이동 링크 삽입 -->
+			    <c:choose>
+			        <c:when test="${not empty sessionScope.login}">
+			            <a href="/mypage/verifyPassword.do">마이페이지</a>
+			            <a href="/user/logout.do">로그아웃</a>
+			        </c:when>
+			        <c:otherwise>
+			            <a href="/user/login.do">로그인</a>
+			            <a href="/user/join.do">회원가입</a>
+			        </c:otherwise>
+			    </c:choose>
 			</div>
 		</div>
 	</header>
