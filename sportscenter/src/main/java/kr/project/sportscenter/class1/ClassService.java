@@ -6,5 +6,4 @@ import java.util.Map;
 public interface ClassService {
 	Map<String, Object> list(ClassVO vo);
 	boolean regist(ClassVO vo);
-	
 }

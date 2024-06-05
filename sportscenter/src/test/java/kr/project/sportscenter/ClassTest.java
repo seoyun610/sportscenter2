@@ -25,14 +25,14 @@ public class ClassTest {
 		ClassVO vo = new ClassVO();
 		vo.setSubtype(1);
 		vo.setClassyear(2024);
-		vo.setClassmonth(6);
-		vo.setClassname("수영 13시 고급");
+		vo.setClassmonth(7);
+		vo.setClassname("수영 20시 고급");
 		vo.setClasslevel(3);
-		vo.setClasstime(13);
+		vo.setClasstime(20);
 		vo.setClassday("1^2^3^4^5"); 
-		vo.setClassprice(70000);
-		vo.setClasslimit(30);
-		vo.setClasscnt(28);
+		vo.setClassprice(75000);
+		vo.setClasslimit(28);
+		vo.setClasscnt(20);
 		mapper.regist(vo);
 	}
 

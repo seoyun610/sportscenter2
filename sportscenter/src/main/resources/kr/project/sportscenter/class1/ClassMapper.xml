@@ -10,9 +10,9 @@
 			#{subtype}, #{classyear}, #{classmonth}, #{classname}, #{classlevel}
 			, #{classtime}, #{classday}, #{classprice}, #{classlimit}, #{classcnt}
 		)
-		<selectKey order="AFTER" keyProperty="classid" resultType="int">
+		<!-- <selectKey order="AFTER" keyProperty="classid" resultType="int">
 			SELECT LAST_INSERT_ID()
-		</selectKey>
+		</selectKey> -->
 	</insert>
 	
 	
@@ -60,11 +60,9 @@
 		ORDER BY classid DESC
 		LIMIT #{startIdx}, 10
 	</select>
-	
 	<!-- 카운트 -->
 	<select id="count" parameterType="kr.project.sportscenter.class1.ClassVO" resultType="int">
 		SELECT COUNT(*) FROM class
 		<include refid="searchSql"/>
 	</select>
-	
 </mapper>
