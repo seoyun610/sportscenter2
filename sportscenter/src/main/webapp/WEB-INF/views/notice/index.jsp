@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head> 
@@ -36,9 +37,9 @@
                                 <td class="first" colspan="8">등록된 글이 없습니다.</td>
                             </tr>
 						</c:if>
-                        <c:forEach var="vo" items="${map.list }">       
+                        <c:forEach var="vo" items="${map.list }" varStatus="status">       
                             <tr>
-                                <td>${vo.noticeid }</td>
+                                <td>${fn:length(map.list) - status.index}</td>
                                 <td>
                                     <a href="view.do?noticeid=${vo.noticeid}">${vo.noticetitle } </a>
                                 </td>
