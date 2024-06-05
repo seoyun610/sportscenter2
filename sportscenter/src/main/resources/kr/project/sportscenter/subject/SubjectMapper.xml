@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.project.sportscenter.subject.SubjectMapper"> 
-	<insert id="regist" parameterType="kr.project.sportscenter.subject.SubjectVO">
+	<insert id="insert" parameterType="kr.project.sportscenter.subject.SubjectVO">
 		INSERT INTO subject (
 			subjecttype, subjectcontent, subjectregdate, subjectregcnt
 			, subjectfilename_org, subjectfilename_real, adminnum
@@ -13,4 +13,52 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM subject WHERE subjectid=#{subjectid}
+	</delete>
+	
+	<update id="update" parameterType="kr.project.sportscenter.subject.SubjectVO">
+		UPDATE subject SET 
+			subjecttype=#{subjecttype}
+			, subjectcontent=#{subjectcontent}
+			<if test="subjectfilename_org != null">
+			, subjectfilename_org=#{subjectfilename_org}
+			, subjectfilename_real=#{subjectfilename_real}
+			</if> 
+		WHERE subjectid=#{subjectid}
+	</update>
+	
+	
+	
+	<!-- 목록 -->
+	<select id="list" parameterType="kr.project.sportscenter.subject.SubjectVO" resultType="kr.project.sportscenter.subject.SubjectVO">
+		SELECT *,
+			(SELECT adminname FROM admin WHERE adminnum = subject.adminnum) as adminname
+		FROM subject
+		ORDER BY subjectid
+	</select>
+	
+	<!-- 카운트 -->
+	<select id="count" parameterType="kr.project.sportscenter.subject.SubjectVO" resultType="int">
+		SELECT COUNT(*) FROM subject
+	</select>
+	
+	<!-- 상세 -->
+	<select id="detail" parameterType="kr.project.sportscenter.subject.SubjectVO" resultType="kr.project.sportscenter.subject.SubjectVO">
+		SELECT * FROM subject WHERE subjectid=#{subjectid}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="increaseReadcnt" parameterType="int">
+		UPDATE subject SET subjectregcnt=subjectregcnt+1 WHERE subjectid=#{subjectid}
+	</update>
+	
+	<update id="fileDelete" parameterType="int">
+		UPDATE subject SET subjectfilename_org=null, subjectfilename_real=null WHERE subjectid=#{subjectid}
+	</update>
+	
+	
+	
+	
 </mapper>

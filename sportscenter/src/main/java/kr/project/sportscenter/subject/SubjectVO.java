@@ -10,7 +10,7 @@ public class SubjectVO {
 	private String subjecttype;
 	private String subjectcontent;
 	private Timestamp subjectregdate;
-	private int subjectregnct;
+	private int subjectregcnt;
 	private String subjectfilename_org;
 	private String subjectfilename_real;
 	private int adminnum;

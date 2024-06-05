@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head> 
-    <meta charset="utf-8">
     <title></title>
     <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -19,35 +18,31 @@
 </head>
 <body>
 	<div class="size">
-	<h3 class="sub_title">공지 게시판</h3>
+	<h3 class="sub_title">${vo.subjecttype }</h3>
 	<div class="bbs">
 		<div class="view">
-			<div class="title">
-				<dl>
-					<dt>${vo.noticetitle }</dt>
-					<dd class="date">작성일 : <fmt:formatDate value="${vo.noticedate }" pattern="YYYY-MM-dd HH:mm:ss"/> </dd>
-                </dl>
-            </div>
-            <div> ${vo.noticecontent } </div>
-            <c:if test="${not empty vo.noticefilename_org}">
-				<dl class="file">
-					<dt>첨부파일 </dt>
-					<dd>
-					<a href='<c:url value="/download.do" />?uploadPath=/upload/notice&noticefilename_org=${URLEncoder.encode(vo.noticefilename_org)}&noticefilename_real=${vo.noticefilename_real}' target="_blank">${vo.noticefilename_org}</a></dd>
-                </dl>
-            </c:if>                    
+			<div class = "mainimg"></div>
+				<c:if test="${not empty vo.subjectfilename_org}">
+				    <dl class="file">
+				        <dd>
+				            <pre>
+				                <img src='/upload/subject/${vo.subjectfilename_real}' />
+				            </pre>
+				        </dd>
+				    </dl>
+				</c:if>
+			</div>				
+            <div> ${vo.subjectcontent } </div>    
             <div>
 				<div>
 				<a href="index.do" class="btn">목록</a>
                 <c:if test="${not empty adminLogin}">
-                	<a href="edit.do?noticeid=${vo.noticeid}" class="btn">수정</a>
-                    <a href="delete.do?noticeid=${vo.noticeid}" class="btn">삭제</a>
+                	<a href="edit.do?subjectid=${vo.subjectid}" class="btn">수정</a>
+                    <a href="delete.do?subjectid=${vo.subjectid}" class="btn">삭제</a>
                 </c:if>
             	</div>
 			</div>
          </div>
      </div>
-	</div>
-
 </body>
 </html>

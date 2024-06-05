@@ -24,14 +24,18 @@
 			const today = new Date();
 		    const day = today.getDate();
 	
-			if (day >= 20 && day <= 26) {
+			if (day >= 25 && day <= 29) {
 				if (classLimit > classCnt){
 					location.href = 'payCheck?classId=' + classId;
 				} else {
 					alert ('잔여석이 없습니다.')
 				}
 		    } else {
-		        alert('신청 기간이 아닙니다.');
+		    	if( day >= 20 && day < 25 ){
+		    		alert('재수강 기간입니다. \n 마이페이지에서 재수강 여부 확인하세요.');
+		    	} else { 
+		    		alert('신청 기간이 아닙니다.');
+		    	}
 		    }
 		}
 		
