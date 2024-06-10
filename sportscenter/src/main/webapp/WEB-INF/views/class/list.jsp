@@ -20,6 +20,45 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 	<script>
+		// var load = false;
+		/* window.addEventListener('DOMContentLoaded', function() {
+			var today = new Date(); 
+			var year = today.getFullYear(); 
+			var month = today.getMonth() + 2;
+			$("classyear").val(year);
+			$("classmonth").val(month);
+			$("#searchForm").submit();
+		}); 
+		*/
+		/*
+		$(function() {
+			var today = new Date(); 
+			var year = today.getFullYear(); 
+			var month = today.getMonth() + 2;
+			$("classyear").val(year);
+			$("classmonth").val(month);
+			if(load == false){
+				$("#searchForm").submit();
+				load == true;
+			}
+		});*/
+		
+	/* 	window.onload = function() {
+			var today = new Date(); 
+			var year = today.getFullYear(); 
+			var month = today.getMonth() + 2;
+			$("classyear").val(year);
+			$("classmonth").val(month);
+			$("#searchForm").submit();
+		} */
+		/* function initSubmit(){
+			var today = new Date(); 
+			var year = today.getFullYear(); 
+			var month = today.getMonth() + 2;
+			$("classyear").val(year);
+			$("classmonth").val(month);
+			$("#searchForm").submit();
+		} */
 		function classSelection(classId, classLimit, classCnt) {
 			const today = new Date();
 		    const day = today.getDate();
@@ -41,7 +80,7 @@
 		
 	</script>
 </head>
-<body>
+<body onload="initSubmit()">
 	<div class="wrap">
 		<!-- 헤더 -->
 		<div class="sub">

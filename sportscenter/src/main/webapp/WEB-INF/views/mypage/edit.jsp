@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="kr.project.sportscenter.user.UserVO" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head> 
@@ -77,6 +78,11 @@
 	        }).open();
 	    }
 	</script>
+	<%
+		UserVO vo = new UserVO();
+		
+	%>
+	
 </head> 
 <body>
     <div class="wrap">
@@ -87,14 +93,14 @@
                 <table class="board_write">
                     <caption>회원정보수정</caption>
                     <colgroup>
-                        <col width="20%" />
+                        <col width="50%" />
                         <col width="*" />
                     </colgroup>
                     <tbody>
                         <tr>
-                            <th>이메일</th>
+                            <th>아이디</th>
                             <td>
-                                ${vo.email }
+                                ${vo.userid }
                             </td>
                         </tr>
                         <tr>
@@ -107,29 +113,29 @@
                         </tr>
                         <tr>
                             <th>이름</th>
-                            <td><input type="text" name="username" id="username" style="float:left;" value="${vo.name }"> </td>
+                            <td><input type="text" name="username" id="username" style="float:left;" value="${vo.username }" readonly> </td>
                         </tr>
                         <tr>
                             <th>성별</th>
-                            <td>
+                            <td> 
                             <select name="gender" id="gender">
-                            <option value="1" <c:if test="${vo.gender == 1}">selected</c:if>>남성</option>
-                            <option value="2" <c:if test="${vo.gender == 2}">selected</c:if>>여성</option>
+                            <option value="1" <c:if test="${vo.gender == 1}">selected</c:if>disabled>남성</option>
+                            <option value="2" <c:if test="${vo.gender == 2}">selected</c:if>disabled>여성</option>
                             </select> 
                             </td>
                         </tr>
                         <tr>
                             <th>생년월일</th>
-                            <td><input type="text" name="birthday" id="birthday" style="float:left;" value="${vo.birthday }"> </td>
+                            <td><input type="text" name="birth" id="birth" style="float:left;" value="${vo.birth }" readonly> </td>
                         </tr>
                         <tr>
                             <th>휴대폰 번호</th>
-                            <td>
+                            <td> 
                                 <input type="text" name="hp" id="hp" value="${vo.hp }"  maxlength="15" style="float:left;">
                             </td>
                         </tr>
                         <tr>
-                            <th rowspan="3">*주소</th>
+                            <th rowspan="3">주소</th>
                             <td>
                                 <input type="text" name="zipcode" id="zipcode" value="${vo.zipcode }"  maxlength="6" style="float:left;" readonly>
                                 <span class="email_check"><a href="javascript:zipcode();"  class="btn bgGray" style="float:left; width:auto; clear:none;">우편번호</a></span>
@@ -147,11 +153,11 @@
                         </tr>
                     </tbody>
                 </table>
-                        <input type="hidden" name="no" value="${vo.no }"/>
+                        <input type="hidden" name="usernum" value="${vo.usernum }"/>
                 </form>
                 <!-- //write--->
                 <div class="btnSet clear">
-                    <div><a href="javascript:;" class="btn" onclick="goSave();">수정</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+                    <div><a href="javascript:;" class="btn" onclick="goSave();">수정</a> <a href="javascript:;" class="btn" onclick="location.href='/home.do';">취소</a></div>
                 </div>
             </div>
         </div>

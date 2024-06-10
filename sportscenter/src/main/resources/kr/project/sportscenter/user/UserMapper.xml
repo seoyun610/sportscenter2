@@ -50,11 +50,15 @@
 	            pwd = MD5(#{pwd}),
 	        </if>
 			pwd = MD5(#{pwd}),
-			zipcode = #{zipcode},
 	        hp = #{hp},
-	        addr1 = #{addr1},
+	        addr = #{addr},
 	        addr2 = #{addr2}
 	    </set>
 	    WHERE usernum = #{usernum}
 	</update>
+	
+	<select id="verifyPassword" parameterType="kr.project.sportscenter.user.UserVO" resultType="int">
+		SELECT count(*) FROM user WHERE userid=#{userid} AND pwd=MD5(#{pwd}) 
+	</select> 
+	
 </mapper> 
