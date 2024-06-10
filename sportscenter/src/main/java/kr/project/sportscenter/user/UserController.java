@@ -71,7 +71,10 @@ public class UserController {
 		return "common/alert";
 	}
 	
-
+	@GetMapping("/user/findId.do")
+	public void findId() {
+		
+	}
 	
 	// 아이디 찾기 
 	@PostMapping("/user/findId.do")
@@ -89,7 +92,7 @@ public class UserController {
 	        	}
 	  		} 
 	  
-  		//비밀번호 찾기 
+  		//비밀번호 변경
   		@PostMapping("/user/findPassword.do")
   		@ResponseBody
   		public String findPassword(@RequestParam("userid")String userid,
@@ -100,7 +103,7 @@ public class UserController {
   				return result.getPwd();
   			} else {
   				// 아이디와 회원정보가 일치하지 않을 경우 
-  				return "fail";	
+  				return "fail";
   			}
   		}
 	  		

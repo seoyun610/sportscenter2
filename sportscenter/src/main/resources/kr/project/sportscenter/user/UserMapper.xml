@@ -50,9 +50,8 @@
 	            pwd = MD5(#{pwd}),
 	        </if>
 			pwd = MD5(#{pwd}),
-			zipcode = #{zipcode},
 	        hp = #{hp},
-	        addr1 = #{addr1},
+	        addr = #{addr},
 	        addr2 = #{addr2}
 	    </set>
 	    WHERE usernum = #{usernum}

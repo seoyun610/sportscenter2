@@ -26,7 +26,7 @@
         });
 
         function showForm(formId) {
-            $(".form-container").removeClass("active");.
+            $(".form-container").removeClass("active");  
             $("#" + formId).addClass("active");
         }
 
@@ -78,7 +78,7 @@
 <body>
   <div>
         <button type="button" class="btn btn-primary" onclick="showForm('findId_container')">아이디 찾기</button>
-        <button type="button" class="btn btn-primary" onclick="showForm('findPassword_container')">비밀번호 찾기</button>
+        <button type="button" class="btn btn-primary" onclick="showForm('findPassword_container')">비밀번호 변경</button>
     </div>
 
     <div id="findId_container" class="form-container">
@@ -92,10 +92,6 @@
             <div class="form-group">
                 <input type="text" id="hp" name="hp" placeholder="휴대전화번호를 입력해주세요." required>
                 <button type="submit" class="btn btn-primary">아이디 찾기</button>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">비밀번호 찾기</button>
-                <button type="submit" class="btn btn-primary">로그인 하기</button>
             </div>
         </form>
     </div>
@@ -111,9 +107,8 @@
             <div class="form-group">
                 <input type="text" id="hp" name="hp" placeholder="휴대전화번호를 입력해주세요." required>
             </div>
-            <div class="form-group">
+            <div class="form-group"> 
                 <button type="submit" class="btn btn-primary">확인</button>
-                <button type="submit" class="btn btn-primary">로그인 찾기</button>
             </div>
         </form>
     </div>

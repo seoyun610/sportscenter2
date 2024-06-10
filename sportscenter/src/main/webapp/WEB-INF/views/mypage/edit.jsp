@@ -157,7 +157,7 @@
                 </form>
                 <!-- //write--->
                 <div class="btnSet clear">
-                    <div><a href="javascript:;" class="btn" onclick="goSave();">수정</a> <a href="javascript:;" class="btn" onclick="location.href='/home.do';">취소</a>s</div>
+                    <div><a href="javascript:;" class="btn" onclick="goSave();">수정</a> <a href="javascript:;" class="btn" onclick="location.href='/home.do';">취소</a></div>
                 </div>
             </div>
         </div>

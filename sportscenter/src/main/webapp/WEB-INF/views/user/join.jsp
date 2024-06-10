@@ -219,7 +219,7 @@
                         </tr>
                         <tr>
                             <th>생년월일</th>
-                            <td><input type="text" name="birth" id="birth" style="float:left;"> </td>
+                            <td><input type="text" name="birth" id="birth" style="float:left;" placeholder="생년월일 8자리를 입력해주세요."> </td>
                         </tr>
                         <tr>
 						    <th>성별</th>
