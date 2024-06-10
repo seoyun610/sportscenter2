@@ -18,7 +18,7 @@
 			<nav>
 				<ul id="main-nav"> 
 					<li><a href="#">종목/안내</a>
-					<li><a href="#">수강신청</a>
+					<li><a href="/class/list.do">수강신청</a>
 					<li><a href="#">커뮤니티</a>
 				</ul>
 			</nav>
