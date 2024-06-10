@@ -25,4 +25,7 @@ public interface UserService {
 	//비밀번호 확인
 	int verifyPassword(UserVO vo);
 
+	//비밀번호 업데이트 
+	boolean updatePassword(String userid, String newPwd);
+
 }

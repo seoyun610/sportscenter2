@@ -57,8 +57,10 @@
 	    WHERE usernum = #{usernum}
 	</update>
 	
+	<!-- 패스워드 확인 -->
 	<select id="verifyPassword" parameterType="kr.project.sportscenter.user.UserVO" resultType="int">
 		SELECT count(*) FROM user WHERE userid=#{userid} AND pwd=MD5(#{pwd}) 
 	</select> 
+	
 	
 </mapper> 

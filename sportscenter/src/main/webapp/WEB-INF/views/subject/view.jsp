@@ -14,9 +14,16 @@
     <script src="/js/script.js">
     </script>
 
-<title>Insert title here</title>
+<title>종목 안내</title>
 </head>
 <body>
+	<div class="login">  
+    	<ul class="nav">
+     		<li><a href="user/login"><span>로그인</span></a></li>
+     		<li><a href="user/join"><span>회원가입</span></a></li>                      
+    	</ul>
+    </div>
+    
 	<div class="size">
 	<h3 class="sub_title">${vo.subjecttype }</h3>
 	<div class="bbs">

@@ -1,6 +1,9 @@
 package kr.project.sportscenter.user;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,18 +100,39 @@ public class UserController {
   		@ResponseBody
   		public String findPassword(@RequestParam("userid")String userid,
   								   @RequestParam("birth")String birth, 
-  								   @RequestParam("hp")String hp) {
+  								   @RequestParam("hp")String hp,
+  								   HttpServletResponse response) throws IOException {
   			UserVO result = service.findPassword(userid, birth, hp); 
   			if (result != null) {
-  				return result.getPwd();
+  				//비밀번호 찾기 성공 시
+  				return "성공"; 
   			} else {
-  				// 아이디와 회원정보가 일치하지 않을 경우 
-  				return "fail";
+  				return "일치하는 회원 정보가 없습니다."; 
   			}
   		}
-	  		
-	  	
-	  		
+	  
+  		@GetMapping ("/user/resetPassword.do")
+  		public String resetPassword(@RequestParam("userid") String userid, Model model) {
+  			model.addAttribute("userid", userid); 
+  			return "/user/resetPassword"; 
+  			
+  		}
+  		
+  		@PostMapping("user/updatePassword.do")
+  		public String updatePassword(@RequestParam("userid")String userid,
+  				                     @RequestParam("newPwd")String newPwd,
+  				                     Model model) {
+  			boolean success = service.updatePassword(userid,newPwd); 
+  			if (success) {
+  				//비밀번호 변경 성공 시 메시지를 모델에 담아 화면에 전달 
+  				model.addAttribute("msg", "비밀번호가 변경되었습니다."); 
+  				model.addAttribute("url", "/user/login.do");
+  			} 
+            return "common/alert";
+
+		}
+  		
+  		
 	  	//개인정보 수정
   		@GetMapping("/mypage/edit.do")
   		public String edit(HttpSession sess, Model model) {
