@@ -20,72 +20,30 @@
     <script>
     function del() {
     	if (confirm('삭제하시겠습니까?')) {
-    		location.href='delete.do?no=${vo.no}';
+    		location.href='delete.do?qnaid=${vo.qnaid}';
     	}
     }
     
-    function getComment(page) {
-		$.ajax({
-			url: "/comment/list.do",
-			data: {
-				parent_no: ${vo.no},
-				page: page
-			},
-			success: function(res) {
-				$("#commentArea").html(res);
-			}
-		});
-	}
+//    function getComment(page) {
+//		$.ajax({
+//			url: "/reply/view.do",
+//			data: {
+//				qnaid: ${vo.qnaid},
+//				page: page
+//			},
+//			success: function(res) {
+//				$("#commentArea").html(res);
+//			}
+//		});
+//	}
 	
-	$(function() {
-		getComment(1);
-	});
+//	$(function() {
+//		getComment(1);
+//	});
+
 	
-	
-	function goSave() {
-		<c:if test="${empty login}">
-			alert('댓글은 로그인 후 작성 가능합니다.');
-		</c:if>
-		
-		<c:if test="${!empty login}">
-		if ($("#content").val().trim() == '') {
-			alert('댓글을 입력해 주세요');
-			$("#content").focus();
-			return false;
-		}
-		if (confirm('댓글을 저장하시겠습니까?')) {
-    		$.ajax({
-    			url: "/comment/insert.do",
-    			data: {
-    				parent_no: ${vo.no}, // sql거쳐 받아온 no도 있고, param에도 no가 있고 // ${param.no} 얘 써도 됨
-    				content: $("#content").val(), // 컨트롤러의 커멘드객체(CommentVO vo) 안에 있는 필드명과 일치해야지
-    				writer: ${login.no}
-    			},
-    			success: function(res) {
-    				if (res.trim() == "1") {
-    					alert('댓글이 정상적으로 등록되었습니다.');
-    					$("#content").val('');
-    					getComment(1);
-    				}
-    			}
-    		});
-		}
-		</c:if>
-	}
-	
-	function commentDel(no) {
-		if (confirm("댓글을 삭제하시겠습니까?")) {
-			$.ajax ({
-				url: '/comment/delete.do?no='+no,
-				success: function(res) {
-					if (res.trim() == "1") {
-						alert('댓글이 정상적으로 삭제되었습니다.');
-						getComment(1);
-					}
-				}
-			});
-		}
-	}
+
+//	}
     </script>
 </head> 
 <body>
@@ -110,7 +68,6 @@
                 		</c:if>                    
                             <div>
                             	<a href="index.do" class="btn">목록</a>
-                            	<a href="reply.do?qnaid=${vo.qnaid}" class="btn">답변</a>
                             	<c:if test="${!empty login and login.usernum == vo.usernum}">
                             	<a href="edit.do?qnaid=${vo.qnaid}" class="btn">수정</a>
                             	<a href="javascript:del();" class="btn">삭제</a>
@@ -119,34 +76,7 @@
                         </div>
                 
                     </div>
-
-                    <div>
-                    <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
-                        <table class="Qna_write">
-                            <colgroup>
-                                <col width="*" />
-                                <col width="100px" />
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <textarea name="qnacontent" id="qnacontent" style="height:50px;"></textarea>
-                                </td>
-                                <td>
-                                    <div class="btnSet"  style="text-align:right;">
-                                        <a class="btn" href="javascript:goSave();">저장 </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        </form>
-
-                        <div id="commentArea">
-                        
-                        </div>
                     </div>
                 </div>
-            </div>
 </body> 
 </html>

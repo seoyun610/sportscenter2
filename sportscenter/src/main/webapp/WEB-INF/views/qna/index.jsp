@@ -47,9 +47,9 @@
                                     <a href="view.do?qnaid=${vo.qnaid}">${vo.qnatitle } </a>
                                 </td>
                                 <td>
-                                    ${vo.usernum }
+                                    ${vo.username }
                                 </td>
-                                <td>${vo.qnaregcnt }</td>
+                                <td>${vo.qnadate }</td>
                                 <td class="date"><fmt:formatDate value="${vo.qnadate }" pattern="YYYY-MM-dd"/></td>
                             </tr>
                        </c:forEach>

@@ -15,6 +15,8 @@ public class QnaVO {
 	private String qnafilename_org;
 	private String qnafilename_real;
 	
+	private String username;
+	
 	private String searchType;
 	private String searchWord;
 	private int page; // 사용자가 요청한 페이지 번호

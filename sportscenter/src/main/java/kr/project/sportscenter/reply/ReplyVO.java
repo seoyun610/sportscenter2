@@ -11,6 +11,6 @@ public class ReplyVO {
 	private Timestamp regdate;
 	private int qnaid;
 	private int adminnum;
-	
+	private String adminname;
 
 }
