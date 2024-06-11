@@ -28,7 +28,7 @@ public class QnaServiceImpl implements QnaService {
 			String ext = org.substring(org.lastIndexOf("."));
 			String real = System.currentTimeMillis()+ext;
 			// 파일저장
-			String path = request.getRealPath("/upload/board/")+real;
+			String path = request.getRealPath("/upload/qna/")+real;
 			try {
 				file.transferTo(new File(path));
 			} catch (Exception e) {}
@@ -62,7 +62,7 @@ public class QnaServiceImpl implements QnaService {
 			String ext = org.substring(org.lastIndexOf("."));
 			String real = System.currentTimeMillis()+ext;
 			// 파일저장
-			String path = request.getRealPath("/upload/board/")+real;
+			String path = request.getRealPath("/upload/qna/")+real;
 			try {
 				file.transferTo(new File(path));
 			} catch (Exception e) {}
@@ -72,7 +72,7 @@ public class QnaServiceImpl implements QnaService {
 		int r = mapper.update(vo);
 		return r;
 	}
-
+/*
 	@Override
 	public int reply(QnaVO vo, MultipartFile file, HttpServletRequest request) {
 		if (!file.isEmpty()) {
@@ -92,12 +92,12 @@ public class QnaServiceImpl implements QnaService {
 		return r;
 	
 	}
-
+*/
 	@Override
 	public int delete(QnaVO vo, HttpServletRequest request) {
 		QnaVO data = mapper.detail(vo);
 		if (data.getQnafilename_real() != null && !"".equals(data.getQnafilename_real())) {
-			File f = new File(request.getRealPath("/upload/board/")+data.getQnafilename_real());
+			File f = new File(request.getRealPath("/upload/qna/")+data.getQnafilename_real());
 			f.delete();
 		}
 		return mapper.delete(vo.getQnaid());

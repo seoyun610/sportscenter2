@@ -20,6 +20,8 @@ public class ClassVO {
     private int classlimit;
     private int classcnt;
     
+    private int searchMonth;
+    
     private String searchType;
     private String searchWord;
     private int page; // 사용자가 요청한 페이지 번호
@@ -27,6 +29,8 @@ public class ClassVO {
     
     public ClassVO() {
         this.page = 1;
+        this.classmonth = 0;
+        this.classyear = 0;
     }
     
     public int getStartIdx() {
@@ -83,7 +87,9 @@ public class ClassVO {
             case 3:
                 return "상급";
             case 4:
-                return "자유";
+                return "연수";
+            case 5:
+            	return "FREE";
             default:
                 return "";
         }

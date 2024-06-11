@@ -12,7 +12,7 @@ public interface QnaService {
 	int insert(QnaVO vo, MultipartFile file, HttpServletRequest request);
 	QnaVO detail(QnaVO vo, boolean b);
 	int update(QnaVO vo, MultipartFile file, HttpServletRequest request);
-	int reply(QnaVO vo, MultipartFile file, HttpServletRequest request);
+	//int reply(QnaVO vo, MultipartFile file, HttpServletRequest request);
 	int delete(QnaVO vo, HttpServletRequest request);
 	Map<String, Object> list(QnaVO vo);
 }

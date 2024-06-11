@@ -26,7 +26,7 @@
         });
 
         function showForm(formId) {
-            $(".form-container").removeClass("active");.
+            $(".form-container").removeClass("active");  
             $("#" + formId).addClass("active");
         }
 
@@ -51,34 +51,37 @@
                 }
             });
         }
-
+        
         function findPassword() {
             $.ajax({
                 url: '/user/findPassword.do',
                 data: {
-                    userid: $("#userid").val(),
-                    birth: $("#birth").val(),
-                    hp: $("#hp").val()
+                    userid: $("#userid2").val(),
+                    birth: $("#birth2").val(),
+                    hp: $("#hp2").val()
                 },
                 type: 'POST',
                 success: function(res) {
                     if (res === "일치하는 회원 정보가 없습니다.") {
                         alert(res);
                     } else {
-                        alert(res);
+                        // 비밀번호 찾기 성공 시, resetPassword 페이지로 이동 
+                        window.location.href='/user/resetPassword.do?userid=' + $("#userid2").val();
                     }
                 },
                 error: function(err) {
                     alert("오류가 발생했습니다. 다시 시도해 주세요.");
                 }
             });
+            return false; 
         }
+
     </script>
 </head>
 <body>
   <div>
         <button type="button" class="btn btn-primary" onclick="showForm('findId_container')">아이디 찾기</button>
-        <button type="button" class="btn btn-primary" onclick="showForm('findPassword_container')">비밀번호 찾기</button>
+        <button type="button" class="btn btn-primary" onclick="showForm('findPassword_container')">비밀번호 변경</button>
     </div>
 
     <div id="findId_container" class="form-container">
@@ -93,29 +96,24 @@
                 <input type="text" id="hp" name="hp" placeholder="휴대전화번호를 입력해주세요." required>
                 <button type="submit" class="btn btn-primary">아이디 찾기</button>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">비밀번호 찾기</button>
-                <button type="submit" class="btn btn-primary">로그인 하기</button>
-            </div>
         </form>
     </div>
-
+    
     <div id="findPassword_container" class="form-container">
         <form class="form-horizontal" role="form" onsubmit="findPassword(); return false;">
             <div class="form-group">
-                <input type="text" id="userid" name="userid" placeholder="아이디를 입력해주세요." required autofocus>
+                <input type="text" id="userid2" name="userid" placeholder="아이디를 입력해주세요." required autofocus>
             </div>
             <div class="form-group">
-                <input type="text" id="birth" name="birth" placeholder="생년월일 8자리를 입력해주세요." required>
+                <input type="text" id="birth2" name="birth" placeholder="생년월일 8자리를 입력해주세요." required>
             </div>
             <div class="form-group">
-                <input type="text" id="hp" name="hp" placeholder="휴대전화번호를 입력해주세요." required>
+                <input type="text" id="hp2" name="hp" placeholder="휴대전화번호를 입력해주세요." required>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">확인</button>
-                <button type="submit" class="btn btn-primary">로그인 찾기</button>
+            <div class="form-group"> 
+                <button type="submit" class="btn btn-primary">다음</button>
             </div>
         </form>
     </div>
-</body>
+    </body>
 </html>

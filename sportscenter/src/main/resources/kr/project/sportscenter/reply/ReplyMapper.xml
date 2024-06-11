@@ -1,15 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.project.sportscenter.reply.ReplyMapper"> 
-	<insert id="regist" parameterType="kr.project.sportscenter.reply.ReplyVO">
+	
+	<insert id="insert" parameterType="kr.project.sportscenter.reply.ReplyVO">
 		INSERT INTO reply (
-			replycontent, regdate, qnaid, adminnum
+			replyid, replycontent, regdate, qnaid, adminnum
 		) VALUES (
-			#{replycontent}, now(), #{qnaid}, 
+			#{replyid}, #{replycontent}, now(), #{qnaid}, 
 			#{adminnum}
 		)
-		<selectKey order="AFTER" keyProperty="replyid" resultType="int">
-			SELECT LAST_INSERT_ID()
-		</selectKey> 
-	</insert>
+	 </insert>
+	 
+	 <select id="count" parameterType="kr.project.sportscenter.reply.ReplyVO" resultType="int">
+		select count(*) from reply
+		where qnaid = #{qnaid}
+	</select>
+	
+	<select id="list" parameterType="kr.project.sportscenter.reply.ReplyVO" resultType="kr.project.sportscenter.reply.ReplyVO">
+		select *,
+			(select qnaid from qna where qnaid = reply.qnaid) as qnaid,
+			(select adminname from admin where adminnum = reply.adminnum) as adminname 
+		from reply
+		where qnaid = #{qnaid}
+	</select>
+	
+	<select id="all" parameterType="kr.project.sportscenter.reply.ReplyVO" resultType="kr.project.sportscenter.reply.ReplyVO">
+		select *,
+			(select qnaid from qna where qnaid = reply.qnaid) as qnaid,
+			(select adminname from admin where adminnum=reply.adminnum) as adminname 
+		from reply
+		where qnaid = #{qnaid}
+		order by regdate desc
+	</select>
+	
+	<update id="update" parameterType="kr.project.sportscenter.reply.ReplyVO">
+		UPDATE reply SET 
+			replycontent=#{replycontent}
+		WHERE replyid=#{replyid}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from comment where no = #{no}
+	</delete>
 </mapper>
