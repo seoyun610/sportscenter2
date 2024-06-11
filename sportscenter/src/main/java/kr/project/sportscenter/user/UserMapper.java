@@ -27,13 +27,16 @@ public interface UserMapper {
 	
 	
 	//비밀번호 업데이트 
-	UserVO updatePassword(String pwd);
+	boolean updatePassword(UserVO vo);
 	
 	// 회원정보 조회
 	UserVO detail(UserVO vo);
 	
 	// 회원정보 수정
 	int update(UserVO vo);
+	
+	//비밀번호 확인
+	int verifyPassword(UserVO vo);
 
 	
 }

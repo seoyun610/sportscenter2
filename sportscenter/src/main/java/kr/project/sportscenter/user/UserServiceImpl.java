@@ -2,6 +2,7 @@ package kr.project.sportscenter.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -48,6 +49,7 @@ public class UserServiceImpl implements UserService{
 		vo.setHp(hp);
 		return mapper.findPassword(vo);
 		}
+
 	
 	@Override
 	public UserVO detail(UserVO vo) {
@@ -58,5 +60,19 @@ public class UserServiceImpl implements UserService{
 	public int update(UserVO vo) {
 		return mapper.update(vo);
 	}
+
+	@Override
+	public int verifyPassword(UserVO vo) {
+		return mapper.verifyPassword(vo);
+	}
 	
+	//비밀번호 변경 
+	@Override
+	public boolean updatePassword(String userid, String newPwd) {
+		UserVO vo = new UserVO(); 
+		vo.setUserid(userid);
+		vo.setPwd(newPwd);
+		return mapper.updatePassword(vo);
+		
+	}
 }

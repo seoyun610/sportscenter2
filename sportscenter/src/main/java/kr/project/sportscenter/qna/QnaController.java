@@ -24,12 +24,13 @@ public class QnaController {
 		model.addAttribute("map", service.list(vo));
 		return "qna/index";
 	}
-	
+	//신규 Qna 작성 화면 요청 
 	@GetMapping("/qna/write.do")
 	public String write() {
 		return "qna/write";
 	}
 	
+	//신규 Qna 저장 처리 요청 
 	@PostMapping("/qna/insert.do")
 	public String insert(Model model, HttpServletRequest request, QnaVO vo, MultipartFile file) {
 		HttpSession sess = request.getSession();
@@ -47,16 +48,21 @@ public class QnaController {
 		return "common/alert";
 	}
 	
+	//Qna 글 상세 화면 요청 
 	@GetMapping("/qna/view.do")
 	public String view(Model model, QnaVO vo) {
 		model.addAttribute("vo", service.detail(vo, true));
 		return "qna/view";
 	}
+	
+	//Qna 글 수정 
 	@GetMapping("/qna/edit.do")
 	public String edit(Model model, QnaVO vo) {
 		model.addAttribute("vo", service.detail(vo, false));
 		return "qna/edit";
 	}
+	
+	//Qna 글 수정 처리 요청 
 	@PostMapping("/qna/update.do")
 	public String update(Model model, HttpServletRequest request, QnaVO vo, MultipartFile file) {
 		int r = service.update(vo, file, request);
@@ -70,11 +76,15 @@ public class QnaController {
 		}
 		return "common/alert";
 	}
+/*	
+	// 답변 쓰기 화면 요청 
 	@GetMapping("/qna/reply.do")
 	public String reply(Model model, QnaVO vo) {
 		model.addAttribute("vo", service.detail(vo, false));
 		return "qna/reply";
 	}
+	
+	// 답변 쓴 후 저장 요청 
 	@PostMapping("/qna/reply.do")
 	public String replyProcess(Model model, HttpServletRequest request, QnaVO vo, MultipartFile file) {
 		HttpSession sess = request.getSession();
@@ -92,6 +102,9 @@ public class QnaController {
 		}
 		return "common/alert";
 	}
+	
+	*/
+	// Qna 삭제
 	@GetMapping("/qna/delete.do")
 	public String delete(Model model, HttpServletRequest request, QnaVO vo, MultipartFile file) {
 		int r = service.delete(vo, request);
