@@ -20,7 +20,7 @@
     <script>
     function del() {
     	if (confirm('삭제하시겠습니까?')) {
-    		location.href='delete.do?no=${vo.no}';
+    		location.href='delete.do?qnaid=${vo.qnaid}';
     	}
     }
     

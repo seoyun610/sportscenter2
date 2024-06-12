@@ -9,5 +9,8 @@ public class AdminVO {
 	private String adminname;
 	private String adminid;
 	private String adminpwd;
+	
+	
+	private int qnaid;
 
 }

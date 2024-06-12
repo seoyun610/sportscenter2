@@ -31,5 +31,11 @@ public class AdminController {
 			return "redirect:/home.do";
 		}
 	}
+	
+	@GetMapping("/admin/userList.do")
+		public void userList() {
+			
+		}
+	
 
 }

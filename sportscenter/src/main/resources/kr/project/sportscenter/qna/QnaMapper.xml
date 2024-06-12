@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.project.sportscenter.qna.QnaMapper"> 
-	<insert id="regist" parameterType="kr.project.sportscenter.qna.QnaVO">
+	<insert id="insert" parameterType="kr.project.sportscenter.qna.QnaVO">
 		INSERT INTO qna (
 			qnaid, qnatitle, qnacontent, qnadate, qnacnt
 			, qnafilename_org, qnafilename_real, usernum
