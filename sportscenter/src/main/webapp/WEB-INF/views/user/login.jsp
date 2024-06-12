@@ -29,6 +29,7 @@
     		$("#pwd").focus();
     		return false;
     	}
+    	$("#loginFrm").submit();
     }
     </script>
     
@@ -67,13 +68,13 @@
 							<p class="lead mb-4">스포츠 문화 센터에 오신 걸 환영합니다!</p>
 
 							<!-- Form START -->
-							<form>
+							<form id="loginFrm" action="login.do" method="post">
 								<!-- Id -->
 								<div class="mb-4">
 									<label for="InputId1" class="form-label">아이디 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
-										<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="아이디" id="InputId1">
+										<input type="text" id="userid" name="userid" class="form-control border-0 bg-light rounded-end ps-1" placeholder="아이디" id="InputId1">
 									</div>
 								</div>
 								<!-- Password -->
@@ -81,7 +82,7 @@
 									<label for="inputPassword5" class="form-label">비밀번호 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="비밀번호" id="inputPassword5">
+										<input type="password" id="pwd" name="pwd" class="form-control border-0 bg-light rounded-end ps-1" placeholder="비밀번호" id="inputPassword5">
 									</div>
 									<div id="passwordHelpBlock" class="form-text">
 										비밀번호는 숫자, 영문 조합으로 8자 이상이어야 합니다.
@@ -102,7 +103,7 @@
 								<!-- Button -->
 								<div class="align-items-center mt-0">
 									<div class="d-grid">
-										<button class="btn btn-primary mb-0" type="button">Login</button>
+										<button class="btn btn-primary mb-0" type="button" onclick="loginCheck()">Login</button>
 									</div>
 								</div>
 							</form>
