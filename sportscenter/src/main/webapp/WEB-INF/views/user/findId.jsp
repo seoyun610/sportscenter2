@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="/js/script.js"></script>
     
-    <!-- CSS_코드 넘 길어지면 분리할게요! -->
+    <!-- CSS -->
     <style>
         .container {
          width: 400 px;
