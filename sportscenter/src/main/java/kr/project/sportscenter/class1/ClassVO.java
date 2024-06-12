@@ -51,32 +51,38 @@ public class ClassVO {
         
         return subtypeMap.getOrDefault(subtype, "알 수 없음");
     }
-
+    
+    /*
     public void setClassday(String classday) {
         String[] days = classday.split("\\^");
-        StringBuilder sb = new StringBuilder();
-        for(String day : days) {
-            switch(day) {
-                case "1":
-                    sb.append("월,");
-                    break;
-                case "2":
-                    sb.append("화,");
-                    break;
-                case "3":
-                    sb.append("수,");
-                    break;
-                case "4":
-                    sb.append("목,");
-                    break;
-                case "5":
-                    sb.append("금,");
-                    break;
-            }
+        if(days.length == 1) this.classday = classday;
+        else {
+        	// for(String day : days) {System.out.println(day);}
+            StringBuilder sb = new StringBuilder();
+            for(String day : days) {
+            	switch (day) {
+        			case "1":
+                        sb.append("월,");
+                        break;
+                    case "2":
+                        sb.append("화,");
+                        break;
+                    case "3":
+                        sb.append("수,");
+                        break;
+                    case "4":
+                        sb.append("목,");
+                        break;
+                    case "5":
+                        sb.append("금,");
+                        break;
+        			}
+            	}
+            	if(sb.length() > 0) sb.setLength(sb.length() - 1);
+                this.classday = sb.toString();
         }
-        if(sb.length() > 0) sb.setLength(sb.length() - 1);
-        this.classday = sb.toString();
     }
+    */
     
     public String getClasslevelName() {
         switch (classlevel) {

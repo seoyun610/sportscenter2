@@ -43,10 +43,22 @@ public class ClassServiceImpl implements ClassService {
 
 
 	@Override
+	public ClassVO select(int classid) {
+		return mapper.select(classid);
+	}
+
+	
+	@Override
 	public boolean regist(ClassVO vo) {
 		
 		return mapper.regist(vo) == 0 ? false : true;
 	}
 
 
+	@Override
+	public boolean modify(ClassVO vo) {
+		return mapper.modify(vo) > 0 ? true : false;
+	}
+
+	
 }

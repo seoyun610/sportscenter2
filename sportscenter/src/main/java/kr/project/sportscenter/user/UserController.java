@@ -44,9 +44,9 @@ public class UserController {
 	
 	// 로그아웃 처리
 	@RequestMapping("/user/logout.do")
-	public String logout(HttpServletRequest request) {
+	public String logout(HttpSession sess) {
 	    // 세션에서 사용자 정보 제거
-	    request.getSession().invalidate();
+	    sess.invalidate();
 	    return "redirect:/home.do";
 	}
 	

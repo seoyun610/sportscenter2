@@ -23,7 +23,7 @@
 	    		classday += dayArray[i] + "^";
 	    	}
 	    	classday = classday.substr(0, classday.length-1);
-	    	console.log(classday);
+// 	    	console.log(classday);
 	    	$('#classday').val(classday);
 	    }
     </script>
@@ -31,7 +31,7 @@
 <body>
 수업 등록하기
 <div>
-	<form method="get" action="add.do">
+	<form method="post" action="add.do">
 		<div>
 			<label>종목 선택</label>
 			<select id="subtype" name="subtype" size="1">
