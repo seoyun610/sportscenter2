@@ -72,7 +72,7 @@
                                 <input type="file" name="file" id="file" class="wid100"/>
                             </td>
                         </tr>
-                        </tbody>
+                        </tbody> 
                     </table>
                     <div class="btnSet"  style="text-align:right;">
                         <a class="btn" href="javascript:goSave();">저장 </a>
