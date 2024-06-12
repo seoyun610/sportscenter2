@@ -62,5 +62,74 @@
 		SELECT count(*) FROM user WHERE userid=#{userid} AND pwd=MD5(#{pwd}) 
 	</select> 
 	
+	<!-- 수강 내역 확인 -->
+	<select id = "classView" parameterType="kr.project.sportscenter.user.UserVO" resultType="kr.project.sportscenter.user.UserVO">
+		SELECT c.classname as classname,
+		       c.classyear as classyear,			 
+		       c.classmonth as classmonth,
+		       p.payid as payid,
+		       u.usernum as usernum,
+		       u.username as username
+		FROM user u
+		JOIN pay p ON u.usernum = p.usernum
+		JOIN class c ON p.subid = c.classid
+		WHERE u.usernum = #{usernum}
+		  AND p.paystate = '1'
+		  AND p.cancelstate = '0'
+		  AND c.classyear = year(current_date)
+		  AND c.classmonth >= month(current_date)
+	</select>
+	
+	<!-- 재수강 내역 확인 -->
+	<select id = "retakeClass" parameterType="kr.project.sportscenter.user.UserVO" resultType="kr.project.sportscenter.user.UserVO">
+		SELECT c.classname as classname,
+		       c.classyear as classyear,
+		       c.classmonth as classmonth,
+		       p.payid as payid
+		FROM user u
+		JOIN pay p ON u.usernum = p.usernum
+		JOIN class c ON p.subid = c.classid
+		WHERE u.usernum = #{usernum}
+		  AND p.paystate = '0'
+		  AND p.cancelstate = '0'
+		  AND c.classyear = year(current_date)
+		  AND c.classmonth > month(current_date)
+	</select>
+	
+	
+	<!-- 수강 내역 확인 -->
+	<select id="classHistory" parameterType="kr.project.sportscenter.user.UserVO" resultType="kr.project.sportscenter.user.UserVO">
+	    SELECT c.classname as classname,
+	           c.classyear as classyear,
+	           c.classmonth as classmonth,
+	           c.classyear as classyear,
+	           CASE
+	            WHEN p.refundstate = '1' then '환불'
+	            WHEN p.refundstate = '0' and month(current_date) > c.classmonth  then '수강 완료' 
+	            WHEN p.refundstate = '0' and c.classmonth > month(current_date)  then '수강 예정'  
+	            WHEN p.refundstate = '0' and c.classmonth > month(current_date)  then '수강 중'	            
+	            END as classstatus
+	    FROM user u
+	    JOIN pay p ON u.usernum = p.usernum
+	    JOIN class c ON p.subid = c.classid
+	    WHERE u.usernum = #{usernum}
+	        AND p.paystate = '1'
+	    <if test="searchWord != null and searchWord != ''">
+	    	AND c.classname LIKE '%${searchWord}%'
+	    </if>    
+	    <if test="searchMonth != '' and searchMonth != null">
+	        <if test="searchMonth == '3'">
+	        	AND c.classyear * 100 + c.classmonth >= year(DATE_SUB(current_date, INTERVAL 3 MONTH)) * 100 + month(DATE_SUB(current_date, INTERVAL 3 MONTH))
+	        </if>
+	        <if test="searchMonth == '6'">
+	            AND c.classyear * 100 + c.classmonth >= year(DATE_SUB(current_date, INTERVAL 6 MONTH)) * 100 + month(DATE_SUB(current_date, INTERVAL 6 MONTH))
+	        </if>
+	        <if test="searchMonth == '12'">
+	            AND c.classyear * 100 + c.classmonth >= year(DATE_SUB(current_date, INTERVAL 12 MONTH)) * 100 + month(DATE_SUB(current_date, INTERVAL 12 MONTH))
+	        </if>
+	    </if>
+	    ORDER BY p.payid DESC 
+	</select>
+
 	
 </mapper> 

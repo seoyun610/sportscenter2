@@ -1,5 +1,9 @@
 package kr.project.sportscenter.user;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -44,7 +48,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserVO findPassword(String userid, String birth, String hp) {
 		UserVO vo = new UserVO();
-		vo.setUserid(userid);;
+		vo.setUserid(userid);
 		vo.setBirth(birth);
 		vo.setHp(hp);
 		return mapper.findPassword(vo);
@@ -74,5 +78,19 @@ public class UserServiceImpl implements UserService{
 		vo.setPwd(newPwd);
 		return mapper.updatePassword(vo);
 		
+	}
+
+	@Override
+	public List<UserVO> classView(UserVO vo) {
+	    return mapper.classView(vo);
+	}
+	
+	@Override
+	public List<UserVO> retakeClass(UserVO vo) {
+	    return mapper.retakeClass(vo);
+	}
+	
+	public List<UserVO> classHistory(UserVO vo) {
+		return mapper.classHistory(vo);
 	}
 }

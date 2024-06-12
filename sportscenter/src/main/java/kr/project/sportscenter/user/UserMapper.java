@@ -1,13 +1,17 @@
 package kr.project.sportscenter.user;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+
 @Mapper
 public interface UserMapper {
 	
+
 	int join(UserVO vo);
 	
 	//로그인 화면
@@ -38,5 +42,7 @@ public interface UserMapper {
 	//비밀번호 확인
 	int verifyPassword(UserVO vo);
 
-	
+	List<UserVO> classView(UserVO vo);
+	List<UserVO> retakeClass(UserVO vo);
+	List<UserVO> classHistory(UserVO vo);
 }

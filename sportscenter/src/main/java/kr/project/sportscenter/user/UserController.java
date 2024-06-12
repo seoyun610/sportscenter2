@@ -1,6 +1,7 @@
 package kr.project.sportscenter.user;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -178,6 +179,33 @@ public class UserController {
   	            model.addAttribute("url", "/mypage/verifyPassword.do");
   	            return "common/alert";
   	        }
+  	    }
+  	    
+  	    
+  	    
+  	    
+  	    // 수강 중인 수업 조회 
+  	    @GetMapping("/mypage/classView.do")
+  	    public String classView(HttpSession sess, Model model, UserVO vo) {
+  	    	UserVO login = (UserVO)sess.getAttribute("login");
+  	    	vo.setUsernum(login.getUsernum());
+  	    	vo.setUsername(login.getUsername());
+  	    	System.out.println(vo.getUsername());
+  	    	List<UserVO> classList = service.classView(vo);
+  	    	List<UserVO> retakeClass = service.retakeClass(vo);
+  	    	model.addAttribute("classList", classList);
+  	    	model.addAttribute("retakeClass", retakeClass);
+  	    	model.addAttribute("username", vo.getUsername());
+  	    	return "mypage/classView";
+  	    }
+  	    
+  	    @GetMapping("/mypage/classHistory.do")
+  	    public String classHistory(HttpSession sess, Model model, UserVO vo) {
+  	    	UserVO login = (UserVO)sess.getAttribute("login");
+  	    	vo.setUsernum(login.getUsernum());
+  	    	List<UserVO> classHistory = service.classHistory(vo);
+  	    	model.addAttribute("classHistory", classHistory);
+  	    	return "mypage/classHistory";
   	    }
   	}
   		
