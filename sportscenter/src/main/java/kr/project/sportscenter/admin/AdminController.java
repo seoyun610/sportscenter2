@@ -8,11 +8,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import kr.project.sportscenter.qna.QnaService;
+import kr.project.sportscenter.qna.QnaVO;
+import kr.project.sportscenter.reply.ReplyService;
+import kr.project.sportscenter.reply.ReplyVO;
+
 @Controller
 public class AdminController {
 	
 	@Autowired
 	AdminService service;
+	
+	@Autowired
+	QnaService service2;
+	
+	@Autowired
+	ReplyService rservice;
 	
 	@GetMapping("/admin/adminLogin.do")
 	public void adminLogin() {
@@ -28,7 +39,7 @@ public class AdminController {
 			return "common/alert";
 		}else {
 			sess.setAttribute("adminLogin", login);
-			return "redirect:/home.do";
+			return "redirect:userList.do";
 		}
 	}
 	
@@ -36,6 +47,24 @@ public class AdminController {
 		public void userList() {
 			
 		}
+	
+	@GetMapping("/admin/adminQna.do")
+	public String adminQna(Model model, QnaVO vo) {
+		model.addAttribute("map",service2.list(vo));
+		return "admin/adminQna";
+	} 
+	
+	@GetMapping("/admin/adminQnaView.do")
+	public String adminQnaView(Model model, QnaVO vo, ReplyVO rvo, HttpSession sess) {
+		AdminVO login = (AdminVO)sess.getAttribute("adminLogin");
+		rvo.setAdminnum(login.getAdminnum());
+		System.out.println(login.getAdminnum());
+		model.addAttribute("rmap", rservice.list(rvo));
+		model.addAttribute("map", service2.detail(vo, true));
+		return "admin/adminQnaView";
+	}
+	
+	
 	
 
 }

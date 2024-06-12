@@ -20,16 +20,16 @@ public class ReplyServiceImpl implements ReplyService {
 	@Autowired
 	QnaMapper qmapper; 
 	
-	@Override
-	public Map<String, Object> index(ReplyVO vo, QnaVO qvo) {
-		List<QnaVO> qlist = qmapper.list(qvo); 
-		List<ReplyVO> list = mapper.list(vo); // 목록
-		Map map = new HashMap();
-		map.put("list", list); // 모델에 직접 넣어줘도 됨
-		map.put("qlist", qlist); 
-		return map;
-
-	}
+//	@Override
+//	public Map<String, Object> index(ReplyVO vo, QnaVO qvo) {
+//		List<QnaVO> qlist = qmapper.list(qvo); 
+//		List<ReplyVO> list = mapper.list(vo); // 목록
+//		Map map = new HashMap();
+//		map.put("list", list); // 모델에 직접 넣어줘도 됨
+//		map.put("qlist", qlist); 
+//		return map;
+//
+//	}
 
 	@Override
 	public int insert(ReplyVO vo) {
@@ -41,24 +41,34 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.delete(vo.getReplyid());
 	}
 
+//	@Override
+//	public List<ReplyVO> all(ReplyVO vo) {
+//		return mapper.all(vo);
+//	}
+
+//	@Override
+//	public Map<String, Object> vindex(ReplyVO vo) {
+//		List<ReplyVO> list = mapper.list(vo); // 목록
+//		Map map = new HashMap<>();
+//		map.put("list", list); // 모델에 직접 넣어줘도 됨
+//		return map;
+//	}
+//
+//	@Override
+//	public Map<String, Object> qindex(QnaVO qvo) {
+//		List<QnaVO> qlist = qmapper.list(qvo);
+//		Map map = new HashMap<>();
+//		map.put("qlist", qlist); 
+//		return map;
+//	}
+
 	@Override
-	public List<ReplyVO> all(ReplyVO vo) {
-		return mapper.all(vo);
+	public int update(ReplyVO vo) {
+		return mapper.update(vo);
 	}
 
 	@Override
-	public Map<String, Object> vindex(ReplyVO vo) {
-		List<ReplyVO> list = mapper.list(vo); // 목록
-		Map map = new HashMap();
-		map.put("list", list); // 모델에 직접 넣어줘도 됨
-		return map;
-	}
-
-	@Override
-	public Map<String, Object> qindex(QnaVO qvo) {
-		List<QnaVO> qlist = qmapper.list(qvo);
-		Map map = new HashMap<>();
-		map.put("qlist", qlist); 
-		return map;
+	public List<ReplyVO> list(ReplyVO vo) {
+		return mapper.list(vo);
 	}
 }

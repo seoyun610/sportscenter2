@@ -13,9 +13,6 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="/css/reset.css"/>
-    <link rel="stylesheet" href="/css/style.css"/>
-    <link rel="stylesheet" href="/css/contents.css"/>
     <script src="/js/script.js"></script>
     <script>
     function del() {
@@ -23,29 +20,6 @@
     		location.href='delete.do?qnaid=${vo.qnaid}';
     	}
     }
-    
- //   function getComment(page) {
-//		$.ajax({
-//			url: "/comment/list.do",
-//			data: {
-//				parent_no: ${vo.no},
-//				page: page
-//			},
-//			success: function(res) {
-//				$("#commentArea").html(res);
-//			}
-//		});
-//	}
-	
-//	$(function() {
-//		getComment(1);
-//	});
-	
-	
-//	function goSave() {
-//		<c:if test="${empty login}">
-//			alert('댓글은 로그인 후 작성 가능합니다.');
-//		</c:if>
 		
 		<c:if test="${!empty login}">
 		if ($("#content").val().trim() == '') {
@@ -135,10 +109,6 @@
                             </tbody>
                         </table>
                         </form>
-					
-                        <div id="commentArea">
-                        
-                        </div>
                     </div>
                 </div>
 </body> 

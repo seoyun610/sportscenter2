@@ -11,6 +11,7 @@ public interface ReplyMapper {
 	int count(ReplyVO vo);
 	List<ReplyVO> list(ReplyVO vo);
 	int delete(int no);
-	List<ReplyVO> all(ReplyVO vo);
+	//List<ReplyVO> all(ReplyVO vo);
+	int update(ReplyVO vo);
 
 }

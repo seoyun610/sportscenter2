@@ -24,14 +24,6 @@
 		where qnaid = #{qnaid}
 	</select>
 	
-	<select id="all" parameterType="kr.project.sportscenter.reply.ReplyVO" resultType="kr.project.sportscenter.reply.ReplyVO">
-		select *,
-			(select qnaid from qna where qnaid = reply.qnaid) as qnaid,
-			(select adminname from admin where adminnum=reply.adminnum) as adminname 
-		from reply
-		where qnaid = #{qnaid}
-		order by regdate desc
-	</select>
 	
 	<update id="update" parameterType="kr.project.sportscenter.reply.ReplyVO">
 		UPDATE reply SET 

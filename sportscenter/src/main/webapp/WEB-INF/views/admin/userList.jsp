@@ -88,7 +88,7 @@
     <a href="#">종목안내</a>
     <a href="#">이용안내</a>
     <a href="index.do">공지사항</a>
-    <a href="/qna/index.do">Q&A</a>
+    <a href="adminQna.do">Q&A</a>
   </div>
 </div>
 

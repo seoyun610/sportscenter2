@@ -28,5 +28,6 @@ public class QnaVO {
 		
 	public int getStartIdx() {
 		return (page-1) * 10;
-	}	
+	}
+	
 }
