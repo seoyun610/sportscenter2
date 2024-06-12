@@ -61,7 +61,7 @@
                 newRow.id = "list" + <%=innercnt %>;
 
                 newRow.innerHTML = `
-                    <td><input type="checkbox" id="classid" name="classid" value="${vo.classid}"/></td>
+                    <td><input type="checkbox" id="classid" name="classid" value="${vo.classid}" onclick="checkOnlyOnce(this)"/></td>
                     <td>${vo.classname}</td>
                     <td>${vo.subtypeName}</td>
                     <td>${vo.formattedClasstime}</td>
@@ -94,6 +94,22 @@
         
         function registAll() {
     		
+        }
+        
+        function checkOnlyOnce(currentCheckbox) {
+        	const checkboxes = document.getElementsByName("classid");
+        	let checkedCnt = 0;
+        	for(let i=0; i<checkboxes.length;i++){
+        		if(checkboxes[i].checked) {
+        			checkedCnt++;
+        			if(checkboxes[i] != currentCheckbox) {
+        				checkboxes[i].checked = false;
+        			}
+        		}
+        	}
+        	if(checkedCnt === 0) {
+        		currentCheckbox.checked = true;
+        	}
         }
     </script>
 </head>
