@@ -38,45 +38,89 @@
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 
 	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap-icons/bootstrap-icons.css">
 
 	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    
+	<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+	
+	<!-- bootstrap CSS 적용 시 필요 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head> 
 <body>
-    <div class="wrap">
-        <form action="login.do" method="post" id="login" name="login" onsubmit="return loginCheck();">
-            <div class="sub">
-                <div class="size">
-                    <h3 class="sub_title">로그인</h3>
-                    
-                    <div class="user">
-                        <div class="box">
-                            <fieldset class="login_form">
-                                <ul>
-                                    <li><input type="text" id="userid" name="userid" placeholder="아이디"></li>
-                                    <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호"></li>
-                                </ul>
-                                <div class="login_btn"><input type="submit" value="로그인" alt="로그인" /></div>
-                            </fieldset>
-                            <div class="btnSet clear">
-                                <div>
-                                    <a href="findId.do" class="btn">아이디/비밀번호 찾기</a> 
-                                    <a href="join.do" class="btn">회원가입</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-                </div>
-            </div>
-        </form>
-    </div>
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+	<section class="p-0 d-flex align-items-center position-relative overflow-hidden">
+
+				<!-- Right -->
+				<div class="col-12 col-lg-6 m-auto">
+					<div class="row my-5">
+						<div class="col-sm-10 col-xl-8 m-auto">
+							<!-- Title -->
+							<span class="mb-0 fs-1">👋</span>
+							<h1 class="fs-2">로그인</h1>
+							<p class="lead mb-4">스포츠 문화 센터에 오신 걸 환영합니다!</p>
+
+							<!-- Form START -->
+							<form>
+								<!-- Id -->
+								<div class="mb-4">
+									<label for="InputId1" class="form-label">아이디 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
+										<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="아이디" id="InputId1">
+									</div>
+								</div>
+								<!-- Password -->
+								<div class="mb-4">
+									<label for="inputPassword5" class="form-label">비밀번호 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="비밀번호" id="inputPassword5">
+									</div>
+									<div id="passwordHelpBlock" class="form-text">
+										비밀번호는 숫자, 영문 조합으로 8자 이상이어야 합니다.
+									</div>
+								</div>
+								<!-- Check box -->
+								<div class="mb-4 d-flex justify-content-between">
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="exampleCheck1">
+										<label class="form-check-label" for="exampleCheck1">아이디 저장</label>
+									</div>
+									<div class="text-primary-hover">
+										<a href="findId.do" class="text-secondary">
+											<u>아이디/비밀번호 찾기</u>
+										</a>
+									</div>
+								</div>
+								<!-- Button -->
+								<div class="align-items-center mt-0">
+									<div class="d-grid">
+										<button class="btn btn-primary mb-0" type="button">Login</button>
+									</div>
+								</div>
+							</form>
+							<!-- Form END -->
+
+							
+							<!-- Sign up link -->
+							<div class="mt-4 text-center">
+								<span>아직 계정이 없으신가요? <a href="join.do">회원가입</a></span>
+							</div>
+						</div>
+					</div> <!-- Row END -->
+				</div>
+			</div> <!-- Row END -->
+		</div>
+	</section>
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
 
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
@@ -86,5 +130,6 @@
 
 <!-- Template Functions -->
 <script src="assets/js/functions.js"></script>
-</body> 
+
+</body>
 </html>

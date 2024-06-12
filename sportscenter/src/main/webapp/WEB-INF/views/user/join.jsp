@@ -2,16 +2,21 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head> 
+    <title>join</title>
     <meta charset="utf-8">
-    <title></title>
     <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Eduport- LMS, Education and Course Theme">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="/js/script.js"></script>
-    <script>
     
+    <script>
     	function goSave() {
     		if ($("#userid").val() == '') {
     			alert('아이디를 입력하세요'); 
@@ -102,7 +107,7 @@
     		$("#emailCheck").click(function() {
     			$.ajax({
     				url:'/user/emailCheck.do',
-    				data:{email:$('#email').val()},
+    				data:{email:$('#inputEmail1').val()},
     				success:function(res) {
     					console.log(res);
 						if (res == '0') {
@@ -153,94 +158,167 @@
 	            }
 	        }).open();
 	    }
+				    $(document).ready(function() {
+				        $('#addressCheck').click(function() {
+				            zipcode();
+				        });
+				    });
+				    
+				   
 	</script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap-icons/bootstrap-icons.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+	
+	<!-- bootstrap CSS 적용 시 필요 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head> 
 <body>
-    <div class="wrap">
-        <div class="sub">
-            <div class="size">
-                <h3 class="sub_title">회원가입</h3>
-                <form name="frm" id="frm" action="insert.do" method="post">
-                <table class="board_write">
-                    <colgroup>
-                        <col width="20%" />
-                        <col width="*" />
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <th>아이디</th>
-                            <td>
-                                <input type="text" name="userid" id="userid" class="inNextBtn" style="float:left;">
-                                <span class="userid_Check"><a href="javascript:;"  class="btn bgGray" style="float:left; width:auto; clear:none;" id="useridCheck">중복확인</a></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>비밀번호</th>
-                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">비밀번호는 숫자, 영문 조합으로 8자 이상으로 입력해주세요.</span> </td>
-                        </tr>
-                        <tr>
-                            <th>비밀번호<span>확인</span></th>
-                            <td><input type="password" name="pwd_check" id="pwd_check" style="float:left;"></td>
-                        </tr>
-                        <tr>
-                            <th>이름</th>
-                            <td><input type="text" name="username" id="username" style="float:left;"> </td>
-                        </tr>
+    <!-- **************** MAIN CONTENT START **************** -->
+<main>
+	<section class="p-0 d-flex align-items-center position-relative overflow-hidden">
+
+				<div class="col-12 col-lg-6 m-auto">
+					<div class="row my-5">
+						<div class="col-sm-10 col-xl-8 m-auto">
+							<!-- Title -->
+							<img src="resources/images/element/03.svg" class="h-40px mb-2" alt="">
+							<h2>회원가입 해주세요!</h2>
+				
+						
+							<!-- Form START -->
+							<form>
+								<!-- Id -->
+								<div class="mb-4">
+									<label for="InputId1" class="form-label">아이디 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
+										<input type="Id" class="form-control border-0 bg-light rounded-end ps-1" placeholder="아이디" id="InputId1">
+									</div>
+								</div>
+
+								<!-- Password -->
+								<div class="mb-4">
+									<label for="inputPassword5" class="form-label">비밀번호 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="*********" id="inputPassword5">
+									</div>
+								</div>
+								
+								<!-- Confirm Password -->
+								<div class="mb-4">
+									<label for="inputPassword6" class="form-label">비밀번호 확인 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="*********" id="inputPassword6">
+									</div>
+								</div>
+
+                                <!-- Name -->
+								<div class="mb-4">
+									<label for="inputName1" class="form-label">이름 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="name" class="form-control border-0 bg-light rounded-end ps-1" placeholder="이름" id="inputName1">
+									</div>
+								</div>
+
+                                <!-- Hp -->
+								<div class="mb-4">
+									<label for="inputHp1" class="form-label">연락처 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="hp" class="form-control border-0 bg-light rounded-end ps-1" placeholder="연락처" id="inputHp1">
+									</div>
+								</div>
+	
+							
+                            <!-- Email -->
+								<div class="mb-4">
+									<label for="inputEmail1" class="form-label">이메일 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="이메일" id="inputEmail1">
+                                        <button id="emailCheck" class="btn btn-secondary ms-2">중복 확인</button> <!-- 중복 확인 -->
+                                    </div>
+								</div>
+								
+                        	
                         
-                        <tr>
-                            <th>연락처</th>
-                            <td>
-                                <input type="text" name="hp" id="hp" value=""  maxlength="15" style="float:left;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>이메일</th>
-                            <td>
-                                <input type="text" name="email" id="email" class="inNextBtn" style="float:left;">
-                                <span class="emailCheck"><a href="javascript:;"  class="btn bgGray" style="float:left; width:auto; clear:none;" id="emailCheck">이메일 중복확인</a></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th rowspan="3">주소</th>
-                            <td>
-                                <input type="text" name="zipcode" id="zipcode" value=""  maxlength="6" style="float:left;" readonly>
-                                <span class="email_check"><a href="javascript:zipcode();"  class="btn bgGray" style="float:left; width:auto; clear:none;">우편번호</a></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" name="addr" id="addr" value=""  maxlength="15" style="float:left;" readonly>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" name="addr2" id="addr2" value=""  maxlength="15" style="float:left;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>생년월일</th>
-                            <td><input type="text" name="birth" id="birth" style="float:left;" placeholder="생년월일 8자리를 입력해주세요."> </td>
-                        </tr>
-                        <tr>
-						    <th>성별</th>
-						    <td>
-						        <input type="radio" name="gender" id="gender_male" value="1"> 
-						        <label for="gender_male">남성</label>
-						        <input type="radio" name="gender" id="gender_female" value="2">
-						        <label for="gender_female">여성</label>
-						    </td>
-						</tr>
-                    </tbody>
-                </table>
+                         <!-- Address -->
+								<div class="mb-4">
+									<label for="inputAddress1" class="form-label">주소 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="기본주소" id="inputAddress1" readonly>
+                                        <button id="addressCheck" class="btn btn-secondary ms-2">우편번호</button><!-- 우편번호 검색-->
+									</div>
+								</div>
+									<!-- 상세 주소 -->
+                        			<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="상세주소" id="inputAddress2">
+									</div>
+									
+					 <!-- Birth -->
+								<div class="mb-4">
+									<label for="inputBirth1" class="form-label"> 생년월일 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="birth" class="form-control border-0 bg-light rounded-end ps-1" placeholder="YY-MM-DD" id="inputBirth1">
+                                    </div>
+								</div>				
+                       
+                       
+                       <!-- Gender -->
+						<div class="mb-4">
+						    <label class="form-label">성별 *</label>
+						    <div class="input-group input-group-lg">
+						        <span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-venus-mars"></i></span>
+						        <div class="form-control border-0 bg-light rounded-end ps-1 d-flex align-items-center">
+						            <div class="form-check form-check-inline">
+						                <input class="form-check-input" type="radio" name="gender" id="gender_male" value="1">
+						                <label class="form-check-label" for="gender_male">남성</label>
+						            </div>
+						            <div class="form-check form-check-inline ms-3">
+						                <input class="form-check-input" type="radio" name="gender" id="gender_female" value="2">
+						                <label class="form-check-label" for="gender_female">여성</label>
+						            </div>
+						        </div>
+						    </div>
+						</div>
+					</form>
                         <input type="hidden" name="useridCheck" id="useridCheck" value="0"/>
                         <input type="hidden" name="emailCheck" id="emailCheck" value="0"/>
-                </form>
-                <!-- //write--->
-                <div class="btnSet clear">
-                    <div><a href="javascript:;" class="btn" onclick="goSave();">가입하기</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
-                </div>
+              <!-- //write--->
+				<div class="btnSet clear">
+				    <div><a href="javascript:;" class="btn" onclick="goSave();">가입하기</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+				</div>
             </div>
         </div>
     </div>
+    </section>
+    </main>
+    
+    <!-- Back to top -->
+	<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+
+	<!-- Bootstrap JS -->
+	<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Template Functions -->
+	<script src="assets/js/functions.js"></script>
 </body> 
 </html>

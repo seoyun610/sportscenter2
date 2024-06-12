@@ -71,6 +71,9 @@ public class MvcConfig implements WebMvcConfigurer {
 		reg.addViewController("/login.do");
 		reg.addViewController("/user/join.do");
 		reg.addViewController("/home.do");
+		// db 연동 상관 없는 애들은 controller를 만들어주지 않고,MvcConfig에 작성하면 됨
+		reg.addViewController("/subject/usageInfo.do"); 
+		reg.addViewController("/subject/registInfo.do");
 	}
 
 	// HikariCP

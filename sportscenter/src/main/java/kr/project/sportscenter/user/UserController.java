@@ -66,10 +66,10 @@ public class UserController {
 	public String insert(UserVO vo, Model model) {
 		if (service.join(vo)) {
 			model.addAttribute("msg", "정상적으로 가입되었습니다.");
-			model.addAttribute("url", "/main.do");
+			model.addAttribute("url", "/user/main.do");
 		} else {
 			model.addAttribute("msg", "가입 오류"); 
-			model.addAttribute("url", "/join.do");
+			model.addAttribute("url", "/user/join.do");
 		}
 		return "common/alert";
 	}
@@ -85,15 +85,15 @@ public class UserController {
 	public String findId(@RequestParam("username") String username,
 	                         @RequestParam("birth") String birth,
 	                         @RequestParam("hp") String hp) {
-	        UserVO result = service.findId(username, birth, hp);
-	        if (result != null) {
-	            // 아이디가 존재할 경우 아이디 반환
-	            return result.getUserid();
-	        	} else {
-	            // 아이디가 존재하지 않을 경우 메시지 반환
-	            return "fail";
-	        	}
-	  		} 
+        UserVO result = service.findId(username, birth, hp);
+        if (result != null) {
+            // 아이디가 존재할 경우 아이디 반환
+            return result.getUserid();
+    	} else {
+            // 아이디가 존재하지 않을 경우 메시지 반환
+            return "fail";
+    	}
+	} 
 	  
   		//비밀번호 변경
   		@PostMapping("/user/findPassword.do")
