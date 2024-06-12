@@ -23,7 +23,7 @@ public class ReplyController {
 		public String list(@RequestParam("qnaid") int qnaid, ReplyVO vo, Model model) {
 			vo.setQnaid(qnaid);
 			List<ReplyVO> list = service.list(vo);
-			model.addAttribute("vo",list);
+			model.addAttribute("list",list);
 			return "reply/view";
 		}
 		
@@ -33,9 +33,17 @@ public class ReplyController {
 			vo.setAdminnum(login.getAdminnum());
 			vo.setQnaid(qnaid);
 			System.out.println(qnaid);
-			model.addAttribute("result", service.insert(vo));
-			System.out.println(model);
-			return "reply/result";
+			int r = service.insert(vo);
+			if (r > 0) {
+				model.addAttribute("cmd", "move");
+				model.addAttribute("msg", "정상적으로 저장되었습니다.");
+				model.addAttribute("url", "/admin/adminQnaView.do");
+			} else {
+				model.addAttribute("cmd", "back");
+				model.addAttribute("msg", "등록 오류");
+			}
+			return "common/alert";
+			
 		}
 		
 		@PostMapping("/reply/update.do")
@@ -46,7 +54,7 @@ public class ReplyController {
 			if (r > 0) {
 				model.addAttribute("cmd", "move");
 				model.addAttribute("msg", "정상적으로 저장되었습니다.");
-				model.addAttribute("url", "index.do");
+				model.addAttribute("url", "/admin/adminQnaView.do");
 			} else {
 				model.addAttribute("cmd", "back");
 				model.addAttribute("msg", "등록 오류");

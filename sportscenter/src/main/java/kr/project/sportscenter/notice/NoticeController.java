@@ -63,7 +63,6 @@ public class NoticeController {
 	public String update(Model model, HttpServletRequest request, NoticeVO vo, MultipartFile file) {
 		int r = service.update(vo, file, request);
 		
-		
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
@@ -88,4 +87,6 @@ public class NoticeController {
 		}
 		return "common/alert";
 	}
+	
+	
 }

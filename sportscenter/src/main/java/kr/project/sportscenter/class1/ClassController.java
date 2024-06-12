@@ -125,4 +125,11 @@ public class ClassController {
 			return "common/alert";
 		}
 	}
+	
+	@GetMapping("/class/payCheck.do")
+	public String payCheck(Model model, ClassVO cvo) {
+	    model.addAttribute("map", cservice.list(cvo));
+	    System.out.println(model);
+	    return "pay/payCheck";
+	}
 }

@@ -19,6 +19,12 @@
 	<sql id="searchSql">
 		<where>
 			<choose>
+				<when test ="classid != 0">
+				    AND classid = #{classid}
+				</when>
+			<otherwise></otherwise>
+			</choose>
+			<choose>
 				<when test="subtype != 0">
 					AND subtype = #{subtype}
 				</when>
