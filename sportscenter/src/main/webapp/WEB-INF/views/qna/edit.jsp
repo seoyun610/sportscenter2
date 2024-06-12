@@ -73,7 +73,7 @@
                             </td>
                         </tr>
                         </tbody> 
-                    </table>
+                    </table> 
                     <div class="btnSet"  style="text-align:right;">
                         <a class="btn" href="javascript:goSave();">저장 </a>
                     </div>
