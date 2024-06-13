@@ -62,10 +62,10 @@
 		function classSelection(classId, classLimit, classCnt) {
 			const today = new Date();
 		    const day = today.getDate();
-	
-			if (day >= 25 && day <= 29) {
+			console.log(classId);
+			if (day >= 01 && day <= 29) {
 				if (classLimit > classCnt){
-					location.href = 'payCheck?classId=' + classId;
+					location.href = '/class/payCheck.do?classid=' + classId;
 				} else {
 					alert ('잔여석이 없습니다.')
 				}
@@ -149,7 +149,7 @@
 			                    <td>신청 불가</td>
 			                </c:otherwise>
 			            </c:choose>
-						<td> <button type="button" id="btn" onclick="classSelection(${vo.classid}, ${vo.classlimit}, ${vo.classcnt})" > 신청 </button> </td>
+						<td> <input type="button" id="btn" onclick="classSelection(${vo.classid}, ${vo.classlimit}, ${vo.classcnt})" value="신청"></td>
 					</tr>
 					<tr>
 						<td colspan = "9"> graph </td>

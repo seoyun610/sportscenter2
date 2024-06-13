@@ -1,22 +1,20 @@
 package kr.project.sportscenter.class1;
 
-import java.io.Console;
 import java.time.LocalDate;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.project.sportscenter.admin.AdminVO;
 import kr.project.sportscenter.level.LevelService;
 import kr.project.sportscenter.level.LevelVO;
 import kr.project.sportscenter.sport.SportService;
@@ -77,7 +75,7 @@ public class ClassController {
 	public String add(Model model, ClassVO cvo, SportVO svo, LevelVO lvo, TimeVO tvo) {
 		boolean r = cservice.regist(cvo);
 		if(r) {
-			return "redirect:/class/list.do";
+			return "redirect:/admin/list.do";
 		} else {
 			return "common/alert";
 		}
@@ -124,6 +122,20 @@ public class ClassController {
 		} else {
 			return "common/alert";
 		}
+	}
+	
+	@GetMapping("/admin/delete/{classid}")
+	public String deleteClass(@PathVariable int classid, Model model) {
+		boolean r = cservice.delete(classid);
+		if(r) {
+			model.addAttribute("cmd", "move");
+			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+			model.addAttribute("url", "/admin/list.do");
+		} else {
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "삭제 오류");
+		}
+		return "common/alert";
 	}
 	
 	@GetMapping("/class/payCheck.do")

@@ -198,7 +198,7 @@ public class UserController {
   	    	model.addAttribute("username", vo.getUsername());
   	    	return "mypage/classView";
   	    }
-  	    
+  	     
   	    @GetMapping("/mypage/classHistory.do")
   	    public String classHistory(HttpSession sess, Model model, UserVO vo) {
   	    	UserVO login = (UserVO)sess.getAttribute("login");

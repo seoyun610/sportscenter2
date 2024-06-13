@@ -22,6 +22,7 @@
 		UPDATE notice SET 
 			noticetitle=#{noticetitle}
 			, noticecontent=#{noticecontent}
+			, noticedate=now()
 			<if test="noticefilename_org != null">
 			, noticefilename_org=#{noticefilename_org}
 			, noticefilename_real=#{noticefilename_real}
