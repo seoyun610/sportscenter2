@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head> 
@@ -40,17 +41,17 @@
                                 <td class="first" colspan="8">등록된 글이 없습니다.</td>
                             </tr>
 						</c:if>
-                        <c:forEach var="vo" items="${map.list }">       
+                        <c:forEach var="vo" items="${map.list }" varStatus="status">       
                             <tr>
-                                <td>${vo.qnaid }</td>
+                                <td>${fn:length(map.list) - status.index}</td>
                                 <td>
                                     <a href="view.do?qnaid=${vo.qnaid}">${vo.qnatitle } </a>
                                 </td>
                                 <td>
                                     ${vo.username }
                                 </td>
-                                <td>${vo.qnadate }</td>
-                                <td class="date"><fmt:formatDate value="${vo.qnadate }" pattern="YYYY-MM-dd"/></td>
+                                <td>${vo.qnacnt }</td>
+                                <td class="date"><fmt:formatDate value="${vo.qnadate }" pattern="yyyy-MM-dd"/></td>
                             </tr>
                        </c:forEach>
                         </tbody>
@@ -73,7 +74,9 @@
                         </c:if>
                         </ul> 
                     </div>
-                
+                	<c:if test="${not empty login}">
+              		  <input type="button" class="btn" onClick="location.href='write.do'" value="작성하기"></a>
+           			</c:if>
                     <!-- 페이지처리 -->
                     <div>
                         <form method="get" name="searchForm" id="searchForm" action="index.do">

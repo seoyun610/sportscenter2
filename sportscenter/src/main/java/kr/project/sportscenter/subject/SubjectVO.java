@@ -15,6 +15,6 @@ public class SubjectVO {
 	private String subjectfilename_real;
 	private int adminnum;
 	
-	
+	private String adminname;
 
 }

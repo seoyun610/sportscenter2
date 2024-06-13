@@ -50,7 +50,7 @@
                                 <td>
                                     ${vo.username }
                                 </td>
-                                <td>${vo.qnadate }</td>
+                                <td>${vo.qnacnt }</td>
                                 <td class="date"><fmt:formatDate value="${vo.qnadate }" pattern="YYYY-MM-dd"/></td>
                             </tr>
                        </c:forEach>

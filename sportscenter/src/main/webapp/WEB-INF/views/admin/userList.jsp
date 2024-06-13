@@ -85,9 +85,9 @@
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">종목안내</a>
+    <a href="adminSubject.do">종목안내</a>
     <a href="#">이용안내</a>
-    <a href="index.do">공지사항</a>
+    <a href="adminNotice.do">공지사항</a>
     <a href="adminQna.do">Q&A</a>
   </div>
 </div>

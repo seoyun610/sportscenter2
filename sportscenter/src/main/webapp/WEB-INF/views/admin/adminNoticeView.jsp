@@ -39,7 +39,9 @@
             </c:if>                    
             <div>
 				<div>
-				<a href="index.do" class="btn">목록</a>
+				<a href="adminNotice.do" class="btn">목록</a>
+               	<a href="/notice/edit.do?noticeid=${vo.noticeid}" class="btn">수정</a>
+                <a href="/notice/delete.do?noticeid=${vo.noticeid}" class="btn">삭제</a>
             	</div>
 			</div>
          </div>

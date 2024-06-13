@@ -14,7 +14,7 @@ import kr.project.sportscenter.admin.AdminVO;
 
 
 @Controller
-public class SubjetController {
+public class SubjectController {
 	@Autowired
     private SubjectService service;
 

@@ -3,6 +3,8 @@ package kr.project.sportscenter.reply;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import kr.project.sportscenter.qna.QnaVO;
 
 public interface ReplyService {

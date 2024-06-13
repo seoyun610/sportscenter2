@@ -8,10 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import kr.project.sportscenter.notice.NoticeService;
+import kr.project.sportscenter.notice.NoticeVO;
 import kr.project.sportscenter.qna.QnaService;
 import kr.project.sportscenter.qna.QnaVO;
 import kr.project.sportscenter.reply.ReplyService;
 import kr.project.sportscenter.reply.ReplyVO;
+import kr.project.sportscenter.subject.SubjectService;
+import kr.project.sportscenter.subject.SubjectVO;
 
 @Controller
 public class AdminController {
@@ -24,6 +28,12 @@ public class AdminController {
 	
 	@Autowired
 	ReplyService rservice;
+	
+	@Autowired
+	NoticeService nservice;
+	
+	@Autowired
+	SubjectService sservice;
 	
 	@GetMapping("/admin/adminLogin.do")
 	public void adminLogin() {
@@ -48,6 +58,7 @@ public class AdminController {
 			
 		}
 	
+	//qna
 	@GetMapping("/admin/adminQna.do")
 	public String adminQna(Model model, QnaVO vo) {
 		model.addAttribute("map",service2.list(vo));
@@ -64,7 +75,34 @@ public class AdminController {
 		return "admin/adminQnaView";
 	}
 	
+	//notice
+	@GetMapping("/admin/adminNotice.do")
+	public String adminNotice(Model model, NoticeVO vo) {
+		model.addAttribute("map",nservice.list(vo));
+		return "admin/adminNotice";
+	} 
 	
+	@GetMapping("/admin/adminNoticeView.do")
+	public String adminNoticeView(Model model, NoticeVO vo, HttpSession sess) {
+		AdminVO login = (AdminVO)sess.getAttribute("adminLogin");
+		vo.setAdminnum(login.getAdminnum());
+		model.addAttribute("vo",nservice.detail(vo, true));
+		return "admin/adminNoticeView";
+	}
 	
+	//subject
+	@GetMapping("/admin/adminSubject.do")
+	public String listsubject(Model model, SubjectVO vo) {
+        model.addAttribute("map", sservice.list(vo));
+        return "admin/adminSubject"; 
+    }
+	
+	@GetMapping("/admin/adminSubjectView.do")
+	public String adminSubjectView(Model model, SubjectVO vo, HttpSession sess) {
+		AdminVO login = (AdminVO)sess.getAttribute("adminLogin");
+		vo.setAdminnum(login.getAdminnum());
+		model.addAttribute("vo",sservice.detail(vo, true));
+		return "admin/adminSubjectView";
+	}
 
 }
