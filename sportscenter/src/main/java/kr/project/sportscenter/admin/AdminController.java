@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.project.sportscenter.notice.NoticeService;
 import kr.project.sportscenter.notice.NoticeVO;
@@ -57,6 +58,15 @@ public class AdminController {
 		public void userList() {
 			
 		}
+	
+	// 로그아웃 처리
+	@RequestMapping("/admin/logout.do")
+	public String logout(HttpSession sess, Model model) {
+		sess.invalidate();
+		model.addAttribute("msg", "로그아웃 되었습니다.");
+		model.addAttribute("url", "/admin/adminLogin.do");
+		return "common/alert";
+	}
 	
 	//qna
 	@GetMapping("/admin/adminQna.do")
