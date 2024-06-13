@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.project.sportscenter.class1.ClassMapper"> 
-
+	<!-- 등록 -->
 	<insert id="regist" parameterType="kr.project.sportscenter.class1.ClassVO">
 		INSERT INTO class (
 			subtype, classyear, classmonth, classname, classlevel, classtime
@@ -58,7 +58,7 @@
 	</sql>
 	
 	
-	<!-- 목록 -->
+	<!-- 조회 -->
 	<select id="list" parameterType="kr.project.sportscenter.class1.ClassVO" resultType="kr.project.sportscenter.class1.ClassVO">
 		SELECT * 
 		FROM class
@@ -88,4 +88,10 @@
 			classprice = #{classprice}
 		WHERE classid = #{classid}
 	</update>
+	
+	<!-- 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM class
+		WHERE classid = #{classid}
+	</delete>
 </mapper>

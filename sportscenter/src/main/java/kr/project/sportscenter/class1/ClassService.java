@@ -9,4 +9,5 @@ public interface ClassService {
 	ClassVO select(int classid);
 	boolean regist(ClassVO vo);
 	boolean modify(ClassVO vo);
+	boolean delete(int classid);
 }

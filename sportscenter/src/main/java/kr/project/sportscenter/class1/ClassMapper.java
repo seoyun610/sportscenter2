@@ -13,4 +13,5 @@ public interface ClassMapper {
 	ClassVO detail(ClassVO vo); // 이건 어디서 쓰는거지??
 	int regist(ClassVO vo);
 	int modify(ClassVO vo);
+	int delete(int classid);
 }
