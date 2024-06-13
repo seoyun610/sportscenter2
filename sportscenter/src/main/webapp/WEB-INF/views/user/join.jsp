@@ -16,34 +16,163 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="/js/script.js"></script>
     
+    <!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+	
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap-icons/bootstrap-icons.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+	
+	<!-- bootstrap CSS 적용 시 필요 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <style>
-    .body {
-    	font-family: 'Noto Sans KR', sans-serif;
+    body, h2, .form-label, .form-control, .btn {
+    		font-family: 'Noto Sans KR', sans-serif;
+		} /*Noto Sans KR */
+	
+	.btn.btn-secondary {
+		width: 100px;
+	    background-color: #0d6efd;
+    	color: white; /* 버튼 텍스트 색상 */ 
+	}
+
+	.btn.btn-secondary:hover {
+    	background-color: #0056b3; /* 마우스 호버 시 배경색 */
+    	color: white; /* 마우스 호버 시 텍스트 색상 */
+	}	
+	
+	
+	.form-label {
+            font-weight: 700; /* bold */
+            font-size: 15px;
     }
+    
+    .separator {
+            border-top: 1px solid #ddd;
+            margin: 20px 0; /* 위 아래로 간격을 둠 */
+        }
+    .btn-cancel {
+        background-color: #ced4da; /* 회색 배경색 */
+        color: white; /* 흰색 텍스트색 */
+        border-color: #ced4da; /* 회색 테두리색 */
+        flex: 1;
+    }
+
+    .btn-cancel:hover,
+    .btn-cancel:focus {
+        background-color: #495057; /* 더 어두운 회색 배경색 */
+        border-color: #495057; /* 더 어두운 회색 테두리색 */
+    	color: white;
+    }
+
+    .btn-save {
+        background-color: #0d6efd; /* 파란색 배경색 */
+        border-color: #0d6efd; /* 파란색 테두리색 */
+        color: white;
+        flex: 1; 
+    }
+
+    .btn-save:hover,
+    .btn-save:focus {
+        background-color: #0056b3; /* 더 어두운 파란색 배경색 */
+        border-color: #0056b3; /* 더 어두운 파란색 테두리색 */
+        color: white; 
+    }
+    
+     .btnSet .text-center {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem; /* 버튼 간격 */
+    }
+
+    .btnSet .text-center a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 0.5rem 1rem; /* 버튼 패딩 */
+    }
+    
+    #userid::placeholder {
+		    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+		    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+		    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
+
+ 	#pwd::placeholder {
+		    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+		    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+		    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
+	
+	#pwd_check::placeholder {
+	    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+	    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+	    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
+	
+	#username::placeholder {
+	    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+	    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+	    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
+	
+	#hp::placeholder {
+	    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+	    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+	    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
+	    
+	#email::placeholder {
+	    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+	    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+	    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
+	
+	#addr::placeholder {
+	    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+	    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+	    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
+	
+	#addr2::placeholder {
+	    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+	    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+	    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
+	
+	#birth::placeholder {
+	    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+	    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+	    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
+	
+	#gender::placeholder {
+	    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+	    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+	    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
+	
+	.form-check-label{
+		font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+	    font-size: 15px; /* 원하는 폰트 크기로 변경 */
+	    color: #999; /* 원하는 폰트 색상으로 변경 */
+	}
     </style>
     <script>
+    	var con1 = false;
+    	var con2 = false;
+    
     	function goSave() {
     		if ($("#userid").val() == '') {
     			alert('아이디를 입력하세요'); 
     			$("#userid").focus();
     			return;
     		}
-    		var con = true;
-    		$.ajax({
-				url:'/user/useridCheck.do',
-				data : {userid:$("#userid").val()},
-				async : false,
-				success : function(res) {
-					console.log(res);
-					if (res == '1') {
-						alert('중복된 아이디입니다.\r\n다른 아이디를 입력해 주세요');
-						con = false;
-						return;
-					}
-				}
-			});
-    		if (!con) return;
     		if ($("#pwd").val() == '') {
     			alert('비밀번호를 입력하세요');
     			$("#pwd").focus();
@@ -70,40 +199,55 @@
     			$("#hp").focus();
     			return;
     		}
-    		if ($("#email").val() == '') {
-    			alert('이메일을 입력하세요');
+    		if ($("#email").val() == '') { 
+    			alert('이메일을 입력하세요'); 
+    			$("#email").focus();
+    			return;
+    		} 
+    		if ($("#addr").val() == '' || $("#addr2").val() == '') {
+    			alert('주소를 입력하세요');
+    			$("#addr2").focus();
+    			return;
+    		}
+    		if ($("#birth").val() == '') {
+    			alert('생년월일을 입력하세요');
+    			$("#birth").focus();
+    			return;
+    		}
+    		if (!$('input[name="gender"]:checked').val()) {
+    		    alert('성별은 필수 입력값입니다.');
+    		    $('input[name="gender"]').first().focus();
+    		    return false;
+    		}
+    		if(!con1){
+    			alert('아이디 중복 체크를 진행해주세요'); 
+    			$("#userid").focus();
+    			return;
+    		}
+    		if(!con2){
+    			alert('이메일을 중복 체크를 진행해주세요'); 
     			$("#email").focus();
     			return;
     		}
-    		var con = true;
-    		$.ajax({
-				url:'/user/emailCheck.do', 
-				data : {email:$("#email").val()},
-				async : false,
-				success : function(res) {
-					console.log(res);
-					if (res == '1') {
-						alert('중복된 이메일입니다.\r\n다른 이메일을 입력해 주세요');
-						con = false;
-						return;
-				}
-				}
-			});	
-    		if (!con) return;
-    		// 전송
     		$("#frm").submit();
     	}
     	$(function() {
     		$("#useridCheck").click(function() {
+    	    		if ($("#userid").val() == '') {
+    	    			alert('아이디를 입력하세요'); 
+    	    			$("#userid").focus();
+    	    			return; 
+    	    		}
     			$.ajax({
-    				url:'/user/useridCheck.do',
+    				url:'/user/useridCheck.do', 
     				data:{userid:$('#userid').val()},
     				success:function(res) { 
-    					console.log(res);
-						if (res == '0') {
-							alert('사용 가능한 아이디입니다.');
-						} else {
+    					console.log(res); 
+						if (res == '1') {
 							alert('중복된 아이디입니다.\r\n다른 아이디를 입력해 주세요');
+						} else {
+							alert('사용 가능한 아이디입니다.');
+							con1 = true;
 						}
     				}
     			})
@@ -111,15 +255,22 @@
     	})
     	$(function() {
     		$("#emailCheck").click(function() {
+    			if ($("#email").val() == '') {
+        			alert('이메일을 입력하세요');
+        			$("#email").focus();
+        			return;
+    			}
+    			
     			$.ajax({
     				url:'/user/emailCheck.do',
-    				data:{email:$('#email1').val()},
+    				data:{email:$('#email').val()},
     				success:function(res) {
     					console.log(res);
-						if (res == '0') {
-							alert('사용 가능한 이메일입니다.');
-						} else {
+						if (res == '1') {
 							alert('중복된 이메일입니다.\r\n다른 이메일을 입력해 주세요');
+						} else {
+							alert('사용 가능한 이메일입니다.');
+							con2 = true;
 						}
     				}
     			})
@@ -170,23 +321,6 @@
 				        });
 				    });			    
 	</script>
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="assets/images/favicon.ico">
-
-	<!-- Google Font -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-
-	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="/resources/vendor/font-awesome/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap-icons/bootstrap-icons.css">
-
-	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
-	
-	<!-- bootstrap CSS 적용 시 필요 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head> 
 <body>
     <!-- **************** MAIN CONTENT START **************** -->
@@ -197,18 +331,20 @@
 					<div class="row my-5">
 						<div class="col-sm-10 col-xl-8 m-auto">
 							<!-- Title -->
-							<img src="resources/images/element/03.svg" class="h-40px mb-2" alt="">
-							<h2>회원가입 해주세요!</h2>
-				
+							<h2 style="text-align: center; font-weight: 700;" >회원가입</h2>
+							
+							<!-- Separator -->
+								<div class="separator"></div>
 						
 							<!-- Form START -->
-							<form>
+							<form method="post" name="frm" id="frm" action="insert.do">
 								<!-- Id -->
 								<div class="mb-4">
 									<label for="InputId1" class="form-label">아이디 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
 										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="아이디" id="userid" name="userid">
+										<a href="javascript:;" class="btn btn-secondary ms-2" id="useridCheck">중복확인</a> 
 									</div>
 								</div>
 
@@ -217,7 +353,7 @@
 									<label for="inputPassword5" class="form-label">비밀번호 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="********" id="pwd" name="pwd">
+										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="비밀번호를 입력해주세요" id="pwd" name="pwd">
 									</div>
 								</div>
 								
@@ -226,7 +362,7 @@
 									<label for="inputPassword6" class="form-label">비밀번호 확인 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="*********" id="pwd_check" name="pwd_check">
+										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="비밀번호를 한번 더 입력해주세요" id="pwd_check" name="pwd_check">
 									</div>
 								</div>
 
@@ -244,7 +380,7 @@
 									<label for="inputHp1" class="form-label">연락처 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="연락처" id="hp" name="hp">
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="000-0000-0000" id="hp" name="hp">
 									</div>
 								</div>
 	
@@ -254,8 +390,8 @@
 									<label for="inputEmail1" class="form-label">이메일 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="이메일" id="email" name="email">
-                                        <a href="javascript:;"  class="btn btn-secondary ms-2" id="emailCheck">이메일 중복확인</a>
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="예: example@example.com" id="email" name="email">
+                                        <a href="javascript:;" class="btn btn-secondary ms-2" id="emailCheck">중복확인</a> 
                                     </div>
 								</div>
 								
@@ -281,7 +417,7 @@
 									<label for="inputBirth1" class="form-label"> 생년월일 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="birth" class="form-control border-0 bg-light rounded-end ps-1"  id="birth" name="birth">
+										<input type="birth" class="form-control border-0 bg-light rounded-end ps-1" placeholder="YYYYMMDD" id="birth" name="birth">
                                     </div>
 								</div>				
                        
@@ -307,8 +443,11 @@
                         	<input type="hidden" name="emailCheck" id="emailCheck" value="0"/>
               			</form>
               <!-- //write--->
-				<div class="btnSet clear">
-				    <div><a href="javascript:;" class="btn" onclick="goSave();">가입하기</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+				<div class="btnSet clear justify-content-between">
+				    <div class="text-center">
+				     <a href="javascript:;" class="btn btn-cancel ms-2 flex-grow-1 me-3" onclick="history.back();">취소</a>
+				    <a href="javascript:;" class="btn btn-save ms-2 flex-grow-1" onclick="goSave();">가입하기</a> 
+				   </div>
 				</div>
             </div>
         </div>
@@ -317,12 +456,12 @@
     </main>
     
     <!-- Back to top -->
-	<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+	<!--<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>  -->
 
 	<!-- Bootstrap JS -->
-	<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
 
 	<!-- Template Functions -->
-	<script src="assets/js/functions.js"></script>
+	<!-- <script src="assets/js/functions.js"></script> -->
 </body> 
 </html>
