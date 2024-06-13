@@ -38,7 +38,7 @@ public class SubjectController {
 	}
 	@PostMapping("/subject/insert.do")
 	public String insert(Model model, HttpSession sess, HttpServletRequest request, SubjectVO vo, MultipartFile file) {
-		AdminVO login = (AdminVO)sess.getAttribute("adminLogin");
+		AdminVO login = (AdminVO)sess.getAttribute("adminLogin"); 
 		vo.setAdminnum(login.getAdminnum());
 		int r = service.insert(vo, sess, file, request);
 		if (r > 0) {
