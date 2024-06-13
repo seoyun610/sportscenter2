@@ -60,5 +60,11 @@ public class ClassServiceImpl implements ClassService {
 		return mapper.modify(vo) > 0 ? true : false;
 	}
 
+
+	@Override
+	public boolean delete(int classid) {
+		return mapper.delete(classid) > 0 ? true : false;
+	}
+
 	
 }

@@ -10,7 +10,7 @@ public interface ReplyMapper {
 	int insert(ReplyVO vo);
 	int count(ReplyVO vo);
 	List<ReplyVO> list(ReplyVO vo);
-	int delete(int no);
+	int delete(int qnaid);
 	//List<ReplyVO> all(ReplyVO vo);
 	int update(ReplyVO vo);
 

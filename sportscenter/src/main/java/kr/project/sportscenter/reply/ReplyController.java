@@ -2,6 +2,7 @@ package kr.project.sportscenter.reply;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,6 @@ public class ReplyController {
 			if (r > 0) {
 				model.addAttribute("cmd", "move");
 				model.addAttribute("msg", "정상적으로 저장되었습니다.");
-				model.addAttribute("url", "/admin/adminQnaView.do");
 			} else {
 				model.addAttribute("cmd", "back");
 				model.addAttribute("msg", "등록 오류");
@@ -64,8 +64,17 @@ public class ReplyController {
 		}
 		
 		@GetMapping("/reply/delete.do")
-		public String delete(ReplyVO vo, Model model) {
-			model.addAttribute("result", service.delete(vo));
-			return "reply/result";
+		public String delete(@RequestParam("qnaid") int qnaid, ReplyVO vo, Model model) {
+			vo.setQnaid(qnaid);
+			int r = service.delete(vo);
+			if (r > 0) {
+				model.addAttribute("cmd", "move");
+				model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+				model.addAttribute("url", "index.do");
+			} else {
+				model.addAttribute("cmd", "back");
+				model.addAttribute("msg", "등록 오류");
+			}
+			return "common/alert";
 		}
 }

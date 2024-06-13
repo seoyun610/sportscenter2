@@ -51,9 +51,7 @@
         }
     }
     
-
-
-    function commentDel(no) {
+    function commentDel(replyid) {
         if (confirm("답글을 삭제하시겠습니까?")) {
             $.ajax ({
                 url: '/reply/delete.do',
@@ -69,7 +67,40 @@
         }
     }
     
+    function commentEdit(replyid, replycontent) {
+        $("#editReplyContent").val(replycontent);
+        $("#editSection").data("replyid", replyid).show();
+        $("#commentSection").hide(); 
+    }
 
+    function saveEdit() {
+        const replyid = $("#editSection").data("replyid");
+        const newContent = $("#editReplyContent").val();
+        if (newContent.trim() == '') {
+            alert('답글을 입력해 주세요');
+            $("#editReplyContent").focus();
+            return false;
+        }
+        if (confirm('답글을 수정하시겠습니까?')) {
+            $.ajax({
+                type: "POST",
+                url: "/reply/update.do",
+                data: {
+                	qnaid: qnaid,
+                	replyid: replyid,
+                    replycontent: newContent,
+                },
+                success: function(res) {
+                    console.log(res.trim());
+                    if (res.trim() != "") {
+                        alert('답글이 정상적으로 수정되었습니다.');
+                        $("#editSection").hide();
+                        location.reload();  // 페이지 새로고침
+                    }
+                }
+            });
+        }
+    }
     
 
     </script>
@@ -96,32 +127,45 @@
                     </dl>
                     </c:if>
                     <div>
-                        <a href="/admin/adminQna" class="btn">목록</a>
-                        <a href="javascript:del();" class="btn">삭제</a>
+                        <a href="/admin/adminQna.do" class="btn">목록</a>
+                        <a href="/qna/delete.do;" class="btn">게시글 삭제</a>
                     </div>
                 </div>
             </div>
+            <!-- 기존 댓글 영역 -->
             <div id="commentSection">
                 <c:set var="isQnaidExist" value="false" />
 				<c:forEach var="reply" items="${rmap }">
 				    <c:if test="${reply.qnaid == map.qnaid}">
 				        <c:set var="isQnaidExist" value="true" />
+				        <h5>답글</h5>
 				        <p>${reply.adminname}</p>
-			            <p>등록일: <fmt:formatDate value="${reply.regdate}" pattern="YYYY-MM-dd"/></p>
+			            <p>작성일: <fmt:formatDate value="${reply.regdate}" pattern="YYYY-MM-dd"/></p>
 			            <p>${reply.replycontent}</p>
+			            <input type="button" class="btn" onclick="commentDel(${reply.replyid});" value="삭제">
+			            <input type="button" class="btn" onclick="commentEdit(${reply.replyid}, '${reply.replycontent}');" value="수정">
 				    </c:if>
 				</c:forEach>
-				
 				<c:if test="${not isQnaidExist}">
 				    <form method="post" name="frm" id="frm">
+				    	<h5>댓글 작성</h5>
 				        <input type="text" name="replycontent" id="replycontent">
-				        <button type="button" class="btn" onclick="goSave();">저장</button>
+				        <input type="button" class="btn" onclick="goSave();" value="등록">
 				        <input type="hidden" id="qnaid" name="qnaid" value="${QnaVO.qnaid}">
 				    </form>
 				</c:if>
-
             </div>
+            <!-- 수정 영역 -->
+			<div id="editSection" style="display: none;">
+			    <div>
+			    	<h5>댓글 수정</h5>
+			        <textarea id="editReplyContent"></textarea>
+			        <button onclick="saveEdit()">저장</button>
+			        <button onclick="$('#editPopup').hide()">취소</button>
+			    </div>
+			</div>
         </div>
     </div>
 </body> 
 </html>
+

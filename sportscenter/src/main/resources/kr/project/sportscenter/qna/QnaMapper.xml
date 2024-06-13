@@ -22,6 +22,7 @@
 		UPDATE qna SET 
 			qnatitle=#{qnatitle}
 			, qnacontent=#{qnacontent}
+			, qnadate=now()
 			<if test="qnafilename_org != null">
 			, qnafilename_org=#{qnafilename_org}
 			, qnafilename_real=#{qnafilename_real}
@@ -61,7 +62,8 @@
 	
 	<!-- 상세 -->
 	<select id="detail" parameterType="kr.project.sportscenter.qna.QnaVO" resultType="kr.project.sportscenter.qna.QnaVO">
-		SELECT * FROM qna WHERE qnaid=#{qnaid}
+		SELECT *, (SELECT username FROM user WHERE usernum = qna.usernum) as username
+		FROM qna WHERE qnaid=#{qnaid}
 	</select>
 	
 	<!-- 조회수 증가 -->

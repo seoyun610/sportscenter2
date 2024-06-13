@@ -28,10 +28,11 @@
 	<update id="update" parameterType="kr.project.sportscenter.reply.ReplyVO">
 		UPDATE reply SET 
 			replycontent=#{replycontent}
+			, regdate=now()
 		WHERE replyid=#{replyid}
 	</update>
 	
 	<delete id="delete" parameterType="int">
-		delete from comment where no = #{no}
+		delete from reply where qnaid = #{qnaid}
 	</delete>
 </mapper>

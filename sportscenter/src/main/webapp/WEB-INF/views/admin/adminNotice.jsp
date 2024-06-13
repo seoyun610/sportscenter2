@@ -41,7 +41,7 @@
                             <tr>
                                 <td>${fn:length(map.list) - status.index}</td>
                                 <td>
-                                    <a href="view.do?noticeid=${vo.noticeid}">${vo.noticetitle } </a>
+                                    <a href="adminNoticeView.do?noticeid=${vo.noticeid}">${vo.noticetitle } </a>
                                 </td>
                                 <td>
                                     ${vo.adminname }
@@ -53,25 +53,23 @@
                      	</tbody>
                  </table>
              </div>
-             <c:if test="${not empty adminLogin}">
-                <input type="button" class="btn" onClick="location.href='write.do'" value="작성하기"></a>
-             </c:if>
+             <input type="button" class="btn" onClick="location.href='/notice/write.do'" value="작성하기"></a>
              <div>
              	<ul>
                 <c:if test="${map.prev }">
-               		<li><a href="index.do?page=${map.startPage-1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> << </a></li>
+               		<li><a href="/notice/index.do?page=${map.startPage-1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> << </a></li>
                 </c:if>
                 <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
 	                <c:if test="${p == NoticeVO.page}">
 	                    <li><a href='#;' class='current'>${p}</a></li>
 	                </c:if>
 	                <c:if test="${p != NoticeVO.page}">
-	                     <li><a href='index.do?page=${p}&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}'>${p}</a></li>
+	                     <li><a href='/notice/index.do?page=${p}&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}'>${p}</a></li>
 	                </c:if>
                 </c:forEach>
                 <c:if test="${map.next }">
-                    <li><a href="index.do?page=${map.endPage+1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> >> </a></li>
-                </c:if>
+                    <li><a href="/notice/index.do?page=${map.endPage+1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> >> </a></li>
+                </c:if> 
                 </ul> 
              </div>
          <!-- 페이지처리 -->

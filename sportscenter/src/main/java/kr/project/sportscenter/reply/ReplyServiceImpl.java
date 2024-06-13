@@ -38,7 +38,7 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	public int delete(ReplyVO vo) {
-		return mapper.delete(vo.getReplyid());
+		return mapper.delete(vo.getQnaid());
 	}
 
 //	@Override
