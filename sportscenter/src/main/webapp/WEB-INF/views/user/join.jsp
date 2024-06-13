@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="/js/script.js"></script>
     
+    
+    <style>
+    .body {
+    	font-family: 'Noto Sans KR', sans-serif;
+    }
+    </style>
     <script>
     	function goSave() {
     		if ($("#userid").val() == '') {
@@ -80,9 +86,9 @@
 						alert('중복된 이메일입니다.\r\n다른 이메일을 입력해 주세요');
 						con = false;
 						return;
-					}
 				}
-			});
+				}
+			});	
     		if (!con) return;
     		// 전송
     		$("#frm").submit();
@@ -107,7 +113,7 @@
     		$("#emailCheck").click(function() {
     			$.ajax({
     				url:'/user/emailCheck.do',
-    				data:{email:$('#inputEmail1').val()},
+    				data:{email:$('#email1').val()},
     				success:function(res) {
     					console.log(res);
 						if (res == '0') {
@@ -162,9 +168,7 @@
 				        $('#addressCheck').click(function() {
 				            zipcode();
 				        });
-				    });
-				    
-				   
+				    });			    
 	</script>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -204,7 +208,7 @@
 									<label for="InputId1" class="form-label">아이디 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
-										<input type="Id" class="form-control border-0 bg-light rounded-end ps-1" placeholder="아이디" id="InputId1">
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="아이디" id="userid" name="userid">
 									</div>
 								</div>
 
@@ -213,7 +217,7 @@
 									<label for="inputPassword5" class="form-label">비밀번호 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="*********" id="inputPassword5">
+										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="********" id="pwd" name="pwd">
 									</div>
 								</div>
 								
@@ -222,7 +226,7 @@
 									<label for="inputPassword6" class="form-label">비밀번호 확인 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="*********" id="inputPassword6">
+										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="*********" id="pwd_check" name="pwd_check">
 									</div>
 								</div>
 
@@ -231,7 +235,7 @@
 									<label for="inputName1" class="form-label">이름 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="name" class="form-control border-0 bg-light rounded-end ps-1" placeholder="이름" id="inputName1">
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="이름" id="username" name="username">
 									</div>
 								</div>
 
@@ -240,7 +244,7 @@
 									<label for="inputHp1" class="form-label">연락처 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="hp" class="form-control border-0 bg-light rounded-end ps-1" placeholder="연락처" id="inputHp1">
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="연락처" id="hp" name="hp">
 									</div>
 								</div>
 	
@@ -250,8 +254,8 @@
 									<label for="inputEmail1" class="form-label">이메일 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="이메일" id="inputEmail1">
-                                        <button id="emailCheck" class="btn btn-secondary ms-2">중복 확인</button> <!-- 중복 확인 -->
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="이메일" id="email" name="email">
+                                        <a href="javascript:;"  class="btn btn-secondary ms-2" id="emailCheck">이메일 중복확인</a>
                                     </div>
 								</div>
 								
@@ -262,14 +266,14 @@
 									<label for="inputAddress1" class="form-label">주소 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="기본주소" id="inputAddress1" readonly>
-                                        <button id="addressCheck" class="btn btn-secondary ms-2">우편번호</button><!-- 우편번호 검색-->
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="기본주소" id="addr" name="addr" readonly>
+                                        <a href="javascript:zipcode();"  class="btn btn-secondary ms-2">우편번호</a>
 									</div>
 								</div>
 									<!-- 상세 주소 -->
                         			<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="상세주소" id="inputAddress2">
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="상세주소" id="addr2" name="addr2">
 									</div>
 									
 					 <!-- Birth -->
@@ -277,7 +281,7 @@
 									<label for="inputBirth1" class="form-label"> 생년월일 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="birth" class="form-control border-0 bg-light rounded-end ps-1" placeholder="YY-MM-DD" id="inputBirth1">
+										<input type="birth" class="form-control border-0 bg-light rounded-end ps-1"  id="birth" name="birth">
                                     </div>
 								</div>				
                        
@@ -298,10 +302,10 @@
 						            </div>
 						        </div>
 						    </div>
-						</div>
-					</form>
-                        <input type="hidden" name="useridCheck" id="useridCheck" value="0"/>
-                        <input type="hidden" name="emailCheck" id="emailCheck" value="0"/>
+						</div>					
+                        	<input type="hidden" name="useridCheck" id="useridCheck" value="0"/>
+                        	<input type="hidden" name="emailCheck" id="emailCheck" value="0"/>
+              			</form>
               <!-- //write--->
 				<div class="btnSet clear">
 				    <div><a href="javascript:;" class="btn" onclick="goSave();">가입하기</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
