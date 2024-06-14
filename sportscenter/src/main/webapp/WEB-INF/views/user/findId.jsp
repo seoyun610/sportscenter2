@@ -4,7 +4,7 @@
 <html lang="ko">
 
 <head> 
-    <title>login</title>
+    <title>아이디 찾기 / 비밀번호 변경</title>
     <meta charset="utf-8">
     <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,6 +26,7 @@
          border-radius: 10 px;
          box-shadow: 0 0 10 px rgba(0, 0, 0, 0.1);
          text-align: center; /* 컨테이너 안의 요소들 가운데 정렬 */
+         
      }
 
         .form-container {
@@ -34,10 +35,11 @@
 
          .buttons {
              display: flex;
-             justify - content: center;
-             margin - bottom: 0; /* 버튼과 구분선 사이 간격 제거 */
-
-
+             justify-content: center;
+             margin-bottom: 0; /* 버튼과 구분선 사이 간격 제거 */
+             color: #0d6efd
+             text-align: center;
+             
          }
 
          .btn {
@@ -78,11 +80,6 @@
     
    <!-- Favicon -->
 	<link rel="shortcut icon" href="assets/images/favicon.ico">
-
-	<!-- Google Font -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 
 	<!-- Plugins CSS -->
 	<link rel="stylesheet" type="text/css" href="/resources/vendor/font-awesome/css/all.min.css">
@@ -168,13 +165,13 @@
         <!-- Title -->
         <div class="text-center" style="font-size: 2rem;">
             <span class="mb-0 fs-1">🤔</span>
-            <h2>아이디/비밀번호 찾기</h2>
+            <h2 style="font-family: 'Noto Sans KR', sans-serif; font-weight: 700;">아이디/비밀번호 찾기</h2>
         </div>
 
         <!-- 버튼 -->
         <div class="buttons text-center">
-            <button class="btn" type="button" onclick="showForm('findId_container')">아이디 찾기</button>
-            <button class="btn" type="button" onclick="showForm('findPassword_container')">비밀번호 변경</button>
+            <button class="btn" type="button" onclick="showForm('findId_container')" style="font-family: 'Noto Sans KR', sans-serif;">아이디 찾기</button>
+            <button class="btn" type="button" onclick="showForm('findPassword_container')" style="font-family: 'Noto Sans KR', sans-serif;">비밀번호 변경</button>
         </div>
 
         <!-- 구분선 -->
