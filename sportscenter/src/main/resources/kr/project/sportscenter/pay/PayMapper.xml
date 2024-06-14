@@ -26,5 +26,29 @@
 		SET paystate=1
 		WHERE classid=#{classid} AND usernum={usernum}
 	</update>
+	
+	<select id="courseList" parameterType="kr.project.sportscenter.pay.PayVO" resultType="kr.project.sportscenter.pay.PayVO"> 
+		SELECT u.username as username, 
+                c.classyear as classyear, c.classmonth as classmonth, c.classlevel as classlevel, c.classtime as classtime, c.subtype as subtype, c.classday as classday,
+                p.paystate as paystate , p.refundstate  as refundstate
+        FROM pay p 
+            JOIN user u ON p.usernum = u.usernum 
+            JOIN class c ON p.classid = c.classid 
+            WHERE p.cancelstate != '1'
+			<if test="searchWord != null and searchWord != ''">
+				AND p.usernum = (SELECT usernum FROM user WHERE username LIKE '%${searchWord}%'
+			</if>
+		ORDER BY payid
+	</select>
 
+	<!-- 카운트 -->
+	<select id="count" parameterType="kr.project.sportscenter.notice.NoticeVO" resultType="int">
+		SELECT count(*)
+		FROM pay
+		WHERE cancelstate != '1'
+		<if test="searchWord != null and searchWord != ''">
+			AND p.usernum = (SELECT usernum FROM user WHERE username LIKE '%${searchWord}%'
+		</if>
+	</select>
+	
 </mapper>

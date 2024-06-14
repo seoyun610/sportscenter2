@@ -96,118 +96,122 @@ public class UserController {
 	} 
 	  
   		//비밀번호 변경
-  		@PostMapping("/user/findPassword.do")
-  		@ResponseBody
-  		public String findPassword(@RequestParam("userid")String userid,
-  								   @RequestParam("birth")String birth, 
-  								   @RequestParam("hp")String hp,
-  								   HttpServletResponse response) throws IOException {
-  			UserVO result = service.findPassword(userid, birth, hp); 
-  			if (result != null) {
-  				//비밀번호 찾기 성공 시
-  				return "성공"; 
-  			} else {
-  				return "일치하는 회원 정보가 없습니다."; 
-  			}
+  	@PostMapping("/user/findPassword.do")
+  	@ResponseBody
+  	public String findPassword(@RequestParam("userid")String userid,
+  								@RequestParam("birth")String birth, 
+  								@RequestParam("hp")String hp,
+  								HttpServletResponse response) throws IOException {
+  		UserVO result = service.findPassword(userid, birth, hp); 
+  		if (result != null) {
+  			//비밀번호 찾기 성공 시
+  			return "성공"; 
+  		} else {
+  			return "일치하는 회원 정보가 없습니다."; 
   		}
+  	}
 	  
-  		@GetMapping ("/user/resetPassword.do")
-  		public String resetPassword(@RequestParam("userid") String userid, Model model) {
-  			model.addAttribute("userid", userid); 
-  			return "/user/resetPassword"; 
-  			
-  		}
+  	@GetMapping ("/user/resetPassword.do")
+  	public String resetPassword(@RequestParam("userid") String userid, Model model) {
+  		model.addAttribute("userid", userid); 
+  		return "/user/resetPassword"; 	
+  	}
   		
-  		@PostMapping("user/updatePassword.do")
-  		public String updatePassword(@RequestParam("userid")String userid,
-  				                     @RequestParam("newPwd")String newPwd,
-  				                     Model model) {
-  			boolean success = service.updatePassword(userid,newPwd); 
-  			if (success) {
-  				//비밀번호 변경 성공 시 메시지를 모델에 담아 화면에 전달 
-  				model.addAttribute("msg", "비밀번호가 변경되었습니다."); 
-  				model.addAttribute("url", "/user/login.do");
-  			} 
-            return "common/alert";
-
+  	@PostMapping("user/updatePassword.do")
+  	public String updatePassword(@RequestParam("userid")String userid,
+  				                 @RequestParam("newPwd")String newPwd,
+  				                 Model model) {
+  		boolean success = service.updatePassword(userid,newPwd); 
+  		if (success) {
+  			//비밀번호 변경 성공 시 메시지를 모델에 담아 화면에 전달 
+  			model.addAttribute("msg", "비밀번호가 변경되었습니다."); 
+  			model.addAttribute("url", "/user/login.do");
+  		} 
+        return "common/alert";
+  	}
+  		
+  		
+  	//개인정보 수정
+  	@GetMapping("/mypage/edit.do")
+	public String edit(HttpSession sess, Model model) {
+  		UserVO uv = (UserVO)sess.getAttribute("login");
+  		model.addAttribute("vo", service.detail(uv));
+  		return "mypage/edit";
+	}
+  		
+	@PostMapping("/mypage/update.do")
+	public String update(UserVO vo, Model model) {
+		int r = service.update(vo);
+		String msg = "";
+		String url = "edit.do";
+		if (r > 0) {
+			msg = "정상적으로 수정되었습니다.";
+		} else {
+			msg = "수정 오류";
 		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		return "common/alert";
+	}
   		
   		
-	  	//개인정보 수정
-  		@GetMapping("/mypage/edit.do")
-  		public String edit(HttpSession sess, Model model) {
-  			UserVO uv = (UserVO)sess.getAttribute("login");
-  			model.addAttribute("vo", service.detail(uv));
-  			return "mypage/edit";
-  		}
-  		
-  		@PostMapping("/mypage/update.do")
-  		public String update(UserVO vo, Model model) {
-  			int r = service.update(vo);
-  			String msg = "";
-  			String url = "edit.do";
-  			if (r > 0) {
-  				msg = "정상적으로 수정되었습니다.";
-  			} else {
-  				msg = "수정 오류";
-  			}
-  			model.addAttribute("msg",msg);
-  			model.addAttribute("url",url);
-  			return "common/alert";
-	  		}
-  		
-  		
-  		// 비밀번호 확인 페이지로 이동
-  	    @GetMapping("/mypage/verifyPassword.do")
-  	    public String showVerifyPasswordPage() {
-  	        return "mypage/verifyPassword";
-  	    }
+	// 비밀번호 확인 페이지로 이동
+	@GetMapping("/mypage/verifyPassword.do")
+	public String showVerifyPasswordPage() {
+		return "mypage/verifyPassword";
+	}
 
-  	    // 비밀번호 확인 후 수정 페이지로 이동
-  	    @PostMapping("/mypage/verifyPassword.do")
-  	    public String verifyPassword(@RequestParam("userid") String userid,
-  	                                 @RequestParam("pwd") String pwd,
-  	                                 HttpSession sess, Model model) {
-  	        UserVO vo = new UserVO();
-  	        vo.setUserid(userid);
-  	        vo.setPwd(pwd);
-  	        int count = service.verifyPassword(vo);
-  	        if (count > 0) {
-  	            return "redirect:/mypage/edit.do";
-  	        } else {
-  	            model.addAttribute("msg", "비밀번호가 일치하지 않습니다.");
-  	            model.addAttribute("url", "/mypage/verifyPassword.do");
-  	            return "common/alert";
-  	        }
-  	    }
+	// 비밀번호 확인 후 수정 페이지로 이동
+	@PostMapping("/mypage/verifyPassword.do")
+	public String verifyPassword(@RequestParam("userid") String userid,
+  	                             @RequestParam("pwd") String pwd,
+  	                             HttpSession sess, Model model) {
+		UserVO vo = new UserVO();
+		vo.setUserid(userid);
+		vo.setPwd(pwd);
+		int count = service.verifyPassword(vo);
+		if (count > 0) {
+			return "redirect:/mypage/edit.do";
+		} else {
+			model.addAttribute("msg", "비밀번호가 일치하지 않습니다.");
+			model.addAttribute("url", "/mypage/verifyPassword.do");
+			return "common/alert";
+		}
+	}
   	    
   	    
   	    
   	    
   	    // 수강 중인 수업 조회 
-  	    @GetMapping("/mypage/classView.do")
-  	    public String classView(HttpSession sess, Model model, UserVO vo) {
-  	    	UserVO login = (UserVO)sess.getAttribute("login");
-  	    	vo.setUsernum(login.getUsernum());
-  	    	vo.setUsername(login.getUsername());
-  	    	System.out.println(vo.getUsername());
-  	    	List<UserVO> classList = service.classView(vo);
-  	    	List<UserVO> retakeClass = service.retakeClass(vo);
-  	    	model.addAttribute("classList", classList);
-  	    	model.addAttribute("retakeClass", retakeClass);
-  	    	model.addAttribute("username", vo.getUsername());
-  	    	return "mypage/classView";
-  	    }
+	@GetMapping("/mypage/classView.do")
+	public String classView(HttpSession sess, Model model, UserVO vo) {
+		UserVO login = (UserVO)sess.getAttribute("login");
+		vo.setUsernum(login.getUsernum());
+		vo.setUsername(login.getUsername());
+		System.out.println(vo.getUsername());
+		List<UserVO> classList = service.classView(vo);
+		List<UserVO> retakeClass = service.retakeClass(vo);
+		model.addAttribute("classList", classList);
+		model.addAttribute("retakeClass", retakeClass);
+		model.addAttribute("username", vo.getUsername());
+		return "mypage/classView";
+	}
   	     
-  	    @GetMapping("/mypage/classHistory.do")
-  	    public String classHistory(HttpSession sess, Model model, UserVO vo) {
-  	    	UserVO login = (UserVO)sess.getAttribute("login");
-  	    	vo.setUsernum(login.getUsernum());
-  	    	List<UserVO> classHistory = service.classHistory(vo);
-  	    	model.addAttribute("classHistory", classHistory);
-  	    	return "mypage/classHistory";
-  	    }
-  	}
+	@GetMapping("/mypage/classHistory.do")
+	public String classHistory(HttpSession sess, Model model, UserVO vo) {
+		UserVO login = (UserVO)sess.getAttribute("login");
+		vo.setUsernum(login.getUsernum());
+		List<UserVO> classHistory = service.classHistory(vo);
+		model.addAttribute("classHistory", classHistory);
+		return "mypage/classHistory";
+	}
+	
+	@GetMapping("/admin/userList.do")
+	public String findUser(UserVO vo, Model model) {
+		model.addAttribute("map", service.findUser(vo));
+		return "admin/userList";
+	}
+}
   		
 
 	

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import kr.project.sportscenter.notice.NoticeVO;
+
 @Service
 public class UserServiceImpl implements UserService{
 	
@@ -93,4 +95,16 @@ public class UserServiceImpl implements UserService{
 	public List<UserVO> classHistory(UserVO vo) {
 		return mapper.classHistory(vo);
 	}
+	
+	public Map<String, Object> findUser(UserVO param){
+		int count = mapper.count(param); // 총개수
+		List<UserVO> list = mapper.findUser(param);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("count", count);
+		
+		return map;
+	}
+	
 }

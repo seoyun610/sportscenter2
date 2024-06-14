@@ -54,11 +54,6 @@ public class AdminController {
 		}
 	}
 	
-	@GetMapping("/admin/userList.do")
-		public void userList() {
-			
-		}
-	
 	// 로그아웃 처리
 	@RequestMapping("/admin/logout.do")
 	public String logout(HttpSession sess, Model model) {

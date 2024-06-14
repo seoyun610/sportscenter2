@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.project.sportscenter.notice.NoticeVO;
+
 
 @Mapper
 public interface UserMapper {
@@ -45,4 +47,7 @@ public interface UserMapper {
 	List<UserVO> classView(UserVO vo);
 	List<UserVO> retakeClass(UserVO vo);
 	List<UserVO> classHistory(UserVO vo);
+	
+	List<UserVO> findUser(UserVO vo);
+	int count(UserVO vo);
 }

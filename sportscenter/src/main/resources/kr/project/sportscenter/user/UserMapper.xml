@@ -135,6 +135,25 @@
 	    </if>
 	    ORDER BY p.payid DESC 
 	</select>
-
+	
+	<!-- 회원 검색 -->
+	<sql id="searchSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				username LIKE '%${searchWord}%' OR email LIKE '%${searchWord}%'
+			</if>
+		</where>
+	</sql>
+	
+	<select id="findUser" parameterType="kr.project.sportscenter.user.UserVO" resultType="kr.project.sportscenter.user.UserVO">
+		SELECT * FROM user
+		<include refid="searchSql"/>
+		ORDER BY userid DESC
+	</select>
+	
+	<select id="count" parameterType="kr.project.sportscenter.notice.NoticeVO" resultType="int">
+		SELECT COUNT(*) FROM user
+		<include refid="searchSql"/>
+	</select>
 	
 </mapper> 

@@ -37,4 +37,5 @@ public class UserVO {
 	private String classstatus;
 	private String searchWord;
 	private String searchMonth;
+	private String searchType;
 }

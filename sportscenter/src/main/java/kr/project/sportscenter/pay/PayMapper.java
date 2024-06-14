@@ -10,4 +10,6 @@ public interface PayMapper {
 	List<PayVO> list(PayVO vo);
 	int exists(PayVO vo);
 	int update(PayVO vo);
+	List<PayVO> courseList(PayVO vo);
+	int count(PayVO vo);
 }

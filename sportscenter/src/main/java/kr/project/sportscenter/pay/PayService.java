@@ -8,4 +8,5 @@ public interface PayService {
 	Map<String, Object> list(PayVO vo);
 	boolean exists(PayVO vo);
 	boolean update(PayVO vo);
+	Map<String, Object> courseList(PayVO vo);
 }

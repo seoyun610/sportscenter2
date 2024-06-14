@@ -1,12 +1,14 @@
 package kr.project.sportscenter.pay;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +19,7 @@ import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
 import kr.project.sportscenter.class1.ClassService;
+import kr.project.sportscenter.class1.ClassVO;
 import kr.project.sportscenter.user.UserService;
 import kr.project.sportscenter.user.UserVO;
 import lombok.extern.slf4j.Slf4j;
@@ -107,6 +110,12 @@ public class PayController {
 	@PostMapping("/pay/payment.do")
 	public String payment(Model model,PayVO vo, HttpSession sess) {
 		return "pay/payment";
+	}
+	
+	@GetMapping("/admin/courseList.do")
+	public String courseList(Model model,PayVO vo) {
+		model.addAttribute("map", service.courseList(vo));
+		return "admin/courseList";
 	}
 	
 	
