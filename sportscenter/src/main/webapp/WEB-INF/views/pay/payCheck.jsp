@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <body>
 <form method="post" name="payForm" id="payForm" action="/pay/paycheck.do">
@@ -45,7 +45,8 @@
 		
 		  IMP.init('imp21126721');
 		  
-		  IMP.request_pay({
+		  IMP.request_pay(
+			{
 		    pg: "html5_inicis",
 		    pay_method: "card",
 		    merchant_uid : '${vo.classid}',
@@ -56,13 +57,17 @@
 		    buyer_tel : '${uvo.hp}',
 		    buyer_addr : '${uvo.addr}',
 		    buyer_postcode : '${uvo.addr2}',
-		  }, function (rsp) { 
+		  	}, function (rsp) { 
+		  		console.log(rsp);
               $.ajax({
                   type: 'post',
-                  url: '/verify/' + rsp.imp_uid
+                  url: '/pay/' + rsp.imp_uid
                }).done(function(data) {
                    if(rsp.paid_amount === data.response.amount){
-                       alert("결제 성공");
+                      data = JSON.stringify({
+                    	  "imp_uid" : rsp.imp_uid,
+                    	  "merchant"
+                      })
                    } else {
                        alert("결제 실패");
                    }

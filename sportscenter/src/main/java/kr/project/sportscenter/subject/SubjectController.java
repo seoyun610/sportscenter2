@@ -86,5 +86,5 @@ public class SubjectController {
 		}
 		return "common/alert";
 	}
-    
+        
 }

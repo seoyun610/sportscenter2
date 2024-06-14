@@ -11,6 +11,7 @@ public class PayVO {
 	private int refundstate;
 	private int price;
 	private String paymethod;
+	private String imp_uid;
 	
 	
 } 
