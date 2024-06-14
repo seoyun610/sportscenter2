@@ -199,12 +199,6 @@
     			$("#hp").focus();
     			return;
     		}
-
-    		if ($("#email").val() == '') {
-    			// 이메일 입력 필드의 값이 비어 있는지 확인 
-    			alert('이메일을 입력하세요');
-    			// 이메일이 입력되지 않은 경우, 경고 메시지를 표시 
-
     		if ($("#email").val() == '') { 
     			alert('이메일을 입력하세요'); 
     			$("#email").focus();
@@ -232,73 +226,19 @@
     		}
     		if(!con2){
     			alert('이메일을 중복 체크를 진행해주세요'); 
-
     			$("#email").focus();
-    			// 이메일 입력 필드에 포커스를 맞춤 
     			return;
-    			//이메일이 입력되지 않은 경우, 함수 실행 중단 
     		}
-
-    		var con = true;
-    		// 이메일 중복 확인 결과를 저장할 변수를 선언하고 초기앖을 true로 설정 
-    		// 초기값을 true로 설정하는 이유? 
-    		$.ajax({ 
-				url:'/user/emailCheck.do', 
-				// 이메일 중복 확인을 위한 서버 요청 url을 설정 
-				data : {email:$("#email").val()},
-				// 서버에 보낼 데이터를 설정. 이메일 입력 필드 값을 email이라는 키로 보냄. 
-				async : false,
-				// 동기 방식으로 요청 설정 
-				// 동기 방식 : 요청을 보낸 후 응답을 받아야지만 다음 동작이 이루어지는 방식 
-				success : function(res) {
-					// 서버로부터 응답을 성공적으로 받았을 때 실행될 함수 
-					console.log(res);
-					// 서버 응답 데이터를 콘솔에 출력 
-					if (res == '1') {
-						// 서버 응답이 '1' 인 경우(즉, 중복된 이메일인 경우)
-						alert('중복된 이메일입니다.\r\n다른 이메일을 입력해 주세요');
-						// 사용자에게 중복된 이메일임을 알리는 경고 메시지를 표시 
-						con = false;
-						//이메일 중복 확인 변수를 false로 설정하여 중복된 이메일임을 기록 
-						return;
-						// 함수 실행 중단 
-				}
-				}
-			});	
-    		if (!con) return;
-    		// 전송
-
     		$("#frm").submit();
     	}
     	$(function() {
-    		// 페이지가 로드되면 실행될 함수 
     		$("#useridCheck").click(function() {
-
-    			// 아이디 중복 확인 버튼 클릭 시 실행될 함수 
-    	    		if ($("#userid").val() == '') {
-    	    			// 만약 아이디 입력란이 비어있으면__val("set하고싶은 value값")
-    	    			alert('아이디를 입력하세요'); 
-    	    			$("#userid").focus();
-    	    			// 아이디 입력란에 포커스를 맞추고 
-    	    			return; // 함수 종료 
-    	    		}
-    			// ajax를 사용하여 서버로 아이디 중복 체크 요청 보냄
-
     	    		if ($("#userid").val() == '') {
     	    			alert('아이디를 입력하세요'); 
     	    			$("#userid").focus();
     	    			return; 
     	    		}
-
     			$.ajax({
-    				url:'/user/useridCheck.do', // 요청 보낼 url 
-    				data:{userid:$('#userid').val()},// 서버로 전송할 데이터(아이디)
-    				success:function(res) {
-    					// 요청 성공 시 실행될 콜백 함수 
-    					console.log(res); // 콘솔에 결과를 출력해 디버깅 
-						if (res == '1') {
-							// 서버에서 받은 결과가 '1'인 경우 (중복된 아이디)
-
     				url:'/user/useridCheck.do', 
     				data:{userid:$('#userid').val()},
     				success:function(res) { 
@@ -306,8 +246,6 @@
 						if (res == '1') {
 							alert('중복된 아이디입니다.\r\n다른 아이디를 입력해 주세요');
 						} else {
-							// 서버에서 받은 결과가 '1'이 아닌 경우(사용 가능한 아이디)
-							alert('사용 가능한 아이디입니다.');
 							alert('사용 가능한 아이디입니다.');
 							con1 = true;
 						}
@@ -316,17 +254,7 @@
     		})
     	})
     	$(function() {
-    		// 페이지가 로드되면 실행될 함수 
     		$("#emailCheck").click(function() {
-    			// 이메일 중복 확인 버튼 클릭 시 실행될 함수 
-    			if ($("#email").val() == '') {
-    				// 만약 이메일 입력란이 비어있으면__val("set하고싶은 value값")
-        			alert('이메일을 입력하세요');
-        			$("#email").focus();
-        			// 이메일 입력란에 포커스를 맞추고
-        			return;// 함수 종료 
-    			}
-    			// ajax를 사용하여 서버로 이메일 중복 체크 요청 보냄
     			if ($("#email").val() == '') {
         			alert('이메일을 입력하세요');
         			$("#email").focus();
@@ -334,21 +262,13 @@
     			}
     			
     			$.ajax({
-    				url:'/user/emailCheck.do',// 요청 보낼 url 
-    				data:{email:$('#email').val()},// 서버로 전송할 데이터(이메일)
     				url:'/user/emailCheck.do',
     				data:{email:$('#email').val()},
     				success:function(res) {
-    					// 요청 성공 시 실행될 콜백 함수 
-    					console.log(res);// 콘솔에 결과를 출력해 디버깅 
-						if (res == '1') {
-							// 서버에서 받은 결과가 '1'인 경우 (중복된 이메일)
     					console.log(res);
 						if (res == '1') {
 							alert('중복된 이메일입니다.\r\n다른 이메일을 입력해 주세요');
 						} else {
-							// 서버에서 받은 결과가 '1'이 아닌 경우(사용 가능한 이메일ㅇ)
-							alert('사용 가능한 이메일입니다.');
 							alert('사용 가능한 이메일입니다.');
 							con2 = true;
 						}
@@ -544,4 +464,4 @@
 	<!-- Template Functions -->
 	<!-- <script src="assets/js/functions.js"></script> -->
 </body> 
-</html>
+</html>v
