@@ -1,6 +1,8 @@
 package kr.project.sportscenter.class1;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -79,6 +81,30 @@ public class ClassController {
 		} else {
 			return "common/alert";
 		}
+	}
+	
+	@GetMapping("/admin/addAll/{classyear}/{classmonth}")
+	public String addAll(@PathVariable int classyear, @PathVariable int classmonth, Model model, ClassVO cvo) {
+		int insertMonth = cvo.getClassmonth() + 1;
+		Map<String, Object> map = cservice.list(cvo);
+		List<ClassVO> list = (List)map.get("list");
+		for(int i=0; i<list.size(); i++) {
+			list.get(i).setClassmonth(insertMonth);
+			list.get(i).setClasscnt(0);
+		}
+		boolean r = cservice.registAll(list);
+		if(r) {
+			System.out.println("성공");
+			model.addAttribute("cmd", "move");
+			model.addAttribute("msg", "정상적으로 추가되었습니다.");
+			model.addAttribute("url", "/admin/list.do");
+		}
+		else {
+			System.out.println("실패");
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "추가 오류");
+		}
+		return "common/alert";
 	}
 	
 	/*

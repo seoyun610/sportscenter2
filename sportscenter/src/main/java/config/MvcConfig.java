@@ -26,7 +26,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import kr.project.sportscenter.util.AdminLoginInterceptor;
 import kr.project.sportscenter.util.LoginInterceptor; 
 
- 
+   
 @Configuration
 @ComponentScan(basePackages = { "kr.project.sportscenter" }) 
 @EnableWebMvc

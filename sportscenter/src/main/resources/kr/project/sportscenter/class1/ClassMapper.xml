@@ -15,6 +15,17 @@
 		</selectKey> -->
 	</insert>
 	
+	<insert id="registAll" parameterType="java.util.List">
+		INSERT INTO class (
+			subtype, classyear, classmonth, classname, classlevel, classtime
+			, classday, classprice, classlimit, classcnt
+		) VALUES
+			<foreach item="item" collection="list" separator=",">
+				(#{item.subtype}, 2024, #{item.classmonth}, #{item.classname}, #{item.classlevel}
+				, #{item.classtime}, #{item.classday}, #{item.classprice}, #{item.classlimit}, #{item.classcnt})
+			</foreach>
+		
+	</insert>
 	
 	<sql id="searchSql">
 		<where>
