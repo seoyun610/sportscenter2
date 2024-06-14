@@ -18,6 +18,52 @@
     
     <!-- CSS -->
     <style>
+
+      
+      
+     	#username::placeholder {
+		  font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+		  font-size: 15px; /* 원하는 폰트 크기로 변경 */
+		  color: #999; /* 원하는 폰트 색상으로 변경 */	   
+		  }
+		  
+		#birth::placeholder{
+		  font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+		  font-size: 15px; /* 원하는 폰트 크기로 변경 */
+		  color: #999; /* 원하는 폰트 색상으로 변경 */	    
+        }
+        
+        #hp::placeholder {
+		  font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+		  font-size: 15px; /* 원하는 폰트 크기로 변경 */
+		  color: #999; /* 원하는 폰트 색상으로 변경 */	  
+		  }
+		  
+        #userid2::placeholder {
+		  font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+		  font-size: 15px; /* 원하는 폰트 크기로 변경 */
+		  color: #999; /* 원하는 폰트 색상으로 변경 */	   
+		  }
+        
+         #birth2::placeholder {
+		  font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+		  font-size: 15px; /* 원하는 폰트 크기로 변경 */
+		  color: #999; /* 원하는 폰트 색상으로 변경 */	   
+		  }
+		  
+		  #hp2::placeholder {
+		  font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
+		  font-size: 15px; /* 원하는 폰트 크기로 변경 */
+		  color: #999; /* 원하는 폰트 색상으로 변경 */	   
+		  }
+		  
+		  .separator {
+            border-top: 1px solid #ddd;
+            margin: 10px 10px; /* 위 아래로 간격을 둠 */
+        }
+        
+  
+        
         .container {
          width: 400 px;
          margin: 50 px auto;
@@ -32,50 +78,7 @@
         .form-container {
              display: none; /* 모든 폼을 숨김 */
          }
-
-         .buttons {
-             display: flex;
-             justify-content: center;
-             margin-bottom: 0; /* 버튼과 구분선 사이 간격 제거 */
-             color: #0d6efd
-             text-align: center;
-             
-         }
-
-         .btn {
-             width: auto; /* 버튼의 너비를 내용에 맞게 자동 조정 */
-             min-width: 300 px; /* 최소 너비를 설정하여 너비가 내용보다 짧지 않도록 함 */
-             margin: 0; /* 기존의 마진 제거 */
-             cursor: pointer;
-             display: inline - block;
-             padding: 15 px 20 px;
-             color: #b1b1b1!important;
-             border: 1 px solid #3F9CFF;
-             font-size: 40px;
-     
-            }
-       
-        .btn.active {
-            background-color: #0056b3; /* 활성화된 버튼의 색상 */
-            border-color: #0056b3;
-        }
-        
-        .separator {
-            border-top: 1px solid # ddd;
-             margin: 0; /* 상하 마진 제거 */
-             width: 100 % ; /* 구분선을 전체 너비로 설정 */
-         }
-
-         .div p {
-             text-align: center;
-             font-size: 15 px; /* 폰트 크기 조정 */
-             font-weight: bold; /* 볼드 처리 */
-             margin-top: 20 px;
-         }
-
-         .submit-btn-container {
-             text-align: center;
-         } 		   
+         
    </style>
     
    <!-- Favicon -->
@@ -156,31 +159,28 @@
             });
             return false;
         }
+        
+       
+       
     </script>
     
  	
 </head>
 <body>
-     <div class="container">
-        <!-- Title -->
-        <div class="text-center" style="font-size: 2rem;">
-            <span class="mb-0 fs-1">🤔</span>
-            <h2 style="font-family: 'Noto Sans KR', sans-serif; font-weight: 700;">아이디/비밀번호 찾기</h2>
-        </div>
-
+     
+   <div class="col-12 col-lg-6 m-auto">
+	<div class="row my-5">
+		<div class="col-sm-10 col-xl-8 m-auto">
+		<!-- Title -->
+		 <h2 style="text-align: center; font-weight: 700; margin-bottom: 30px;" >아이디/비밀번호 찾기</h2>
         <!-- 버튼 -->
-        <div class="buttons text-center">
-            <button class="btn" type="button" onclick="showForm('findId_container')" style="font-family: 'Noto Sans KR', sans-serif;">아이디 찾기</button>
-            <button class="btn" type="button" onclick="showForm('findPassword_container')" style="font-family: 'Noto Sans KR', sans-serif;">비밀번호 변경</button>
-        </div>
-
-        <!-- 구분선 -->
-        <div class="separator"></div>
-
+        <div class="buttons text-center" style="margin-bottom: 0;">
+    <button class="btn" id="findId" type="button" onclick="showForm('findId_container')" style="font-family: 'Noto Sans KR', sans-serif; width: 220px; background-color: #0d6efd; color: white; border: none; padding: 10px; cursor: pointer; outline: none; transition: background-color 0.3s, color 0.3s;">아이디 찾기</button>
+    <button class="btn" id="findPwd" type="button" onclick="showForm('findPassword_container')" style="font-family: 'Noto Sans KR', sans-serif; width: 220px; background-color: #0d6efd; color: white; border: none;  padding: 10px; cursor: pointer; outline: none; transition: background-color 0.3s, color 0.3s;">비밀번호 찾기</button>
+    <div class="separator" style="margin-top: 0;"></div>
+</div>
+		
         <!-- 아이디 찾기 폼 -->
-			<div>
-		      <p>입력하신 정보는 아이디 찾기에만 사용되며 저장되지 않습니다.</p> 
-		    </div>
 		    <div id="findId_container" class="form-container">
 				<form class="form-horizontal" role="form" onsubmit="findId(); return false;">
 					<div class="mb-4">	
@@ -192,7 +192,7 @@
 					<div class="mb-4">
 						<div class="input-group input-group-lg">
 							<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-							<input type="text" class="form-control border-0 bg-light rounded-end ps-1" id="birth" name="birth" placeholder="YYMMDD" required>
+							<input type="text" class="form-control border-0 bg-light rounded-end ps-1" id="birth" name="birth" placeholder="YYYYMMDD" required>
 						</div>
 					</div>
 					<div class="mb-4">	
@@ -201,12 +201,12 @@
 							<input type="text" class="form-control border-0 bg-light rounded-end ps-1" id="hp" name="hp" placeholder="000-0000-0000" required>
 						</div>
 					</div>
-					<div class="submit-btn-container">	
-						<button type="submit" class="btn btn-primary">찾기</button>
+					<div class="submit-btn-container" style="text-align: center">	
+						<button type="submit" class="btn btn-primary" style="padding: 10px 255px; font-size: 15px;">찾기</button>
 					</div>
 		 		</form>
 		 		<!-- 결과 메시지를 표시할 박스 -->
-		 		<div id="idBox" style="display:none; margin-top: 20px;"></div>
+		 		<div id="idBox" style="display:none; margin-top: 20px; font-size:20px;"></div>
 			</div>
 		
         
@@ -215,26 +215,24 @@
         	<form class="form-horizontal" role="form" onsubmit="findPassword(); return false;">
 				<div class="mb-4">	
 					<div class="input-group input-group-lg">
-						<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+						<span class="input-group-text bg-light rounded-start border-0 text-secondary 10px-3"><i class="fas fa-lock"></i></span>
 						<input type="text" class="form-control border-0 bg-light rounded-end ps-1" id="userid2" name="userid" placeholder="아이디" required autofocus>
 					</div>
 				</div>
 				<div class="mb-4">
 					<div class="input-group input-group-lg">
 						<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-						<input type="text" class="form-control border-0 bg-light rounded-end ps-1" id="birth2" name="birth" placeholder="YYMMDD" required>
+						<input type="text" class="form-control border-0 bg-light rounded-end ps-1" id="birth2" name="birth" placeholder="YYYYMMDD" required>
 					</div>
 				</div>
 				<div class="mb-4">	
-					<div class="input-group input-group-lg">
+					<div class="input-group input-group-lg" style="text-align: center">
 						<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
 						<input type="text" class="form-control border-0 bg-light rounded-end ps-1" id="hp2" name="hp" placeholder="000-0000-0000" required>
 					</div>
 				</div>
-				<div class="submit-btn-container">	
-					<button type="submit" class="btn btn-primary">다음</button>
-				</div>
 		 	</form>
+		 	
 		</div>
       </div>
     

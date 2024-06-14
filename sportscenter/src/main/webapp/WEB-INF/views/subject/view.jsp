@@ -589,10 +589,12 @@ Footer START -->
 			<!-- Widget 1 START -->
 			<div class="col-lg-3">
 				<!-- logo -->
-				<a class="me-0" href="/home.do"> <!-- href 링크 메인 화면으로 설정 -->
+				<a class="me-0" href="index.html">
 					<img class="light-mode-item h-40px" src="/resources/images/logo.svg" alt="logo">
+					<img class="dark-mode-item h-40px" src="/resources/images/logo-light.svg" alt="logo">
 				</a>
 				<p class="my-3">스포츠를 사랑하고 배우고자 하는 모든 이들을 위해 만들어 졌습니다. 함께 스포츠를 즐기며 배우고 성장할 수 있는 공간, 그것이 바로 우리의 목표입니다.</p>
+				<!-- Social media icon -->
 			</div>
 			<!-- Widget 1 END -->
 
@@ -601,28 +603,34 @@ Footer START -->
 				<div class="row g-4">
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">종목 / 안내</h5>
+						<h5 class="mb-2 mb-md-4">SportsCenter</h5>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#">종목 안내</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">이용 안내</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">수강신청</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">About us</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">News and Blogs</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Library</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Career</a></li>
 						</ul>
 					</div>
 									
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">수강신청</h5>
+						<h5 class="mb-2 mb-md-4">Community</h5>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#">온라인 수강신청</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Documentation</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Faq</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Forum</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Sitemap</a></li>
 						</ul>
 					</div>
 
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">커뮤니티</h5>
+						<h5 class="mb-2 mb-md-4">Teaching</h5>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">QnA 게시판</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Become a teacher</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">How to guide</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Terms &amp; Conditions</a></li>
 						</ul>
 					</div>
 				</div>
@@ -631,15 +639,20 @@ Footer START -->
 
 			<!-- Widget 3 START -->
 			<div class="col-lg-3">
-				<h5 class="mb-2 mb-md-4">문의</h5>
+				<h5 class="mb-2 mb-md-4">Contact</h5>
 				<!-- Time -->
 				<p class="mb-2">
 					TEL:<span class="h6 fw-light ms-2">02-6392-0044</span>
-					<span class="d-block small">문의 가능 시간: 평일 10:00 ~ 17:00 (점심시간 13:00 ~ 14:00)</span>
+					<span class="d-block small">문의 가능 시간: 평일 9:00 ~ 18:00 (점심시간 13:00 ~ 14:00)</span>
 				</p>
 
 				<p class="mb-0">Email:<span class="h6 fw-light ms-2">shds.edu03@gmail.com</span></p>
 
+				<div class="row g-2 mt-2">
+					<!-- Google play store button -->
+					<div class="col-6 col-sm-4 col-md-3 col-lg-6">
+						<a href="#"> <img src="resources/images/client/google-play.svg" alt=""> </a>
+					</div>
 				</div> <!-- Row END -->
 			</div> 
 			<!-- Widget 3 END -->
@@ -653,20 +666,22 @@ Footer START -->
 			<div class="container px-0">
 				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left">
 					<!-- copyright text -->
-					<div class="text-body text-primary-hover"> Copyrights ©2024 SportsCenter. Build by <a href="" target="_blank" class="text-body">ShihanDS_Project1</a></div>
+					<div class="text-body text-primary-hover"> Copyrights ©2024 SportsCenter. Build by <a href="https://www.webestica.com/" target="_blank" class="text-body">ShihanDS_Project1</a></div>
 					<!-- copyright links-->
 					<div class="justify-content-center mt-3 mt-lg-0">
 						<ul class="nav list-inline justify-content-center mb-0">
 							<li class="list-inline-item">
-							<li class="list-inline-item"><a class="nav-link" href="#">이용약관</a></li>
-							<li class="list-inline-item"><a class="nav-link pe-0" href="#">개인정보처리방침</a></li>
+							<li class="list-inline-item"><a class="nav-link" href="#">Terms of use</a></li>
+							<li class="list-inline-item"><a class="nav-link pe-0" href="#">Privacy policy</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 </footer>
 <!-- =======================
+Footer END -->       
 Footer END -->
 
 <!-- Back to top -->

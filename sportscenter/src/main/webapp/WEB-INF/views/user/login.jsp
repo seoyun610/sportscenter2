@@ -69,8 +69,6 @@
 		<!--MAIN CONTENT START -->
 		<main>
 			<section class="p-0 d-flex align-items-center position-relative overflow-hidden">
-		
-						<!-- Right -->
 						<div class="col-12 col-lg-6 m-auto">
 							<div class="row my-5">
 								<div class="col-sm-10 col-xl-8 m-auto">
