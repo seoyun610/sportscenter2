@@ -66,7 +66,7 @@ public class UserController {
 	public String insert(UserVO vo, Model model) {
 		if (service.join(vo)) {
 			model.addAttribute("msg", "정상적으로 가입되었습니다.");
-			model.addAttribute("url", "/user/main.do");
+			model.addAttribute("url", "/home.do");
 		} else {
 			model.addAttribute("msg", "가입 오류"); 
 			model.addAttribute("url", "/user/join.do");

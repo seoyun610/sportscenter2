@@ -164,27 +164,15 @@
 	}
     </style>
     <script>
+    	var con1 = false;
+    	var con2 = false;
+    
     	function goSave() {
     		if ($("#userid").val() == '') {
     			alert('아이디를 입력하세요'); 
     			$("#userid").focus();
     			return;
     		}
-    		var con = true;
-    		$.ajax({
-				url:'/user/useridCheck.do',
-				data : {userid:$("#userid").val()},
-				async : false,
-				success : function(res) {
-					console.log(res);
-					if (res == '1') {
-						alert('중복된 아이디입니다.\r\n다른 아이디를 입력해 주세요');
-						con = false;
-						return;
-					}
-				}
-			});
-    		if (!con) return;
     		if ($("#pwd").val() == '') {
     			alert('비밀번호를 입력하세요');
     			$("#pwd").focus();
@@ -211,15 +199,46 @@
     			$("#hp").focus();
     			return;
     		}
+
     		if ($("#email").val() == '') {
     			// 이메일 입력 필드의 값이 비어 있는지 확인 
     			alert('이메일을 입력하세요');
     			// 이메일이 입력되지 않은 경우, 경고 메시지를 표시 
+
+    		if ($("#email").val() == '') { 
+    			alert('이메일을 입력하세요'); 
+    			$("#email").focus();
+    			return;
+    		} 
+    		if ($("#addr").val() == '' || $("#addr2").val() == '') {
+    			alert('주소를 입력하세요');
+    			$("#addr2").focus();
+    			return;
+    		}
+    		if ($("#birth").val() == '') {
+    			alert('생년월일을 입력하세요');
+    			$("#birth").focus();
+    			return;
+    		}
+    		if (!$('input[name="gender"]:checked').val()) {
+    		    alert('성별은 필수 입력값입니다.');
+    		    $('input[name="gender"]').first().focus();
+    		    return false;
+    		}
+    		if(!con1){
+    			alert('아이디 중복 체크를 진행해주세요'); 
+    			$("#userid").focus();
+    			return;
+    		}
+    		if(!con2){
+    			alert('이메일을 중복 체크를 진행해주세요'); 
+
     			$("#email").focus();
     			// 이메일 입력 필드에 포커스를 맞춤 
     			return;
     			//이메일이 입력되지 않은 경우, 함수 실행 중단 
     		}
+
     		var con = true;
     		// 이메일 중복 확인 결과를 저장할 변수를 선언하고 초기앖을 true로 설정 
     		// 초기값을 true로 설정하는 이유? 
@@ -248,11 +267,13 @@
 			});	
     		if (!con) return;
     		// 전송
+
     		$("#frm").submit();
     	}
     	$(function() {
     		// 페이지가 로드되면 실행될 함수 
     		$("#useridCheck").click(function() {
+
     			// 아이디 중복 확인 버튼 클릭 시 실행될 함수 
     	    		if ($("#userid").val() == '') {
     	    			// 만약 아이디 입력란이 비어있으면__val("set하고싶은 value값")
@@ -262,6 +283,13 @@
     	    			return; // 함수 종료 
     	    		}
     			// ajax를 사용하여 서버로 아이디 중복 체크 요청 보냄
+
+    	    		if ($("#userid").val() == '') {
+    	    			alert('아이디를 입력하세요'); 
+    	    			$("#userid").focus();
+    	    			return; 
+    	    		}
+
     			$.ajax({
     				url:'/user/useridCheck.do', // 요청 보낼 url 
     				data:{userid:$('#userid').val()},// 서버로 전송할 데이터(아이디)
@@ -270,10 +298,18 @@
     					console.log(res); // 콘솔에 결과를 출력해 디버깅 
 						if (res == '1') {
 							// 서버에서 받은 결과가 '1'인 경우 (중복된 아이디)
+
+    				url:'/user/useridCheck.do', 
+    				data:{userid:$('#userid').val()},
+    				success:function(res) { 
+    					console.log(res); 
+						if (res == '1') {
 							alert('중복된 아이디입니다.\r\n다른 아이디를 입력해 주세요');
 						} else {
 							// 서버에서 받은 결과가 '1'이 아닌 경우(사용 가능한 아이디)
 							alert('사용 가능한 아이디입니다.');
+							alert('사용 가능한 아이디입니다.');
+							con1 = true;
 						}
     				}
     			})
@@ -291,18 +327,30 @@
         			return;// 함수 종료 
     			}
     			// ajax를 사용하여 서버로 이메일 중복 체크 요청 보냄
+    			if ($("#email").val() == '') {
+        			alert('이메일을 입력하세요');
+        			$("#email").focus();
+        			return;
+    			}
+    			
     			$.ajax({
     				url:'/user/emailCheck.do',// 요청 보낼 url 
     				data:{email:$('#email').val()},// 서버로 전송할 데이터(이메일)
+    				url:'/user/emailCheck.do',
+    				data:{email:$('#email').val()},
     				success:function(res) {
     					// 요청 성공 시 실행될 콜백 함수 
     					console.log(res);// 콘솔에 결과를 출력해 디버깅 
 						if (res == '1') {
 							// 서버에서 받은 결과가 '1'인 경우 (중복된 이메일)
+    					console.log(res);
+						if (res == '1') {
 							alert('중복된 이메일입니다.\r\n다른 이메일을 입력해 주세요');
 						} else {
 							// 서버에서 받은 결과가 '1'이 아닌 경우(사용 가능한 이메일ㅇ)
 							alert('사용 가능한 이메일입니다.');
+							alert('사용 가능한 이메일입니다.');
+							con2 = true;
 						}
     				}
     			})
@@ -369,7 +417,7 @@
 								<div class="separator"></div>
 						
 							<!-- Form START -->
-							<form>
+							<form method="post" name="frm" id="frm" action="insert.do">
 								<!-- Id -->
 								<div class="mb-4">
 									<label for="InputId1" class="form-label">아이디 *</label>
