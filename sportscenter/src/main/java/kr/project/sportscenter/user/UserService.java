@@ -11,6 +11,7 @@ public interface UserService {
 	
 	int useridCheck(String userid);
 	
+	//이메일 찾기
 	int emailCheck(String email);
 	 
 	// 아이디 찾기 

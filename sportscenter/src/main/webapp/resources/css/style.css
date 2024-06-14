@@ -77,12 +77,12 @@
   --bs-dark-border-subtle: #a7a9ab;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs--sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs--monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: "Roboto", sans-serif;
-  --bs-body-font-size: 0.9375rem;
-  --bs-body-font-weight: 400;
+  --bs-body--family: "Roboto", sans-serif;
+  --bs-body--size: 0.9375rem;
+  --bs-body--weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #747579;
   --bs-body-color-rgb: 116, 117, 121;
@@ -202,9 +202,9 @@
 
 body {
   margin: 0;
-  font-family:'Noto Sans KR', sans-serif; 
-  font-size: var(--bs-body-font-size);
-  font-weight: var(--bs-body-font-weight);
+  -family:'Noto Sans KR', sans-serif; 
+  -size: var(--bs-body--size);
+  -weight: var(--bs-body--weight);
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
@@ -224,59 +224,59 @@ hr {
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-family: "Heebo", sans-serif;
-  font-weight: 700;
+  -family: "Noto Sans KR", sans-serif;
+  -weight: 700;
   line-height: 1.25;
   color: var(--bs-heading-color);
 }
 
 h1, .h1 {
-  font-size: calc(1.40625rem + 1.875vw);
+  -size: calc(1.40625rem + 1.875vw);
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2.8125rem;
+    -size: 2.8125rem;
   }
 }
 
 h2, .h2 {
-  font-size: calc(1.359375rem + 1.3125vw);
+  -size: calc(1.359375rem + 1.3125vw);
 }
 @media (min-width: 1200px) {
   h2, .h2 {
-    font-size: 2.34375rem;
+    -size: 2.34375rem;
   }
 }
 
 h3, .h3 {
-  font-size: calc(1.3125rem + 0.75vw);
+  -size: calc(1.3125rem + 0.75vw);
 }
 @media (min-width: 1200px) {
   h3, .h3 {
-    font-size: 1.875rem;
+    -size: 1.875rem;
   }
 }
 
 h4, .h4 {
-  font-size: calc(1.2890625rem + 0.46875vw);
+  -size: calc(1.2890625rem + 0.46875vw);
 }
 @media (min-width: 1200px) {
   h4, .h4 {
-    font-size: 1.640625rem;
+    -size: 1.640625rem;
   }
 }
 
 h5, .h5 {
-  font-size: calc(1.25625rem + 0.075vw);
+  -size: calc(1.25625rem + 0.075vw);
 }
 @media (min-width: 1200px) {
   h5, .h5 {
-    font-size: 1.3125rem;
+    -size: 1.3125rem;
   }
 }
 
 h6, .h6 {
-  font-size: 0.9375rem;
+  -size: 0.9375rem;
 }
 
 p {
@@ -294,7 +294,7 @@ abbr[title] {
 
 address {
   margin-bottom: 1rem;
-  font-style: normal;
+  -style: normal;
   line-height: inherit;
 }
 
@@ -318,7 +318,7 @@ ul ol {
 }
 
 dt {
-  font-weight: 700;
+  -weight: 700;
 }
 
 dd {
@@ -332,11 +332,11 @@ blockquote {
 
 b,
 strong {
-  font-weight: bolder;
+  -weight: bolder;
 }
 
 small, .small {
-  font-size: 0.875em;
+  -size: 0.875em;
 }
 
 mark, .mark {
@@ -348,7 +348,7 @@ mark, .mark {
 sub,
 sup {
   position: relative;
-  font-size: 0.75em;
+  -size: 0.75em;
   line-height: 0;
   vertical-align: baseline;
 }
@@ -378,8 +378,8 @@ pre,
 code,
 kbd,
 samp {
-  font-family: var(--bs-font-monospace);
-  font-size: 1em;
+  -family: var(--bs--monospace);
+  -size: 1em;
 }
 
 pre {
@@ -387,16 +387,16 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
-  font-size: 0.875em;
+  -size: 0.875em;
 }
 pre code {
-  font-size: inherit;
+  -size: inherit;
   color: inherit;
   word-break: normal;
 }
 
 code {
-  font-size: 0.875em;
+  -size: 0.875em;
   color: var(--bs-code-color);
   word-wrap: break-word;
 }
@@ -406,14 +406,14 @@ a > code {
 
 kbd {
   padding: 0.1875rem 0.375rem;
-  font-size: 0.875em;
+  -size: 0.875em;
   color: var(--bs-body-bg);
   background-color: var(--bs-body-color);
   border-radius: 0.2rem;
 }
 kbd kbd {
   padding: 0;
-  font-size: 1em;
+  -size: 1em;
 }
 
 figure {
@@ -471,8 +471,8 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
-  font-size: inherit;
+  -family: inherit;
+  -size: inherit;
   line-height: inherit;
 }
 
@@ -530,12 +530,12 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: 0.5rem;
-  font-size: calc(1.275rem + 0.3vw);
+  -size: calc(1.275rem + 0.3vw);
   line-height: inherit;
 }
 @media (min-width: 1200px) {
   legend {
-    font-size: 1.5rem;
+    -size: 1.5rem;
   }
 }
 legend + * {
@@ -578,12 +578,12 @@ legend + * {
 }
 
 ::-webkit-file-upload-button {
-  font: inherit;
+  : inherit;
   -webkit-appearance: button;
 }
 
 ::file-selector-button {
-  font: inherit;
+  : inherit;
   -webkit-appearance: button;
 }
 
@@ -609,73 +609,73 @@ progress {
 }
 
 .lead {
-  font-size: 1.171875rem;
-  font-weight: 400;
+  -size: 1.171875rem;
+  -weight: 400;
 }
 
 .display-1 {
-  font-size: calc(1.725rem + 5.7vw);
-  font-weight: 700;
+  -size: calc(1.725rem + 5.7vw);
+  -weight: 700;
   line-height: 1.25;
 }
 @media (min-width: 1200px) {
   .display-1 {
-    font-size: 6rem;
+    -size: 6rem;
   }
 }
 
 .display-2 {
-  font-size: calc(1.675rem + 5.1vw);
-  font-weight: 700;
+  -size: calc(1.675rem + 5.1vw);
+  -weight: 700;
   line-height: 1.25;
 }
 @media (min-width: 1200px) {
   .display-2 {
-    font-size: 5.5rem;
+    -size: 5.5rem;
   }
 }
 
 .display-3 {
-  font-size: calc(1.625rem + 4.5vw);
-  font-weight: 700;
+  -size: calc(1.625rem + 4.5vw);
+  -weight: 700;
   line-height: 1.25;
 }
 @media (min-width: 1200px) {
   .display-3 {
-    font-size: 5rem;
+    -size: 5rem;
   }
 }
 
 .display-4 {
-  font-size: calc(1.575rem + 3.9vw);
-  font-weight: 700;
+  -size: calc(1.575rem + 3.9vw);
+  -weight: 700;
   line-height: 1.25;
 }
 @media (min-width: 1200px) {
   .display-4 {
-    font-size: 4.5rem;
+    -size: 4.5rem;
   }
 }
 
 .display-5 {
-  font-size: calc(1.525rem + 3.3vw);
-  font-weight: 700;
+  -size: calc(1.525rem + 3.3vw);
+  -weight: 700;
   line-height: 1.25;
 }
 @media (min-width: 1200px) {
   .display-5 {
-    font-size: 4rem;
+    -size: 4rem;
   }
 }
 
 .display-6 {
-  font-size: calc(1.475rem + 2.7vw);
-  font-weight: 700;
+  -size: calc(1.475rem + 2.7vw);
+  -weight: 700;
   line-height: 1.25;
 }
 @media (min-width: 1200px) {
   .display-6 {
-    font-size: 3.5rem;
+    -size: 3.5rem;
   }
 }
 
@@ -697,13 +697,13 @@ progress {
 }
 
 .initialism {
-  font-size: 0.875em;
+  -size: 0.875em;
   text-transform: uppercase;
 }
 
 .blockquote {
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  -size: 1.25rem;
 }
 .blockquote > :last-child {
   margin-bottom: 0;
@@ -712,7 +712,7 @@ progress {
 .blockquote-footer {
   margin-top: -1rem;
   margin-bottom: 1rem;
-  font-size: 0.875em;
+  -size: 0.875em;
   color: #6c757d;
 }
 .blockquote-footer::before {
@@ -743,7 +743,7 @@ progress {
 }
 
 .figure-caption {
-  font-size: 0.875em;
+  -size: 0.875em;
   color: var(--bs-secondary-color);
 }
 
@@ -2560,25 +2560,25 @@ progress {
   padding-top: calc(0.5rem + 1px);
   padding-bottom: calc(0.5rem + 1px);
   margin-bottom: 0;
-  font-size: inherit;
+  -size: inherit;
   line-height: 1.5;
 }
 
 .col-form-label-lg {
   padding-top: calc(0.8rem + 1px);
   padding-bottom: calc(0.8rem + 1px);
-  font-size: 1rem;
+  -size: 1rem;
 }
 
 .col-form-label-sm {
   padding-top: calc(0.4rem + 1px);
   padding-bottom: calc(0.4rem + 1px);
-  font-size: 0.8125rem;
+  -size: 0.8125rem;
 }
 
 .form-text {
   margin-top: 0.25rem;
-  font-size: 0.875em;
+  -size: 0.875em;
   color: var(--bs-secondary);
 }
 
@@ -2586,8 +2586,8 @@ progress {
   display: block;
   width: 100%;
   padding: 0.5rem 1rem;
-  font-size: 0.9375rem;
-  font-weight: 400;
+  -size: 0.9375rem;
+  -weight: 400;
   line-height: 1.5;
   color: var(--bs-gray-700);
   -webkit-appearance: none;
@@ -2727,7 +2727,7 @@ progress {
 .form-control-sm {
   min-height: calc(1.25em + 0.8rem + 2px);
   padding: 0.4rem 0.8rem;
-  font-size: 0.8125rem;
+  -size: 0.8125rem;
   border-radius: 0.2rem;
 }
 .form-control-sm::-webkit-file-upload-button {
@@ -2746,7 +2746,7 @@ progress {
 .form-control-lg {
   min-height: calc(1.25em + 1.6rem + 2px);
   padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  -size: 1rem;
   border-radius: 0.2rem;
 }
 .form-control-lg::-webkit-file-upload-button {
@@ -2800,8 +2800,8 @@ textarea.form-control-lg {
   display: block;
   width: 100%;
   padding: 0.5rem 2.25rem 0.5rem 1rem;
-  font-size: 0.9375rem;
-  font-weight: 400;
+  -size: 0.9375rem;
+  -weight: 400;
   line-height: 1.5;
   color: var(--bs-input-color);
   -webkit-appearance: none;
@@ -2848,7 +2848,7 @@ textarea.form-control-lg {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.5rem;
-  font-size: 0.875rem;
+  -size: 0.875rem;
   border-radius: var(--bs-border-radius-sm);
 }
 
@@ -2856,7 +2856,7 @@ textarea.form-control-lg {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
-  font-size: 1.25rem;
+  -size: 1.25rem;
   border-radius: var(--bs-border-radius-lg);
 }
 
@@ -3282,8 +3282,8 @@ textarea.form-control-lg {
       -ms-flex-align: center;
           align-items: center;
   padding: 0.375rem 0.75rem;
-  font-size: 0.9375rem;
-  font-weight: 400;
+  -size: 0.9375rem;
+  -weight: 400;
   line-height: 1.5;
   color: var(--bs-body-color);
   text-align: center;
@@ -3298,7 +3298,7 @@ textarea.form-control-lg {
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn {
   padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  -size: 1rem;
   border-radius: 0.2rem;
 }
 
@@ -3307,7 +3307,7 @@ textarea.form-control-lg {
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn {
   padding: 0.4rem 0.8rem;
-  font-size: 0.8125rem;
+  -size: 0.8125rem;
   border-radius: 0.2rem;
 }
 
@@ -3345,7 +3345,7 @@ textarea.form-control-lg {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
-  font-size: 0.875em;
+  -size: 0.875em;
   color: var(--bs-form-valid-color);
 }
 
@@ -3357,7 +3357,7 @@ textarea.form-control-lg {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: 0.1rem;
-  font-size: 0.875rem;
+  -size: 0.875rem;
   color: #fff;
   background-color: var(--bs-success);
   border-radius: var(--bs-border-radius);
@@ -3438,7 +3438,7 @@ textarea.form-control-lg {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
-  font-size: 0.875em;
+  -size: 0.875em;
   color: var(--bs-form-invalid-color);
 }
 
@@ -3450,7 +3450,7 @@ textarea.form-control-lg {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: 0.1rem;
-  font-size: 0.875rem;
+  -size: 0.875rem;
   color: #fff;
   background-color: var(--bs-danger);
   border-radius: var(--bs-border-radius);
@@ -3530,9 +3530,9 @@ textarea.form-control-lg {
 .btn {
   --bs-btn-padding-x: 1rem;
   --bs-btn-padding-y: 0.5rem;
-  --bs-btn-font-family: ;
-  --bs-btn-font-size: 0.9375rem;
-  --bs-btn-font-weight: 500;
+  --bs-btn--family: ;
+  --bs-btn--size: 0.9375rem;
+  --bs-btn--weight: 500;
   --bs-btn-line-height: 1.5;
   --bs-btn-color: var(--bs-body-color);
   --bs-btn-bg: transparent;
@@ -3545,9 +3545,9 @@ textarea.form-control-lg {
   --bs-btn-focus-box-shadow: 0 0 0 0 rgba(var(--bs-btn-focus-shadow-rgb), .5);
   display: inline-block;
   padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
-  font-family: var(--bs-btn-font-family);
-  font-size: var(--bs-btn-font-size);
-  font-weight: var(--bs-btn-font-weight);
+  -family: var(--bs-btn--family);
+  -size: var(--bs-btn--size);
+  -weight: var(--bs-btn--weight);
   line-height: var(--bs-btn-line-height);
   color: var(--bs-btn-color);
   text-align: center;
@@ -4023,7 +4023,7 @@ textarea.form-control-lg {
 }
 
 .btn-link {
-  --bs-btn-font-weight: 500;
+  --bs-btn--weight: 500;
   --bs-btn-color: #066ac9;
   --bs-btn-bg: transparent;
   --bs-btn-border-color: transparent;
@@ -4047,14 +4047,14 @@ textarea.form-control-lg {
 .btn-lg, .btn-group-lg > .btn {
   --bs-btn-padding-y: 0.8rem;
   --bs-btn-padding-x: 1.5rem;
-  --bs-btn-font-size: 1rem;
+  --bs-btn--size: 1rem;
   --bs-btn-border-radius: 0.5rem;
 }
 
 .btn-sm, .btn-group-sm > .btn {
   --bs-btn-padding-y: 0.4rem;
   --bs-btn-padding-x: 0.8rem;
-  --bs-btn-font-size: 0.8125rem;
+  --bs-btn--size: 0.8125rem;
   --bs-btn-border-radius: 0.2rem;
 }
 
@@ -4133,7 +4133,7 @@ textarea.form-control-lg {
   --bs-dropdown-padding-x: 0.8rem;
   --bs-dropdown-padding-y: 1rem;
   --bs-dropdown-spacer: 0;
-  --bs-dropdown-font-size: 0.9375rem;
+  --bs-dropdown--size: 0.9375rem;
   --bs-dropdown-color: #747579;
   --bs-dropdown-bg: var(--bs-body-bg);
   --bs-dropdown-border-color: var(--bs-border-color);
@@ -4160,7 +4160,7 @@ textarea.form-control-lg {
   min-width: var(--bs-dropdown-min-width);
   padding: var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);
   margin: 0;
-  font-size: var(--bs-dropdown-font-size);
+  -size: var(--bs-dropdown--size);
   color: var(--bs-dropdown-color);
   text-align: left;
   list-style: none;
@@ -4360,7 +4360,7 @@ textarea.form-control-lg {
   width: 100%;
   padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
   clear: both;
-  font-weight: 500;
+  -weight: 500;
   color: var(--bs-dropdown-link-color);
   text-align: inherit;
   white-space: nowrap;
@@ -4391,7 +4391,7 @@ textarea.form-control-lg {
   display: block;
   padding: var(--bs-dropdown-header-padding-y) var(--bs-dropdown-header-padding-x);
   margin-bottom: 0;
-  font-size: 0.8203125rem;
+  -size: 0.8203125rem;
   color: var(--bs-dropdown-header-color);
   white-space: nowrap;
 }
@@ -4536,7 +4536,7 @@ textarea.form-control-lg {
 .nav {
   --bs-nav-link-padding-x: 0.75rem;
   --bs-nav-link-padding-y: 0.25rem;
-  --bs-nav-link-font-weight: ;
+  --bs-nav-link--weight: ;
   --bs-nav-link-color: var(--bs-body-color);
   --bs-nav-link-hover-color: var(--bs-link-hover-color) !important;
   --bs-nav-link-disabled-color: var(--bs-gray-500) !important;
@@ -4553,8 +4553,8 @@ textarea.form-control-lg {
 .nav-link {
   display: block;
   padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
-  font-size: var(--bs-nav-link-font-size);
-  font-weight: var(--bs-nav-link-font-weight);
+  -size: var(--bs-nav-link--size);
+  -weight: var(--bs-nav-link--weight);
   color: var(--bs-nav-link-color);
   background: none;
   border: 0;
@@ -4643,7 +4643,7 @@ textarea.form-control-lg {
 }
 .nav-underline .nav-link.active,
 .nav-underline .show > .nav-link {
-  font-weight: 700;
+  -weight: 700;
   color: var(--bs-nav-underline-link-active-color);
   border-bottom-color: currentcolor;
 }
@@ -4687,13 +4687,13 @@ textarea.form-control-lg {
   --bs-navbar-active-color: #066ac9;
   --bs-navbar-brand-padding-y: 30px;
   --bs-navbar-brand-margin-end: 1rem;
-  --bs-navbar-brand-font-size: 0;
+  --bs-navbar-brand--size: 0;
   --bs-navbar-brand-color: rgba(var(--bs-emphasis-color-rgb), 1);
   --bs-navbar-brand-hover-color: rgba(var(--bs-emphasis-color-rgb), 1);
   --bs-navbar-nav-link-padding-x: 1rem;
   --bs-navbar-toggler-padding-y: 0.25rem;
   --bs-navbar-toggler-padding-x: 0;
-  --bs-navbar-toggler-font-size: 1.25rem;
+  --bs-navbar-toggler--size: 1.25rem;
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   --bs-navbar-toggler-border-color: rgba(0, 0, 0, 0.1);
   --bs-navbar-toggler-border-radius: var(--bs-border-radius);
@@ -4736,7 +4736,7 @@ textarea.form-control-lg {
   padding-top: var(--bs-navbar-brand-padding-y);
   padding-bottom: var(--bs-navbar-brand-padding-y);
   margin-right: var(--bs-navbar-brand-margin-end);
-  font-size: var(--bs-navbar-brand-font-size);
+  -size: var(--bs-navbar-brand--size);
   color: var(--bs-navbar-brand-color);
   white-space: nowrap;
 }
@@ -4747,7 +4747,7 @@ textarea.form-control-lg {
 .navbar-nav {
   --bs-nav-link-padding-x: 0;
   --bs-nav-link-padding-y: 0.25rem;
-  --bs-nav-link-font-weight: ;
+  --bs-nav-link--weight: ;
   --bs-nav-link-color: var(--bs-navbar-color);
   --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
   --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
@@ -4793,7 +4793,7 @@ textarea.form-control-lg {
 
 .navbar-toggler {
   padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
-  font-size: var(--bs-navbar-toggler-font-size);
+  -size: var(--bs-navbar-toggler--size);
   line-height: 1;
   color: var(--bs-navbar-color);
   background-color: transparent;
@@ -5468,7 +5468,7 @@ textarea.form-control-lg {
           align-items: center;
   width: 100%;
   padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
-  font-size: 0.9375rem;
+  -size: 0.9375rem;
   color: var(--bs-accordion-btn-color);
   text-align: left;
   background-color: var(--bs-accordion-btn-bg);
@@ -5588,7 +5588,7 @@ textarea.form-control-lg {
   --bs-breadcrumb-padding-x: 0;
   --bs-breadcrumb-padding-y: 0.5rem;
   --bs-breadcrumb-margin-bottom: 1rem;
-  --bs-breadcrumb-font-size: 0.8125rem;
+  --bs-breadcrumb--size: 0.8125rem;
   --bs-breadcrumb-bg: transparent;
   --bs-breadcrumb-border-radius: ;
   --bs-breadcrumb-divider-color: var(--bs-gray-500);
@@ -5601,7 +5601,7 @@ textarea.form-control-lg {
       flex-wrap: wrap;
   padding: var(--bs-breadcrumb-padding-y) var(--bs-breadcrumb-padding-x);
   margin-bottom: var(--bs-breadcrumb-margin-bottom);
-  font-size: var(--bs-breadcrumb-font-size);
+  -size: var(--bs-breadcrumb--size);
   list-style: none;
   background-color: var(--bs-breadcrumb-bg);
   border-radius: var(--bs-breadcrumb-border-radius);
@@ -5623,7 +5623,7 @@ textarea.form-control-lg {
 .pagination {
   --bs-pagination-padding-x: 1rem;
   --bs-pagination-padding-y: 0.7rem;
-  --bs-pagination-font-size: 1rem;
+  --bs-pagination--size: 1rem;
   --bs-pagination-color: var(--bs-gray-600);
   --bs-pagination-bg: var(--bs-white);
   --bs-pagination-border-width: 1px;
@@ -5652,7 +5652,7 @@ textarea.form-control-lg {
   position: relative;
   display: block;
   padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
-  font-size: var(--bs-pagination-font-size);
+  -size: var(--bs-pagination--size);
   color: var(--bs-pagination-color);
   background-color: var(--bs-pagination-bg);
   border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
@@ -5704,28 +5704,28 @@ textarea.form-control-lg {
 .pagination-lg {
   --bs-pagination-padding-x: 1.5rem;
   --bs-pagination-padding-y: 0.75rem;
-  --bs-pagination-font-size: 1.171875rem;
+  --bs-pagination--size: 1.171875rem;
   --bs-pagination-border-radius: var(--bs-border-radius-lg);
 }
 
 .pagination-sm {
   --bs-pagination-padding-x: 0.5rem;
   --bs-pagination-padding-y: 0.25rem;
-  --bs-pagination-font-size: 0.8203125rem;
+  --bs-pagination--size: 0.8203125rem;
   --bs-pagination-border-radius: var(--bs-border-radius-sm);
 }
 
 .badge {
   --bs-badge-padding-x: 0.65em;
   --bs-badge-padding-y: 0.35em;
-  --bs-badge-font-size: 0.85em;
-  --bs-badge-font-weight: 400;
+  --bs-badge--size: 0.85em;
+  --bs-badge--weight: 400;
   --bs-badge-color: #fff;
   --bs-badge-border-radius: var(--bs-border-radius);
   display: inline-block;
   padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
-  font-size: var(--bs-badge-font-size);
-  font-weight: var(--bs-badge-font-weight);
+  -size: var(--bs-badge--size);
+  -weight: var(--bs-badge--weight);
   line-height: 1;
   color: var(--bs-badge-color);
   text-align: center;
@@ -5766,7 +5766,7 @@ textarea.form-control-lg {
 }
 
 .alert-link {
-  font-weight: 700;
+  -weight: 700;
   color: var(--bs-alert-link-color);
 }
 
@@ -5879,7 +5879,7 @@ textarea.form-control-lg {
 .progress,
 .progress-stacked {
   --bs-progress-height: 1rem;
-  --bs-progress-font-size: 0.75rem;
+  --bs-progress--size: 0.75rem;
   --bs-progress-bg: var(--bs-gray-300);
   --bs-progress-border-radius: var(--bs-border-radius);
   --bs-progress-box-shadow: var(--bs-box-shadow-inset);
@@ -5891,7 +5891,7 @@ textarea.form-control-lg {
   display: flex;
   height: var(--bs-progress-height);
   overflow: hidden;
-  font-size: var(--bs-progress-font-size);
+  -size: var(--bs-progress--size);
   background-color: var(--bs-progress-bg);
   border-radius: var(--bs-progress-border-radius);
 }
@@ -6419,7 +6419,7 @@ textarea.form-control-lg {
   --bs-toast-padding-y: 0.5rem;
   --bs-toast-spacing: 1.5rem;
   --bs-toast-max-width: 350px;
-  --bs-toast-font-size: 0.875rem;
+  --bs-toast--size: 0.875rem;
   --bs-toast-color: ;
   --bs-toast-bg: rgba(var(--bs-body-bg-rgb), 0.85);
   --bs-toast-border-width: var(--bs-border-width);
@@ -6431,7 +6431,7 @@ textarea.form-control-lg {
   --bs-toast-header-border-color: var(--bs-border-color-translucent);
   width: var(--bs-toast-max-width);
   max-width: 100%;
-  font-size: var(--bs-toast-font-size);
+  -size: var(--bs-toast--size);
   color: var(--bs-toast-color);
   pointer-events: auto;
   background-color: var(--bs-toast-bg);
@@ -6815,7 +6815,7 @@ textarea.form-control-lg {
   --bs-tooltip-padding-x: 0.5rem;
   --bs-tooltip-padding-y: 0.25rem;
   --bs-tooltip-margin: ;
-  --bs-tooltip-font-size: 0.6875rem;
+  --bs-tooltip--size: 0.6875rem;
   --bs-tooltip-color: var(--bs-body-bg);
   --bs-tooltip-bg: var(--bs-emphasis-color);
   --bs-tooltip-border-radius: var(--bs-border-radius);
@@ -6825,9 +6825,9 @@ textarea.form-control-lg {
   z-index: var(--bs-tooltip-zindex);
   display: block;
   margin: var(--bs-tooltip-margin);
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 500;
+  -family: "Roboto", sans-serif;
+  -style: normal;
+  -weight: 500;
   line-height: 1.5;
   text-align: left;
   text-align: start;
@@ -6839,7 +6839,7 @@ textarea.form-control-lg {
   white-space: normal;
   word-spacing: normal;
   line-break: auto;
-  font-size: var(--bs-tooltip-font-size);
+  -size: var(--bs-tooltip--size);
   word-wrap: break-word;
   opacity: 0;
 }
@@ -6914,7 +6914,7 @@ textarea.form-control-lg {
 .popover {
   --bs-popover-zindex: 1070;
   --bs-popover-max-width: 276px;
-  --bs-popover-font-size: 0.875rem;
+  --bs-popover--size: 0.875rem;
   --bs-popover-bg: var(--bs-body-bg);
   --bs-popover-border-width: var(--bs-border-width);
   --bs-popover-border-color: var(--bs-border-color-translucent);
@@ -6923,7 +6923,7 @@ textarea.form-control-lg {
   --bs-popover-box-shadow: var(--bs-box-shadow);
   --bs-popover-header-padding-x: 1rem;
   --bs-popover-header-padding-y: 0.5rem;
-  --bs-popover-header-font-size: 1rem;
+  --bs-popover-header--size: 1rem;
   --bs-popover-header-color: inherit;
   --bs-popover-header-bg: var(--bs-secondary-bg);
   --bs-popover-body-padding-x: 1rem;
@@ -6935,9 +6935,9 @@ textarea.form-control-lg {
   z-index: var(--bs-popover-zindex);
   display: block;
   max-width: var(--bs-popover-max-width);
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 500;
+  -family: "Roboto", sans-serif;
+  -style: normal;
+  -weight: 500;
   line-height: 1.5;
   text-align: left;
   text-align: start;
@@ -6949,7 +6949,7 @@ textarea.form-control-lg {
   white-space: normal;
   word-spacing: normal;
   line-break: auto;
-  font-size: var(--bs-popover-font-size);
+  -size: var(--bs-popover--size);
   word-wrap: break-word;
   background-color: var(--bs-popover-bg);
   background-clip: padding-box;
@@ -7051,7 +7051,7 @@ textarea.form-control-lg {
 .popover-header {
   padding: var(--bs-popover-header-padding-y) var(--bs-popover-header-padding-x);
   margin-bottom: 0;
-  font-size: var(--bs-popover-header-font-size);
+  -size: var(--bs-popover-header--size);
   color: var(--bs-popover-header-color);
   background-color: var(--bs-popover-header-bg);
   border-bottom: var(--bs-popover-border-width) solid var(--bs-popover-border-color);
@@ -10319,68 +10319,68 @@ textarea.form-control-lg {
           column-gap: 10rem !important;
 }
 
-.font-monospace {
-  font-family: var(--bs-font-monospace) !important;
+.-monospace {
+  -family: var(--bs--monospace) !important;
 }
 
 .fs-1 {
-  font-size: calc(1.40625rem + 1.875vw) !important;
+  -size: calc(1.40625rem + 1.875vw) !important;
 }
 
 .fs-2 {
-  font-size: calc(1.359375rem + 1.3125vw) !important;
+  -size: calc(1.359375rem + 1.3125vw) !important;
 }
 
 .fs-3 {
-  font-size: calc(1.3125rem + 0.75vw) !important;
+  -size: calc(1.3125rem + 0.75vw) !important;
 }
 
 .fs-4 {
-  font-size: calc(1.2890625rem + 0.46875vw) !important;
+  -size: calc(1.2890625rem + 0.46875vw) !important;
 }
 
 .fs-5 {
-  font-size: calc(1.25625rem + 0.075vw) !important;
+  -size: calc(1.25625rem + 0.075vw) !important;
 }
 
 .fs-6 {
-  font-size: 0.9375rem !important;
+  -size: 0.9375rem !important;
 }
 
 .fst-italic {
-  font-style: italic !important;
+  -style: italic !important;
 }
 
 .fst-normal {
-  font-style: normal !important;
+  -style: normal !important;
 }
 
 .fw-lighter {
-  font-weight: lighter !important;
+  -weight: lighter !important;
 }
 
 .fw-light {
-  font-weight: 400 !important;
+  -weight: 400 !important;
 }
 
 .fw-normal {
-  font-weight: 500 !important;
+  -weight: 500 !important;
 }
 
 .fw-medium {
-  font-weight: 500 !important;
+  -weight: 500 !important;
 }
 
 .fw-semibold {
-  font-weight: 600 !important;
+  -weight: 600 !important;
 }
 
 .fw-bold {
-  font-weight: 700 !important;
+  -weight: 700 !important;
 }
 
 .fw-bolder {
-  font-weight: bolder !important;
+  -weight: bolder !important;
 }
 
 .lh-1 {
@@ -16585,19 +16585,19 @@ textarea.form-control-lg {
 }
 @media (min-width: 1200px) {
   .fs-1 {
-    font-size: 2.8125rem !important;
+    -size: 2.8125rem !important;
   }
   .fs-2 {
-    font-size: 2.34375rem !important;
+    -size: 2.34375rem !important;
   }
   .fs-3 {
-    font-size: 1.875rem !important;
+    -size: 1.875rem !important;
   }
   .fs-4 {
-    font-size: 1.640625rem !important;
+    -size: 1.640625rem !important;
   }
   .fs-5 {
-    font-size: 1.3125rem !important;
+    -size: 1.3125rem !important;
   }
 }
 @media print {
@@ -17396,7 +17396,7 @@ textarea.form-control-lg {
   background: transparent;
   color: var(--bs-gray-800);
   border: none;
-  font-size: inherit;
+  -size: inherit;
   padding-left: 2.7rem;
   background-color: transparent !important;
 }
@@ -17629,7 +17629,7 @@ textarea.form-control-lg {
 
 .breadcrumb.breadcrumb-dots .breadcrumb-item + .breadcrumb-item::before {
   content: "•";
-  font-size: 22px;
+  -size: 22px;
   line-height: 0;
   height: 100%;
   display: -webkit-box;
@@ -17655,7 +17655,7 @@ textarea.form-control-lg {
 
 .btn-xs {
   padding: 0.4rem 0.6rem;
-  font-size: 0.6rem;
+  -size: 0.6rem;
   line-height: 1.2;
   border-radius: 0.325rem;
 }
@@ -17733,7 +17733,7 @@ textarea.form-control-lg {
   line-height: 30px;
 }
 .btn-round.btn-sm i, .btn-group-sm > .btn-round.btn i {
-  font-size: 0.6rem;
+  -size: 0.6rem;
 }
 
 /*rtl:raw:
@@ -18426,32 +18426,32 @@ textarea.form-control-lg {
 }
 .dropdown .dropdown-toggle:after {
   content: "\f107";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+  -family: " Awesome 5 Free";
+  -weight: 900;
   vertical-align: middle;
   border: none;
 }
 
 .dropup .dropdown-toggle:after {
   content: "\f106";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+  -family: " Awesome 5 Free";
+  -weight: 900;
   vertical-align: middle;
   border: none;
 }
 
 .dropstart .dropdown-toggle:before {
   content: "\f104";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+  -family: " Awesome 5 Free";
+  -weight: 900;
   vertical-align: middle;
   border: none;
 }
 
 .dropend .dropdown-toggle:after {
   content: "\f105";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+  -family: " Awesome 5 Free";
+  -weight: 900;
   vertical-align: middle;
   border: none;
 }
@@ -18772,7 +18772,7 @@ textarea.form-control-lg {
 
 .nav.nav-bottom-line .nav-link {
   border: transparent;
-  font-weight: 600;
+  -weight: 600;
   padding: 0.75rem 0.975rem;
 }
 .nav.nav-bottom-line .nav-item:first-child .nav-link {
@@ -18812,21 +18812,21 @@ textarea.form-control-lg {
 
 .navbar-expand-sm .dropdown-toggle:after {
   content: "\f107";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   margin-left: 0.35rem;
-  font-weight: 900;
+  -weight: 900;
   vertical-align: middle;
   border: none;
 }
 .navbar-expand-sm .dropdown-submenu.dropend .dropdown-toggle:after {
   content: "\f141";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
 }
 .navbar-expand-sm .dropdown-submenu.dropstart .dropdown-toggle:before {
   content: "\f141";
   margin-right: 0;
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
   position: absolute;
 }
@@ -18880,7 +18880,7 @@ textarea.form-control-lg {
   }
   .navbar-expand-sm .navbar-nav .nav-link {
     line-height: 40px;
-    font-weight: 500;
+    -weight: 500;
   }
   .navbar-expand-sm .dropdown-menu .dropdown-toggle:after {
     position: absolute;
@@ -19003,21 +19003,21 @@ textarea.form-control-lg {
 }
 .navbar-expand-md .dropdown-toggle:after {
   content: "\f107";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   margin-left: 0.35rem;
-  font-weight: 900;
+  -weight: 900;
   vertical-align: middle;
   border: none;
 }
 .navbar-expand-md .dropdown-submenu.dropend .dropdown-toggle:after {
   content: "\f141";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
 }
 .navbar-expand-md .dropdown-submenu.dropstart .dropdown-toggle:before {
   content: "\f141";
   margin-right: 0;
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
   position: absolute;
 }
@@ -19071,7 +19071,7 @@ textarea.form-control-lg {
   }
   .navbar-expand-md .navbar-nav .nav-link {
     line-height: 40px;
-    font-weight: 500;
+    -weight: 500;
   }
   .navbar-expand-md .dropdown-menu .dropdown-toggle:after {
     position: absolute;
@@ -19194,21 +19194,21 @@ textarea.form-control-lg {
 }
 .navbar-expand-lg .dropdown-toggle:after {
   content: "\f107";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   margin-left: 0.35rem;
-  font-weight: 900;
+  -weight: 900;
   vertical-align: middle;
   border: none;
 }
 .navbar-expand-lg .dropdown-submenu.dropend .dropdown-toggle:after {
   content: "\f141";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
 }
 .navbar-expand-lg .dropdown-submenu.dropstart .dropdown-toggle:before {
   content: "\f141";
   margin-right: 0;
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
   position: absolute;
 }
@@ -19262,7 +19262,7 @@ textarea.form-control-lg {
   }
   .navbar-expand-lg .navbar-nav .nav-link {
     line-height: 40px;
-    font-weight: 500;
+    -weight: 500;
   }
   .navbar-expand-lg .dropdown-menu .dropdown-toggle:after {
     position: absolute;
@@ -19385,21 +19385,21 @@ textarea.form-control-lg {
 }
 .navbar-expand-xl .dropdown-toggle:after {
   content: "\f107";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   margin-left: 0.35rem;
-  font-weight: 900;
+  -weight: 900;
   vertical-align: middle;
   border: none;
 }
 .navbar-expand-xl .dropdown-submenu.dropend .dropdown-toggle:after {
   content: "\f141";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
 }
 .navbar-expand-xl .dropdown-submenu.dropstart .dropdown-toggle:before {
   content: "\f141";
   margin-right: 0;
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
   position: absolute;
 }
@@ -19453,7 +19453,7 @@ textarea.form-control-lg {
   }
   .navbar-expand-xl .navbar-nav .nav-link {
     line-height: 40px;
-    font-weight: 500;
+    -weight: 500;
   }
   .navbar-expand-xl .dropdown-menu .dropdown-toggle:after {
     position: absolute;
@@ -19576,21 +19576,21 @@ textarea.form-control-lg {
 }
 .navbar-expand-xxl .dropdown-toggle:after {
   content: "\f107";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   margin-left: 0.35rem;
-  font-weight: 900;
+  -weight: 900;
   vertical-align: middle;
   border: none;
 }
 .navbar-expand-xxl .dropdown-submenu.dropend .dropdown-toggle:after {
   content: "\f141";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
 }
 .navbar-expand-xxl .dropdown-submenu.dropstart .dropdown-toggle:before {
   content: "\f141";
   margin-right: 0;
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
   position: absolute;
 }
@@ -19644,7 +19644,7 @@ textarea.form-control-lg {
   }
   .navbar-expand-xxl .navbar-nav .nav-link {
     line-height: 40px;
-    font-weight: 500;
+    -weight: 500;
   }
   .navbar-expand-xxl .dropdown-menu .dropdown-toggle:after {
     position: absolute;
@@ -19767,21 +19767,21 @@ textarea.form-control-lg {
 }
 .navbar-expand .dropdown-toggle:after {
   content: "\f107";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   margin-left: 0.35rem;
-  font-weight: 900;
+  -weight: 900;
   vertical-align: middle;
   border: none;
 }
 .navbar-expand .dropdown-submenu.dropend .dropdown-toggle:after {
   content: "\f141";
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
 }
 .navbar-expand .dropdown-submenu.dropstart .dropdown-toggle:before {
   content: "\f141";
   margin-right: 0;
-  font-family: "Font Awesome 5 Free";
+  -family: " Awesome 5 Free";
   right: 1rem;
   position: absolute;
 }
@@ -19834,7 +19834,7 @@ textarea.form-control-lg {
 }
 .navbar-expand .navbar-nav .nav-link {
   line-height: 40px;
-  font-weight: 500;
+  -weight: 500;
 }
 .navbar-expand .dropdown-menu .dropdown-toggle:after {
   position: absolute;
@@ -20149,18 +20149,18 @@ textarea.form-control-lg {
 }
 .progress .progress-percent {
   color: var(--bs-gray-600);
-  font-weight: 500;
+  -weight: 500;
   line-height: 24px;
   position: absolute;
   right: 0;
   top: -24px;
-  font-size: 12px;
+  -size: 12px;
 }
 .progress .progress-percent-simple {
   position: absolute;
   right: 0;
   top: -20px;
-  font-size: 14px;
+  -size: 14px;
 }
 
 .progress.progress-percent-bg .progress-percent {
@@ -20172,7 +20172,7 @@ textarea.form-control-lg {
   position: absolute;
   right: 0;
   top: -25px;
-  font-size: 10px;
+  -size: 10px;
 }
 .progress.progress-percent-bg .progress-percent:before {
   border-top-color: var(--bs-dark);
@@ -20213,8 +20213,8 @@ textarea.form-control-lg {
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit--smoothing: antialiased;
+  -moz-osx--smoothing: grayscale;
   height: 100%;
   overflow-x: hidden;
   z-index: 0;
@@ -20337,17 +20337,17 @@ section {
 
 small,
 .small {
-  font-weight: 400;
+  -weight: 400;
 }
 
 .smaller {
-  font-size: 0.7em;
-  font-weight: 400;
+  -size: 0.7em;
+  -weight: 400;
 }
 
 .dropcap {
-  font-size: 4em;
-  font-weight: bold;
+  -size: 4em;
+  -weight: bold;
   display: block;
   float: left;
   margin: 0.04em 0.2em 0 0;
@@ -20695,7 +20695,7 @@ small,
   text-align: center;
 }
 .back-top i {
-  font-size: 1.6rem;
+  -size: 1.6rem;
   vertical-align: middle;
 }
 .back-top:hover {
@@ -20718,7 +20718,7 @@ small,
     line-height: 30px;
   }
   .back-top i {
-    font-size: 1rem;
+    -size: 1rem;
   }
 }
 /* rtl:raw:
@@ -20952,12 +20952,12 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   color: var(--bs-primary) !important;
 }
 
-.font-base {
-  font-family: "Roboto", sans-serif !important;
+.-base {
+  -family: "Roboto", sans-serif !important;
 }
 
-.font-heading {
-  font-family: "Heebo", sans-serif !important;
+.-heading {
+  -family: "Heebo", sans-serif !important;
 }
 
 .grayscale {
@@ -20985,7 +20985,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   height: 1.5rem;
   line-height: 1.5rem;
   text-align: center;
-  font-size: 75%;
+  -size: 75%;
 }
 
 .icon-md {
@@ -20993,7 +20993,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   height: 2.6rem;
   line-height: 2.6rem;
   text-align: center;
-  font-size: 0.8rem;
+  -size: 0.8rem;
 }
 
 .icon-lg {
@@ -21001,7 +21001,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   height: 3.5rem;
   line-height: 3.5rem;
   text-align: center;
-  font-size: 1.2rem;
+  -size: 1.2rem;
 }
 
 .icon-xl {
@@ -21009,7 +21009,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   height: 5rem;
   line-height: 5rem;
   text-align: center;
-  font-size: 1.9rem;
+  -size: 1.9rem;
 }
 
 .icon-xxl {
@@ -21017,7 +21017,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   height: 7rem;
   line-height: 7rem;
   text-align: center;
-  font-size: 2.5rem;
+  -size: 2.5rem;
 }
 
 .shadow-hover:hover {
@@ -21153,7 +21153,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   .sidebar.navbar-expand-sm .navbar-nav > .nav-item > .nav-link {
     padding: 0.2rem;
     margin-bottom: 0;
-    font-size: 0.938rem;
+    -size: 0.938rem;
   }
   .sidebar.navbar-expand-sm .offcanvas .offcanvas-body .navbar-nav .nav-item {
     border-bottom: 0;
@@ -21282,7 +21282,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   .sidebar.navbar-expand-md .navbar-nav > .nav-item > .nav-link {
     padding: 0.2rem;
     margin-bottom: 0;
-    font-size: 0.938rem;
+    -size: 0.938rem;
   }
   .sidebar.navbar-expand-md .offcanvas .offcanvas-body .navbar-nav .nav-item {
     border-bottom: 0;
@@ -21411,7 +21411,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   .sidebar.navbar-expand-lg .navbar-nav > .nav-item > .nav-link {
     padding: 0.2rem;
     margin-bottom: 0;
-    font-size: 0.938rem;
+    -size: 0.938rem;
   }
   .sidebar.navbar-expand-lg .offcanvas .offcanvas-body .navbar-nav .nav-item {
     border-bottom: 0;
@@ -21540,7 +21540,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   .sidebar.navbar-expand-xl .navbar-nav > .nav-item > .nav-link {
     padding: 0.2rem;
     margin-bottom: 0;
-    font-size: 0.938rem;
+    -size: 0.938rem;
   }
   .sidebar.navbar-expand-xl .offcanvas .offcanvas-body .navbar-nav .nav-item {
     border-bottom: 0;
@@ -21669,7 +21669,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   .sidebar.navbar-expand-xxl .navbar-nav > .nav-item > .nav-link {
     padding: 0.2rem;
     margin-bottom: 0;
-    font-size: 0.938rem;
+    -size: 0.938rem;
   }
   .sidebar.navbar-expand-xxl .offcanvas .offcanvas-body .navbar-nav .nav-item {
     border-bottom: 0;
@@ -21793,7 +21793,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
 .sidebar.navbar-expand .navbar-nav > .nav-item > .nav-link {
   padding: 0.2rem;
   margin-bottom: 0;
-  font-size: 0.938rem;
+  -size: 0.938rem;
 }
 .sidebar.navbar-expand .offcanvas .offcanvas-body .navbar-nav .nav-item {
   border-bottom: 0;
@@ -21900,7 +21900,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   line-height: 1.5;
   border-radius: 0.325rem;
   min-height: auto;
-  font-size: 0.9375rem;
+  -size: 0.9375rem;
   padding: 0.5rem 2.25rem 0.5rem 1rem !important;
 }
 .choices .choices__list--multiple .choices__item {
@@ -22204,7 +22204,7 @@ html[dir=rtl] .choices__input {
   width: 30px;
   height: 30px;
   line-height: 30px;
-  font-size: 14px;
+  -size: 14px;
   margin: 0;
 }
 
@@ -22340,7 +22340,7 @@ html[dir=rtl] .choices__input {
 }
 
 .apexcharts-legend-text, .apexcharts-text, .apexcharts-title-text, .apexcharts-text tspan, .apexcharts-tooltip-title, .apexcharts-tooltip-text, .apexcharts-xaxistooltip-text, .apexcharts-yaxistooltip-text {
-  font-family: "Roboto", sans-serif !important;
+  -family: "Roboto", sans-serif !important;
 }
 
 .apexcharts-xaxis text, .apexcharts-yaxis text {

@@ -21,6 +21,7 @@
 		SELECT COUNT(*) FROM user WHERE userid=#{userid}
 	</select>
 	
+	<!-- 이메일 확인 -->
 	<select id="emailCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM user WHERE email=#{email}
 	</select>
@@ -61,6 +62,7 @@
 	<select id="verifyPassword" parameterType="kr.project.sportscenter.user.UserVO" resultType="int">
 		SELECT count(*) FROM user WHERE userid=#{userid} AND pwd=MD5(#{pwd}) 
 	</select> 
+	
 	
 	<!-- 수강 내역 확인 -->
 	<select id = "classView" parameterType="kr.project.sportscenter.user.UserVO" resultType="kr.project.sportscenter.user.UserVO">
