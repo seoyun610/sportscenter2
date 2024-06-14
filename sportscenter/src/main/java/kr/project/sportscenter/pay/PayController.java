@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +41,9 @@ public class PayController {
 	
 	
 	private IamportClient api;
+	
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 	
 	
 	public PayController() {
@@ -117,6 +122,15 @@ public class PayController {
 		model.addAttribute("map", service.courseList(vo));
 		return "admin/courseList";
 	}
+	
+
+
+    // 매달 24일 자정에 실행 (cron 표현식: "0 0 0 24 * ?")
+    @Scheduled(cron = "0 0 0 24  * ?")
+    public void cleanupOldPayEntries() {
+        String sql = "DELETE FROM pay WHERE paystate = 0 AND refundstate = 0 AND cancelstate = 0";
+        jdbcTemplate.update(sql);
+    }
 	
 	
 }

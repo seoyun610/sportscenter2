@@ -34,9 +34,8 @@
         FROM pay p 
             JOIN user u ON p.usernum = u.usernum 
             JOIN class c ON p.classid = c.classid 
-            WHERE p.cancelstate != '1'
 			<if test="searchWord != null and searchWord != ''">
-				AND p.usernum = (SELECT usernum FROM user WHERE username LIKE '%${searchWord}%'
+				WHERE AND p.usernum = (SELECT usernum FROM user WHERE username LIKE '%${searchWord}%')
 			</if>
 		ORDER BY payid
 	</select>
@@ -45,10 +44,10 @@
 	<select id="count" parameterType="kr.project.sportscenter.notice.NoticeVO" resultType="int">
 		SELECT count(*)
 		FROM pay
-		WHERE cancelstate != '1'
 		<if test="searchWord != null and searchWord != ''">
-			AND p.usernum = (SELECT usernum FROM user WHERE username LIKE '%${searchWord}%'
+			WHERE usernum = (SELECT usernum FROM user WHERE username LIKE '%${searchWord}%')
 		</if>
 	</select>
+	
 	
 </mapper>

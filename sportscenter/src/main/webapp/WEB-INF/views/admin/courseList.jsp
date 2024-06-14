@@ -89,7 +89,7 @@
 	                    <li><a href='#;' class='current'>${p}</a></li>
 	                </c:if>
 	                <c:if test="${p != PayVO.page}">
-	                     <li><a href='courseList.do?page=${p}searchWord=${PayVO.searchWord}'>${p}</a></li>
+	                     <li><a href='courseList.do?page=${p}&searchWord=${PayVO.searchWord}'>${p}</a></li>
 	                </c:if>
                 </c:forEach>
                 <c:if test="${map.next }">
@@ -101,11 +101,10 @@
               <div>
                  <form method="get" name="searchForm" id="searchForm" action="courseList.do">
                      <span class="searchWord">
-                         <input type="text" id="sval" name="searchWord" value="${PayVO.searchWord}"  title="이름 검색 입력">
-                         <input type="button" id="" value="검색" title="검색">
+                         <input type="text" id="sval" name="searchWord" value="${PayVO.searchWord}"  title="검색" placeholder="검색하고자 하는 수강생 이름을 입력하세요">
+                         <input type="submit" id="" value="검색" title="검색">
                      </span>
-                 </form>
-                        
+                 </form>    
               </div>
      </div>
 </body>

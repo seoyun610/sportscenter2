@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,29 +84,30 @@ public class ClassController {
 		}
 	}
 	
-	@GetMapping("/admin/addAll/{classyear}/{classmonth}")
-	public String addAll(@PathVariable int classyear, @PathVariable int classmonth, Model model, ClassVO cvo) {
-		int insertMonth = cvo.getClassmonth() + 1;
-		Map<String, Object> map = cservice.list(cvo);
-		List<ClassVO> list = (List)map.get("list");
-		for(int i=0; i<list.size(); i++) {
-			list.get(i).setClassmonth(insertMonth);
-			list.get(i).setClasscnt(0);
-		}
-		boolean r = cservice.registAll(list);
-		if(r) {
-			System.out.println("성공");
-			model.addAttribute("cmd", "move");
-			model.addAttribute("msg", "정상적으로 추가되었습니다.");
-			model.addAttribute("url", "/admin/list.do");
-		}
-		else {
-			System.out.println("실패");
-			model.addAttribute("cmd", "back");
-			model.addAttribute("msg", "추가 오류");
-		}
-		return "common/alert";
-	}
+	
+    @Scheduled(cron = "0 0 0 2 * ?") // 매일 자정에 실행
+    public void insertData() {
+        ClassVO cvo = new ClassVO();
+        cvo.setClassmonth(LocalDate.now().getMonthValue()); // 현재 월 설정
+        Map<String, Object> map = cservice.list(cvo);
+        List<ClassVO> list = (List<ClassVO>) map.get("list");
+        
+        int insertMonth = (cvo.getClassmonth() % 12) + 1; // 시스템 월 +1 계산
+
+        for (ClassVO item : list) {
+            item.setClassmonth(insertMonth);
+            item.setClasscnt(0);
+        }
+
+        boolean result = cservice.registAll(list);
+        if (result) {
+            System.out.println("데이터 삽입 성공");
+        } else {
+            System.out.println("데이터 삽입 실패");
+        }
+    }
+	
+	
 	
 	/*
 	 * @GetMapping("/admin/modify.do") public String modify(Model

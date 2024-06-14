@@ -4,13 +4,18 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -24,14 +29,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.zaxxer.hikari.HikariDataSource;
 
 import kr.project.sportscenter.util.AdminLoginInterceptor;
-import kr.project.sportscenter.util.LoginInterceptor; 
+import kr.project.sportscenter.util.LoginInterceptor;
 
-   
 @Configuration
-@ComponentScan(basePackages = { "kr.project.sportscenter" }) 
+@ComponentScan(basePackages = { "kr.project.sportscenter" })
 @EnableWebMvc
 @MapperScan(basePackages = { "kr.project.sportscenter" }, annotationClass = Mapper.class) // 인터페이스 스캔
 @EnableTransactionManagement
+@EnableScheduling
 public class MvcConfig implements WebMvcConfigurer {
 	// 파일업로드
 	@Bean
@@ -72,7 +77,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		reg.addViewController("/user/join.do");
 		reg.addViewController("/home.do");
 		// db 연동 상관 없는 애들은 controller를 만들어주지 않고,MvcConfig에 작성하면 됨
-		reg.addViewController("/subject/usageInfo.do"); 
+		reg.addViewController("/subject/usageInfo.do");
 		reg.addViewController("/subject/registInfo.do");
 		reg.addViewController("/test/test.do");
 	}
@@ -110,30 +115,26 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Bean
 	public LoginInterceptor loginInterception() {
 		return new LoginInterceptor();
-	} 
-	
+	}
+
 	// 로그인인터셉터 admin 빈등록
 	@Bean
 	public AdminLoginInterceptor AdminloginInterception() {
 		return new AdminLoginInterceptor();
-	} 
+	}
 
 	// 인터셉터 설정
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// url 설정
-		registry.addInterceptor(loginInterception())
-				.addPathPatterns("/user/login.do")
-				.excludePathPatterns("/reply/index.do")
-				.excludePathPatterns("/reply/view.do")
+		registry.addInterceptor(loginInterception()).addPathPatterns("/user/login.do")
+				.excludePathPatterns("/reply/index.do").excludePathPatterns("/reply/view.do")
 				.addPathPatterns("/member/edit.do");
-		
-		registry.addInterceptor(AdminloginInterception())
-				.addPathPatterns("/notice/edit.do")
-				.addPathPatterns("/admin/**")
-				.excludePathPatterns("/admin/adminLogin.do");		 
+
+		registry.addInterceptor(AdminloginInterception()).addPathPatterns("/notice/edit.do")
+				.addPathPatterns("/admin/**").excludePathPatterns("/admin/adminLogin.do");
 	}
-	
+
 	// properties 설정
 	@Bean
 	public static PropertyPlaceholderConfigurer propreties() {
@@ -141,4 +142,22 @@ public class MvcConfig implements WebMvcConfigurer {
 		config.setLocations(new ClassPathResource("db.properties"));
 		return config;
 	}
+	
+	
+	@Configuration
+	public class JdbcTemplateConfig {
+
+	    @Bean
+	    public JdbcTemplate jdbcTemplate(HikariDataSource dataSource) {
+	        return new JdbcTemplate(dataSource);
+	    }
+	}
+	
+	
+	@Component
+	public class PayCleanupScheduler {
+
+
+	}
+	
 }

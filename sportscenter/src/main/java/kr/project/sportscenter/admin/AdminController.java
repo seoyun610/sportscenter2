@@ -109,5 +109,10 @@ public class AdminController {
 		model.addAttribute("vo",sservice.detail(vo, true));
 		return "admin/adminSubjectView";
 	}
+	
+	@GetMapping("/admin/courseModify.do")
+	public String courseModify(Model model, SubjectVO vo, HttpSession sess) {
+		return null;
+	}
 
 }
