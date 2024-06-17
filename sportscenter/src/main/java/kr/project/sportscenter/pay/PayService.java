@@ -11,4 +11,6 @@ public interface PayService {
 	boolean update(PayVO vo);
 	Map<String, Object> courseList(PayVO vo);
 	boolean addAll(List<PayVO> list);
+	boolean courseModify(PayVO vo);
+	PayVO clist(int payid);
 }

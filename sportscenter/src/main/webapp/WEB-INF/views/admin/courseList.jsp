@@ -21,91 +21,274 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script>
-    </script>
+    <script src="/js/script.js"></script>
+    	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Eduport- LMS, Education and Course Theme">
+    <!-- Favicon -->
+	<link rel="shortcut icon" href="/resources/images/favicon.ico">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/choices/css/choices.min.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/apexcharts/css/apexcharts.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/overlay-scrollbar/css/overlayscrollbars.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<style>
+    tbody tr td {
+        text-align: center;
+        vertical-align: middle;
+    }
+	</style>
 </head> 
 <body>
-   <div class="size">
-       <h3 class="sub_title"> 수강 정보 관리 </h3>
-			<div>
-				<table>
-					<p><span><strong>총 ${map.count }개</strong>  |  ${NoticeVO.page }/${map.totalPage }페이지</span></p>
-                        <thead>
-                            <tr>
-                            	<th> 번호 </th>
-                                <th> 수강생 </th>
-                                <th> 수강 대상월 </th>
-                                <th> 종목 </th>
-                                <th> 요일 </th>
-                                <th> 시간 </th>
-                                <th> 등급 </th>
-                                <th> 결제 상태 </th>
-                                <th> 반 변경하기 </th>
-                            </tr>
-                        </thead>
-                    	<tbody>
-						<c:if test="${empty map.list }">
-                            <tr>
-                                <td class="first" colspan="8">등록된 수강 내역이 없습니다.</td>
-                            </tr>
-						</c:if>
-                        <c:forEach var="vo" items="${map.list }" varStatus="status">       
-                            <tr>
-                                <td>${fn:length(map.list) - status.index}</td>
-                                <td> ${vo.username }</td>
-                                <td> ${vo.classyear }-${vo.classmonth } </td>
-                                <td>  ${vo.subtypeName } </td>
-                                <td>  ${vo.classYoil } </td>
-                                <td>  ${vo.formattedClasstime } </td>
-                                <td>  ${vo.classlevelName } </td>
-						        <td><c:choose>
-						                <c:when test="${vo.paystate == 0}"> 미결제 </c:when>
-						                <c:when test="${vo.paystate == 1}"> 
-						                	<c:if test="${vo.refundstate == 1}"> 환불 완료 </c:if>
-						                	<c:if test="${vo.refundstate != 1}"> 결제 완료 </c:if>
+<main>
+<%@ include file="/WEB-INF/views/admin/sidebar.jsp" %> 
+<div class="page-content">
+<%@ include file="/WEB-INF/views/admin/topbar.jsp" %>
+	<div class="page-content-wrapper border">
+   	<div class="row mb-3">
+			<div class="col-12 d-sm-flex justify-content-between align-items-center">
+				<h3 class="h3 mb-2 mb-sm-0" > 수강 정보 관리</h3>
+			</div>
+	</div>
+	<!-- Card START -->
+	<div class="card bg-transparent border">
+
+	<!-- Card header START -->
+	<div class="card-header bg-light border-bottom">
+	<!-- Search and select START -->
+	<div class="row g-3 align-items-center justify-content-between">
+	<!-- Search bar -->
+	<div class="col-md-8">
+	<form class="rounded position-relative">
+	<input class="form-control bg-body" type="searchWord" placeholder="검색하고자 하는 수강생 이름을 입력하세요" aria-label="Search" name="searchWord" value="${PayVO.searchWord}">
+		<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
+		<i class="fas fa-search fs-6 "></i>
+	</button>
+	</form>
+	</div>
+	</div>
+	</div>
+	<!-- Card header END -->
+	
+	<!-- Card body START -->
+			<div class="card-body">
+				<!-- Course table START -->
+				<div class="table-responsive border-0 rounded-3">
+					<!-- Table START -->
+					<table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+						<!-- Table head -->
+						<thead>
+							<tr style="text-align:center">
+								<th scope="col" class="border-0 rounded-start">번호</th>
+								<th scope="col" class="border-0"> 수강생</th>
+								<th scope="col" class="border-0"> 수강 대상월</th>
+								<th scope="col" class="border-0"> 종목</th>
+								<th scope="col" class="border-0"> 요일</th>
+								<th scope="col" class="border-0"> 시간</th>
+								<th scope="col" class="border-0"> 등급</th>
+								<th scope="col" class="border-0"> 결제 상태</th>
+								<th scope="col" class="border-0 rounded-end"> 반 변경하기</th>
+							</tr>
+						</thead>
+						<!-- Table body START -->
+						<tbody>
+							<c:if test="${empty map.list }">
+							<td class="first" colspan="9">등록된 수강생이 없습니다.</td>
+							</c:if>
+						<c:forEach var="vo" items="${map.list }" varStatus="status">
+						<tr>
+							<td>  
+								<div class="align-items-center position-relative">
+								<!-- Title -->
+								<h6 class="table-responsive-title mb-0 ms-2" >	
+									<a>${fn:length(map.list) - status.index}</a>
+								</h6>
+								</div>
+							</td>
+							<td>
+								<div class="align-items-center">
+										<h6 class="mb-0 fw-light">${vo.username }</h6>
+								</div>
+							</td>
+							<td>
+								<div class="align-items-center">
+									<h6 class="mb-0 fw-light">${vo.classyear }-${vo.classmonth }</h6>
+								</div>
+							</td>
+							<td>
+								<div class="align-items-center">
+									<h6 class="mb-0 fw-light">${vo.subtypeName }</h6>
+								</div>
+							</td>
+							<td>
+								<div class="align-items-center">
+									<h6 class="mb-0 fw-light">${vo.classYoil }</h6>
+								</div>
+							</td>
+							<td>
+								<div class="align-items-center">
+									<h6 class="mb-0 fw-light">${vo.formattedClasstime } </h6>
+								</div>
+							</td>
+							<td>
+								<div class="align-items-center">
+									<h6 class="mb-0 fw-light"> ${vo.classlevelName }</h6>
+								</div>
+							</td>
+							<td>
+								<div class="align-items-center">
+									<h6 class="mb-0 fw-light">
+									<c:choose>
+							        	<c:when test="${vo.paystate == 0}"> 미결제 </c:when>
+							            <c:when test="${vo.paystate == 1}"> 
+							            	<c:if test="${vo.refundstate == 1}"> 환불 완료 </c:if>
+							               	<c:if test="${vo.refundstate != 1}"> 결제 완료 </c:if>
 						                </c:when>
 						                <c:otherwise></c:otherwise>
+						            </c:choose></h6>
+								</div>
+							</td>
+							<td>
+								<div class="align-items-center">
+									<c:choose>
+						            <c:when test="${currentYear == vo.classyear && vo.paystate == 0 && vo.classmonth == nextMonth}">
+						            	<h6 class="mb-0 fw-light"><a href="courseModify.do?payid=${vo.payid}&classyear=${vo.classyear}&classmonth=${vo.classmonth}" class="btn btn-sm btn-success-soft me-1 mb-1 mb-md-0" >변경하기</a></h6>
+      								</c:when>
+						            <c:otherwise />
 						            </c:choose>
-						        </td> 
-						        <td> <c:choose>
-						                <c:when test="${currentYear == vo.classyear && vo.paystate == 0 && vo.classmonth == nextMonth}">
-						                    <input type="button" id="btn" onclick="location.href = '/admin/courseModify.do?payid='+ ${vo.payid };" value="변경하기"></td>
-						                </c:when>
-						                <c:otherwise />
-						            </c:choose>
-						        </td>
-                            </tr>
-                       	</c:forEach>
-                     	</tbody>
-                 </table>
-             </div>
-             <div>
-             	<ul>
-                <c:if test="${map.prev }">
-               		<li><a href="courseList.do?page=${map.startPage-1 }&searchWord=${PayVO.searchWord}"> << </a></li>
-                </c:if>
-                <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
-	                <c:if test="${p == PayVO.page}">
-	                    <li><a href='#;' class='current'>${p}</a></li>
-	                </c:if>
-	                <c:if test="${p != PayVO.page}">
-	                     <li><a href='courseList.do?page=${p}&searchWord=${PayVO.searchWord}'>${p}</a></li>
-	                </c:if>
-                </c:forEach>
-                <c:if test="${map.next }">
-                    <li><a href="courseList.do?page=${map.endPage+1 }&searchWord=${PayVO.searchWord}"> >> </a></li>
-                </c:if>
-                </ul> 
-             </div>
-         <!-- 페이지처리 -->
-              <div>
-                 <form method="get" name="searchForm" id="searchForm" action="courseList.do">
-                     <span class="searchWord">
-                         <input type="text" id="sval" name="searchWord" value="${PayVO.searchWord}"  title="검색" placeholder="검색하고자 하는 수강생 이름을 입력하세요">
-                         <input type="submit" id="" value="검색" title="검색">
-                     </span>
-                 </form>    
-              </div>
+									</div>
+								</div>
+							</td>
+						</tr>
+						</c:forEach>	
+						</tbody>
+						</table>
+						</div>
+						</div>
+						<!-- Card footer START -->
+						<div class="card-footer bg-transparent pt-0">
+							<!-- Pagination START -->
+							<div class="d-sm-flex justify-content-sm-between align-items-sm-center">
+								<!-- Content -->
+								<p class="mb-0 text-center text-sm-start">	${map.page }/${map.totalPage }페이지 </p>
+								<!-- Pagination -->
+								<nav class="d-flex justify-content-center mb-0" aria-label="navigation">
+									<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+										<c:if test="${map.prev }">
+										<li class="page-item mb-0"><a class="page-link" href="courseList.do?page=${map.startPage-1 }&searchWord=${PayVO.searchWord}" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
+										</c:if>
+										<c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
+										<c:if test="${p == PayVO.page}">
+	                   						<li class="page-item mb-0 active"><a class="page-link" href='#;' class='current'>${p}</a></li>
+	                					</c:if>
+	                					<c:if test="${p != PayVO.page}">
+	                    			 		<li class="page-item mb-0"><a class="page-link" href='courseList.do?page=${p}&searchWord=${PayVO.searchWord}'>${p}</a></li>
+	                					</c:if>
+	                					</c:forEach>
+	                					<c:if test="${map.next }">
+										<li class="page-item mb-0"><a href="courseList.do?page=${map.endPage+1 }&searchWord=${PayVO.searchWord}" class="page-link"><i class="fas fa-angle-right"></i></a></li>
+										</c:if>
+									</ul>
+								</nav>
+							</div>
+							<!-- Pagination END -->
+						</div>
+						<!-- Card footer END -->	
+			</div>
+			</div>
+
+										
+	
+<!-- 	<table> -->
+<%-- 		<p><span><strong>총 ${map.count }개</strong>  |  ${PayVO.page }/${map.totalPage }페이지</span></p> --%>
+<!--                         <thead> -->
+<!--                             <tr> -->
+<!--                             	<th> 번호 </th> -->
+<!--                                 <th> 수강생 </th> -->
+<!--                                 <th> 수강 대상월 </th> -->
+<!--                                 <th> 종목 </th> -->
+<!--                                 <th> 요일 </th> -->
+<!--                                 <th> 시간 </th> -->
+<!--                                 <th> 등급 </th> -->
+<!--                                 <th> 결제 상태 </th> -->
+<!--                                 <th> 반 변경하기 </th> -->
+<!--                             </tr> -->
+<!--                         </thead> -->
+<!--                     	<tbody> -->
+<%-- 						<c:if test="${empty map.list }"> --%>
+<!--                             <tr> -->
+<!--                                 <td class="first" colspan="8">등록된 수강 내역이 없습니다.</td> -->
+<!--                             </tr> -->
+<%-- 						</c:if> --%>
+<%--                         <c:forEach var="vo" items="${map.list }" varStatus="status">        --%>
+<!--                             <tr> -->
+<%--                                 <td> ${fn:length(map.list) - status.index}</td> --%>
+<%--                                 <td> ${vo.username }</td> --%>
+<%--                                 <td> ${vo.classyear }-${vo.classmonth } </td> --%>
+<%--                                 <td>  ${vo.subtypeName } </td> --%>
+<%--                                 <td>  ${vo.classYoil } </td> --%>
+<%--                                 <td>  ${vo.formattedClasstime } </td> --%>
+<%--                                 <td>  ${vo.classlevelName } </td> --%>
+<%-- 						        <td><c:choose> --%>
+<%-- 						                <c:when test="${vo.paystate == 0}"> 미결제 </c:when> --%>
+<%-- 						                <c:when test="${vo.paystate == 1}">  --%>
+<%-- 						                	<c:if test="${vo.refundstate == 1}"> 환불 완료 </c:if> --%>
+<%-- 						                	<c:if test="${vo.refundstate != 1}"> 결제 완료 </c:if> --%>
+<%-- 						                </c:when> --%>
+<%-- 						                <c:otherwise></c:otherwise> --%>
+<%-- 						            </c:choose> --%>
+<!-- 						        </td>  -->
+<%-- 						        <td> <c:choose> --%>
+<%-- 						                <c:when test="${currentYear == vo.classyear && vo.paystate == 0 && vo.classmonth == nextMonth}"> --%>
+<%-- 						                    <input type="button" id="btn" onclick="location.href = '/admin/courseModify.do?payid=${vo.payid}&classyear=${vo.classyear}&classmonth=${vo.classmonth}';" value="변경하기"> --%>
+<%--       									</c:when> --%>
+<%-- 						                <c:otherwise /> --%>
+<%-- 						            </c:choose> --%>
+<!-- 						        </td> -->
+<!--                             </tr> -->
+<%--                        	</c:forEach> --%>
+<!--                      	</tbody> -->
+<!--                  </table> -->
+<!--              </div> -->
+<!--              <div> -->
+<!--              	<ul> -->
+<%--                 <c:if test="${map.prev }"> --%>
+<%--                		<li><a href="courseList.do?page=${map.startPage-1 }&searchWord=${PayVO.searchWord}"> << </a></li> --%>
+<%--                 </c:if> --%>
+<%--                 <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}"> --%>
+<%-- 	                <c:if test="${p == PayVO.page}"> --%>
+<%-- 	                    <li><a href='#;' class='current'>${p}</a></li> --%>
+<%-- 	                </c:if> --%>
+<%-- 	                <c:if test="${p != PayVO.page}"> --%>
+<%-- 	                     <li><a href='courseList.do?page=${p}&searchWord=${PayVO.searchWord}'>${p}</a></li> --%>
+<%-- 	                </c:if> --%>
+<%--                 </c:forEach> --%>
+<%--                 <c:if test="${map.next }"> --%>
+<%--                     <li><a href="courseList.do?page=${map.endPage+1 }&searchWord=${PayVO.searchWord}"> >> </a></li> --%>
+<%--                 </c:if> --%>
+<!--                 </ul>  -->
+<!--              </div> -->
+<!--          페이지처리 -->
+<!--               <div> -->
+<!--                  <form method="get" name="searchForm" id="searchForm" action="courseList.do"> -->
+<!--                      <span class="searchWord"> -->
+<%--                          <input type="text" id="sval" name="searchWord" value="${PayVO.searchWord}"  title="검색" placeholder="검색하고자 하는 수강생 이름을 입력하세요"> --%>
+<!--                          <input type="submit" id="" value="검색" title="검색"> -->
+<!--                      </span> -->
+<!--                  </form>     -->
+<!--               </div> -->
      </div>
 </body>
 </html>

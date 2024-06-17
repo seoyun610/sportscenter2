@@ -13,7 +13,6 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="/js/script.js"></script>
-    	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Eduport- LMS, Education and Course Theme">
@@ -35,6 +34,12 @@
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<style>
+    tbody tr td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
 </head> 
 <body>
 <main>
@@ -44,7 +49,7 @@
 	<div class="page-content-wrapper border">
 		<div class="row mb-3">
 			<div class="col-12 d-sm-flex justify-content-between align-items-center">
-				<h1 class="h3 mb-2 mb-sm-0" > 회원 목록 <span class="badge bg-orange bg-opacity-10 text-orange"> 총 ${map.count } 명</span></h1>
+				<h3 class="h3 mb-2 mb-sm-0" > 회원 목록 <span class="badge bg-orange bg-opacity-10 text-orange"> 총 ${map.count } 명</span></h3>
 			</div>
 		</div>
 		<!-- Card START -->
@@ -93,7 +98,7 @@
 						<c:forEach var="vo" items="${map.list }" >  
 							<tr>
 								<td >
-									<div class="d-flex align-items-center position-relative">
+									<div class="align-items-center position-relative">
 										<!-- Title -->
 										<h6 class="table-responsive-title mb-0 ms-2" >	
 											<a>${vo.username }</a>
@@ -101,36 +106,27 @@
 									</div>
 								</td>
 								<td>
-									<div class="d-flex align-items-center">
-										<div class="ms-2">
-											<h6 class="mb-0 fw-light">${vo.hp }</h6>
-										</div>
+									<div class="align-items-center">
+										<h6 class="mb-0 fw-light">${vo.hp }</h6>
 									</div>
 								</td>
 								<td>
-									<div class="d-flex align-items-center">
-										<div class="ms-2">
-											<h6 class="mb-0 fw-light">
-											<c:choose>
-							                    <c:when test="${vo.gender == 1}">남자</c:when>
-							               		<c:when test="${vo.gender == 2}">여자</c:when>
-						               			<c:otherwise /> </c:choose>
-						               		</h6>
-										</div>
+									<div class="align-items-center">
+										<h6 class="mb-0 fw-light">
+										<c:choose>
+							            	<c:when test="${vo.gender == 1}">남자</c:when>
+							               	<c:when test="${vo.gender == 2}">여자</c:when>
+						               	<c:otherwise /> </c:choose></h6>
 									</div>
 								</td>
 								<td>
-									<div class="d-flex align-items-center">
-										<div class="ms-2">
-											<h6 class="mb-0 fw-light">${vo.birth }</h6>
-										</div>
+									<div class="align-items-center">
+										<h6 class="mb-0 fw-light">${vo.birth }</h6>
 									</div>
 								</td>
 								<td>
-									<div class="d-flex align-items-center">
-										<div class="ms-2">
-											<h6 class="mb-0 fw-light">${vo.email }</h6>
-										</div>
+									<div class="align-items-center">
+										<h6 class="mb-0 fw-light">${vo.email }</h6>
 									</div>
 								</td>
 							</tr>
@@ -143,6 +139,7 @@
 </div>
 </div>
 </main>
+<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 </body>
 
 </html>

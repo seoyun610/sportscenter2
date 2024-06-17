@@ -13,4 +13,6 @@ public interface PayMapper {
 	List<PayVO> courseList(PayVO vo);
 	int count(PayVO vo);
 	int addAll(List<PayVO> list);
+	int courseModify(PayVO vo);
+	PayVO clist(int payid);
 }
