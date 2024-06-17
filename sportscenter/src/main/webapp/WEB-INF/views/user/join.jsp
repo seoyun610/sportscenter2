@@ -171,6 +171,7 @@
     			$("#userid").focus();
     			return;
     		}
+    	
     		if ($("#pwd").val() == '') {
     			alert('비밀번호를 입력하세요');
     			$("#pwd").focus();
@@ -179,6 +180,7 @@
     		if ($("#pwd").val() != $("#pwd_check").val()) {
     			alert('비밀번호를 확인하세요');
     			return;
+    			
     		}
     		var reg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
     		if ($("#pwd").val().match(reg) == null) {
@@ -212,6 +214,13 @@
     			$("#birth").focus();
     			return;
     		}
+    		// 8자리 생년월일
+    		const regBirth = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
+    		if(!regBirth.test($("#birth").val())) {
+    		    alert('정확한 생년월일 8자리를 입력해주세요');
+    		    return;
+    		}
+    		
     		if (!$('input[name="gender"]:checked').val()) {
     		    alert('성별은 필수 입력값입니다.');
     		    $('input[name="gender"]').first().focus();
@@ -343,6 +352,8 @@
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
 										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="아이디" id="userid" name="userid">
 										<a href="javascript:;" class="btn btn-secondary ms-2" id="useridCheck">중복확인</a> 
+										<!-- 아이디 중복 체크 여부 -->
+										<input type="hidden" name="useridDuplication" value="useridCheck">
 									</div>
 								</div>
 
@@ -382,8 +393,7 @@
 									</div>
 								</div>
 	
-							
-                            <!-- Email -->
+							<!-- Email -->
 								<div class="mb-4">
 									<label for="inputEmail1" class="form-label">이메일 *</label>
 									<div class="input-group input-group-lg">
@@ -462,4 +472,4 @@
 	<!-- Template Functions -->
 	<script src="assets/js/functions.js"></script>
 </body> 
-</html>v
+</html>                       
