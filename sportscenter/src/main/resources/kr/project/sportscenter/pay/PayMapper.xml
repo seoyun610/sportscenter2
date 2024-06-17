@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.project.sportscenter.pay.PayMapper"> 
+	<sql id="searchSql">
+		<where>
+			<choose>
+				<when test="payid != null and payid != ''">
+					AND payid = #{payid}
+				</when>
+			</choose>
+			<choose>
+				<when test="classid != null and classid != ''">
+					AND classid = #{classid}
+				</when>
+			</choose>
+			<choose>
+				<when test="usernum != null and usernum != ''">
+					AND usernum = #{usernum}
+				</when>
+			</choose>
+			<choose>
+				<when test="paystate != null and paystate != ''">
+					AND paystate = #{paystate}
+				</when>
+			</choose>
+			<choose>
+				<when test="cancelstate != null and cancelstate != ''">
+					AND cancelstate = #{cancelstate}
+				</when>
+			</choose>
+			<choose>
+				<when test="refundstate != null and refundstate != ''">
+					AND refundstate = #{refundstate}
+				</when>
+			</choose>
+			<choose>
+				<when test="paymethod != null and paymethod != ''">
+					AND paymethod = #{paymethod}
+				</when>
+			</choose>
+			<choose>
+				<when test="imp_uid != null and imp_uid != ''">
+					AND imp_uid = #{imp_uid}
+				</when>
+			</choose>
+		</where>
+	</sql>
 
-	<!-- 목록 -->
+	<insert id="addAll" parameterType="java.util.List">
+		INSERT INTO pay (
+			classid, usernum, paystate, cancelstate, refundstate, price
+		) VALUES 
+			<foreach collection="list" item="item" separator=",">
+				(#{item.classid}, #{item.usernum}, #{item.paystate}
+				, #{item.cancelstate}, #{item.refundstate}, #{item.price})
+			</foreach>
+	</insert>
+
+	<!-- 조회 -->
 	<select id="list" parameterType="kr.project.sportscenter.pay.PayVO" resultType="kr.project.sportscenter.pay.PayVO">
 		SELECT * 
 		FROM pay
-		WHERE usernum=${usernum}
+		<include refid="searchSql"/>
+		ORDER BY payid DESC
+		LIMIT #{startIdx}, 10
 	</select>
 	
 	<!-- db저장하는 법 -->

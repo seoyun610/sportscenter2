@@ -43,8 +43,8 @@ public class ClassServiceImpl implements ClassService {
 
 
 	@Override
-	public ClassVO select(int classid) {
-		return mapper.select(classid);
+	public ClassVO select(ClassVO vo) {
+		return mapper.select(vo);
 	}
 
 	

@@ -34,69 +34,6 @@
     		font-family: 'Noto Sans KR', sans-serif;
 		} /*Noto Sans KR */
 	
-	.btn.btn-secondary {
-		width: 100px;
-	    background-color: #0d6efd;
-    	color: white; /* 버튼 텍스트 색상 */ 
-	}
-
-	.btn.btn-secondary:hover {
-    	background-color: #0056b3; /* 마우스 호버 시 배경색 */
-    	color: white; /* 마우스 호버 시 텍스트 색상 */
-	}	
-	
-	
-	.form-label {
-            font-weight: 700; /* bold */
-            font-size: 15px;
-    }
-    
-    .separator {
-            border-top: 1px solid #ddd;
-            margin: 20px 0; /* 위 아래로 간격을 둠 */
-        }
-    .btn-cancel {
-        background-color: #ced4da; /* 회색 배경색 */
-        color: white; /* 흰색 텍스트색 */
-        border-color: #ced4da; /* 회색 테두리색 */
-        flex: 1;
-    }
-
-    .btn-cancel:hover,
-    .btn-cancel:focus {
-        background-color: #495057; /* 더 어두운 회색 배경색 */
-        border-color: #495057; /* 더 어두운 회색 테두리색 */
-    	color: white;
-    }
-
-    .btn-save {
-        background-color: #0d6efd; /* 파란색 배경색 */
-        border-color: #0d6efd; /* 파란색 테두리색 */
-        color: white;
-        flex: 1; 
-    }
-
-    .btn-save:hover,
-    .btn-save:focus {
-        background-color: #0056b3; /* 더 어두운 파란색 배경색 */
-        border-color: #0056b3; /* 더 어두운 파란색 테두리색 */
-        color: white; 
-    }
-    
-     .btnSet .text-center {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem; /* 버튼 간격 */
-    }
-
-    .btnSet .text-center a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        padding: 0.5rem 1rem; /* 버튼 패딩 */
-    }
-    
     #userid::placeholder {
 		    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트로 변경 */
 		    font-size: 15px; /* 원하는 폰트 크기로 변경 */
@@ -162,6 +99,67 @@
 	    font-size: 15px; /* 원하는 폰트 크기로 변경 */
 	    color: #999; /* 원하는 폰트 색상으로 변경 */
 	}
+	 .btn.btn-secondary {
+	background-color: #0d6efd;
+    	color: white; /* 버튼 텍스트 색상 */ 
+	}
+
+	.btn.btn-secondary:hover {
+    	background-color: #0056b3; /* 마우스 호버 시 배경색 */
+    	color: white; /* 마우스 호버 시 텍스트 색상 */
+	}	
+	
+	
+	.form-label {
+            font-weight: 700; /* bold */
+            font-size: 15px;
+    }
+    
+    .separator {
+            border-top: 1px solid #ddd;
+            margin: 20px 0; /* 위 아래로 간격을 둠 */
+        }
+    .btn-cancel {
+        background-color: #ced4da; /* 회색 배경색 */
+        color: white; /* 흰색 텍스트색 */
+           }
+
+    .btn-cancel:hover,
+    .btn-cancel:focus {
+        background-color: #495057; /* 더 어두운 회색 배경색 */
+        border-color: #495057; /* 더 어두운 회색 테두리색 */
+    	color: white;
+    }
+
+    .btn-save {
+        background-color: #0d6efd; /* 파란색 배경색 */
+        border-color: #0d6efd; /* 파란색 테두리색 */
+        color: white;
+      
+    }
+
+    .btn-save:hover,
+    .btn-save:focus {
+        background-color: #0056b3; /* 더 어두운 파란색 배경색 */
+        border-color: #0056b3; /* 더 어두운 파란색 테두리색 */
+        color: white; 
+    }
+    
+     .btnSet .text-center {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem; /* 버튼 간격 */
+ 	
+    }
+
+    .btnSet .text-center a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 0.5rem 1rem; /* 버튼 패딩 */
+	
+    }
     </style>
     <script>
     	var con1 = false;
@@ -325,13 +323,13 @@
 <body>
     <!-- **************** MAIN CONTENT START **************** -->
 <main>
-	<section class="p-0 d-flex align-items-center position-relative overflow-hidden">
-
+	<section class="p-0 d-flex justify-content-center position-relative overflow-hidden">
+			<div class="col-12 col-lg-8">
 				<div class="col-12 col-lg-6 m-auto">
 					<div class="row my-5">
-						<div class="col-sm-10 col-xl-8 m-auto">
+					
 							<!-- Title -->
-							<h2 style="text-align: center; font-weight: 700;" >회원가입</h2>
+							<h2 class="fs-2" style="text-align: center; font-weight: 700;" >회원가입</h2>
 							
 							<!-- Separator -->
 								<div class="separator"></div>
@@ -456,12 +454,12 @@
     </main>
     
     <!-- Back to top -->
-	<!--<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>  -->
+	<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div> 
 
 	<!-- Bootstrap JS -->
-	<!-- <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
+	<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Template Functions -->
-	<!-- <script src="assets/js/functions.js"></script> -->
+	<script src="assets/js/functions.js"></script>
 </body> 
 </html>v

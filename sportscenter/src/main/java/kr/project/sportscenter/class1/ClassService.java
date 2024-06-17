@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface ClassService {
 	Map<String, Object> list(ClassVO vo);
-	ClassVO select(int classid);
+	ClassVO select(ClassVO vo);
 	boolean regist(ClassVO vo);
 	//boolean registAll(Map<String, Object> map);
 	boolean modify(ClassVO vo);
