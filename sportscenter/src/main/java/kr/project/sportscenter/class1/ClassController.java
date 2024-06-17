@@ -84,8 +84,8 @@ public class ClassController {
 		}
 	}
 	
-	
-    @Scheduled(cron = "0 0 0 2 * ?") // 매일 자정에 실행
+	// 다음달 신규 수업 등록
+    @Scheduled(cron = "0 18 9 15 * ?") // 매달 18일 오전 9시 15분에 실행
     public void insertData() {
         ClassVO cvo = new ClassVO();
         cvo.setClassmonth(LocalDate.now().getMonthValue()); // 현재 월 설정
@@ -131,8 +131,10 @@ public class ClassController {
 	
 	@RequestMapping(value = "/admin/modify.do", method=RequestMethod.GET)
 	public String modify(@RequestParam int classid, Model model, LevelVO lvo, TimeVO tvo) {
-		System.out.println(cservice.select(classid));
-		model.addAttribute("obj", cservice.select(classid));
+		ClassVO cvo = new ClassVO();
+		cvo.setClassid(classid);
+		System.out.println(cservice.select(cvo));
+		model.addAttribute("obj", cservice.select(cvo));
 		model.addAttribute("lmap", lservice.list(lvo));
 		model.addAttribute("tmap", tservice.list(tvo));
 		return "admin/classModify";
@@ -171,7 +173,7 @@ public class ClassController {
 		UserVO login = (UserVO)sess.getAttribute("login");
 	    cvo.setClassid(classid);
 	    model.addAttribute("uvo",login);
-		model.addAttribute("vo",cservice.select(classid));
+		model.addAttribute("vo",cservice.select(cvo));
 		return "pay/payCheck";
 	}
 }

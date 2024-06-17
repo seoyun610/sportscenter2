@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ClassMapper {
 	int count(ClassVO vo);
 	List<ClassVO> list(ClassVO vo);
-	ClassVO select(int classid);
+	ClassVO select(ClassVO vo);
 	ClassVO detail(ClassVO vo); // 이건 어디서 쓰는거지??
 	int regist(ClassVO vo);
 	int registAll(List<ClassVO> list);

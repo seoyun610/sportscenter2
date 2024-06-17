@@ -12,4 +12,5 @@ public interface PayMapper {
 	int update(PayVO vo);
 	List<PayVO> courseList(PayVO vo);
 	int count(PayVO vo);
+	int addAll(List<PayVO> list);
 }

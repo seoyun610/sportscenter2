@@ -1,7 +1,9 @@
 package kr.project.sportscenter.pay;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -132,6 +134,59 @@ public class PayController {
         jdbcTemplate.update(sql);
     }
 	
-	
+    // 다음달 재수강 결제 내역 등록
+    @Scheduled(cron="0 20 9 15 * ?") // 매달 20일 오전 9시 15분에 실행
+	public void addAll() {
+    	LocalDate now = LocalDate.now();
+		int year = now.getYear();
+		int month = now.getMonthValue();
+		int nextMonth = now.getMonthValue() + 1;
+		
+		PayVO vo = new PayVO();
+		vo.setPaystate(1);
+		vo.setCancelstate(0);
+		vo.setRefundstate(0);
+		vo.setClassmonth(month);
+		Map<String, Object> map = service.list(vo);
+		List<PayVO> list = (List<PayVO>)map.get("list");
+		
+		for(PayVO item : list) {
+			int pre_classid = item.getClassid();
+			int pre_usernum = item.getUsernum();
+			
+			ClassVO pre_cvo = new ClassVO();
+			pre_cvo.setClassid(pre_classid);
+			pre_cvo = cservice.select(pre_cvo);
+			
+			int pre_subtype = pre_cvo.getSubtype();
+			int pre_classlevel = pre_cvo.getClasslevel();
+			int pre_classtime = pre_cvo.getClasstime();
+			String pre_classday = pre_cvo.getClassday();
+			
+			ClassVO new_cvo = new ClassVO();
+			new_cvo.setSubtype(pre_subtype);
+			new_cvo.setClasslevel(pre_classlevel);
+			new_cvo.setClasstime(pre_classtime);
+			new_cvo.setClassday(pre_classday);
+			new_cvo.setClassyear(year);
+			new_cvo.setClassmonth(nextMonth);
+			
+			new_cvo = cservice.select(new_cvo);
+
+			item.setClassid(new_cvo.getClassid());
+			item.setUsernum(pre_usernum);
+			item.setPaystate(0);
+			item.setCancelstate(0);
+			item.setRefundstate(0);
+			item.setPrice(new_cvo.getClassprice());
+		}
+		
+		boolean r = service.addAll(list);
+		if(r) {
+			System.out.println("재수강 내역 삽입 완료");
+		} else {
+			System.out.println("재수강 내역 삽입 실패");
+		}
+	}
 }
 	
