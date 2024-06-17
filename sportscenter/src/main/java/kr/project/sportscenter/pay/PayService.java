@@ -1,5 +1,6 @@
 package kr.project.sportscenter.pay;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -9,4 +10,5 @@ public interface PayService {
 	boolean exists(PayVO vo);
 	boolean update(PayVO vo);
 	Map<String, Object> courseList(PayVO vo);
+	boolean addAll(List<PayVO> list);
 }

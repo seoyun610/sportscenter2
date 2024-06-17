@@ -38,53 +38,84 @@
         </c:forEach>
     </tbody>
 </table>
-<script>
-	var IMP = window.IMP;
-	
-	function requestPay() {
-		
-		  IMP.init('imp21126721');
-		  
-		  IMP.request_pay(
-			{
-		    pg: "html5_inicis",
-		    pay_method: "card",
-		    merchant_uid : '${vo.classid}',
-		    name : '${vo.classname}',
-		    amount : ${vo.classprice},
-		    buyer_email : '${uvo.userid}',
-		    buyer_name : '${uvo.username}',
-		    buyer_tel : '${uvo.hp}',
-		    buyer_addr : '${uvo.addr}',
-		    buyer_postcode : '${uvo.addr2}',
-		  	}, function (rsp) { 
-		  		console.log(rsp);
-              $.ajax({
-                  type: 'post',
-                  url: '/pay/' + rsp.imp_uid
-               }).done(function(data) {
-                   if(rsp.paid_amount === data.response.amount){
-                      data = JSON.stringify({
-                    	  "imp_uid" : rsp.imp_uid,
-                    	  "merchant"
-                      })
-                   } else {
-                       alert("결제 실패");
-                   }
-               });
-           });
-       } 
-</script>
-
-
-
-
 <input type="hidden" name="classid" value="${map.list[0].classid}">
 <input type="hidden" name="classname" value="${map.list[0].classname}">
 <input type="hidden" name="classprice" value="${map.list[0].classprice}">
 <input type="hidden" name="userid" value="${userid}">
 <input type="hidden" name="username" value="${username}">
-<input type="button" onclick="requestPay();" value="결제하기">
 </form>
+<input type="button" onclick="requestPay();" value="결제하기">
 </body>
+<script>
+	var IMP = window.IMP;
+	
+	
+	function requestPay() {
+		
+		
+		
+		  IMP.init('imp21126721');
+
+		  IMP.request_pay(
+		    {
+		      pg: "kakaopay",
+		      pay_method: "card",
+		      merchant_uid: '${vo.classid}' + new Date().getTime(),
+		      name: '${vo.classname}',
+		      amount: ${vo.classprice},
+		      buyer_email: '${uvo.userid}',
+		      buyer_name: '${uvo.username}',
+		      buyer_tel: '${uvo.hp}',
+		      buyer_addr: '${uvo.addr}',
+		      buyer_postcode: '${uvo.addr2}'
+		    },
+		
+            function(rsp) {
+		      if (rsp.success) {
+		    	  
+		    	  var paydata = {
+		    			  imp_uid: rsp.imp_uid,
+			        	  classid : ${vo.classid} 
+		    	  }
+		        // 결제 검증
+		        $.ajax({
+		          	url: '/pay/verify_iamport',
+		          	type: 'post',
+		        	data : JSON.stringify(paydata),
+		        	contentType: 'application/json'
+		        }) /*.done(function(data) {
+		          if (${vo.classprice} === ${pvo.price}) {
+		            data = JSON.stringify({
+		              imp_uid: rsp.imp_uid,
+		              classid: rsp.merchant_uid,
+		              usernum: '${uvo.usernum}',
+		              paymethod: rsp.pay_method,
+		              price: rsp.paid_amount
+		            });
+
+		            jQuery.ajax({
+		              url: "/pay/complete",
+		              type: 'post',
+		              dataType: 'json',
+		              contentType: 'application/json',
+		              data: data
+		            })
+		            .done(function(res) {
+		              if (res > 0) {
+		                alert('주문정보 저장 성공');
+		              } else {
+		            	  alert('주문정보 저장 실패');
+		              }
+		            } );
+		           } else {
+		            alert('결제 실패');
+		          } 
+		         });*/
+		      }  else {
+		    	  alert("결제에 실패했습니다.", "에러 내용: " + rsp.error_msg, "error");
+		      }
+		    }
+		  );
+		}
+</script>
 </html>

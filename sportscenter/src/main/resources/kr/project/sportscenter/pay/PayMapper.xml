@@ -9,11 +9,12 @@
 		WHERE usernum=${usernum}
 	</select>
 	
-	<insert id="regist" parameterType="kr.project.sportscenter.pay.PayVO">
+	<!-- db저장하는 법 -->
+	<insert id="regist" parameterType="kr.project.sportscenter.pay.PayVO"> 
 		INSERT INTO pay(
-			classid, usernum, paystate, price, paymethod
+			classid, usernum, paystate, price, paymethod, imp_uid
 		) VALUES (
-			#{classid}, #{usernum}, #{paystate}, #{price}, #{paymethod}
+			#{classid}, #{usernum}, #{paystate}, #{price}, #{paymethod}, #{imp_uid}
 		)
 	</insert>
 	
@@ -48,6 +49,14 @@
 			WHERE usernum = (SELECT usernum FROM user WHERE username LIKE '%${searchWord}%')
 		</if>
 	</select>
+	
+	<select id="select" parameterType="int" resultType="kr.project.sportscenter.pay.PayVO">
+		SELECT *
+		FROM pay
+		WHERE classid = #{classid}
+	</select>
+	
+	
 	
 	
 </mapper>

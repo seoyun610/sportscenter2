@@ -65,4 +65,9 @@ public class PayServiceImpl implements PayService {
 		return map;
 	}
 
+	@Override
+	public boolean addAll(List<PayVO> list) {
+		return mapper.addAll(list) > 0 ? true : false;
+	}
+
 }
