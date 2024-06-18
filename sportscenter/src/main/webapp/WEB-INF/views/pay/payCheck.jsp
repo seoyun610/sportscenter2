@@ -54,6 +54,7 @@
 		
 		
 		
+		
 		  IMP.init('imp21126721');
 
 		  IMP.request_pay(
@@ -75,14 +76,25 @@
 		    	  
 		    	  var paydata = {
 		    			  imp_uid: rsp.imp_uid,
-			        	  classid : ${vo.classid} 
+			        	  classid : ${vo.classid},
+			        	  price : ${vo.classprice}
 		    	  }
-		        // 결제 검증
+		        
 		        $.ajax({
-		          	url: '/pay/verify_iamport',
+		          	url: '/pay/complete.do',
 		          	type: 'post',
 		        	data : JSON.stringify(paydata),
-		        	contentType: 'application/json'
+		        	contentType: 'application/json',
+		        	success : function(res) {
+		        		console.log(res);
+		        		if (res === "ok"){
+		        			window.location.href = '/mypage/classView.do'
+		        		}else if(res === "bad_request") {
+		        	        alert("강좌가 가득찼습니다. 다른 강좌를 신청해주세요");
+		        	    }else{
+		        	    	alert("잘못된 접근입니다.");
+		        	    }
+		        	}
 		        }) /*.done(function(data) {
 		          if (${vo.classprice} === ${pvo.price}) {
 		            data = JSON.stringify({

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.project.sportscenter.class1.ClassMapper;
 import kr.project.sportscenter.notice.NoticeVO;
+import kr.project.sportscenter.user.UserVO;
 
 @Service 
 public class PayServiceImpl implements PayService {
@@ -69,5 +70,12 @@ public class PayServiceImpl implements PayService {
 	public boolean addAll(List<PayVO> list) {
 		return mapper.addAll(list) > 0 ? true : false;
 	}
+
+	@Override
+	public boolean updatePaystate(PayVO vo) {
+		return mapper.updatePaystate(vo) == 0 ? false : true;
+	}
+
+	
 
 }

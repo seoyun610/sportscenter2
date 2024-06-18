@@ -65,12 +65,11 @@
 		LIMIT #{startIdx}, 10
 	</select>
 	
-	<!-- db저장하는 법 -->
-	<insert id="regist" parameterType="kr.project.sportscenter.pay.PayVO"> 
+	<insert id="regist" parameterType="kr.project.sportscenter.pay.PayVO">
 		INSERT INTO pay(
-			classid, usernum, paystate, price, paymethod, imp_uid
+			classid, usernum, paystate, price, paymethod
 		) VALUES (
-			#{classid}, #{usernum}, #{paystate}, #{price}, #{paymethod}, #{imp_uid}
+			#{classid}, #{usernum}, #{paystate}, #{price}, #{paymethod}
 		)
 	</insert>
 	
@@ -87,7 +86,7 @@
 	<select id="courseList" parameterType="kr.project.sportscenter.pay.PayVO" resultType="kr.project.sportscenter.pay.PayVO"> 
 		SELECT u.username as username, 
                 c.classyear as classyear, c.classmonth as classmonth, c.classlevel as classlevel, c.classtime as classtime, c.subtype as subtype, c.classday as classday,
-                p.paystate as paystate , p.refundstate  as refundstate
+                p.paystate as paystate , p.refundstate  as refundstate, payid
         FROM pay p 
             JOIN user u ON p.usernum = u.usernum 
             JOIN class c ON p.classid = c.classid 
@@ -98,7 +97,7 @@
 	</select>
 
 	<!-- 카운트 -->
-	<select id="count" parameterType="kr.project.sportscenter.notice.NoticeVO" resultType="int">
+	<select id="count" parameterType="kr.project.sportscenter.pay.PayVO" resultType="int">
 		SELECT count(*)
 		FROM pay
 		<if test="searchWord != null and searchWord != ''">
@@ -106,13 +105,18 @@
 		</if>
 	</select>
 	
-	<select id="select" parameterType="int" resultType="kr.project.sportscenter.pay.PayVO">
-		SELECT *
+	<!-- 업데이트 -->
+	<update id="courseModify" parameterType="kr.project.sportscenter.pay.PayVO">
+		UPDATE pay 
+		SET classid=#{classid}
+		WHERE payid=#{payid}	
+	</update>
+	
+	<!-- 과정 목록 -->
+	<select id="clist" parameterType="kr.project.sportscenter.pay.PayVO" resultType="kr.project.sportscenter.pay.PayVO">
+		SELECT * 
 		FROM pay
-		WHERE classid = #{classid}
+		WHERE payid=${payid}
 	</select>
-	
-	
-	
 	
 </mapper>

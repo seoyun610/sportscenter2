@@ -1,6 +1,5 @@
 package kr.project.sportscenter.pay;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -8,19 +7,20 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
-import com.siot.IamportRestClient.response.IamportResponse;
-import com.siot.IamportRestClient.response.Payment;
 
 import kr.project.sportscenter.class1.ClassService;
 import kr.project.sportscenter.class1.ClassVO;
@@ -69,10 +69,60 @@ public class PayController {
 	 * }
 	 */
 	
-	@PostMapping("/payments/{imp_uid}")
-	public IamportResponse<Payment> paymentByImpUid(@PathVariable String imp_uid) throws IamportResponseException, IOException{
-		log.info("paymentByImpUid 진입");
-		return api.paymentByImpUid(imp_uid);
+	@PostMapping("/pay/complete.do")
+	public ResponseEntity payComplete(@RequestBody PayVO pvo, Model model, HttpSession sess) throws IamportResponseException {
+	    try {
+	        ClassVO cvo = new ClassVO();
+	        cvo.setClassid(pvo.getClassid());
+	        
+	        cvo = cservice.select(cvo);
+	        System.out.println(cvo.getClassprice());
+	        
+	        if (cvo.getClasslimit() > cvo.getClasscnt()) {
+	        	
+	        	//db에 데이터 값 집어 넣는 식
+	        	//usernum을 넣어줘야함.
+	        	UserVO user = (UserVO)sess.getAttribute("login");
+	        	pvo.setUsernum(user.getUsernum());
+	        	boolean result = service.regist(pvo);
+	        	
+//	        	pvo.setPaystate(1);
+//	        	pvo.setPaymethod("card");
+//	        	System.out.println(pvo.toString());
+//	        	boolean insertPaystate = service.updatePaystate(pvo);
+//	        	
+//	        	
+//	        	if(insertPaystate) {
+//	        		System.out.println("상태 변경 성공");
+//	        	}else {
+//	        		System.out.println("상태 변경 실패");
+//	        	}
+//	        	
+	        	cvo.setClasscnt(cvo.getClasscnt() + 1);
+	        	boolean updatecnt = cservice.updateCnt(cvo);
+	        	if(updatecnt) {
+	        		System.out.println("인원수 증가");
+	        	}else {
+	        		System.out.println("인원수 동일");
+	        	}
+	        	
+	        	if(result) {
+	        		System.out.println("수강신청 성공");
+	        	} else {
+	                System.out.println("수강신청 실패");
+	            }
+	        	
+	            return new ResponseEntity("ok", HttpStatus.OK);
+	        
+	        }else {
+	        	return new ResponseEntity("bad_request", HttpStatus.BAD_REQUEST);
+	        
+	        }
+	    } catch (Exception e) {
+	    	e.printStackTrace();
+	        return new ResponseEntity("error",HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	    
 	}
 	
 	@PostMapping("/pay/payCheck.do")

@@ -72,5 +72,11 @@ public class ClassServiceImpl implements ClassService {
 		return mapper.registAll(list) > 0 ? true : false;
 	}
 
+
+	@Override
+	public boolean updateCnt(ClassVO vo) {
+		return mapper.updateCnt(vo) > 0 ? true : false;
+	}
+
 	
 }

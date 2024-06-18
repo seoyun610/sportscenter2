@@ -13,6 +13,21 @@
 		</selectKey>
 	</insert>
 	
+	<sql id="searchUser">
+		<where>
+			<choose>
+				<when test = "userid != 0">
+					AND userid = #{userid}
+				</when>
+			</choose>
+			<choose>
+				<when test = "usernum != 0">
+					AND usernum = #{usernum}
+				</when>
+			</choose>
+		</where>
+	</sql>
+	
 	<select id="login" parameterType="kr.project.sportscenter.user.UserVO" resultType="kr.project.sportscenter.user.UserVO">
 		SELECT * FROM user WHERE userid=#{userid} AND pwd=MD5(#{pwd})
 	</select> 
@@ -39,8 +54,9 @@
 		UPDATE user SET pwd=MD5(#{pwd}) where userid=#{userid}
 	</update>
 	
-	<select id="detail" resultType="kr.project.sportscenter.user.UserVO" parameterType="int">
-		SELECT * FROM user WHERE usernum=#{usernum}
+	<select id="detail" resultType="kr.project.sportscenter.user.UserVO" parameterType="kr.project.sportscenter.user.UserVO">
+		SELECT * FROM user 
+		<include refid="searchUser"/>
 	</select>
 	
 	<!-- 개인정보 수정 -->

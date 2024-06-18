@@ -16,4 +16,5 @@ public interface ClassMapper {
 	int registAll(List<ClassVO> list);
 	int modify(ClassVO vo);
 	int delete(int classid);
+	int updateCnt(ClassVO vo);
 }

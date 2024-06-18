@@ -11,4 +11,5 @@ public interface ClassService {
 	boolean modify(ClassVO vo);
 	boolean delete(int classid);
 	boolean registAll(List<ClassVO> list);
+	boolean updateCnt(ClassVO vo);
 }

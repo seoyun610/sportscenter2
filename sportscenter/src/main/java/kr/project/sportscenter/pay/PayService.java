@@ -3,6 +3,8 @@ package kr.project.sportscenter.pay;
 import java.util.List;
 import java.util.Map;
 
+import kr.project.sportscenter.user.UserVO;
+
 
 public interface PayService {
 	boolean regist(PayVO vo);
@@ -11,4 +13,5 @@ public interface PayService {
 	boolean update(PayVO vo);
 	Map<String, Object> courseList(PayVO vo);
 	boolean addAll(List<PayVO> list);
+	boolean updatePaystate(PayVO vo);
 }
