@@ -603,34 +603,28 @@ Footer START -->
 				<div class="row g-4">
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">SportsCenter</h5>
+						<h5 class="mb-2 mb-md-4">센터소개</h5>
 						<ul class="nav flex-column">
 							<li class="nav-item"><a class="nav-link" href="#">About us</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">News and Blogs</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Library</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Career</a></li>
 						</ul>
 					</div>
 									
 					<!-- Link block -->
-					<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">Community</h5>
+				<div class="col-6 col-md-4">
+						<h5 class="mb-2 mb-md-4">종목/소개</h5>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#">Documentation</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Faq</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Forum</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Sitemap</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">종목 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">수강 신청 안내</a></li>
 						</ul>
 					</div>
 
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">Teaching</h5>
+						<h5 class="mb-2 mb-md-4">커뮤니티</h5>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#">Become a teacher</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">How to guide</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Terms &amp; Conditions</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">QnA</a></li>
 						</ul>
 					</div>
 				</div>

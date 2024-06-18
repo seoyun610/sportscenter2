@@ -231,6 +231,9 @@
 						<input type="text" class="form-control border-0 bg-light rounded-end ps-1" id="hp2" name="hp" placeholder="000-0000-0000" required>
 					</div>
 				</div>
+				<div class="submit-btn-container" style="text-align: center">	
+						<button type="submit" class="btn btn-primary" style="padding: 10px 255px; font-size: 15px;">확인</button>
+				</div>
 		 	</form>
 		 	
 		</div>
