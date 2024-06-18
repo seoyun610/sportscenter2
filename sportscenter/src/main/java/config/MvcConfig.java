@@ -127,9 +127,9 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// url 설정
-		registry.addInterceptor(loginInterception()).addPathPatterns("/user/login.do")
+		registry.addInterceptor(loginInterception()).excludePathPatterns("/user/login.do")
 				.excludePathPatterns("/reply/index.do").excludePathPatterns("/reply/view.do")
-				.addPathPatterns("/member/edit.do");
+				.addPathPatterns("/member/edit.do").addPathPatterns("/mypage/classView.do");
 
 		registry.addInterceptor(AdminloginInterception()).addPathPatterns("/notice/edit.do")
 				.addPathPatterns("/admin/**").excludePathPatterns("/admin/adminLogin.do");
@@ -153,11 +153,5 @@ public class MvcConfig implements WebMvcConfigurer {
 	    }
 	}
 	
-	
-	@Component
-	public class PayCleanupScheduler {
-
-
-	}
 	
 }

@@ -119,10 +119,10 @@
 		WHERE payid=${payid}
 	</select>
 	
-	<select id="select" parameterType="int" resultType="kr.project.sportscenter.pay.PayVO">
+	<select id="select" parameterType="kr.project.sportscenter.pay.PayVO" resultType="kr.project.sportscenter.pay.PayVO">
 		SELECT *
 		FROM pay
-		WHERE classid = #{classid}
+		<include refid="searchSql"/>
 	</select>
 	
 	<insert id="offregist" parameterType="kr.project.sportscenter.pay.PayVO">

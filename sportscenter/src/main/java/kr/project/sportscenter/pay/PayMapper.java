@@ -16,6 +16,6 @@ public interface PayMapper {
 	int updatePaystate(PayVO vo);
 	int courseModify(PayVO vo);
 	PayVO clist(int payid);
-	PayVO select(int classid);
+	PayVO select(PayVO vo);
 	int offregist(PayVO vo);
 }

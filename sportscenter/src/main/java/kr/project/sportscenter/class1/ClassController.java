@@ -176,14 +176,20 @@ public class ClassController {
 	}
 	
 	@GetMapping("/class/payCheck.do")
-	public String payCheck(@RequestParam("classid") int classid, Model model, ClassVO cvo, HttpSession sess, PayVO pvo) {
+	public String payCheck(@RequestParam int retake, @RequestParam(name = "classid") int classid, Model model, HttpSession sess) {
+		System.out.println("==============retake================"+ retake);
+		System.out.println("==============classid================" + classid);
+		ClassVO cvo = new ClassVO();
 		UserVO login = (UserVO)sess.getAttribute("login");
 	    cvo.setClassid(classid);
-	    pvo.setClassid(classid);
+		/*
+		 * if(retake == 1) { System.out.println("==============접근 확인================");
+		 * PayVO pvo = new PayVO(); pvo.setClassid(classid); pvo.setPaystate(0);
+		 * pvo.setUsernum(login.getUsernum()); model.addAttribute("pvo",
+		 * pservice.select(pvo)); }
+		 */
 	    model.addAttribute("uvo",login);
-	    model.addAttribute("map",cservice.list(cvo));
-		model.addAttribute("vo",cservice.select(cvo));
-		model.addAttribute("pvo",pservice.select(classid));
+		model.addAttribute("cvo",cservice.select(cvo));
 		return "pay/payCheck";
 	}
 	

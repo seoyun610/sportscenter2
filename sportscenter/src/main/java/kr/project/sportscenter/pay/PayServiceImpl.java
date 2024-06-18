@@ -32,7 +32,7 @@ public class PayServiceImpl implements PayService {
 
 	@Override
 	public boolean exists(PayVO vo) {
-		return mapper.exists(vo) == 0 ? false : true;
+		return mapper.exists(vo) > 0 ? true : false;
 	}
 
 	@Override
@@ -88,9 +88,9 @@ public class PayServiceImpl implements PayService {
 	}
 	
 	@Override
-	public PayVO select(int classid) {
+	public PayVO select(PayVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.select(classid);
+		return mapper.select(vo);
 	}
 
 	public boolean offregist(PayVO vo) {

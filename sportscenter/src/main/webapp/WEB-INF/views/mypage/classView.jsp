@@ -7,10 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>수강내역 확인</title>
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
 <body>
-<h3> ${username } 님, 안녕하세요. </h3>
+
 <h3 class="sub_title">수강 중인 강좌</h3>
 <div>
 	<table class="list">
@@ -29,9 +30,9 @@
 			</c:if>
 			<c:forEach var="classlist" items="${classList }">       
 	            <tr>
-					<td>${classlist.classname }</td>
+					<td class="classname" value="${classlist.classname }">${classlist.classname }</td>
 					<td>${classlist.formattedClassdate }</td>
-					<td> <input type="button" value="수강 취소" onclick="location.href='payCancel?payid=${vo.payid }'"><td>
+					<td> <input type="button" class="cancel_btn" value="수강 취소" onclick="cancel();"><td>
 				</tr>
 	        </c:forEach>
 		</tbody>
@@ -58,9 +59,9 @@
 		<tbody>
 			<c:forEach var="classrvo" items="${retakeClass }">       
             <tr>
-				<td>${classrvo.classname }</td>
+				<td class="retakeClassname">${classrvo.classname }</td>
 				<td>${classrvo.formattedClassdate }</td>
-				<td> <input type="button" value="재수강" onclick="location.href='/class/payCheck.do?classid=${classrvo.classid }'"><td>
+				<td> <input type="button" class="pay_btn" value="결제하기" onclick="payment(${classrvo.classid})"> </td>
 			</tr>
         </c:forEach>
         </tbody>
@@ -68,4 +69,20 @@
 </c:if>
 </div>
 </body>
+<script>
+	function payment(classId) {
+		console.log(classId);
+		const today = new Date();
+	    const day = today.getDate();
+	    // 테스트용
+	    /* setTimeout(() => {
+	    	location.href = '/class/payCheck.do?retake=1&classid=' + classId;
+		}, 3000); */
+	    if( day >= 20 && day < 25 ) {
+	    	location.href = '/class/payCheck.do?classid=' + classId;
+	    } else {
+	    	alert('재수강 기간이 아닙니다. \n재수강 기간에 다시 신청해주세요.');
+	    }
+	}
+</script>
 </html>

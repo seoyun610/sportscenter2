@@ -121,7 +121,6 @@
 			</div>
 			<input type="button" value="개별 추가" onclick="registOne();"/>
 			<button type="button" class="modal_btn" onclick="openmodal();">일괄 추가</button>
-			<button type="button" onclick="addPay();">재수강 등록</button>
 			<form method="get" action="modify.do" id="classForm" name="classForm">
 				<table border="1" id="listTable" name="listTable">
 				<tbody>
@@ -218,10 +217,6 @@
      		var classmonth = nextMonth - 1; 
      		location.href="/admin/addAll/"+classyear+"/"+classmonth;
      	}
-    }
-        
-    function addClass() {
-    	
     }
     
     function classDel() {
