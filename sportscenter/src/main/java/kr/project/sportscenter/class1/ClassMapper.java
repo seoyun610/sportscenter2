@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 
 @Mapper
@@ -17,4 +18,5 @@ public interface ClassMapper {
 	int modify(ClassVO vo);
 	int delete(int classid);
 	int updateCnt(ClassVO vo);
+	List<ClassVO> cmodify(@Param("classid") int classid, @Param("classyear") int classyear, @Param("classmonth") int classmonth);
 }

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.project.sportscenter.level.LevelService;
 import kr.project.sportscenter.level.LevelVO;
+import kr.project.sportscenter.pay.PayService;
+import kr.project.sportscenter.pay.PayVO;
 import kr.project.sportscenter.sport.SportService;
 import kr.project.sportscenter.sport.SportVO;
 import kr.project.sportscenter.time.TimeService;
@@ -40,6 +42,9 @@ public class ClassController {
 	
 	@Autowired
 	private TimeService tservice;
+	
+	@Autowired
+	private PayService pservice;
 	
 	@GetMapping("/class/list.do")
 	public String list(Model model, ClassVO cvo, SportVO svo, LevelVO lvo, TimeVO tvo) {
@@ -169,11 +174,14 @@ public class ClassController {
 	}
 	
 	@GetMapping("/class/payCheck.do")
-	public String payCheck(@RequestParam("classid") int classid, Model model, ClassVO cvo, HttpSession sess) {
+	public String payCheck(@RequestParam("classid") int classid, Model model, ClassVO cvo, HttpSession sess, PayVO pvo) {
 		UserVO login = (UserVO)sess.getAttribute("login");
 	    cvo.setClassid(classid);
+	    pvo.setClassid(classid);
 	    model.addAttribute("uvo",login);
+	    model.addAttribute("map",cservice.list(cvo));
 		model.addAttribute("vo",cservice.select(cvo));
+		model.addAttribute("pvo",pservice.select(classid));
 		return "pay/payCheck";
 	}
 }

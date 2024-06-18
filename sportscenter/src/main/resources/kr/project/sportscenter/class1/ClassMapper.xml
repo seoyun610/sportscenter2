@@ -114,4 +114,10 @@
 		AND	classyear = #{classyear} 
 		AND classmonth = #{classmonth}
 	</select>
+	
+	<update id="updateCnt" parameterType="kr.project.sportscenter.class1.ClassVO">
+        UPDATE class
+        SET classcnt = #{classcnt}
+        WHERE classid = #{classid}
+    </update>
 </mapper>

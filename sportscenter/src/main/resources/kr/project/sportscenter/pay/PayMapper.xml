@@ -67,9 +67,9 @@
 	
 	<insert id="regist" parameterType="kr.project.sportscenter.pay.PayVO">
 		INSERT INTO pay(
-			classid, usernum, paystate, price, paymethod
+			classid, usernum, paystate, price, paymethod, imp_uid
 		) VALUES (
-			#{classid}, #{usernum}, #{paystate}, #{price}, #{paymethod}
+			#{classid}, #{usernum}, 1, #{price}, 'card', #{imp_uid}
 		)
 	</insert>
 	
@@ -117,6 +117,12 @@
 		SELECT * 
 		FROM pay
 		WHERE payid=${payid}
+	</select>
+	
+	<select id="select" parameterType="int" resultType="kr.project.sportscenter.pay.PayVO">
+		SELECT *
+		FROM pay
+		WHERE classid = #{classid}
 	</select>
 	
 </mapper>

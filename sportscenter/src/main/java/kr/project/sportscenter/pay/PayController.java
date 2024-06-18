@@ -238,5 +238,37 @@ public class PayController {
 			System.out.println("재수강 내역 삽입 실패");
 		}
 	}
+    
+    @GetMapping("/admin/courseModify.do")
+    public String cModify(@RequestParam int payid, Model model, PayVO vo) {
+    	PayVO cvo = service.clist(payid);
+    	System.out.println(vo);
+    	System.out.println(cvo);
+    	int classid = cvo.getClassid();
+    	int classyear = vo.getClassyear();
+    	int classmonth = vo.getClassmonth();
+    	System.out.println(classid);
+    	model.addAttribute("payid", payid);
+        model.addAttribute("cmap", cservice.cmodify(classid, classyear, classmonth));
+        System.out.println(cservice.cmodify(classid, classyear, classmonth));
+        return "admin/courseModify";
+    }
+    
+	@PostMapping("/admin/courseModify.do")
+	public String cModify(Model model,PayVO vo, @RequestParam int classid, @RequestParam int payid) {
+		vo.setClassid(classid);
+		vo.setPayid(payid);
+		boolean r = service.courseModify(vo);
+		if(r) {
+			model.addAttribute("msg", "변경이 완료되었습니다.");
+			model.addAttribute("url", "/admin/courseList.do");
+			return "common/alert";
+		} else {
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "변경 오류");
+			return "common/alert";
+		}
+	}
+    
 }
 	

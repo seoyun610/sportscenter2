@@ -1,5 +1,6 @@
 package kr.project.sportscenter.user;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -28,4 +29,5 @@ public interface UserService {
 	List<UserVO> retakeClass(UserVO vo);
 	List<UserVO> classHistory(UserVO vo);
 	Map<String, Object> findUser(UserVO vo);
+
 }

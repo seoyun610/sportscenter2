@@ -110,9 +110,5 @@ public class AdminController {
 		return "admin/adminSubjectView";
 	}
 	
-	@GetMapping("/admin/courseModify.do")
-	public String courseModify(Model model, SubjectVO vo, HttpSession sess) {
-		return null;
-	}
 
 }

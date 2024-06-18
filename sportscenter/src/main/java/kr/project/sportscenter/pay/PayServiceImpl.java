@@ -51,6 +51,7 @@ public class PayServiceImpl implements PayService {
         Map<String, Object> map = new HashMap<>();
         map.put("count", count);
         map.put("totalPage", totalPage);
+        map.put("page", param.getPage());
         map.put("list", list);
         
         // 하단에 페이징처리
@@ -70,10 +71,26 @@ public class PayServiceImpl implements PayService {
 	public boolean addAll(List<PayVO> list) {
 		return mapper.addAll(list) > 0 ? true : false;
 	}
+	
+	@Override
+	public boolean courseModify(PayVO vo) {
+		return mapper.courseModify(vo) > 0 ? true : false ;
+	}
+
+	@Override
+	public PayVO clist(int payid) {
+		return mapper.clist(payid);
+	}
 
 	@Override
 	public boolean updatePaystate(PayVO vo) {
 		return mapper.updatePaystate(vo) == 0 ? false : true;
+	}
+	
+	@Override
+	public PayVO select(int classid) {
+		// TODO Auto-generated method stub
+		return mapper.select(classid);
 	}
 
 	

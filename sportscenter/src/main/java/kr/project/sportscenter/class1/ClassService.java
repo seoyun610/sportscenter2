@@ -12,4 +12,5 @@ public interface ClassService {
 	boolean delete(int classid);
 	boolean registAll(List<ClassVO> list);
 	boolean updateCnt(ClassVO vo);
+	List<ClassVO> cmodify(int classid, int classyear, int classmonth);
 }
