@@ -31,12 +31,14 @@ public interface UserMapper {
 	// 비밀번호 찾기 
 	UserVO findPassword(UserVO vo); 
 	
-	
 	//비밀번호 업데이트 
 	boolean updatePassword(UserVO vo);
 	
 	// 회원정보 조회
 	UserVO detail(UserVO vo);
+	
+	//회원 개인정보 확인
+	UserVO detailuser(UserVO vo);
 	
 	// 회원정보 수정
 	int update(UserVO vo);

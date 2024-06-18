@@ -106,5 +106,10 @@ public class UserServiceImpl implements UserService{
 		
 		return map;
 	}
+
+	@Override
+	public UserVO detailuser(UserVO vo) {
+		return mapper.detailuser(vo);
+	}
 	
 }

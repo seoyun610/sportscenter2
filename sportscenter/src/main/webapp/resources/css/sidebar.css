@@ -1,0 +1,39 @@
+/* sidebar.css */
+.sidebar {
+    width: 240px; /* Increased width for better fitting of content */
+    background-color: #343a40; /* Dark background to match the navbar-dark class */
+    padding: 20px;
+    height: 100vh; /* Full viewport height */
+    position: fixed;
+    left:0;
+    top: 0;
+    z-index: 1; /* Ensure the sidebar is on top of other content */
+    overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    color: #ffffff; /* White text for better visibility on dark background */
+    text-decoration: none;
+    white-space: nowrap; /* Prevent text from wrapping to the next line */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis (...) if text overflows */
+}
+
+.sidebar a:hover {
+    color: #f8f9fa; /* Slightly lighter color on hover */
+}
+
+.content {
+    margin-left: 260px; /* Leave space for the sidebar */
+    padding: 20px;
+    position: relative; /* Ensure it doesn't overlap the sidebar */
+}

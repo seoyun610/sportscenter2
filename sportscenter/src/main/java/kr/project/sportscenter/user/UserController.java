@@ -137,7 +137,7 @@ public class UserController {
   	@GetMapping("/mypage/edit.do")
 	public String edit(HttpSession sess, Model model) {
   		UserVO uv = (UserVO)sess.getAttribute("login");
-  		model.addAttribute("vo", service.detail(uv));
+  		model.addAttribute("vo", service.detailuser(uv));
   		return "mypage/edit";
 	}
   		

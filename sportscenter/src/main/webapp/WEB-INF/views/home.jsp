@@ -100,7 +100,7 @@
 	<nav class="navbar navbar-expand-xl">
 		<div class="container-fluid px-3 px-xl-5">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="http://localhost:8090/home.do">
 				<img class="light-mode-item navbar-brand-item" src="resources/images/logo.png" alt="logo">
 				<img class="dark-mode-item navbar-brand-item" src="resources/images/logo-light.svg" alt="logo">
 			</a>
@@ -167,7 +167,7 @@
 				<div class="user-options dropdown ms-1 ms-lg-0">
 			    <c:choose>
 			        <c:when test="${not empty sessionScope.login}">
-			            <a href="/mypage/verifyPassword.do">마이페이지</a>
+			            <a href="/mypage/classView.do">마이페이지</a>
 			            <a href="/user/logout.do">로그아웃</a>
 			        </c:when>
 			        <c:otherwise>

@@ -18,6 +18,9 @@ public interface UserService {
 	
 
 	UserVO detail(UserVO vo);
+	
+	UserVO detailuser(UserVO vo);
+	
 	int update(UserVO vo);
 	
 	int verifyPassword(UserVO vo);
