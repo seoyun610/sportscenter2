@@ -164,6 +164,19 @@
 						</ul>
 					</li>
 				</ul>
+				<div class="user-options dropdown ms-1 ms-lg-0">
+			    <c:choose>
+			        <c:when test="${not empty sessionScope.login}">
+			            <a href="/mypage/verifyPassword.do">마이페이지</a>
+			            <a href="/user/logout.do">로그아웃</a>
+			        </c:when>
+			        <c:otherwise>
+			            <a href="/user/login.do">로그인</a>
+			            <a href="/user/join.do">회원가입</a>
+			        </c:otherwise>
+			    </c:choose>
+			</div>
+				
 				<!-- Nav Search START -->
 				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
 					<div class="nav-item w-100">

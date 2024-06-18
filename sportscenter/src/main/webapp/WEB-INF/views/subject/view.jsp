@@ -12,42 +12,22 @@
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="resources/images/favicon.ico">
-  <!-- Plugins CSS -->
+  
+  	<!-- Plugins CSS -->
 	<link rel="stylesheet" type="text/css" href="/resources/vendor/font-awesome/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap-icons/bootstrap-icons.css">
 
-<!-- 구글 웹 폰트 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+	<!-- 구글 웹 폰트 -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
 	
 	<!-- bootstrap CSS 적용 시 필요 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   
-  <style>
-    .navbar-nav{
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-    
-    .btn-outline-primary {
-      color: #007bff;
-      border-color: #007bff;
-    }
-  
-    .btn-outline-primary:hover {
-      color: #fff;
-      background-color: #007bff;
-      border-color: #007bff;
-    }
-    .body {
-    	font-family: 'Noto Sans KR', sans-serif;
-    }
-}
-  </style>
+
   <script>
 //종목 데이터
   var subjects = [
@@ -123,56 +103,126 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <!-- Navbar Toggler -->
-      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <!-- Navbar Collapse -->
-      <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
-        <!-- Nav Main menu START -->
-        <ul class="navbar-nav">
-          <!-- Nav item 1 종목 안내 -->
-          <li class="nav-item" style="margin-right: 30px;">
-            <a class="nav-link" href="/subject/view.do">종목 안내</a>
-          </li> 
-          <!-- Nav item 2 이용 안내 -->
-          <li class="nav-item" style="margin-right: 30px;">
-            <a class="nav-link" href="/subject/usageInfo.do">이용 안내</a>
-          </li>
-          <!-- Nav item 3 수업 신청 안내 -->
-          <li class="nav-item" style="margin-right: 30px;">
-            <a class="nav-link" href="/subject/registInfo.do">수업 신청 안내</a>
-          </li>
-        </ul>
-        <!-- Nav Main menu END -->
-  
-        <!-- Nav Search START -->
-        <form class="d-flex ms-auto">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
-        <!-- Nav Search END -->
-  
-        <!-- User Profile START -->
-        <div class="nav-item dropdown ms-3">
-          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img id="userAvatar" src="/resources/images/avatar/default.jpg" class="rounded-circle" alt="User Avatar" width="30" height="30">
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-          </ul>
-        </div>
-        <!-- User Profile END -->
-      </div>
-    </div>
-  </nav>
+<!-- Header START -->
+<header class="navbar-light navbar-sticky header-static text-center">
+	<!-- Nav START -->
+	<nav class="navbar navbar-expand-xl">
+		<div class="container-fluid px-3 px-xl-5">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="#">
+				<img class="light-mode-item navbar-brand-item" src="/resources/images/logo.png" alt="logo">
+				<img class="dark-mode-item navbar-brand-item" src="/resources/images/logo-light.svg" alt="logo">
+			</a>
+			<!-- Logo END -->
+
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
+			
+			<!-- Main navbar START -->
+			<div class="navbar-collapse w-100 collapse" style="float: none; margin:0 auto;">
+
+					
+				<!-- Nav Main menu START -->
+				<ul class="navbar-nav navbar-nav-scroll me-auto">
+					<!-- Nav item 2 종목/안내 -->
+						<li class="nav-item dropdown">
+							<a class="nav-link" href="" style="font-size: 18px; font-weight: bold; color: #000;">센터소개</a>
+							<ul class="dropdown-menu" aria-labelledby="demoMenu">
+								<li> <a class="dropdown-item active" href="#">About Us</a></li>
+								<li> <a class="dropdown-item" href="#">Contact Us</a></li>
+						</ul>
+						</li>
+
+					<!-- Nav item 2 종목/안내 -->
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="" style="font-size: 18px; font-weight: bold; color: #000;" >종목/안내</a>
+						<ul class="dropdown-menu" aria-labelledby="demoMenu">
+							<li> <a class="dropdown-item active" href="/subject/index.do">종목 안내</a></li>
+							<li> <a class="dropdown-item" href="/subject/registInfo.do">이용 안내</a></li>
+							<li> <a class="dropdown-item" href="/subject/usageInfo.do">수강 신청</a></li>
+							
+						</ul>
+					</li>
+
+					<!-- Nav item 3 수강 신청 -->
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 18px; font-weight: bold; color: #000;">수강신청</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+							<!-- Dropdown submenu -->
+							<li class="dropdown-submenu dropend">
+								<a class="dropdown-item active" href="/class/list.do">온라인 수강신청</a>
+							</li>
+						</ul>
+					</li>
+
+					<!-- Nav item 4 커뮤니티 -->
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 18px; font-weight: bold; color: #000;">커뮤니티</a>
+						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
+							<!-- Dropdown submenu -->
+							<li class="dropdown-submenu dropend">
+								<a class="dropdown-item active" href="/notice/index.do">공지사항</a>
+								<a class="dropdown-item" href="/qna/index.do">QnA</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<!-- Nav Search START -->
+				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
+					<div class="nav-item w-100">
+						<form class="position-relative">
+							<input class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search">
+							<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
+								<i class="fas fa-search fs-6 "></i>
+							</button>
+						</form>
+					</div>
+				</div>
+				<!-- Nav Search END -->
+			</div>
+			<!-- Main navbar END -->
+
+			<!-- Profile START -->
+			<!-- 동작 이슈...  -->
+			<div class="dropdown ms-1 ms-lg-0">
+				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+					<img class="avatar-img rounded-circle" src="/resources/images/avatar/01.jpg" alt="avatar">
+				</a>
+				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+					<!-- Profile info -->
+					<li class="px-3 mb-3">
+						<div class="d-flex align-items-center">
+							<!-- Avatar -->
+							<div class="avatar me-3">
+								<img class="avatar-img rounded-circle shadow" src="resources/images/avatar/01.jpg" alt="avatar">
+							</div>
+							<div>
+								<a class="h6" href="#">Lori Ferguson</a>
+								<p class="small m-0">example@gmail.com</p>
+							</div>
+						</div>
+					</li>
+					<li> <hr class="dropdown-divider"></li>
+					<!-- Links -->
+					<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
+					<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
+					<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
+					<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+					<li> <hr class="dropdown-divider"></li>
+				</ul>
+			</div>
+			<!-- Profile START -->
+		</div>
+	</nav>
+	<!-- Nav END -->
+</header>
+<!-- Header END -->
 <!-- =======================
 Page Banner START -->
 <section class="py-0">
@@ -208,7 +258,7 @@ Page Banner START -->
 
 						<!-- Image -->
 						<div class="col-md-6 text-center">
-							<img src="resources/images/book/book-bg.svg" alt="">
+							<img src="/resources/images/book/book-bg.svg" alt="">
 						</div>
 					</div> <!-- Row END -->
 				</div>
@@ -299,7 +349,7 @@ Page content START -->
 						<div class="card shadow h-100">
 							<div class="position-relative">
 								<!-- Image -->
-								<img src="/resources/subject/헬스.jpg" class="card-img-top" alt="헬스">
+								<img src="/resources/images/subject/헬스.jpg" class="card-img-top" alt="헬스">
 								<!-- Overlay -->
 								<div class="card-img-overlay d-flex z-index-0 p-3">
 									<!-- Subject overlay Top -->
@@ -578,10 +628,9 @@ Page content END -->
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
-
 <!-- =======================
 Footer START -->
-<footer class="pt-5 bg-light">
+<footer class="pt-5">
 	<div class="container">
 		<!-- Row START -->
 		<div class="row g-4">
@@ -590,11 +639,10 @@ Footer START -->
 			<div class="col-lg-3">
 				<!-- logo -->
 				<a class="me-0" href="index.html">
-					<img class="light-mode-item h-40px" src="/resources/images/logo.svg" alt="logo">
+					<img class="light-mode-item h-40px" src="/resources/images/logo.png" alt="logo">
 					<img class="dark-mode-item h-40px" src="/resources/images/logo-light.svg" alt="logo">
 				</a>
 				<p class="my-3">스포츠를 사랑하고 배우고자 하는 모든 이들을 위해 만들어 졌습니다. 함께 스포츠를 즐기며 배우고 성장할 수 있는 공간, 그것이 바로 우리의 목표입니다.</p>
-				<!-- Social media icon -->
 			</div>
 			<!-- Widget 1 END -->
 
@@ -603,7 +651,7 @@ Footer START -->
 				<div class="row g-4">
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">센터소개</h5>
+						<h3 class="mb-2 mb-md-4">센터소개</h3>
 						<ul class="nav flex-column">
 							<li class="nav-item"><a class="nav-link" href="#">About us</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
@@ -611,20 +659,21 @@ Footer START -->
 					</div>
 									
 					<!-- Link block -->
-				<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">종목/소개</h5>
+					<div class="col-6 col-md-4">
+						<h3 class="mb-2 mb-md-4">종목/소개</h3>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#">종목 안내</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">수강 신청 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="/subject/index.do">종목 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="/subject/registInfo.do">이용 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="/subject/usageInfo.do">수강 신청 안내</a></li>
 						</ul>
 					</div>
 
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">커뮤니티</h5>
+						<h3 class="mb-2 mb-md-4">커뮤니티</h3>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">QnA</a></li>
+							<li class="nav-item"><a class="nav-link" href="/notice/index.do">공지사항</a></li>
+							<li class="nav-item"><a class="nav-link" href="/qna/index.do">QnA</a></li>
 						</ul>
 					</div>
 				</div>
@@ -633,7 +682,7 @@ Footer START -->
 
 			<!-- Widget 3 START -->
 			<div class="col-lg-3">
-				<h5 class="mb-2 mb-md-4">Contact</h5>
+				<h3 class="mb-2 mb-md-4">문의</h3>
 				<!-- Time -->
 				<p class="mb-2">
 					TEL:<span class="h6 fw-light ms-2">02-6392-0044</span>
@@ -643,10 +692,6 @@ Footer START -->
 				<p class="mb-0">Email:<span class="h6 fw-light ms-2">shds.edu03@gmail.com</span></p>
 
 				<div class="row g-2 mt-2">
-					<!-- Google play store button -->
-					<div class="col-6 col-sm-4 col-md-3 col-lg-6">
-						<a href="#"> <img src="resources/images/client/google-play.svg" alt=""> </a>
-					</div>
 				</div> <!-- Row END -->
 			</div> 
 			<!-- Widget 3 END -->
@@ -660,13 +705,12 @@ Footer START -->
 			<div class="container px-0">
 				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left">
 					<!-- copyright text -->
-					<div class="text-body text-primary-hover"> Copyrights ©2024 SportsCenter. Build by <a href="https://www.webestica.com/" target="_blank" class="text-body">ShihanDS_Project1</a></div>
+					<div class="text-body text-primary-hover"> Copyrights ©2024 SportsCenter. Build by <a href="#" target="_blank" class="text-body">ShinhanDS</a></div>
 					<!-- copyright links-->
 					<div class="justify-content-center mt-3 mt-lg-0">
 						<ul class="nav list-inline justify-content-center mb-0">
 							<li class="list-inline-item">
-							<li class="list-inline-item"><a class="nav-link" href="#">Terms of use</a></li>
-							<li class="list-inline-item"><a class="nav-link pe-0" href="#">Privacy policy</a></li>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -675,8 +719,9 @@ Footer START -->
 	</div>
 </footer>
 <!-- =======================
-Footer END -->       
 Footer END -->
+
+
 
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
