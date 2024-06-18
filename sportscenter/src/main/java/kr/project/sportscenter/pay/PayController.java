@@ -185,8 +185,9 @@ public class PayController {
     }
 	
     // 다음달 재수강 결제 내역 등록
-    @Scheduled(cron="0 20 9 15 * ?") // 매달 20일 오전 9시 15분에 실행
-	public void addAll() {
+    // @Scheduled(cron="0 19 9 15 * ?") // 매달 20일 오전 9시 15분에 실행
+	@Scheduled(cron="0 59 15 * * ?") // 테스트용
+    public void addAll() {
     	LocalDate now = LocalDate.now();
 		int year = now.getYear();
 		int month = now.getMonthValue();
@@ -197,9 +198,10 @@ public class PayController {
 		vo.setCancelstate(0);
 		vo.setRefundstate(0);
 		vo.setClassmonth(month);
-		Map<String, Object> map = service.list(vo);
+		Map<String, Object> map = service.selectThisMonth(vo);
 		List<PayVO> list = (List<PayVO>)map.get("list");
-		
+		System.out.println("======");
+		System.out.println(list);
 		for(PayVO item : list) {
 			int pre_classid = item.getClassid();
 			int pre_usernum = item.getUsernum();

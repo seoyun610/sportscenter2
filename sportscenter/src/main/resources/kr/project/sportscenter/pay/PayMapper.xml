@@ -119,10 +119,15 @@
 		WHERE payid=${payid}
 	</select>
 	
-	<select id="select" parameterType="kr.project.sportscenter.pay.PayVO" resultType="kr.project.sportscenter.pay.PayVO">
+	<select id="selectThisMonth" parameterType="kr.project.sportscenter.pay.PayVO" resultType="kr.project.sportscenter.pay.PayVO">
 		SELECT *
 		FROM pay
-		<include refid="searchSql"/>
+		WHERE paystate = 1 and cancelstate = 0 and refundstate = 0 and 
+		classid in (
+			SELECT classid
+			FROM class
+			WHERE classmonth = #{classmonth}
+		)
 	</select>
 	
 	<insert id="offregist" parameterType="kr.project.sportscenter.pay.PayVO">

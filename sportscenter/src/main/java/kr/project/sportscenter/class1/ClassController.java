@@ -53,7 +53,7 @@ public class ClassController {
 		if(cvo.getClassmonth()<1) {
 			LocalDate now = LocalDate.now();
 			cvo.setClassyear(now.getYear());
-			cvo.setClassmonth(now.getMonthValue()+1);
+			cvo.setClassmonth(now.getMonthValue());
 		}
 		model.addAttribute("map", cservice.list(cvo));
 		model.addAttribute("smap", sservice.list(svo));
@@ -92,8 +92,9 @@ public class ClassController {
 	}
 	
 	// 다음달 신규 수업 등록
-    @Scheduled(cron = "0 18 9 15 * ?") // 매달 18일 오전 9시 15분에 실행
-    public void insertData() {
+    // @Scheduled(cron = "0 18 9 15 * ?") // 매달 18일 오전 9시 15분에 실행
+    @Scheduled(cron = "0 38 14 * * ?") // 테스트용
+	public void insertData() {
         ClassVO cvo = new ClassVO();
         cvo.setClassmonth(LocalDate.now().getMonthValue()); // 현재 월 설정
         Map<String, Object> map = cservice.list(cvo);

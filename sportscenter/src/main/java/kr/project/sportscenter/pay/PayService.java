@@ -6,6 +6,7 @@ import java.util.Map;
 public interface PayService {
 	boolean regist(PayVO vo);
 	Map<String, Object> list(PayVO vo);
+	Map<String, Object> selectThisMonth(PayVO vo);
 	boolean exists(PayVO vo);
 	boolean update(PayVO vo);
 	Map<String, Object> courseList(PayVO vo);
