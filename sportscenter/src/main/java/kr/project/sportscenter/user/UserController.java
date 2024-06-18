@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -211,6 +213,22 @@ public class UserController {
 		model.addAttribute("map", service.findUser(vo));
 		return "admin/userList";
 	}
+	
+	@PostMapping("/user/findMem.do")
+	@ResponseBody
+	public ResponseEntity<?> findUser(@RequestParam("username") String username,
+	                                @RequestParam("birth") String birth,
+	                                @RequestParam("hp") String hp) {
+	    UserVO result = service.findId(username, birth, hp);
+	    if (result != null) {
+	        // JSON 형식으로 UserVO 반환
+	        return ResponseEntity.ok(result);
+	    } else {
+	        // JSON 형식으로 실패 메시지 반환
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("fail");
+	    }
+	}
+	
 }
   		
 

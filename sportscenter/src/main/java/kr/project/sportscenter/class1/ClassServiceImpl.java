@@ -81,4 +81,9 @@ public class ClassServiceImpl implements ClassService {
 	public boolean updateCnt(ClassVO vo) {
 		return mapper.updateCnt(vo) > 0 ? true : false;
 	}
+	
+	@Override
+	public List<ClassVO> foroff(int classyear, int classmonth) {
+		return mapper.foroff(classyear, classmonth);
+	}
 }

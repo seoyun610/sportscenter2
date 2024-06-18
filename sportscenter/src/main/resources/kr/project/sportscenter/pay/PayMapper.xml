@@ -125,4 +125,9 @@
 		WHERE classid = #{classid}
 	</select>
 	
+	<insert id="offregist" parameterType="kr.project.sportscenter.pay.PayVO">
+	    INSERT INTO pay (classid, usernum, paystate, price, paymethod)
+	    VALUES (#{classid},#{usernum},1,${price},"현장등록");
+	</insert> 
+	
 </mapper>

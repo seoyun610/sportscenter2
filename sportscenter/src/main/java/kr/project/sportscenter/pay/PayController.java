@@ -269,6 +269,31 @@ public class PayController {
 			return "common/alert";
 		}
 	}
+	
+	@GetMapping("/admin/offRegist.do")
+    public String cModify(Model model, PayVO vo) {
+        return "admin/offRegist";
+    }
+	
+	@PostMapping("/admin/offRegist.do")
+	public String offregist(Model model, PayVO vo, ClassVO cvo, @RequestParam int classid, @RequestParam int usernum, @RequestParam int price) {
+		vo.setClassid(classid);
+		vo.setUsernum(usernum);
+		vo.setPrice(price);
+		boolean r = service.offregist(vo);
+		cvo.setClassid(classid);
+		cvo.setClasscnt(cvo.getClasscnt() + 1);
+	    boolean updatecnt = cservice.updateCnt(cvo);
+		if(r && updatecnt) {
+			model.addAttribute("msg", "현장 등록이 완료되었습니다.");
+			model.addAttribute("url", "/admin/offRegist.do");
+			return "common/alert";
+		} else {
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "등록 오류");
+			return "common/alert";
+		}
+	}
     
 }
 	

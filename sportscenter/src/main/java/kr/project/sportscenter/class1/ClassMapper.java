@@ -19,4 +19,5 @@ public interface ClassMapper {
 	int delete(int classid);
 	int updateCnt(ClassVO vo);
 	List<ClassVO> cmodify(@Param("classid") int classid, @Param("classyear") int classyear, @Param("classmonth") int classmonth);
+	List<ClassVO> foroff(@Param("classyear") int classyear, @Param("classmonth") int classmonth);
 }

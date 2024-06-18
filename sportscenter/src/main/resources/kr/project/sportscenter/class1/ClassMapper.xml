@@ -120,4 +120,10 @@
         SET classcnt = #{classcnt}
         WHERE classid = #{classid}
     </update>
+    
+    <select id="foroff"  parameterType="map" resultType="kr.project.sportscenter.class1.ClassVO">
+		SELECT *
+		FROM class
+		WHERE classyear = #{classyear} AND classmonth >= #{classmonth}
+	</select>
 </mapper>

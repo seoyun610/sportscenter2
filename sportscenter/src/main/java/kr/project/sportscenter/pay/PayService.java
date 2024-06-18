@@ -17,4 +17,5 @@ public interface PayService {
 	boolean courseModify(PayVO vo);
 	PayVO clist(int payid);
 	PayVO select(int classid);
+	boolean offregist(PayVO vo);
 }

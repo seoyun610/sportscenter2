@@ -6,9 +6,9 @@
 
             <!-- Logo START -->
             <div class="d-flex align-items-center d-xl-none">
-                <a class="navbar-brand" href="index.html">
-                    <img class="light-mode-item navbar-brand-item h-30px" src="/resources/images/logo-mobile.svg" alt="">
-                    <img class="dark-mode-item navbar-brand-item h-30px" src="/resources/images/logo-mobile-light.svg" alt="">
+                <a class="navbar-brand" href="userList.do">
+                    <img class="light-mode-item navbar-brand-item h-30px" src="/resources/images/sportscenter.png" alt="">
+                    <img class="dark-mode-item navbar-brand-item h-30px" src="/resources/images/sportscenter.png" alt="">
                 </a>
             </div>
             <!-- Logo END -->
@@ -24,14 +24,6 @@
             <!-- Top bar left -->
             <div class="navbar-expand-lg ms-auto ms-xl-0">
                 
-                <!-- Toggler for menubar START -->
-                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopContent" aria-controls="navbarTopContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-animation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </button>
                 <!-- Toggler for menubar END -->
 
                 <!-- Topbar menu START -->
@@ -48,7 +40,7 @@
                     <li class="nav-item ms-2 ms-md-3 dropdown">
                         <!-- Avatar -->
                         <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="avatar-img rounded-circle" src="/resources/images/avatar/01.jpg" alt="avatar">
+                            <img class="avatar-img rounded-circle" src="/resources/images/4784d49297c9d28059214b49443a2bae.jpg" alt="avatar">
                         </a>
 
                         <!-- Profile dropdown START -->
@@ -58,7 +50,7 @@
                                 <div class="d-flex align-items-center">
                                     <!-- Avatar -->
                                     <div class="avatar me-3 mb-3">
-                                        <img class="avatar-img rounded-circle shadow" src="/resources/images/avatar/01.jpg" alt="avatar">
+                                        <img class="avatar-img rounded-circle shadow" src="/resources/images/4784d49297c9d28059214b49443a2bae.jpg" alt="avatar">
                                     </div>
                                     <div>
                                         <a class="h6 mt-2 mt-sm-0" href="#">관리자</a>

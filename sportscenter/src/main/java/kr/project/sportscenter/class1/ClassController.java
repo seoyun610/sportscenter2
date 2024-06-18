@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -184,4 +186,15 @@ public class ClassController {
 		model.addAttribute("pvo",pservice.select(classid));
 		return "pay/payCheck";
 	}
+	
+	@GetMapping("/class/foroff.do")
+	public ResponseEntity<List<ClassVO>> getClassList(@RequestParam("classyear") int classyear, @RequestParam("classmonth") int classmonth) {
+	    List<ClassVO> classList = cservice.foroff(classyear, classmonth);
+	    if (classList != null && !classList.isEmpty()) {
+	        return new ResponseEntity<>(classList, HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	    }
+	}
+
 }

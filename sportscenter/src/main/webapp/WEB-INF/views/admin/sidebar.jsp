@@ -29,6 +29,7 @@
 					<ul class="nav collapse flex-column" id="collapsepage2" data-bs-parent="#navbar-sidebar">
 						<li class="nav-item"> <a class="nav-link" href="courseList.do">수강 정보 관리</a></li>
 						<li class="nav-item"> <a class="nav-link" href="/admin/list.do">강좌 정보 관리</a></li>
+						<li class="nav-item"> <a class="nav-link" href="/admin/offRegist.do">현장 등록</a></li>
 					</ul>
 				</li>
 

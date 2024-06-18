@@ -93,6 +93,8 @@ public class PayServiceImpl implements PayService {
 		return mapper.select(classid);
 	}
 
-	
+	public boolean offregist(PayVO vo) {
+		return mapper.offregist(vo) == 0 ? false : true;
+	}
 
 }

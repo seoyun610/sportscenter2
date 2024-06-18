@@ -177,7 +177,7 @@
 			</div>
 			<input type="hidden" value="${payid }" id="payid" name="payid">	
 			<div class="d-sm-flex justify-content-end">
-				<button type="button" class="btn btn-primary mb-0"> 변경하기 </button> 
+				<button type="submit" class="btn btn-primary mb-0"> 변경하기 </button> 
 			</div>
 		</div>
 		</form>
