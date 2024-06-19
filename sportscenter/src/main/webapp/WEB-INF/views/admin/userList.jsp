@@ -100,33 +100,33 @@
 								<td>
 									<div class="align-items-center position-relative">
 										<!-- Title -->
-										<h6 class="table-responsive-title mb-0 ms-2" >	
+										<h5 class="table-responsive-title mb-0 ms-2" >	
 											<a>${vo.username }</a>
-										</h6>
+										</h5>
 									</div>
 								</td>
 								<td>
 									<div class="align-items-center">
-										<h6 class="mb-0 fw-light">${vo.hp }</h6>
+										<h5 class="mb-0 fw-light">${vo.hp }</h5>
 									</div>
 								</td>
 								<td>
 									<div class="align-items-center">
-										<h6 class="mb-0 fw-light">
+										<h5 class="mb-0 fw-light">
 										<c:choose>
 							            	<c:when test="${vo.gender == 1}">남자</c:when>
 							               	<c:when test="${vo.gender == 2}">여자</c:when>
-						               	<c:otherwise /> </c:choose></h6>
+						               	<c:otherwise /> </c:choose></h5>
 									</div>
 								</td>
 								<td>
 									<div class="align-items-center">
-										<h6 class="mb-0 fw-light">${vo.birth }</h6>
+										<h5 class="mb-0 fw-light">${vo.birth }</h5>
 									</div>
 								</td>
 								<td>
 									<div class="align-items-center">
-										<h6 class="mb-0 fw-light">${vo.email }</h6>
+										<h5 class="mb-0 fw-light">${vo.email }</h5>
 									</div>
 								</td>
 							</tr>

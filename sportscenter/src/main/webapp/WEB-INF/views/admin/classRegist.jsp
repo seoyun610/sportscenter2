@@ -42,8 +42,7 @@
 	    }
 	    
 	</style>
-    <!-- Favicon -->
-	<link rel="shortcut icon" href="/resources/images/favicon.ico">
+    
 
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,6 +59,8 @@
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/resources/images/favicon.ico">
 	</head> 
 <body>
 <main>
@@ -120,7 +121,7 @@
                     <div class="col-sm-3">
                         <select id="classtime" name="classtime" size="1" class="form-control">
                             <c:forEach var="vo" items="${tmap.list}">
-                                <option value="${vo.timeid}" ${vo.timeid == obj.classtime ? 'selected' : ''}>${vo.timetxt}</option>
+                                <option value="${vo.timeid}" ${vo.timeid == 99 ? 'selected disabled hidden' : ''}>${vo.timetxt}</option>
                             </c:forEach>
                         </select>
                     </div>

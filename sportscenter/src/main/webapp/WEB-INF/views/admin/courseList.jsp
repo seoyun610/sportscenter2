@@ -49,21 +49,6 @@
         text-align: center;
         vertical-align: middle;
     }
-    .card-footer {
-        background-color: #f8f9fa; /* 회색 배경 */
-        color: #6c757d; /* 회색 텍스트 */
-    }
-
-    .card-footer .page-link {
-        color: #6c757d; /* 회색 페이지 링크 */
-        border-color: #dee2e6; /* 회색 경계 */
-    }
-
-    .card-footer .page-item.active .page-link {
-        background-color: #6c757d; /* 활성화된 페이지 회색 배경 */
-        border-color: #6c757d; /* 활성화된 페이지 회색 경계 */
-        color: #fff; /* 활성화된 페이지 흰색 텍스트 */
-    }
 </style>
 </head> 
 <body>
@@ -127,44 +112,44 @@
 						<tr style="height: 65px;">
 							<td>  
 								<div class="align-items-center position-relative">
-								<h6 class="table-responsive-title mb-0 ms-2">
+								<h5 class="table-responsive-title mb-0 ms-2">
 									<a>${(map.page-1) * 10 + status.index + 1}</a>
-								</h6>
+								</h5>
 								</div>
 							</td>
 							<td>
 								<div class="align-items-center">
-										<h6 class="mb-0 fw-light">${vo.username }</h6>
+										<h5 class="mb-0 fw-light">${vo.username }</h5>
 								</div>
 							</td>
 							<td>
 								<div class="align-items-center">
-									<h6 class="mb-0 fw-light">${vo.classyear }-${vo.classmonth }</h6>
+									<h5 class="mb-0 fw-light">${vo.classyear }-${vo.classmonth }</h5>
 								</div>
 							</td>
 							<td>
 								<div class="align-items-center">
-									<h6 class="mb-0 fw-light">${vo.subtypeName }</h6>
+									<h5 class="mb-0 fw-light">${vo.subtypeName }</h5>
 								</div>
 							</td>
 							<td>
 								<div class="align-items-center">
-									<h6 class="mb-0 fw-light">${vo.classYoil }</h6>
+									<h5 class="mb-0 fw-light">${vo.classYoil }</h5>
 								</div>
 							</td>
 							<td>
 								<div class="align-items-center">
-									<h6 class="mb-0 fw-light">${vo.formattedClasstime } </h6>
+									<h5 class="mb-0 fw-light">${vo.formattedClasstime } </h5>
 								</div>
 							</td>
 							<td>
 								<div class="align-items-center">
-									<h6 class="mb-0 fw-light"> ${vo.classlevelName }</h6>
+									<h5 class="mb-0 fw-light"> ${vo.classlevelName }</h5>
 								</div>
 							</td>
 							<td>
 								<div class="align-items-center">
-									<h6 class="mb-0 fw-light">
+									<h5 class="mb-0 fw-light">
 									<c:choose>
 							        	<c:when test="${vo.paystate == 0}"> 미결제 </c:when>
 							            <c:when test="${vo.paystate == 1}"> 
@@ -172,14 +157,14 @@
 							               	<c:if test="${vo.refundstate != 1}"> 결제 완료 </c:if>
 						                </c:when>
 						                <c:otherwise></c:otherwise>
-						            </c:choose></h6>
+						            </c:choose></h5>
 								</div>
 							</td>
 							<td>
 								<div class="align-items-center">
 									<c:choose>
 						            <c:when test="${currentYear == vo.classyear && vo.paystate == 0 && vo.classmonth == nextMonth}">
-						            	<h6 class="mb-0 fw-light"><a href="courseModify.do?payid=${vo.payid}&classyear=${vo.classyear}&classmonth=${vo.classmonth}" class="btn btn-sm btn-success-soft me-1 mb-1 mb-md-0" >변경하기</a></h6>
+						            	<h5 class="mb-0 fw-light"><a href="courseModify.do?payid=${vo.payid}&classyear=${vo.classyear}&classmonth=${vo.classmonth}" class="btn btn-sm btn-success-soft me-1 mb-1 mb-md-0" >변경하기</a></h5>
       								</c:when>
 						            <c:otherwise />
 						            </c:choose>

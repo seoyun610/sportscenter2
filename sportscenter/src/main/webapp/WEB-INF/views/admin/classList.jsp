@@ -134,16 +134,16 @@
 							<td><div class="align-items-center position-relative"> 
 								<input type="checkbox" id="classid" name="classid" value="${vo.classid }" onclick="checkOnlyOnce(this)" />
 							</div></td>
-							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classname }</h6></div></td>  
-							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.subtypeName }</h6></div></td> 
-							<td id="classday"><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classYoil }</h6></div></td>
-							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classyear }</h6></div></td>
-							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classmonth }</h6></div></td>
-							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.formattedClasstime}</h6></div></td>
-							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classlevelName }</h6></div></td>
-							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classprice }</h6></div></td>
-							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classlimit }</h6></div></td>
-							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classcnt }</h6></div></td>
+							<td><div class="align-items-center"><h5 class="mb-0 fw-light">${vo.classname }</h5></div></td>  
+							<td><div class="align-items-center"><h5 class="mb-0 fw-light">${vo.subtypeName }</h5></div></td> 
+							<td id="classday"><div class="align-items-center"><h5 class="mb-0 fw-light">${vo.classYoil }</h5></div></td>
+							<td><div class="align-items-center"><h5 class="mb-0 fw-light">${vo.classyear }</h5></div></td>
+							<td><div class="align-items-center"><h5 class="mb-0 fw-light">${vo.classmonth }</h5></div></td>
+							<td><div class="align-items-center"><h5 class="mb-0 fw-light">${vo.formattedClasstime}</h5></div></td>
+							<td><div class="align-items-center"><h5 class="mb-0 fw-light">${vo.classlevelName }</h5></div></td>
+							<td><div class="align-items-center"><h5 class="mb-0 fw-light">${vo.classprice }</h5></div></td>
+							<td><div class="align-items-center"><h5 class="mb-0 fw-light">${vo.classlimit }</h5></div></td>
+							<td><div class="align-items-center"><h5 class="mb-0 fw-light">${vo.classcnt }</h5></div></td>
 						</tr>
 					</c:forEach>
 				</tbody>
