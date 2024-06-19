@@ -95,7 +95,7 @@
 		       c.classid as classid,
 		       p.payid as payid,
 		       u.usernum as usernum,
-		       u.username as username,
+		       u.username as username
 		FROM user u
 		JOIN pay p ON u.usernum = p.usernum
 		JOIN class c ON p.classid = c.classid
@@ -130,7 +130,7 @@
 	           c.classyear as classyear,
 	           c.classmonth as classmonth,
 	           c.classyear as classyear,
-	           c.classid as classid
+	           c.classid as classid,
 	           CASE
 	            WHEN p.refundstate = '1' then '환불'
 	            WHEN p.refundstate = '0' and month(current_date) > c.classmonth  then '수강 완료' 
