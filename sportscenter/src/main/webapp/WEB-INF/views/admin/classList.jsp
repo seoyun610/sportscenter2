@@ -17,173 +17,176 @@
 	<meta charset="UTF-8">
 	<title>수업관리</title>
 	<META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <style>
-    	.modal_btn {
-		    display: block;
-		    margin: 40px auto;
-		    padding: 10px 20px;
-		    background-color: royalblue;
-		    border: none;
-		    border-radius: 5px;
-		    color: #fff;
-		    cursor: pointer;
-		    transition: box-shadow 0.2s;
-		}
-		.modal_btn:hover {
-		    box-shadow: 3px 4px 11px 0px #00000040;
-		}
-		/*모달 팝업 영역 스타일링*/
-		.modal {
-		/*팝업 배경*/
-			display: none; /*평소에는 보이지 않도록*/
-		    position: absolute;
-		    top:0;
-		    left: 0;
-		    width: 100%;
-		    height: 100vh;
-		    overflow: hidden;
-		    background: rgba(0,0,0,0.5);
-		}
-		.modal .modal_popup {
-		/*팝업*/
-		    position: absolute;
-		    top: 50%;
-		    left: 50%;
-		    transform: translate(-50%, -50%);
-		    padding: 20px;
-		    background: #ffffff;
-		    border-radius: 20px;
-		}
-		.modal .modal_popup .close_btn {
-		    display: block;
-		    padding: 10px 20px;
-		    background-color: rgb(116, 0, 0);
-		    border: none;
-		    border-radius: 5px;
-		    color: #fff;
-		    cursor: pointer;
-		    transition: box-shadow 0.2s;
-		}
-		.modal .modal_popup .add_btn {
-		    display: block;
-		    padding: 10px 20px;
-		    background-color: royalblue;
-		    border: none;
-		    border-radius: 5px;
-		    color: #fff;
-		    cursor: pointer;
-		    transition: box-shadow 0.2s;
-		}
-		.modal.on {
-		    display: block;
-		}
-    </style>
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="/js/script.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Eduport- LMS, Education and Course Theme">
+    <!-- Favicon -->
+	<link rel="shortcut icon" href="/resources/images/favicon.ico">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/choices/css/choices.min.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/apexcharts/css/apexcharts.css">
+	<link rel="stylesheet" type="text/css" href="/resources/vendor/overlay-scrollbar/css/overlayscrollbars.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<style>
+    tbody tr td {
+        text-align: center;
+        vertical-align: middle;
+    }
+	</style>
+</head> 
 <body>
-	<div>
-		<!-- 헤더 -->
-		<div>
-			<!--모달 팝업-->
-			<div class="modal">
-			    <div class="modal_popup">
-			        <h3>등록 기간 설정</h3>
-			        <input type="number" id="currentYear" value="<%=currentYear%>"/> 년  <input type="number" id="nextMonth" value="<%=nextMonth%>"/> 월
-			        <input type="button" class="close_btn" value="닫기" onclick="closemodal();"/>
-			        <input type="button" class="add_btn" value="추가하기" onclick="registAll();"/>
-			    </div>
+<main>
+<%@ include file="/WEB-INF/views/admin/sidebar.jsp" %> 
+<div class="page-content">
+<%@ include file="/WEB-INF/views/admin/topbar.jsp" %>
+
+	<!-- Select option -->
+		<div class="page-content-wrapper border">
+		<div class="row mb-3">
+			<div class="col-12 d-sm-flex justify-content-between align-items-center mb-4">
+				<h2 class="h3 mb-2 mb-sm-0">강좌 정보 관리</h2>
+				<input type="button" value="개별 추가" onclick="registOne();" class="btn btn-sm btn-primary mb-0">
 			</div>
-			<!--end 모달 팝업-->
-			<div class="clsSearch">
-				<form method="get" name="searchForm" id="searchForm" action="list.do">
-					<span class="srchSelect">
-						<select id="subtype" name="subtype" size="1">
-							<c:forEach var="vo" items="${smap.list }">
-								<option value="${vo.sportid }" ${vo.sportid == 99 ? 'selected disabled hidden' : ''}>${vo.sporttxt }</option>
-							</c:forEach>
-						</select>
-						<select id="classtime" name="classtime" size="1">
-							<c:forEach var="vo" items="${tmap.list }">
-								<option value="${vo.timeid }" ${vo.timeid == 99 ? 'selected disabled hidden' : ''}>${vo.timetxt }</option>
-							</c:forEach>
-						</select>
-						<select id="classlevel" name="classlevel" size="1">
-							<c:forEach var="vo" items="${lmap.list }">
-								<option value="${vo.levelid }" ${vo.levelid == 99 ? 'selected disabled hidden': ''}>${vo.leveltxt}</option>
-							</c:forEach>
-						</select>
-<%-- 						<input type="hidden" id="classyear" name="classyear" value="<%=currentYear %>"> --%>
-<%-- 						<input type="hidden" id="classmonth" name="classmonth" value="<%=nextMonth%>"> --%>
-						<input type="submit" id="sBtn" value="검색" title="검색">
-					</span>
-				</form>
+
+			<div class="col-lg-8 col-xl-9">
+				<!-- Select option -->
+				<div class="row mb-4 align-items-center">
+					<form method="get" name="searchForm" id="searchForm" action="list.do">
+						<div class="row">
+							<div class="col-md-3 mb-3">
+								<div class="border rounded p-2">
+									<select class="form-select form-select-sm js-choice border-0" aria-label=".form-select-sm" id="subtype" name="subtype">
+										<c:forEach var="vo" items="${smap.list}">
+											<option value="${vo.sportid}" ${vo.sportid == 99 ? 'selected disabled hidden' : ''}>${vo.sporttxt}</option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-3 mb-3">
+								<div class="border rounded p-2">
+									<select class="form-select form-select-sm js-choice border-0" aria-label=".form-select-sm" id="classtime" name="classtime">
+										<c:forEach var="vo" items="${tmap.list}">
+											<option value="${vo.timeid}" ${vo.timeid == 99 ? 'selected disabled hidden' : ''}>${vo.timetxt}</option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-3 mb-3">
+								<div class="border rounded p-2">
+									<select class="form-select form-select-sm js-choice border-0" aria-label=".form-select-sm" id="classlevel" name="classlevel">
+										<c:forEach var="vo" items="${lmap.list}">
+											<option value="${vo.levelid}" ${vo.levelid == 99 ? 'selected disabled hidden' : ''}>${vo.leveltxt}</option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-2 mb-3 text-dark d-flex align-items-center">
+								<input type="submit" id="sBtn" value="검색" title="검색" class="btn btn-sm btn-light mb-0 ms-auto">
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
-			<input type="button" value="개별 추가" onclick="registOne();"/>
-			<button type="button" class="modal_btn" onclick="openmodal();">일괄 추가</button>
+
+			
+			
+
 			<form method="get" action="modify.do" id="classForm" name="classForm">
-				<table border="1" id="listTable" name="listTable">
+				<table class="table table-dark-gray align-middle p-4 mb-4 table-hover" id="listTable" name="listTable">
+				<thead>
+					<tr style="text-align:center">
+						<th scope="col" class="border-0 rounded-start">선택</th>
+						<th scope="col" class="border-0">반이름</th>
+						<th scope="col" class="border-0">종목</th>
+						<th scope="col" class="border-0">요일</th>
+						<th scope="col" class="border-0">년도</th>
+						<th scope="col" class="border-0">월</th>
+						<th scope="col" class="border-0">시간</th>
+						<th scope="col" class="border-0">등급</th>
+						<th scope="col" class="border-0">가격</th>
+						<th scope="col" class="border-0">정원</th>
+						<th scope="col" class="border-0 rounded-end">현원</th>
+					</tr>
+				</thead>
 				<tbody>
 					<c:if test="${empty map.list }">
 						<tr>
-							<td colspan="9">불러올 과목이 없습니다.</td>
+							<td colspan="11">불러올 과목이 없습니다.</td>
 						</tr>
 					</c:if>
-					<tr>
-						<th>선택</th>
-						<th>반이름</th>
-						<th>종목</th>
-						<th>요일</th>
-						<th>년도</th>
-						<th>월</th>
-						<th>시간</th>
-						<th>등급</th>
-						<th>가격</th>
-						<th>정원</th>
-						<th>현원</th>
-					</tr>
 					<c:forEach var="vo" items="${map.list }"> 
 						<tr id="list<%=cnt %>" value="<%=cnt%>">
-							<td><input type="checkbox" id="classid" name="classid" value="${vo.classid }" onclick="checkOnlyOnce(this)" /></td>
-							<td>${vo.classname }</td>  
-							<td>${vo.subtypeName }</td>
-							<td id="classday">${vo.classYoil }</td>
-							<td>${vo.classyear }</td>
-							<td>${vo.classmonth }</td>
-							<td>${vo.formattedClasstime}</td>
-							<td>${vo.classlevelName }</td>
-							<td>${vo.classprice }</td>
-							<td>${vo.classlimit }</td>
-							<td>${vo.classcnt }</td>
+							<td><div class="align-items-center position-relative"> 
+								<input type="checkbox" id="classid" name="classid" value="${vo.classid }" onclick="checkOnlyOnce(this)" />
+							</div></td>
+							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classname }</h6></div></td>  
+							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.subtypeName }</h6></div></td> 
+							<td id="classday"><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classYoil }</h6></div></td>
+							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classyear }</h6></div></td>
+							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classmonth }</h6></div></td>
+							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.formattedClasstime}</h6></div></td>
+							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classlevelName }</h6></div></td>
+							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classprice }</h6></div></td>
+							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classlimit }</h6></div></td>
+							<td><div class="align-items-center"><h6 class="mb-0 fw-light">${vo.classcnt }</h6></div></td>
 						</tr>
-						<%cnt = cnt+1; %>
 					</c:forEach>
 				</tbody>
-			</table>
-			<input type="submit" id="classBtn" value="선택수정"/>
+				</table>
+				<input type="submit" id="classBtn" value="선택수정" class="btn btn-primary mb-0"/>
+				<input type="button" onclick="classDel();" value="선택삭제" class="btn btn-primary mb-0" >
 			</form>
-			<input type="button" onclick="classDel();" value="선택삭제">
-			<div>
-				<ul>
-					<c:if test="${map.prev }">
-						<li><a href="list.do?page=${map.startPage-1 }"> << </a></li>
-					</c:if>
-					<c:forEach var="p" begin="${map.startPage }" end="${map.endPage }">
-						<c:if test="${p == ClassVO.page }">
-							<li><a href='#'; class='current'>${p}</a></li>
-						</c:if>
-						<c:if test="${p != ClassVO.page }">
-							<li><a href="list.do?page=${p}">${p }</a></li>
-						</c:if>
-					</c:forEach>
-					<c:if test="${map.next }">
-						<li><a href="list.do?page=${map.endPage+1 }"> >> </a></li>
-					</c:if>
-				</ul>
+			
+			
+			<!-- Card footer START -->
+			<div class="card-footer bg-transparent pt-0">
+				<!-- Pagination START -->
+				<div class="d-sm-flex justify-content-sm-between align-items-sm-center">
+					<!-- Content -->
+					<p class="mb-0 text-center text-sm-start"></p>
+					<!-- Pagination -->
+					<nav class="d-flex justify-content-center mb-0" aria-label="navigation">
+						<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+							<c:if test="${map.prev }">
+							<li class="page-item mb-0"><a class="page-link" href="list.do?page=${map.startPage-1 }" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
+							</c:if>
+							<c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
+							<c:if test="${p == ClassVO.page}">
+								   <li class="page-item mb-0 active"><a class="page-link" href='#;' class='current'>${p}</a></li>
+							</c:if>
+							<c:if test="${p != ClassVO.page}">
+								 <li class="page-item mb-0"><a class="page-link" href='list.do?page=${p}&searchWord=${classVO.searchWord}'>${p}</a></li>
+							</c:if>
+							</c:forEach>
+							<c:if test="${map.next }">
+							<li class="page-item mb-0"><a href="list.do?page=${map.endPage+1 }&searchWord=${classVO.searchWord}" class="page-link"><i class="fas fa-angle-right"></i></a></li>
+							</c:if>
+						</ul>
+					</nav>
+				</div>
+				<!-- Pagination END -->
 			</div>
+			<!-- Card footer END -->
 		</div>
-		<!-- 푸터 -->
-	</div>
+		</div>
+		</div>
+	</main>
+	
 <script type="text/javascript">
 	var modal = document.getElementsByClassName('modal')[0];
 	var modalOpen = document.getElementsByClassName('modal_btn');

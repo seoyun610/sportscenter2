@@ -88,7 +88,7 @@
 			<!-- Course table START -->
 			<div class="table-responsive border-0 rounded-3">
 				<!-- Table START -->
-				<table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+				<table class="table table-dark-gray align-middle p-4 mb-2 table-hover">
 					<!-- Table head -->
 					<thead>
 						<tr style="text-align:center">
@@ -176,8 +176,8 @@
 				</table>
 			</div>
 			<input type="hidden" value="${payid }" id="payid" name="payid">	
-			<div class="d-sm-flex justify-content-end">
-				<button type="submit" class="btn btn-primary mb-0"> 변경하기 </button> 
+			<div class="d-sm-flex justify-content-end text-dark">
+				<button type="submit" class="btn btn-sm btn-light mb-0 ms-auto"> 변경하기 </button> 
 			</div>
 		</div>
 		</form>

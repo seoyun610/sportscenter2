@@ -117,7 +117,8 @@
 			<if test="searchWord != null and searchWord != ''">
 				WHERE AND p.usernum = (SELECT usernum FROM user WHERE username LIKE '%${searchWord}%')
 			</if>
-		ORDER BY payid
+		ORDER BY payid DESC
+		LIMIT #{startIdx}, 10
 	</select>
 
 	<!-- 카운트 -->

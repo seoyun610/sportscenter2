@@ -3,7 +3,7 @@
 	<!-- Navbar brand for xl START -->
 	<div class="d-flex align-items-center">
 		<a class="navbar-brand">
-			<img class="navbar-brand-item" src="/resources/images/logo-light.svg" alt="img">
+			<img class="navbar-brand-item" src="/resources/images/sportscenter.png" alt="img">
 		</a>
 	</div>
 	<!-- Navbar brand for xl END -->
@@ -40,7 +40,7 @@
 					</a>
 					<!-- Submenu -->
 					<ul class="nav collapse flex-column" id="collapseinstructors" data-bs-parent="#navbar-sidebar">
-						<li class="nav-item"> <a class="nav-link" href="adminSubject.do">종목 안내</a></li>
+						<!-- <li class="nav-item"> <a class="nav-link" href="adminSubject.do">종목 안내</a></li> -->
 						<li class="nav-item"> <a class="nav-link" href="adminNotice.do">공지사항</a></li>
 						<li class="nav-item"> <a class="nav-link" href="adminQna.do">Q & A</a></li>
 					</ul>

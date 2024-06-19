@@ -97,7 +97,7 @@
 							<!-- Table row -->
 						<c:forEach var="vo" items="${map.list }" >  
 							<tr>
-								<td >
+								<td>
 									<div class="align-items-center position-relative">
 										<!-- Title -->
 										<h6 class="table-responsive-title mb-0 ms-2" >	

@@ -32,18 +32,18 @@
 	        success: function(res) {
 	            if (res !== "fail") {
 	                // 가입 내역이 있을 때의 처리
-	                document.getElementById('res').innerText = "확인 가능 회원 아이디는 " + res.userid + "입니다.";
+	                document.getElementById('res').innerText = "확인 되는 회원 아이디는 " + res.userid + "입니다.";
 	                document.getElementById('res').style.color = "green";
 					document.getElementsByName('userid')[0].value = res.userid;
 					document.getElementsByName('usernum')[0].value = res.usernum;
 	            } else {
-	                // 가입되지 않은 회원일 때의 처리
 	                document.getElementById('res').innerText = "가입되지 않은 회원입니다.";
 	                document.getElementById('res').style.color = "red";
 	            }
 	        },
 	        error: function(xhr, status, error) {
-	            alert("오류 발생: " + error);
+	        	document.getElementById('res').innerText = "가입되지 않은 회원입니다.";
+                document.getElementById('res').style.color = "red";
 	        }
 	    });
 	}
@@ -72,33 +72,63 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<form name="offregist" action="offRegist.do" method="post"> 
-	<table> 
-	<th colspan='2'> 현장 등록 </th>
-	<tr> 
-		<td> 아이디 </td>
-		<td> <input type ="text" name="userid" readonly="readonly"> </td>
-		<td> <a href="#" class="btn btn-primary-soft me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail">회원 정보 검색</a> </td>
-	</tr> 
-	<tr> 
-		<td> 수업 강좌 </td> 
-		<td> <input type ="text" name="classname" readonly="readonly"> </td>
-		<td> <a href="#" class="btn btn-primary-soft me-1 mb-0" data-bs-toggle="modal" data-bs-target="#CappDetail">수업 정보 검색</a> </td>
-	</tr>
+<main>
+    <%@ include file="/WEB-INF/views/admin/sidebar.jsp" %> 
+    <div class="page-content">
+        <%@ include file="/WEB-INF/views/admin/topbar.jsp" %>
+        <div class="page-content-wrapper border">
+			<div class="row mb-3">
+				<div class="card position-relative">
+			 	<div class="card-header py-3">
+					 <h2 class="m-0 font-weight-bold text-primary">현장 접수 회원 등록</h2>
+			 	</div>
+				<div class="card-body">       
+                    <form class="row g-4" name="offregist" action="offRegist.do" method="post">
+                        <div class="mb-4 d-flex align-items-center">
+                            <label class="col-sm-2 col-form-label"><strong>회원 아이디</strong></label>
+                            <div class="input-group d-flex flex-grow-1">
+								<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3">
+									<i class="bi bi-person-plus-fill"></i>
+								</span>
+                                <input type="text" class="form-control border-0 bg-light rounded-end ps-1 flex-grow-1" style="max-width: 200px;" id="userid" name="userid" readonly="readonly">
+                                <a href="#" class="btn btn-primary-soft ms-2 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail" style="font-size: 0.8rem; ">회원 정보 검색</a>
+                            </div>
+                        </div>
+                        <div class="mb-4 d-flex align-items-center">
+							<label class="col-sm-2 col-form-label"><strong>수업 강좌</strong></label>
+                            <div class="input-group d-flex flex-grow-1">
+								<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3">
+									<i class="bi bi-calendar4-week"></i>
+								</span>
+                                <input type="text" class="form-control border-0 bg-light rounded-end ps-1 flex-grow-1" style="max-width: 200px;" id="classname" name="classname" readonly="readonly">
+                                <a href="#" class="btn btn-primary-soft ms-2 mb-0" data-bs-toggle="modal" data-bs-target="#CappDetail" style="font-size: 0.8rem;">수업 정보 검색</a>
+                            </div>
+                        </div>
+                        <div class="mb-4 d-flex align-items-center">
+                            <label class="col-sm-2 col-form-label"><strong>수강 금액</strong></label>
+							<div class="input-group d-flex flex-grow-1">
+                                <span class="input-group-text bg-light rounded-start border-0 text-secondary px-3">
+                                     <i class="bi bi-currency-dollar"></i>
+                                </span>
+                                <input type="text" class="form-control border-0 bg-light rounded-end ps-1 flex-grow-1" style="max-width: 200px;" id="price" name="price" placeholder="일할 계산 후 입력해주세요.">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-start">
+                            <button type="submit" class="btn btn-primary mb-0">등록하기</button> 
+                        </div>
+                            <input type="hidden" id="usernum" name="usernum">
+                            <input type="hidden" id="classid" name="classid"> 
+                            <input type="hidden" id="classcnt" name="classcnt">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
-	<tr> 
-		<td> 금액 </td>
-		<td> <input type ="text" name="price" > </td>
-	</tr>
 
-	<tr>
-		<td></td> 
-		<td><button type="submit" class="btn btn-primary mb-0"> 등록하기 </button> 
-	</table>
-	<input type="hidden" id="usernum" name="usernum">
-	<input type="hidden" id="classid" name="classid"> 
-	<input type="hidden" id="classcnt" name="classcnt">
-</form>
+
 
 <!-- Modal START -->
 <div class="modal fade" id="appDetail" tabindex="-1" aria-labelledby="appDetaillabel" aria-hidden="true">
@@ -107,28 +137,44 @@
 			
 			<!-- Modal header -->
 			<div class="modal-header bg-dark">
-				<h5 class="modal-title text-white" id="appDetaillabel">회원 찾기</h5>
+				<h3 class="modal-title text-white" id="appDetaillabel">회원 찾기</h3>
 				<button type="button" class="btn btn-sm btn-light mb-0 ms-auto" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
 			</div>
 
 			<!-- Modal body -->
-            <form name="frm">
-			<div class="modal-body p-5">
-				<!-- Name -->
-				<span class="small"> 이름 : </span>
-				<input type="text" id="username2" name="username2">
-
-				<!-- Email -->
-				<span class="small"> 생년월일 : </span>
-				<input type="text" id="birth2" name="birth2">
-
-				<!-- Phone number -->
-				<span class="small"> 연락처 : </span>
-				<input type="text" id="hp2" name="hp2">
-
-				<p class="text-dark mb-0"><input type="button" value="검색" onclick = "memberCheck()"></p>
-				<p id="res"></p>
-			</div>
+            <!-- Modal body -->
+			<form name="frm">
+			    <div class="modal-body p-5">
+			        <!-- Name -->
+			        <div class="form-group row mb-3">
+			            <h4 class="col-sm-3 col-form-label">이름 : </h4>
+			            <div class="col-sm-9">
+			                <input type="text" id="username2" name="username2" class="form-control form-control-sm" style="max-width: 200px;">
+			            </div>
+			        </div>
+			
+			        <!-- Birthdate -->
+			        <div class="form-group row mb-3">
+			            <h4 class="col-sm-3 col-form-label">생년월일 : </h4>
+			            <div class="col-sm-9">
+			                <input type="text" id="birth2" name="birth2" class="form-control form-control-sm" style="max-width: 200px;">
+			            </div>
+			        </div>
+			
+			        <!-- Phone number -->
+			        <div class="form-group row mb-3">
+			            <h4 class="col-sm-3 col-form-label">연락처 : </h4>
+			            <div class="col-sm-9">
+			                <input type="text" id="hp2" name="hp2" class="form-control form-control-sm" style="max-width: 200px;">
+			            </div>
+			        </div>
+			
+			        <p class="text-dark mb-0 d-flex justify-content-start">
+			            <input type="button" value="검색" onclick="memberCheck()" class="btn btn-sm btn-light mb-0 ms-auto">
+			        </p>
+			        <p id="res"></p>
+			    </div>
+			</form>
 
 			<!-- Modal footer -->
 			<div class="modal-footer">
@@ -209,7 +255,7 @@
 	            console.log("확인하기2");
 	            $.each(data, function(index, vo) {
 	            	tableBody += '<tr>';
-	                tableBody += '<td><input type="radio" class="form-check-input" id="classid_' + index + '" name="crd" value="' + vo.classid + '" data-classname="' + vo.subtypeName + '" data-classcnt="' + vo.classcnt + '" onclick="checkOnlyOnce(this)" /></td>';
+	                tableBody += '<td><input type="radio" class="form-check-input" id="classid_' + index + '" name="crd" value="' + vo.classid + '" data-classname="' + vo.classname + '" data-classcnt="' + vo.classcnt + '" onclick="checkOnlyOnce(this)" /></td>';
 	                tableBody += '<td>' + vo.subtypeName + '</td>';
 	                tableBody += '<td id="classday">' + vo.classYoil + '</td>';
 	                tableBody += '<td>' + vo.formattedClasstime + '</td>';
