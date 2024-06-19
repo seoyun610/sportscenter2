@@ -13,13 +13,8 @@ public interface UserService {
 	int useridCheck(String userid);
 	
 	int emailCheck(String email);
-	UserVO findId(String username, String birth, String hp); 
-	UserVO findPassword(String userid, String birth, String hp);
-	
 
-	UserVO detail(UserVO vo);
-	
-	UserVO detailuser(UserVO vo);
+	UserVO find(UserVO vo);
 	
 	int update(UserVO vo);
 	

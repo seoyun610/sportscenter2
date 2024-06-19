@@ -25,20 +25,11 @@ public interface UserMapper {
 	// 이메일 중복체크
 	int emailCheck(String email);
 	
-	// 아이디 찾기 
-	UserVO findId(UserVO vo);
-	
-	// 비밀번호 찾기 
-	UserVO findPassword(UserVO vo); 
-	
 	//비밀번호 업데이트 
 	boolean updatePassword(UserVO vo);
 	
 	// 회원정보 조회
-	UserVO detail(UserVO vo);
-	
-	//회원 개인정보 확인
-	UserVO detailuser(UserVO vo);
+	UserVO find(UserVO vo);
 	
 	// 회원정보 수정
 	int update(UserVO vo);

@@ -25,6 +25,21 @@
 					AND usernum = #{usernum}
 				</when>
 			</choose>
+			<choose>
+				<when test = "username != 0">
+					AND username = #{username}
+				</when>
+			</choose>
+			<choose>
+				<when test = "birth != 0">
+					AND birth = #{birth}
+				</when>
+			</choose>
+			<choose>
+				<when test = "hp != 0">
+					AND hp = #{hp}
+				</when>
+			</choose>
 		</where>
 	</sql>
 	
@@ -41,27 +56,14 @@
 		SELECT COUNT(*) FROM user WHERE email=#{email}
 	</select>
 	
-	<select id="findId" resultType="kr.project.sportscenter.user.UserVO" parameterType="kr.project.sportscenter.user.UserVO">
-		SELECT * FROM user WHERE username=#{username} AND birth=#{birth} AND hp=#{hp}
-	</select>
-	
-	<select id="findPassword" resultType="kr.project.sportscenter.user.UserVO" parameterType="kr.project.sportscenter.user.UserVO">
-		SELECT * FROM user WHERE userid=#{userid} AND birth=#{birth} AND hp=#{hp}
-	</select>
-	
 	<!-- 기존의 비밀번호 업데이트 쿼리문  -->
 	<update id="updatePassword">
 		UPDATE user SET pwd=MD5(#{pwd}) where userid=#{userid}
 	</update>
 	
-	<select id="detail" resultType="kr.project.sportscenter.user.UserVO" parameterType="kr.project.sportscenter.user.UserVO">
+	<select id="find" resultType="kr.project.sportscenter.user.UserVO" parameterType="kr.project.sportscenter.user.UserVO">
 		SELECT * FROM user 
 		<include refid="searchUser"/>
-	</select>
-	
-	<select id="detailuser" resultType="kr.project.sportscenter.user.UserVO" parameterType="kr.project.sportscenter.user.UserVO">
-		SELECT * FROM user 
-		WHERE usernum=#{usernum}
 	</select>
 	
 	<!-- 개인정보 수정 -->
@@ -93,7 +95,7 @@
 		       c.classid as classid,
 		       p.payid as payid,
 		       u.usernum as usernum,
-		       u.username as username
+		       u.username as username,
 		FROM user u
 		JOIN pay p ON u.usernum = p.usernum
 		JOIN class c ON p.classid = c.classid

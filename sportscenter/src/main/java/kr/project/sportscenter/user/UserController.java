@@ -76,18 +76,17 @@ public class UserController {
 		return "common/alert";
 	}
 	
-	@GetMapping("/user/findId.do")
-	public void findId() {
-		
-	}
-	
 	// 아이디 찾기 
 	@PostMapping("/user/findId.do")
 	@ResponseBody
 	public String findId(@RequestParam("username") String username,
 	                         @RequestParam("birth") String birth,
 	                         @RequestParam("hp") String hp) {
-        UserVO result = service.findId(username, birth, hp);
+        UserVO result = new UserVO();
+        result.setUsername(username);
+        result.setBirth(birth);
+        result.setHp(hp);
+        result = service.find(result);
         if (result != null) {
             // 아이디가 존재할 경우 아이디 반환
             return result.getUserid();
@@ -104,7 +103,11 @@ public class UserController {
   								@RequestParam("birth")String birth, 
   								@RequestParam("hp")String hp,
   								HttpServletResponse response) throws IOException {
-  		UserVO result = service.findPassword(userid, birth, hp); 
+  		UserVO result = new UserVO();
+  		result.setUserid(userid);
+  		result.setBirth(birth);
+  		result.setHp(hp);
+  		result = service.find(result); 
   		if (result != null) {
   			//비밀번호 찾기 성공 시
   			return "성공"; 
@@ -137,7 +140,7 @@ public class UserController {
   	@GetMapping("/mypage/edit.do")
 	public String edit(HttpSession sess, Model model) {
   		UserVO uv = (UserVO)sess.getAttribute("login");
-  		model.addAttribute("vo", service.detailuser(uv));
+  		model.addAttribute("vo", service.find(uv));
   		return "mypage/edit";
 	}
   		
@@ -219,7 +222,11 @@ public class UserController {
 	public ResponseEntity<?> findUser(@RequestParam("username") String username,
 	                                @RequestParam("birth") String birth,
 	                                @RequestParam("hp") String hp) {
-	    UserVO result = service.findId(username, birth, hp);
+		UserVO result = new UserVO();
+		result.setUsername(username);
+		result.setBirth(birth);
+		result.setHp(hp);
+	    result = service.find(result);
 	    if (result != null) {
 	        // JSON 형식으로 UserVO 반환
 	        return ResponseEntity.ok(result);

@@ -36,30 +36,9 @@ public class UserServiceImpl implements UserService{
 		return mapper.emailCheck(email);
 	}
 	
-	//아이디 찾기 
 	@Override
-	public UserVO findId(String username, String birth, String hp) {
-		UserVO vo = new UserVO();
-		vo.setUsername(username);;
-		vo.setBirth(birth);
-		vo.setHp(hp);
-		return mapper.findId(vo);
-	}
-	
-	//비밀번호 찾기 
-	@Override
-	public UserVO findPassword(String userid, String birth, String hp) {
-		UserVO vo = new UserVO();
-		vo.setUserid(userid);
-		vo.setBirth(birth);
-		vo.setHp(hp);
-		return mapper.findPassword(vo);
-		}
-
-	
-	@Override
-	public UserVO detail(UserVO vo) {
-		return mapper.detail(vo);
+	public UserVO find(UserVO vo) {
+		return mapper.find(vo);
 	}
 
 	@Override
@@ -105,11 +84,6 @@ public class UserServiceImpl implements UserService{
 		map.put("count", count);
 		
 		return map;
-	}
-
-	@Override
-	public UserVO detailuser(UserVO vo) {
-		return mapper.detailuser(vo);
 	}
 	
 }

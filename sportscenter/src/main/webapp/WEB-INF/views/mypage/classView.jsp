@@ -84,10 +84,7 @@ main {
 						<tr>
 							<td class="classname" value="${classlist.classname }">${classlist.classname }</td>
 							<td>${classlist.formattedClassdate }</td>
-							<td><input type="button" class="cancel_btn" value="수강 취소"
-								onclick="cancel();">
-							<td>
-				
+							<td> <input type="button" class="cancel_btn" value="수강 취소" onclick="cancel(${classlist.payid}, ${classlist.classid});"></td>				
 						</tr>
 	        </c:forEach>
 		</tbody>
@@ -133,7 +130,7 @@ boolean isBetween20And25 = (day >= 20 && day <= 25);
 </body>
 <script>
 	function payment(classId) {
-		console.log(classId);
+		// console.log(classId);
 		const today = new Date();
 	    const day = today.getDate();
 	    // 테스트용
@@ -146,6 +143,17 @@ boolean isBetween20And25 = (day >= 20 && day <= 25);
 	    	alert('재수강 기간이 아닙니다. \n재수강 기간에 다시 신청해주세요.');
 	    }
 	}
+	function cancel(payid, classid) {
+		console.log(payid, classid);
+		setTimeout(() => {
+			location.href = '/pay/cancel/' + payid + '/' + classid;
+		}, 800);
+// 		const day = Date().getDate();
+// 		if(day >= 1 and day <= 10) {
+// 			location.href = '/pay/cancel/' + classid;
+// 		} else {
+// 			alert('10일 이후 취소 및 환불이 불가합니다.');
+// 		}
+	}
 </script>
-
 </html>
