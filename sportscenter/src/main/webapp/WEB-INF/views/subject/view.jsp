@@ -29,76 +29,8 @@
   
 
   <script>
-//종목 데이터
-  var subjects = [
-      { subjectid: 1, subjectfilename_org: "", subjectfilename_real: "" alt="수영"},
-      { subjectid: 2, subjectfilename_org: "", subjectfilename_real: "" alt="헬스"},
-      { subjectid: 3, subjectfilename_org: "", subjectfilename_real: "" alt="스쿼시"},
-      { subjectid: 4, subjectfilename_org: "", subjectfilename_real: "" alt="줌바댄스"},
-      { subjectid: 5, subjectfilename_org: "", subjectfilename_real: "" alt="아쿠아로빅"},
-      { subjectid: 6, subjectfilename_org: "", subjectfilename_real: "" alt="스피닝"},
-      { subjectid: 7, subjectfilename_org: "", subjectfilename_real: "" alt="필라테스"},
-      { subjectid: 8, subjectfilename_org: "", subjectfilename_real: "" alt="점핑 트램플린"},
-      { subjectid: 9, subjectfilename_org: "", subjectfilename_real: "" alt="플라잉요가"},
-      
-  ];
   
-//종목 데이터를 HTML에 표시하는 함수
-  function displaySubjects() {
-      var subjectContainer = document.getElementById('subject-container'); // 종목을 표시할 컨테이너
 
-      // 각 종목 데이터에 대해 반복
-      subjects.forEach(function(subject) {
-          // 종목 아이템 생성
-          var subjectItem = document.createElement('div');
-          subjectItem.classList.add('col-sm-6', 'col-lg-4', 'col-xl-3');
-
-          // 카드 생성
-          var card = document.createElement('div');
-          card.classList.add('card', 'shadow', 'h-100');
-
-          // 카드 이미지와 첨부파일 추가
-          var image = document.createElement('img');
-          image.classList.add('card-img-top');
-          image.setAttribute('src', '/resources/subject/' + subject.subjectfilename_org);
-          image.setAttribute('alt', '종목 이미지');
-          var realFilePath = '/resources/subject/' + subject.subjectfilename_real;
-
-          // 카드 본문 추가
-          var cardBody = document.createElement('div');
-          cardBody.classList.add('card-body', 'px-3');
-          var cardTitle = document.createElement('h5');
-          cardTitle.classList.add('card-title', 'mb-0');
-          var link = document.createElement('a');
-          link.setAttribute('href', '/subject/index.do');
-          link.classList.add('stretched-link');
-          link.innerText = '종목명: ' + subject.subjectid;
-          cardTitle.appendChild(link);
-          cardBody.appendChild(cardTitle);
-
-          // 카드 푸터 추가 (실제 파일 경로)
-          var cardFooter = document.createElement('div');
-          cardFooter.classList.add('card-footer', 'pt-0', 'px-3');
-          var fileLink = document.createElement('a');
-          fileLink.setAttribute('href', realFilePath);
-          fileLink.innerText = '실제 파일 다운로드';
-          cardFooter.appendChild(fileLink);
-
-          // 카드에 이미지, 본문, 푸터 추가
-          card.appendChild(image);
-          card.appendChild(cardBody);
-          card.appendChild(cardFooter);
-          subjectItem.appendChild(card);
-
-          // 종목 컨테이너에 추가
-          subjectContainer.appendChild(subjectItem);
-      });
-  }
-
-  // 페이지 로드 시 종목 표시
-  window.addEventListener('DOMContentLoaded', function() {
-      displaySubjects();
-  });
   </script>
 </head>
 
@@ -222,142 +154,153 @@
 	</nav>
 	<!-- Nav END -->
 </header>
-<!-- Header END -->
-<!-- =======================
-Page Banner START -->
-<section class="py-0">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<div class="bg-light p-4 rounded-3 position-relative overflow-hidden">
-
-					<!-- Svg decoration -->
-					<figure class="position-absolute top-0 end-0 mt-5">
-						<svg width="566.3px" height="353.7px" viewBox="0 0 566.3 353.7"	>
-							<path stroke="#17a2b8" fill="none" d="M525.1,4c8.1,0.7,14.9,7.2,17.9,14.8c3,7.6,3,16,2.1,24.1c-4.7,44.3-32.1,84.7-69.4,108.9 c-37.4,24.2-83.7,32.8-127.9,27.6c-32.3-3.8-63.5-14.5-95.9-16.6c-21.6-1.4-45.6,2.1-60.1,18.3c-7.7,8.5-11.8,19.6-14.8,30.7 c-7.9,29.5-9,60.8-19.7,89.5c-5.5,14.8-14,29.1-27.1,38c-15.6,10.5-35.6,12-54.2,9.5c-18.6-2.5-36.5-8.6-55-12.1"/>
-							<path stroke="#F99D2B" fill="none" d="M560.7,0.2c10,18.3,3.7,41.1-5,60.1c-11.8,25.9-28,50.3-50.2,68.2c-29,23.3-66.3,34-103.2,38.6 c-36.9,4.6-74.3,3.8-111.3,7.2c-22.3,2-45.3,5.9-63.5,19c-26.8,19.2-39,55.3-68.3,70.4c-38.2,19.6-89.7-4.9-125.6,18.8 c-22.6,15-30.7,44.2-33.3,71.2"/>
-						</svg>
-					</figure>
-
-					<div class="row position-relative align-items-center">
-
-						<!-- Content -->
-						<div class="col-md-6 px-md-5">
+	<h2 style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; text-align: center;">종목 소개</h2>
+	<!--Page content START -->
+		<section class="py-5">
+			<div class="container">
+				<div class="row">
+					<!-- Main content START -->
+					<div class="col-12">
+		
+						<!-- Search option START -->
+						<div class="row mb-4 align-items-center">
+		
 							<!-- Title -->
-							<h1 class="mb-3">스포츠 문화센터에 오신 걸 환영합니다!</h1>
-							<p class="mb-3"> 저희의 목표는 모두가 행복하고 활기찬 삶을 살 수 있는 환경을 조성하는 것입니다. 함께 운동하며 즐겨보아요:)</p>
-
-							<!-- Search -->
-							<form class="bg-body rounded p-2">
-								<div class="input-group">
-									<input class="form-control border-0 me-1" type="search" placeholder="종목 검색">
-									<button type="button" class="btn btn-primary mb-0 rounded">Search</button>
+							<div class="col-md-4">
+								<span class="total_page" style="font-family: 'Noto Sans KR', sans-serif;">총&nbsp<strong>9</strong>개의 강좌가 있습니다.</span>
+							</div>
+		
+									<!-- Select option -->
+									<div class="col-md-4 mt-3 mt-xl-0"></div>
 								</div>
-							</form>
+							</div>
 						</div>
-
-						<!-- Image -->
-						<div class="col-md-6 text-center">
-							<img src="/resources/images/book/book-bg.svg" alt="">
-						</div>
-					</div> <!-- Row END -->
-				</div>
-			</div>
-		</div> <!-- Row END -->
-	</div>
-</section>
-<!-- =======================
-Page Banner END -->
-<!-- =======================
-Page content START -->
-<section class="py-5">
-	<div class="container">
-		<div class="row">
-			<!-- Main content START -->
-			<div class="col-12">
-
-				<!-- Search option START -->
-				<div class="row mb-4 align-items-center">
-
-					<!-- Title -->
-					<div class="col-md-4">
-						<h5 class="mb-0">종목</h5>
-					</div>
-
-					<!-- Select option -->
-					<div class="col-md-4 mt-3 mt-xl-0">
-						<form class="border-bottom p-2 input-borderless">
-							<select class="js-choice">
-								<option value="">카테고리</option>
-								<option>수영</option>
-								<option>헬스</option>
-								<option>스쿼시</option>
-								<option>줌바댄스</option>
-								<option>아쿠아로빅</option>
-								<option>스피닝</option>
-								<option>필라테스</option>
-								<option>점핑 트램플린</option>
-								<option>플라잉요가</option>
-							</select>
-						</form>
-					</div>
-
-				</div>
-				<!-- Search option END -->
-
+						<!-- Search option END -->
+				
+					
 				<!-- Subject Grid START -->
 				<div class="row g-4">
-
 					<!-- Subject item START -->
 					<div class="col-sm-6 col-lg-4 col-xl-3">
-						<div class="card shadow h-100">
-							<div class="position-relative">
-								<!-- Image -->
-								<img src="/resources/subject/수영.jpg" class="card-img-top" alt="수영">
-								<!-- Overlay -->
-								<div class="card-img-overlay d-flex z-index-0 p-3">
-									<!-- Subject overlay Top -->
-									<div class="w-100 mb-auto d-flex justify-content-end">
-										<!-- Subject format icon -->
-										<div class="icon-md bg-dark rounded-circle fs-5">
-											<a href="#" class="text-white"><i class="bi bi-book"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
+					    <div class="card shadow h-100" >
+					        <div class="position-relative">
+					            <!-- Image -->
+					            <img src="/resources/images/subject/수영.jpg" class="card-img-top" alt="수영">
+					            <!-- Overlay -->
+					            <div class="card-img-overlay d-flex z-index-0 p-3 flex-column justify-content-between">
+					                <!-- Subject overlay Top -->
+					                <div class="w-100 d-flex justify-content-end">
+					                    <span class="badge bg-purple text-white"  style="position:absolute;top:97%;right:87%;">인기</span>
+					                </div>
+					                <!-- Subject overlay Bottom -->
+					                <div class="w-100">
+					                </div>
+					            </div>
+					        </div>
+					
+					        <!-- Subject body -->
+					        <div class="card-body px-3">
+					            <!-- Title -->
+					            <h5 class="card-title mb-0">
+					                <a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">수영</a>
+					            </h5>
+					            <!-- Description -->
+					            <p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">수영은 육상 운동과 달리 체중의 대부분을 지지할 필요가 없어 체격 제한 없이 남녀노소 누구나 쉽게 즐길 수 있는 운동입니다.</p>
+					        </div>
+					
+					        <!-- Subject footer -->
+					        <div class="pt-0 px-3" style="border-top: none; padding-top: 1rem; padding-bottom: 1rem;">
+					            <div class="d-flex justify-content-between align-items-center">
+					                <!-- Footer content if needed -->
+					            </div>
+					        </div>
+					    </div>
+				</div>
+				
+			
 
-							<!-- Subject body -->
-							<div class="card-body px-3">
-								<!-- Title -->
-								<h5 class="card-title mb-0">
-									<a href="/subject/index.do" class="stretched-link">수영</a>
-								</h5>
-							</div>
 
-							<!-- Subject footer -->
-							<div class="card-footer pt-0 px-3">
-								<div class="d-flex justify-content-between align-items-center">
-									<span class="h6 fw-light mb-0">수영은..</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Subject item END -->
-
-					<!-- Subject item START -->
+					<!-- Subject item 헬스 -->
 					<div class="col-sm-6 col-lg-4 col-xl-3">
 						<div class="card shadow h-100">
 							<div class="position-relative">
 								<!-- Image -->
 								<img src="/resources/images/subject/헬스.jpg" class="card-img-top" alt="헬스">
 								<!-- Overlay -->
-								<div class="card-img-overlay d-flex z-index-0 p-3">
+								<div class="card-img-overlay d-flex z-index-0 p-3 flex-column justify-content-between">
 									<!-- Subject overlay Top -->
 									<div class="w-100 mb-auto d-flex justify-content-end">
-										<!-- Subject format icon -->
-										<div class="icon-md bg-dark rounded-circle fs-5">
-											<a href="#" class="text-white"><i class="bi bi-soundwave"></i></a>
-										</div>
+										<span class="badge bg-purple text-white"  style="position:absolute;top:97%;right:87%;">인기</span>
+									</div>
+									<!-- Subject overlay Bottom -->
+					                <div class="w-100">
+								</div>
+							</div>
+						</div>
+							<!-- Subject body -->
+							<div class="card-body px-3">
+								<!-- Title -->
+								<h5 class="card-title mb-0">
+									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">헬스</a>
+								</h5>
+							<!-- Description -->
+					            <p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">헬스는 지구력, 근력, 유연성, 체력증대를 기르고 다이어트에 도움이 됩니다.</p>
+					        </div>
+							<!-- Subject footer -->
+							<div class="pt-0 px-3"style="border-top: none; padding-top: 1rem; padding-bottom: 1rem;">
+								<div class="d-flex justify-content-between align-items-center">
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Subject item 헬스 -->
+					
+
+					<!-- Subject item 스쿼시 시작 -->
+					<div class="col-sm-6 col-lg-4 col-xl-3">
+						<div class="card shadow h-100">
+							<div class="position-relative">
+								<!-- Image -->
+								<img src="/resources/images/subject/스쿼시.jpg" class="card-img-top" alt="스쿼시">
+								<!-- Overlay -->
+								<div class="card-img-overlay d-flex z-index-0 p-3 flex-column justify-content-between">
+									<!-- Subject overlay Top -->
+									<div class="w-100 mb-auto d-flex justify-content-end">
+										<span class="badge bg-success bg-opacity-10 text-white" style="position:absolute;top:97%;right:87%;">추천</span>
+									</div>
+									<!-- Subject overlay Bottom -->
+					                <div class="w-100">
+								</div>
+							</div>
+						</div>
+							<!-- Subject body -->
+							<div class="card-body px-3">
+								<!-- Title -->
+								<h5 class="card-title mb-0">
+									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">스쿼시</a>
+								</h5>
+								<!-- Description -->
+								<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">스쿼시는 실내 코트에서 빠른 반사 신경과 민첩성을 요구하는 라켓 스포츠입니다.</p>
+							</div>
+							<!-- Subject footer -->
+							<div class="pt-0 px-3" style="border-top: none; padding-top: 1rem; padding-bottom: 1rem;">
+								<div class="d-flex justify-content-between align-items-center">
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Subject item 스쿼시 끝-->
+
+					<!-- Subject item 줌바댄스 -->
+					<div class="col-sm-6 col-lg-4 col-xl-3">
+						<div class="card shadow h-100">
+							<div class="position-relative">
+								<!-- Image -->
+								<img src="/resources/images/subject/줌바댄스.jpg" class="card-img-top" alt="줌바댄스">
+								<!-- Overlay -->
+								<div class="card-img-overlay d-flex z-index-0 p-3 flex-column justify-content-between">
+									<!-- Subject overlay Top -->
+									<div class="w-100 mb-auto d-flex justify-content-end">
 									</div>
 								</div>
 							</div>
@@ -366,257 +309,202 @@ Page content START -->
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link">헬스</a>
+									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">줌바댄스</a>
 								</h5>
+								<!-- Description -->
+								<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">줌바댄스는 라틴 음악을 바탕으로 한 신나는 운동입니다.</p>
+							</div>
+							<!-- Subject footer -->
+							<div class="pt-0 px-3" style="border-top: none; padding-top: 1rem; padding-bottom: 1rem;">
+								<div class="d-flex justify-content-between align-items-center">
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Subject item END -->
+
+					<!-- Subject item 아쿠아로빅 -->
+					<div class="col-sm-6 col-lg-4 col-xl-3">
+						<div class="card shadow h-100">
+							<div class="position-relative">
+								<!-- Image -->
+								<img src="/resources/images/subject/아쿠아로빅.jpg" class="card-img-top" alt="아쿠아로빅">
+								<!-- Overlay -->
+								<div class="card-img-overlay d-flex z-index-0 p-3 flex-column justify-content-between">
+									<!-- Subject overlay Top -->
+									<div class="w-100 mb-auto d-flex justify-content-end">
+									</div>
+								</div>
+							</div>
+
+							<!-- Card body -->
+							<div class="card-body px-3">
+								<!-- Title -->
+								<h5 class="card-title mb-0">
+									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">아쿠아로빅</a>
+								</h5>
+								<!-- Description -->
+								<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">아쿠아로빅은 물속에서 즐기는 건강체조입니다.</p>
+							</div>
+
+							<!--  Subject footer -->
+							<div class="pt-0 px-3" style="border-top: none; padding-top: 1rem; padding-bottom: 1rem;">
+								<div class="d-flex justify-content-between align-items-center">
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Subject item 아쿠아로빅 -->
+
+					<!-- Subject item 스피닝 -->
+					<div class="col-sm-6 col-lg-4 col-xl-3">
+						<div class="card shadow h-100">
+							<div class="position-relative">
+								<!-- Image -->
+								<img src="/resources/images/subject/스피닝.jpg" class="card-img-top" alt="스피닝">
+								<!-- Overlay -->
+								<div class="card-img-overlay d-flex z-index-0 p-3 flex-column justify-content-between">
+									<!-- Subject overlay Top -->
+									<div class="w-100 mb-auto d-flex justify-content-end">
+									</div>
+								</div>
+							</div>
+
+							<!--Subject body -->
+							<div class="card-body px-3">
+								<!-- Title -->
+								<h5 class="card-title mb-0">
+									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">스피닝</a>
+								</h5>
+								<!-- Description -->
+								<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">스피닝은 고정된 바이크 위에서 페달을 밟으며 신나는 음악에 맞춰 율동을 하는 다이내믹한 운동입니다.</p>
 							</div>
 
 							<!-- Subject footer -->
-							<div class="card-footer pt-0 px-3">
+							<div class="pt-0 px-3" style="border-top: none; padding-top: 1rem; padding-bottom: 1rem;">
 								<div class="d-flex justify-content-between align-items-center">
-									<span class="h6 fw-light mb-0">헬스는..</span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- Subject item END -->
+					<!-- Subject item 스피닝 -->
 
-					<!-- Subject item START -->
+					<!-- Subject item 필라테스 시작 -->
 					<div class="col-sm-6 col-lg-4 col-xl-3">
 						<div class="card shadow h-100">
 							<div class="position-relative">
 								<!-- Image -->
-								<img src="" class="card-img-top" alt="스쿼시">
+								<img src="/resources/images/subject/필라테스.jpg" class="card-img-top" alt="필라테스">
 								<!-- Overlay -->
-								<div class="card-img-overlay d-flex z-index-0 p-3">
-									<!-- Card overlay Top -->
+								<div class="card-img-overlay d-flex z-index-0 p-3 flex-column justify-content-between">
+									<!-- Subject overlay Top -->
 									<div class="w-100 mb-auto d-flex justify-content-end">
-										<!-- Card format icon -->
-										<div class="icon-md bg-dark rounded-circle fs-5">
-											<a href="#" class="text-white"><i class="bi bi-file-earmark-pdf"></i></a>
-										</div>
+										<span class="badge bg-success bg-opacity-10 text-white" style="position:absolute;top:97%;right:87%;">추천</span>
+									</div>
+									   <!-- Subject overlay Bottom -->
+              							  <div class="w-100">
 									</div>
 								</div>
 							</div>
 
-							<!-- Card body -->
+							<!-- Subject body -->
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link">스쿼시</a>
+									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">필라테스</a>
 								</h5>
+								 <!-- Description -->
+            					<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">필라테스는 운동부족과 재활치료, 정신수련을 위해 고안한 근육강화 운동입니다.</p>
 							</div>
 
 							<!-- Card footer -->
-							<div class="card-footer pt-0 px-3">
+							<div class="pt-0 px-3" style="border-top: none; padding-top: 1rem; padding-bottom: 1rem;">
 								<div class="d-flex justify-content-between align-items-center">
-									<span class="h6 fw-light mb-0">스쿼시는..</span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- Card item END -->
+					<!-- Card item 필라테스 끝 -->
 
-					<!-- Card item START -->
+					<!-- Subject item 점핑트램폴린 시작 -->
 					<div class="col-sm-6 col-lg-4 col-xl-3">
 						<div class="card shadow h-100">
 							<div class="position-relative">
 								<!-- Image -->
-								<img src="" class="card-img-top" alt="줌바댄스">
+								<img src="/resources/images/subject/점핑트램폴린.jpg" class="card-img-top" alt="점핑트램폴린">
 								<!-- Overlay -->
-								<div class="card-img-overlay d-flex z-index-0 p-3">
-									<!-- Card overlay Top -->
+								<div class="card-img-overlay d-flex z-index-0 p-3 flex-column justify-content-between">
+									<!-- Subject overlay Top -->
 									<div class="w-100 mb-auto d-flex justify-content-end">
-										<!-- Card format icon -->
-										<div class="icon-md bg-dark rounded-circle fs-5">
-											<a href="#" class="text-white"><i class="bi bi-book"></i></a>
-										</div>
+										<span class="badge bg-success bg-opacity-10 text-white" style="position:absolute;top:97%;right:87%;">추천</span>
+									</div>
+									   <!-- Subject overlay Bottom -->
+              							  <div class="w-100">
 									</div>
 								</div>
 							</div>
 
-							<!-- Card body -->
-							<div class="card-body px-3">
-								<!-- Title -->
-								<h5 class="card-title mb-0 ">
-									<a href="" class="stretched-link">줌바댄스</a>
-								</h5>
-							</div>
-
-							<!-- Card footer -->
-							<div class="card-footer pt-0 px-3">
-								<div class="d-flex justify-content-between align-items-center">
-									<span class="h6 fw-light mb-0">줌바댄스는..</span>
-									<!-- Price -->
-									<h5 class="text-success mb-0"></h5>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Card item END -->
-
-					<!-- Card item START -->
-					<div class="col-sm-6 col-lg-4 col-xl-3">
-						<div class="card shadow h-100">
-							<div class="position-relative">
-								<!-- Image -->
-								<img src="" class="card-img-top" alt="아쿠아로빅">
-								<!-- Overlay -->
-								<div class="card-img-overlay d-flex z-index-0 p-3">
-									<!-- Card overlay Top -->
-									<div class="w-100 mb-auto d-flex justify-content-end">
-										<!-- Card format icon -->
-										<div class="icon-md bg-dark rounded-circle fs-5">
-											<a href="#" class="text-white"><i class="bi bi-book"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Card body -->
+							<!-- Subject body -->
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link">아쿠아로빅</a>
+									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">점핑트램폴린</a>
 								</h5>
+								 <!-- Description -->
+            					<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">점핑트램폴린은 트램폴린 위에서 다양한 점핑 응용동작을 하면서 칼로리 소모 및 코어근육과 하체를 단련하는 운동입니다.</p>
 							</div>
 
 							<!-- Card footer -->
-							<div class="card-footer pt-0 px-3">
+							<div class="pt-0 px-3" style="border-top: none; padding-top: 1rem; padding-bottom: 1rem;">
 								<div class="d-flex justify-content-between align-items-center">
-									<span class="h6 fw-light mb-0">아쿠아로빅은..</span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- Card item END -->
-
-					<!-- Card item START -->
+					<!-- Card item 필라테스 끝 -->
+					
+					
+					<!-- Subject item 플라잉요가 시작 -->
 					<div class="col-sm-6 col-lg-4 col-xl-3">
 						<div class="card shadow h-100">
 							<div class="position-relative">
 								<!-- Image -->
-								<img src="" class="card-img-top" alt="스피닝">
+								<img src="/resources/images/subject/플라잉요가.jpg" class="card-img-top" alt="플라잉요가">
 								<!-- Overlay -->
-								<div class="card-img-overlay d-flex z-index-0 p-3">
-									<!-- Card overlay Top -->
+								<div class="card-img-overlay d-flex z-index-0 p-3 flex-column justify-content-between">
+									<!-- Subject overlay Top -->
 									<div class="w-100 mb-auto d-flex justify-content-end">
-										<!-- Card format icon -->
-										<div class="icon-md bg-dark text-white rounded-circle fs-5">
-											<a href="#" class="text-white"><i class="bi bi-file-earmark-pdf"></i></a>
-										</div>
+										<span class="badge bg-success bg-opacity-10 text-white" style="position:absolute;top:97%;right:87%;">추천</span>
+									</div>
+									   <!-- Subject overlay Bottom -->
+              							  <div class="w-100">
 									</div>
 								</div>
 							</div>
 
-							<!-- Card body -->
-							<div class="card-body px-3">
-								<!-- Title -->
-								<h5 class="card-title ,b-0">
-									<a href="shop-product-detail.html" class="stretched-link">스피닝</a>
-								</h5>
-							</div>
-
-							<!-- Card footer -->
-							<div class="card-footer pt-0 px-3">
-								<div class="d-flex justify-content-between align-items-center">
-									<span class="h6 fw-light mb-0">스피닝은..</span>
-									<!-- Price -->
-									<h5 class="text-success mb-0"></h5>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Card item END -->
-
-					<!-- Card item START -->
-					<div class="col-sm-6 col-lg-4 col-xl-3">
-						<div class="card shadow h-100">
-							<div class="position-relative">
-								<!-- Image -->
-								<img src="" class="card-img-top" alt="필라테스">
-								<!-- Overlay -->
-								<div class="card-img-overlay d-flex z-index-0 p-3">
-									<!-- Card overlay Top -->
-									<div class="w-100 mb-auto d-flex justify-content-end">
-										<!-- Card format icon -->
-										<div class="icon-md bg-dark rounded-circle fs-5">
-											<a href="#" class="text-white"><i class="bi bi-book"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Card body -->
+							<!-- Subject body -->
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="shop-product-detail.html" class="stretched-link">필라테스</a>
+									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">플라잉요가</a>
 								</h5>
+								 <!-- Description -->
+            					<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">플라잉 요가는 해먹을 사용해 공중에서 다양한 요가 동작을 수행하는 운동입니다.</p>
 							</div>
 
 							<!-- Card footer -->
-							<div class="card-footer pt-0 px-3">
+							<div class="pt-0 px-3" style="border-top: none; padding-top: 1rem; padding-bottom: 1rem;">
 								<div class="d-flex justify-content-between align-items-center">
-									<span class="h6 fw-light mb-0">필라테스는..</span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- Card item END -->
-
-					<!-- Card item START -->
-					<div class="col-sm-6 col-lg-4 col-xl-3">
-						<div class="card shadow h-100">
-							<div class="position-relative">
-								<!-- Image -->
-								<img src="" class="card-img-top" alt="점핑 트랜플린">
-									<!-- Overlay -->
-									<div class="card-img-overlay d-flex z-index-0 p-3">
-										<!-- Card overlay Top -->
-										<div class="w-100 mb-auto d-flex justify-content-end">
-											<!-- Card format icon -->
-											<div class="icon-md bg-dark rounded-circle fs-5">
-												<a href="#" class="text-white"><i class="bi bi-soundwave"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							<!-- Card body -->
-							<div class="card-body px-3">
-								<!-- Title -->
-								<h5 class="card-title mb-0">
-									<a href="shop-product-detail.html" class="stretched-link">점핑 트램플린</a>
-								</h5>
-							</div>
-
-							<!-- Card footer -->
-							<div class="card-footer pt-0 px-3">
-								<div class="d-flex justify-content-between align-items-center">
-									<span class="h6 fw-light mb-0">점핑 트램플린</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Subject item END -->
-
+					<!-- Card item 필라테스 끝 -->
 				</div>
 				<!-- Book Grid END -->
-
-				<!-- Pagination START -->
-				<div class="col-12">
-					<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-						<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-							<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
-							<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
-							<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
-							<li class="page-item mb-0"><a class="page-link" href="#">..</a></li>
-							<li class="page-item mb-0"><a class="page-link" href="#">6</a></li>
-							<li class="page-item mb-0"><a class="page-link" href="#"><i class="fas fa-angle-double-right"></i></a></li>
-						</ul>
-					</nav>
-				</div>
-				<!-- Pagination END -->
-			</div>
+		<div class="col-12">
+    <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+        <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
 			<!-- Main content END -->
 		</div><!-- Row END -->
 	</div>
@@ -624,9 +512,9 @@ Page content START -->
 <!-- =======================
 Page content END -->
 
-
-
 </main>
+<!-- 구분선-->
+	<hr width="100%" color="adb5bd" style="width: 65%; margin: 0 auto;" noshade/>
 <!-- **************** MAIN CONTENT END **************** -->
 <!-- =======================
 Footer START -->
@@ -638,11 +526,11 @@ Footer START -->
 			<!-- Widget 1 START -->
 			<div class="col-lg-3">
 				<!-- logo -->
-				<a class="me-0" href="index.html">
-					<img class="light-mode-item h-40px" src="/resources/images/logo.png" alt="logo">
-					<img class="dark-mode-item h-40px" src="/resources/images/logo-light.svg" alt="logo">
+				<a class="me-0" href="/home.do">
+					<img class="light-mode-item h-40px" src="resources/images/logo.png" alt="logo">
+				
 				</a>
-				<p class="my-3">스포츠를 사랑하고 배우고자 하는 모든 이들을 위해 만들어 졌습니다. 함께 스포츠를 즐기며 배우고 성장할 수 있는 공간, 그것이 바로 우리의 목표입니다.</p>
+				<p class="my-3" style="font-family: 'Noto Sans KR', sans-serif;">스포츠를 사랑하고 배우고자 하는 모든 이들을 위해 만들어 졌습니다. 함께 스포츠를 즐기며 배우고 성장할 수 있는 공간, 그것이 바로 우리의 목표입니다.</p>
 			</div>
 			<!-- Widget 1 END -->
 
@@ -651,29 +539,29 @@ Footer START -->
 				<div class="row g-4">
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h3 class="mb-2 mb-md-4">센터소개</h3>
+						<h3 class="mb-2 mb-md-4"style="font-family: 'Noto Sans KR', sans-serif;">센터소개</h3>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#">About us</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
+							<li class="nav-item"><a class="nav-link" href="#" style="font-family: 'Noto Sans KR', sans-serif;">About us</a></li>
+							<li class="nav-item"><a class="nav-link" href="#" style="font-family: 'Noto Sans KR', sans-serif;">Contact us</a></li>
 						</ul>
 					</div>
 									
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h3 class="mb-2 mb-md-4">종목/소개</h3>
+						<h3 class="mb-2 mb-md-4" style="font-family: 'Noto Sans KR', sans-serif;">종목/소개</h3>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="/subject/index.do">종목 안내</a></li>
-							<li class="nav-item"><a class="nav-link" href="/subject/registInfo.do">이용 안내</a></li>
-							<li class="nav-item"><a class="nav-link" href="/subject/usageInfo.do">수강 신청 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="/subject/index.do" style="font-family: 'Noto Sans KR', sans-serif;">종목 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="/subject/registInfo.do" style="font-family: 'Noto Sans KR', sans-serif;">이용 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="/subject/usageInfo.do" style="font-family: 'Noto Sans KR', sans-serif;">수강 신청 안내</a></li>
 						</ul>
 					</div>
 
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h3 class="mb-2 mb-md-4">커뮤니티</h3>
+						<h3 class="mb-2 mb-md-4" style="font-family: 'Noto Sans KR', sans-serif;">커뮤니티</h3>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="/notice/index.do">공지사항</a></li>
-							<li class="nav-item"><a class="nav-link" href="/qna/index.do">QnA</a></li>
+							<li class="nav-item"><a class="nav-link" href="/notice/index.do" style="font-family: 'Noto Sans KR', sans-serif;">공지사항</a></li>
+							<li class="nav-item"><a class="nav-link" href="/qna/index.do" style="font-family: 'Noto Sans KR', sans-serif;">QnA</a></li>
 						</ul>
 					</div>
 				</div>
@@ -682,14 +570,14 @@ Footer START -->
 
 			<!-- Widget 3 START -->
 			<div class="col-lg-3">
-				<h3 class="mb-2 mb-md-4">문의</h3>
+				<h3 class="mb-2 mb-md-4" style="font-family: 'Noto Sans KR', sans-serif;">문의</h3>
 				<!-- Time -->
 				<p class="mb-2">
-					TEL:<span class="h6 fw-light ms-2">02-6392-0044</span>
-					<span class="d-block small">문의 가능 시간: 평일 9:00 ~ 18:00 (점심시간 13:00 ~ 14:00)</span>
+					TEL:<span class="h6 fw-light ms-2" style="font-family: 'Noto Sans KR', sans-serif;">02-6392-0044</span>
+					<span class="d-block small" style="font-family: 'Noto Sans KR', sans-serif;">문의 가능 시간: 평일 9:00 ~ 18:00 (점심시간 13:00 ~ 14:00)</span>
 				</p>
 
-				<p class="mb-0">Email:<span class="h6 fw-light ms-2">shds.edu03@gmail.com</span></p>
+				<p class="mb-0">Email:<span class="h6 fw-light ms-2" style="font-family: 'Noto Sans KR', sans-serif;">shds.edu03@gmail.com</span></p>
 
 				<div class="row g-2 mt-2">
 				</div> <!-- Row END -->
@@ -697,15 +585,15 @@ Footer START -->
 			<!-- Widget 3 END -->
 		</div><!-- Row END -->
 
-		<!-- Divider -->
-		<hr class="mt-4 mb-0">
+		<!-- 구분선-->
+		<hr width="100%" color="adb5bd" noshade/>
 
 		<!-- Bottom footer -->
 		<div class="py-3">
 			<div class="container px-0">
 				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left">
 					<!-- copyright text -->
-					<div class="text-body text-primary-hover"> Copyrights ©2024 SportsCenter. Build by <a href="#" target="_blank" class="text-body">ShinhanDS</a></div>
+					<div class="text-body text-primary-hover" style="font-family: 'Noto Sans KR', sans-serif;"> Copyrights ©2024 SportsCenter. Build by <a href="#" target="_blank" class="text-body">ShinhanDS</a></div>
 					<!-- copyright links-->
 					<div class="justify-content-center mt-3 mt-lg-0">
 						<ul class="nav list-inline justify-content-center mb-0">
@@ -721,19 +609,17 @@ Footer START -->
 <!-- =======================
 Footer END -->
 
-
-
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 
 <!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="resources/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Vendors -->
-<script src="assets/vendor/choices/js/choices.min.js"></script>
+<script src="resources/vendor/choices/js/choices.min.js"></script>
 
 <!-- Template Functions -->
-<script src="assets/js/functions.js"></script>
+<script src="resources/js/functions.js"></script>
 
 </body>
 </html>

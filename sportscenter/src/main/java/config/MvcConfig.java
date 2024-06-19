@@ -79,7 +79,9 @@ public class MvcConfig implements WebMvcConfigurer {
 		// db 연동 상관 없는 애들은 controller를 만들어주지 않고,MvcConfig에 작성하면 됨
 		reg.addViewController("/subject/usageInfo.do");
 		reg.addViewController("/subject/registInfo.do");
-		reg.addViewController("/test/test.do");
+		reg.addViewController("/subject/swimDetail.do");
+		reg.addViewController("/common/footer.do");
+		reg.addViewController("/common/header.do");
 	}
 
 	// HikariCP

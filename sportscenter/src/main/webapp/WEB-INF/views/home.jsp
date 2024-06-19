@@ -479,7 +479,7 @@ Popular course START -->
 								</div>
 								<!-- Title -->
 								<h5 class="card-title fw-normal"><a href="#">필라테스</a></h5>
-								<p class="mb-2 text-truncate-2">필라테스(Pilates)는 제1차 세계대전 당시 영국 랭커스터 포로수용소에서 인턴으로 근무하던 독일의 스포츠 연구가, 요제프 필라테스가 포로들의 운동부족과 재활치료, 정신수련을 위해 고안한 근육강화 운동입니다.</p>
+								<p class="mb-2 text-truncate-2">필라테스는 제1차 세계대전 당시 영국 랭커스터 포로수용소에서 인턴으로 근무하던 독일의 스포츠 연구가, 요제프 필라테스가 포로들의 운동부족과 재활치료, 정신수련을 위해 고안한 근육강화 운동입니다.</p>
 								<!-- Rating star -->
 								<ul class="list-inline mb-0">
 									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
