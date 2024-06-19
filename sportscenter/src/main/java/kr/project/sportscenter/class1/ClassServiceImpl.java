@@ -44,7 +44,12 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public ClassVO select(ClassVO vo) {
-		return mapper.select(vo);
+		List<ClassVO> list = mapper.list(vo);
+		ClassVO cvo = new ClassVO();
+		for(ClassVO item : list) {
+			cvo = item;
+		}
+		return cvo;
 	}
 
 	

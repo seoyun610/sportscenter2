@@ -65,6 +65,7 @@
 		LIMIT #{startIdx}, 10
 	</select>
 	
+	<!-- 등록 -->
 	<insert id="regist" parameterType="kr.project.sportscenter.pay.PayVO">
 		INSERT INTO pay(
 			classid, usernum, paystate, price, paymethod, imp_uid
@@ -73,14 +74,37 @@
 		)
 	</insert>
 	
+	<!-- 존재 -->
 	<select id="exists" parameterType="kr.project.sportscenter.pay.PayVO" resultType="int">
 		SELECT COUNT(*) FROM pay WHERE classid=#{classid} AND usernum={usernum}
 	</select>
 	
+	<!-- 업데이트 -->
 	<update id="update" parameterType="kr.project.sportscenter.pay.PayVO">
 		UPDATE pay
-		SET paystate=1
-		WHERE classid=#{classid} AND usernum={usernum}
+		<set>
+			<if test="paystate != null and paystate != ''">
+				paystate = #{paystate}
+			</if>
+			<if test="cancelstate != null and cancelstate != ''">
+				, cancelstate = #{cancelstate}
+			</if>
+			<if test="refundstate != null and refundstate != ''">
+				, refundstate = #{refundstate}
+			</if>
+			<where>
+				<choose>
+					<when test="payid != null and payid != ''">
+						AND payid = #{payid}
+					</when>
+				</choose>
+				<choose>
+					<when test="imp_uid != null and imp_uid != ''">
+						AND imp_uid = #{imp_uid}
+					</when>
+				</choose>
+			</where> 
+		</set>
 	</update>
 	
 	<select id="courseList" parameterType="kr.project.sportscenter.pay.PayVO" resultType="kr.project.sportscenter.pay.PayVO"> 

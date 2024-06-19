@@ -12,7 +12,7 @@
 	        document.getElementById("searchForm").submit();
 	    }
 	</script>
-<title>수강 내역 확인</title>
+<title>지난 내역</title>
 </head>
 <body>
 	    <form method="get" id="searchForm" action = "classHistory.do">

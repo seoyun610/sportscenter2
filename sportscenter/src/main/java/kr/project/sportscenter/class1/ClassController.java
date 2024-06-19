@@ -53,7 +53,7 @@ public class ClassController {
 		if(cvo.getClassmonth()<1) {
 			LocalDate now = LocalDate.now();
 			cvo.setClassyear(now.getYear());
-			cvo.setClassmonth(now.getMonthValue());
+			cvo.setClassmonth(now.getMonthValue()+1);
 		}
 		model.addAttribute("map", cservice.list(cvo));
 		model.addAttribute("smap", sservice.list(svo));

@@ -11,8 +11,7 @@ import org.apache.ibatis.annotations.Param;
 public interface ClassMapper {
 	int count(ClassVO vo);
 	List<ClassVO> list(ClassVO vo);
-	ClassVO select(ClassVO vo);
-	ClassVO detail(ClassVO vo); // 이건 어디서 쓰는거지??
+//	ClassVO select(ClassVO vo);
 	int regist(ClassVO vo);
 	int registAll(List<ClassVO> list);
 	int modify(ClassVO vo);

@@ -1,9 +1,19 @@
 package kr.project.sportscenter.pay;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +25,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 
@@ -53,8 +69,8 @@ public class PayController {
 		System.out.println(api);
 	}
 	
-	
-	
+	String apiKey = "0018758166838322";
+	String secretKey = "hLG57eS6vRX4vUsy5rV6TZ98MVwgdyUj45z5hqrS7CdrS5MVPl22hST3dIdJQEnjuhvjf7Da0nzJd2Of";
 	
 	/*
 	 * @GetMapping("/pay/payCheck.do") 
@@ -125,44 +141,158 @@ public class PayController {
 	    
 	}
 	
-	@PostMapping("/pay/payCheck.do")
-	public String payCheck(@RequestParam("classid") int classid, Model model, PayVO vo, HttpSession sess) {
-		UserVO login = (UserVO)sess.getAttribute("login");
-	    vo.setUsernum(login.getUsernum());
-	    vo.setClassid(classid);
-	    model.addAttribute("uvo",login);
-		model.addAttribute("vo",vo);
-		System.out.println(vo);
+	/*
+	 * @PostMapping("/pay/payCheck.do") public String
+	 * payCheck(@RequestParam("classid") int classid, Model model, PayVO vo,
+	 * HttpSession sess) { UserVO login = (UserVO)sess.getAttribute("login");
+	 * vo.setUsernum(login.getUsernum()); vo.setClassid(classid);
+	 * model.addAttribute("uvo",login); model.addAttribute("vo",vo);
+	 * System.out.println(vo);
+	 * 
+	 * 
+	 * boolean exists = service.exists(vo);
+	 * 
+	 * if (exists) { boolean r = service.update(vo);
+	 * model.addAttribute("login",login); if (r) { model.addAttribute("msg",
+	 * "결제가 완료되었습니다."); } else { model.addAttribute("msg", "결제에 실패했습니다."); } } else
+	 * { boolean r = service.regist(vo); if (r) { model.addAttribute("msg",
+	 * "결제가 완료되었습니다."); } else { model.addAttribute("msg", "결제에 실패했습니다."); } }
+	 * model.addAttribute("url", "/mypage/classView.do"); return "common/alert"; }
+	 */
+	
+	@GetMapping("/pay/cancel/{payid}/{classid}")
+	public String cancelPayment(@PathVariable int payid, @PathVariable int classid, Model model, HttpSession sess) {
+		System.out.println("===============cancel===============");
+		System.out.println("=== payid: " + payid + "classid: " + classid);
+		LocalDate today = LocalDate.now();
+		int month = today.getMonthValue();
+		int day = today.getDayOfMonth();
 		
+		UserVO uvo = (UserVO)sess.getAttribute("login");
+		ClassVO cvo = new ClassVO();
+		cvo.setClassid(classid);
+		cvo = cservice.select(cvo);
 		
-		boolean exists = service.exists(vo);
+		PayVO pvo = new PayVO();
+		pvo.setPayid(payid); 
+		pvo.setUsernum(uvo.getUsernum());
+		pvo = service.list2(pvo);
+		int pre_price = pvo.getPrice();
+		int cancel_price;
 		
-	    if (exists) {
-	        boolean r = service.update(vo);
-	        model.addAttribute("login",login);
-	        if (r) {
-	            model.addAttribute("msg", "결제가 완료되었습니다.");
-	        } else { 
-	            model.addAttribute("msg", "결제에 실패했습니다.");
-	        }
-	    } else {
-	        boolean r = service.regist(vo);
-	        if (r) {
-	            model.addAttribute("msg", "결제가 완료되었습니다.");
-	        } else {
-	            model.addAttribute("msg", "결제에 실패했습니다.");
-	        }
-	    }
-	    model.addAttribute("url", "/mypage/classView.do");
-	    return "common/alert";
+		// if(cvo.getClassmonth() == month && day >= 1 && day <= 10) {
+		if(cvo.getClassmonth() == month) {
+			cancel_price = (int) (pre_price * 0.5);
+			cvo.setClassprice(cancel_price);
+			pvo.setPrice(cancel_price);
+			model.addAttribute("cvo", cvo);
+			model.addAttribute("pvo", pvo);
+			return "pay/cancel";
+		} else {
+			model.addAttribute("msg", "환불 오류");
+			model.addAttribute("url", "/mypage/classView.do");
+			return "common/alert";
+		}
 	}
 	
-//		boolean r = service.regist(vo); 
-//			if (r) {
-//				model.addAttribute("msg", "결제가 완료되었습니다."); 
-//				model.addAttribute("url", "/mypage/classView.do");
-//			} 
-//        return "common/alert";
+	public static class CancelRequest {
+	    private String imp_uid;
+	    private int amount;
+
+	    // Getters and Setters
+	    public String getImp_uid() {
+	        return imp_uid;
+	    }
+
+	    public void setImp_uid(String imp_uid) {
+	        this.imp_uid = imp_uid;
+	    }
+
+	    public int getAmount() {
+	        return amount;
+	    }
+
+	    public void setAmount(int amount) {
+	        this.amount = amount;
+	    }
+	}
+	
+	@PostMapping("/pay/cancel/complete")
+	@ResponseBody
+	public ResponseEntity<Map<String,String>> completeCancel(@RequestBody CancelRequest cancelRequest, Model model) throws IOException {
+		//ObjectMapper objmapper = new ObjectMapper();
+		//PayVO pvo = (PayVO)objmapper.readValue(canceldata, new TypeReference<PayVO>() {});
+		System.out.println("===============cancel complete===============");
+		String imp_uid = cancelRequest.getImp_uid();
+	    int amount = cancelRequest.getAmount();
+		
+	    String accessToken = service.getToken(apiKey, secretKey);
+		URL url = new URL("https://api.iamport.kr/payments/cancel");
+		HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+		
+		conn.setRequestMethod("POST");
+		
+		conn.setRequestProperty("Content-type", "application/json");
+		conn.setRequestProperty("Accept", "application/json");
+        conn.setRequestProperty("Authorization", accessToken);
+        
+        conn.setDoOutput(true);
+        
+        JsonObject json = new JsonObject();
+        json.addProperty("imp_uid", imp_uid);
+        json.addProperty("amount", amount);
+        
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+        writer.write(json.toString());
+        writer.flush();
+        writer.close();
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        Gson gson = new Gson();
+        double doublecode = (double) gson.fromJson(reader.readLine(), Map.class).get("code");
+        int responsecode = (int)Math.round(doublecode);
+        
+        Map<String, String> map = new HashMap<>();
+        
+        if(responsecode == 0) {
+        	reader.close();
+            conn.disconnect();
+            
+            PayVO pvo = new PayVO();
+            pvo.setImp_uid(imp_uid);
+            pvo = service.list2(pvo);
+            int classid = pvo.getClassid();
+            pvo.setCancelstate(1);
+            pvo.setRefundstate(1);
+            boolean payresult = service.update(pvo);
+            
+            ClassVO cvo = new ClassVO();
+            cvo.setClassid(classid);
+            cvo = cservice.select(cvo);
+            int newcnt = cvo.getClasscnt() - 1;
+            cvo.setClasscnt(newcnt);
+            boolean classresult = cservice.updateCnt(cvo);
+
+            if(payresult && classresult) {
+            	System.out.println("db 업데이트 성공");
+            	map.put("result", "ok");
+            	return new ResponseEntity<Map<String,String>>(map, HttpStatus.OK);
+            } else {
+            	System.out.println("db 업데이트 실패");
+            	map.put("result", "bad_request");
+            	return new ResponseEntity<Map<String,String>>(map, HttpStatus.BAD_REQUEST);
+            }
+        } else {
+        	reader.close();
+            conn.disconnect();
+            //return new ResponseEntity("bad_request", HttpStatus.BAD_REQUEST);
+        }
+        map.put("result", "not_found");
+        return new ResponseEntity<Map<String,String>>(map, HttpStatus.NOT_FOUND);
+//        String response = gson.fromJson(reader.readLine(), Map.class).get("response").toString();
+//        System.out.println("=========응답========= " + response);
+	}
+
 	
 	@PostMapping("/pay/payment.do")
 	public String payment(Model model,PayVO vo, HttpSession sess) {
