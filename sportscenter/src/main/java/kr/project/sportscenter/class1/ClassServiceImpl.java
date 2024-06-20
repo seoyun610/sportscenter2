@@ -26,6 +26,7 @@ public class ClassServiceImpl implements ClassService {
         Map<String, Object> map = new HashMap<>();
         map.put("count", count);
         map.put("totalPage", totalPage);
+        map.put("page", param.getPage());
         map.put("list", list);
         
         // 하단에 페이징처리
@@ -34,6 +35,7 @@ public class ClassServiceImpl implements ClassService {
         if (endPage > totalPage) endPage = totalPage;
         boolean isPrev = startPage > 1;
         boolean isNext = endPage < totalPage;
+        
         map.put("endPage", endPage);
         map.put("startPage", startPage);
         map.put("isPrev", isPrev);
