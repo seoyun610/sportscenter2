@@ -12,6 +12,22 @@
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Eduport- LMS, Education and Course Theme">
 	<title>메인페이지</title>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="resources/images/favicon.ico">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
+	
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="resources/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="resources/vendor/tiny-slider/tiny-slider.css">
+	<link rel="stylesheet" type="text/css" href="resources/vendor/glightbox/css/glightbox.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 	
 	<!-- Dark mode -->
 	<script>
@@ -73,23 +89,7 @@
 		
 	</script>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="resources/images/favicon.ico">
-
-	<!-- Google Font -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
 	
-	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="resources/vendor/font-awesome/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="resources/vendor/bootstrap-icons/bootstrap-icons.css">
-	<link rel="stylesheet" type="text/css" href="resources/vendor/tiny-slider/tiny-slider.css">
-	<link rel="stylesheet" type="text/css" href="resources/vendor/glightbox/css/glightbox.css">
-
-	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
-
 </head>
 
 <body>
@@ -100,7 +100,7 @@
 	<nav class="navbar navbar-expand-xl">
 		<div class="container-fluid px-3 px-xl-5">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="http://localhost:8090/home.do">
+			<a class="navbar-brand" href="#">
 				<img class="light-mode-item navbar-brand-item" src="resources/images/logo.png" alt="logo">
 				<img class="dark-mode-item navbar-brand-item" src="resources/images/logo-light.svg" alt="logo">
 			</a>
@@ -164,19 +164,6 @@
 						</ul>
 					</li>
 				</ul>
-				<div class="user-options dropdown ms-1 ms-lg-0">
-			    <c:choose>
-			        <c:when test="${not empty sessionScope.login}">
-			            <a href="/mypage/classView.do">마이페이지</a>
-			            <a href="/user/logout.do">로그아웃</a>
-			        </c:when>
-			        <c:otherwise>
-			            <a href="/user/login.do">로그인</a>
-			            <a href="/user/join.do">회원가입</a>
-			        </c:otherwise>
-			    </c:choose>
-			</div>
-				
 				<!-- Nav Search START -->
 				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
 					<div class="nav-item w-100">
@@ -479,7 +466,7 @@ Popular course START -->
 								</div>
 								<!-- Title -->
 								<h5 class="card-title fw-normal"><a href="#">필라테스</a></h5>
-								<p class="mb-2 text-truncate-2">필라테스는 제1차 세계대전 당시 영국 랭커스터 포로수용소에서 인턴으로 근무하던 독일의 스포츠 연구가, 요제프 필라테스가 포로들의 운동부족과 재활치료, 정신수련을 위해 고안한 근육강화 운동입니다.</p>
+								<p class="mb-2 text-truncate-2">필라테스(Pilates)는 제1차 세계대전 당시 영국 랭커스터 포로수용소에서 인턴으로 근무하던 독일의 스포츠 연구가, 요제프 필라테스가 포로들의 운동부족과 재활치료, 정신수련을 위해 고안한 근육강화 운동입니다.</p>
 								<!-- Rating star -->
 								<ul class="list-inline mb-0">
 									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
@@ -1398,11 +1385,11 @@ Footer START -->
 			<!-- Widget 1 START -->
 			<div class="col-lg-3">
 				<!-- logo -->
-				<a class="me-0" href="index.html">
+				<a class="me-0" href="/home.do">
 					<img class="light-mode-item h-40px" src="resources/images/logo.png" alt="logo">
-					<img class="dark-mode-item h-40px" src="resources/images/logo-light.svg" alt="logo">
+				
 				</a>
-				<p class="my-3">스포츠를 사랑하고 배우고자 하는 모든 이들을 위해 만들어 졌습니다. 함께 스포츠를 즐기며 배우고 성장할 수 있는 공간, 그것이 바로 우리의 목표입니다.</p>
+				<p class="my-3" style="font-family: 'Noto Sans KR', sans-serif;">스포츠를 사랑하고 배우고자 하는 모든 이들을 위해 만들어 졌습니다. 함께 스포츠를 즐기며 배우고 성장할 수 있는 공간, 그것이 바로 우리의 목표입니다.</p>
 			</div>
 			<!-- Widget 1 END -->
 
@@ -1411,29 +1398,29 @@ Footer START -->
 				<div class="row g-4">
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h3 class="mb-2 mb-md-4">센터소개</h3>
+						<h3 class="mb-2 mb-md-4"style="font-family: 'Noto Sans KR', sans-serif;">센터소개</h3>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#">About us</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
+							<li class="nav-item"><a class="nav-link" href="#" style="font-family: 'Noto Sans KR', sans-serif;">About us</a></li>
+							<li class="nav-item"><a class="nav-link" href="#" style="font-family: 'Noto Sans KR', sans-serif;">Contact us</a></li>
 						</ul>
 					</div>
 									
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h3 class="mb-2 mb-md-4">종목/소개</h3>
+						<h3 class="mb-2 mb-md-4" style="font-family: 'Noto Sans KR', sans-serif;">종목/소개</h3>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="/subject/index.do">종목 안내</a></li>
-							<li class="nav-item"><a class="nav-link" href="/subject/registInfo.do">이용 안내</a></li>
-							<li class="nav-item"><a class="nav-link" href="/subject/usageInfo.do">수강 신청 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="/subject/index.do" style="font-family: 'Noto Sans KR', sans-serif;">종목 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="/subject/registInfo.do" style="font-family: 'Noto Sans KR', sans-serif;">이용 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="/subject/usageInfo.do" style="font-family: 'Noto Sans KR', sans-serif;">수강 신청 안내</a></li>
 						</ul>
 					</div>
 
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
-						<h3 class="mb-2 mb-md-4">커뮤니티</h3>
+						<h3 class="mb-2 mb-md-4" style="font-family: 'Noto Sans KR', sans-serif;">커뮤니티</h3>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="/notice/index.do">공지사항</a></li>
-							<li class="nav-item"><a class="nav-link" href="/qna/index.do">QnA</a></li>
+							<li class="nav-item"><a class="nav-link" href="/notice/index.do" style="font-family: 'Noto Sans KR', sans-serif;">공지사항</a></li>
+							<li class="nav-item"><a class="nav-link" href="/qna/index.do" style="font-family: 'Noto Sans KR', sans-serif;">QnA</a></li>
 						</ul>
 					</div>
 				</div>
@@ -1442,14 +1429,14 @@ Footer START -->
 
 			<!-- Widget 3 START -->
 			<div class="col-lg-3">
-				<h3 class="mb-2 mb-md-4">문의</h3>
+				<h3 class="mb-2 mb-md-4" style="font-family: 'Noto Sans KR', sans-serif;">문의</h3>
 				<!-- Time -->
 				<p class="mb-2">
-					TEL:<span class="h6 fw-light ms-2">02-6392-0044</span>
-					<span class="d-block small">문의 가능 시간: 평일 9:00 ~ 18:00 (점심시간 13:00 ~ 14:00)</span>
+					TEL:<span class="h6 fw-light ms-2" style="font-family: 'Noto Sans KR', sans-serif;">02-6392-0044</span>
+					<span class="d-block small" style="font-family: 'Noto Sans KR', sans-serif;">문의 가능 시간: 평일 9:00 ~ 18:00 (점심시간 13:00 ~ 14:00)</span>
 				</p>
 
-				<p class="mb-0">Email:<span class="h6 fw-light ms-2">shds.edu03@gmail.com</span></p>
+				<p class="mb-0">Email:<span class="h6 fw-light ms-2" style="font-family: 'Noto Sans KR', sans-serif;">shds.edu03@gmail.com</span></p>
 
 				<div class="row g-2 mt-2">
 				</div> <!-- Row END -->
@@ -1457,15 +1444,15 @@ Footer START -->
 			<!-- Widget 3 END -->
 		</div><!-- Row END -->
 
-		<!-- Divider -->
-		<hr class="mt-4 mb-0">
+		<!-- 구분선-->
+		<hr width="100%" color="adb5bd" noshade/>
 
 		<!-- Bottom footer -->
 		<div class="py-3">
 			<div class="container px-0">
 				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left">
 					<!-- copyright text -->
-					<div class="text-body text-primary-hover"> Copyrights ©2024 SportsCenter. Build by <a href="#" target="_blank" class="text-body">ShinhanDS</a></div>
+					<div class="text-body text-primary-hover" style="font-family: 'Noto Sans KR', sans-serif;"> Copyrights ©2024 SportsCenter. Build by <a href="#" target="_blank" class="text-body">ShinhanDS</a></div>
 					<!-- copyright links-->
 					<div class="justify-content-center mt-3 mt-lg-0">
 						<ul class="nav list-inline justify-content-center mb-0">
@@ -1479,7 +1466,7 @@ Footer START -->
 	</div>
 </footer>
 <!-- =======================
-Footer END -->
+Footer END --
 
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
