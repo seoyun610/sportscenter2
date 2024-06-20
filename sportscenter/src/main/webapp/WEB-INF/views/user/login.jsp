@@ -101,7 +101,7 @@
 										</div>
 										<div class="mb-4 d-flex justify-content-between">
 											<div class="text-primary-hover">
-												<a href="findId.do" class="text-secondary">
+												<a href="findId" class="text-secondary">
 													<u style="font-size:13px;">아이디/비밀번호 찾기</u>
 												</a>
 												<button class="btn btn-primary mb-0 spacing-1" type="button" onclick="loginCheck()">Login</button>

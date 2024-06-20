@@ -3,40 +3,40 @@
 <mapper namespace="kr.project.sportscenter.user.UserMapper"> 
 	<insert id="join" parameterType="kr.project.sportscenter.user.UserVO">
 		INSERT INTO user (
-			userid, username, pwd, hp, email, addr, addr2, birth, gender
+			userid, username, pwd, hp, email, addr, addr2, birth, gender, zipcode
 		) VALUES (
 			#{userid}, #{username}, MD5(#{pwd}), #{hp}, 
-			#{email}, #{addr}, #{addr2}, #{birth}, #{gender}
+			#{email}, #{addr}, #{addr2}, #{birth}, #{gender}, #{zipcode}
 		)
-		<selectKey order="AFTER" keyProperty="usernum" resultType="int">
-			SELECT LAST_INSERT_ID() 
-		</selectKey>
+<!-- 		<selectKey order="AFTER" keyProperty="usernum" resultType="int"> -->
+<!-- 			SELECT LAST_INSERT_ID()  -->
+<!-- 		</selectKey> -->
 	</insert>
 	
 	<sql id="searchUser">
 		<where>
 			<choose>
-				<when test = "userid != 0">
+				<when test = "userid != null and userid != ''">
 					AND userid = #{userid}
 				</when>
 			</choose>
 			<choose>
-				<when test = "usernum != 0">
+				<when test = "usernum != null and usernum != ''">
 					AND usernum = #{usernum}
 				</when>
 			</choose>
 			<choose>
-				<when test = "username != 0">
+				<when test = "username != null and username != ''">
 					AND username = #{username}
 				</when>
 			</choose>
 			<choose>
-				<when test = "birth != 0">
+				<when test = "birth != null and birth != ''">
 					AND birth = #{birth}
 				</when>
 			</choose>
 			<choose>
-				<when test = "hp != 0">
+				<when test = "hp != null and hp != ''">
 					AND hp = #{hp}
 				</when>
 			</choose>
@@ -75,6 +75,7 @@
 	        </if>
 			pwd = MD5(#{pwd}),
 	        hp = #{hp},
+	        zipcode = #{zipcode},
 	        addr = #{addr},
 	        addr2 = #{addr2}
 	    </set>

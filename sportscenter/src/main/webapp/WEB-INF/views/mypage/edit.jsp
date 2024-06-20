@@ -109,7 +109,7 @@
                         </tr>
                         <tr>
                             <th>비밀번호<span>확인</span></th>
-                            <td><input type="password" name="pwd_check" id="pwd_check" style="float:left;"></td>
+                            <td><input type="password" name="pwd_check" id="pwd_check" placeholder="비밀번호는 숫자, 영문 조합으로 8자 이상으로 입력해주세요." style="float:left;"></td>
                         </tr>
                         <tr>
                             <th>이름</th>
