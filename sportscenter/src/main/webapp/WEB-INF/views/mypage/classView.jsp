@@ -42,7 +42,25 @@ table.list .cancel_btn, table.list .pay_btn {
 table.list .cancel_btn:hover, table.list .pay_btn:hover {
   background-color: #45a049;
 }
+.sub_title {
+        margin-top: 0px; /* 원하는 여백 크기 (예: 10px, 20px 등) */
+}
+table.list .pay_btn {
+        background-color: #007bff; /* 파란색 */
+        color: white; /* 흰색 글자 */
+        border: none;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        cursor: pointer;
+    }
 
+    table.list .pay_btn:hover {
+        background-color: #0056b3; /* 파란색 (더 짙은) */
+    }
+    
 </style>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,24 +100,19 @@ table.list .cancel_btn:hover, table.list .pay_btn:hover {
 <body>
     <%@ include file="/WEB-INF/views/mypage/header.jsp"%>
     <!-- =======================Page Banner START -->
-    <section class="pt-0">
-        <!-- Main banner background image -->
-        <div class="container-fluid px-0">
-            <div class="bg-blue h-100px h-md-200px rounded-0" style="background:url(assets/images/pattern/04.png) no-repeat center center; background-size:cover;">
-            </div>
-        </div>
+    <section class="pt-0" style="padding-bottom: 1rem;">
+	         <!-- Main banner background image -->
+		<div class="container-fluid px-0">
+			<div class="bg-blue h-150px h-md-300px rounded-0" style="background-image: url('/resources/images/water1.jpg'); background-repeat: no-repeat; background-position: center center; background-size: cover;">
+			</div>
+		</div>
         <div class="container mt-n4">
             <div class="row">
                 <!-- Profile info -->
-                <div class="col d-md-flex justify-content-between align-items-center mt-5 mb-5">
+                <div class="col d-md-flex justify-content-between align-items-center mt-5 mb-1"> 
                     <div>
-                        <h1 class="my-1 fs-4 ">${vo.username}  <i class="bi bi-patch-check-fill text-info small"></i></h1>
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i></li> 
-                            <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-user-graduate text-orange me-2"></i>12k Enrolled Students</li>
-                            <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-book text-purple me-2"></i>25 Courses</li>
-                        </ul>
-                    </div>
+					    <h1 class="my-1 fs-4"><span>${vo.username}</span>  <i class="bi bi-patch-check-fill text-info small"></i></h1>
+					</div>
                 </div>
             </div>
         </div>
@@ -118,7 +131,7 @@ table.list .cancel_btn:hover, table.list .pay_btn:hover {
     </section>
     
     <!-- ======================= Page content START -->
-    <section class="pt-0">
+    <section class="pt-0" style="padding-bottom: 25rem;"> 
         <div class="container">
             <div class="row">
                 <!-- Left sidebar START -->
@@ -176,7 +189,7 @@ table.list .cancel_btn:hover, table.list .pay_btn:hover {
 				    </div>
 				
 				    <c:if test="${not empty retakeClass}">
-				        <h3 class="sub_title">재수강 결제 대기 강좌</h3> 
+				        <h3 class="sub_title" style="margin-top: 40px;">재수강 결제 대기 강좌</h3> 
 				        <div>
 				            <table class="list">
 				                <thead>

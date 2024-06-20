@@ -406,12 +406,19 @@
                         	
                         
                          <!-- Address -->
+                         		<div class="mb-4">
+									<label for="inputzipcode" class="form-label">우편번호 *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="우편번호" id="zipcode" name="zipcode" readonly>
+                                        <a href="javascript:zipcode();"  class="btn btn-secondary ms-2">우편번호</a>
+									</div>
+								</div>
 								<div class="mb-4">
 									<label for="inputAddress1" class="form-label">주소 *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
 										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="기본주소" id="addr" name="addr" readonly>
-                                        <a href="javascript:zipcode();"  class="btn btn-secondary ms-2">우편번호</a>
 									</div>
 								</div>
 									<!-- 상세 주소 -->

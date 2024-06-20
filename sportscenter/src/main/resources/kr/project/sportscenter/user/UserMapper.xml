@@ -3,10 +3,10 @@
 <mapper namespace="kr.project.sportscenter.user.UserMapper"> 
 	<insert id="join" parameterType="kr.project.sportscenter.user.UserVO">
 		INSERT INTO user (
-			userid, username, pwd, hp, email, addr, addr2, birth, gender
+			userid, username, pwd, hp, email, addr, addr2, birth, gender, zipcode
 		) VALUES (
 			#{userid}, #{username}, MD5(#{pwd}), #{hp}, 
-			#{email}, #{addr}, #{addr2}, #{birth}, #{gender}
+			#{email}, #{addr}, #{addr2}, #{birth}, #{gender}, #{zipcode}
 		)
 <!-- 		<selectKey order="AFTER" keyProperty="usernum" resultType="int"> -->
 <!-- 			SELECT LAST_INSERT_ID()  -->
@@ -75,6 +75,7 @@
 	        </if>
 			pwd = MD5(#{pwd}),
 	        hp = #{hp},
+	        zipcode = #{zipcode},
 	        addr = #{addr},
 	        addr2 = #{addr2}
 	    </set>

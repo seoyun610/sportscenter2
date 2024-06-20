@@ -93,78 +93,7 @@
 	
 	<!-- bootstrap CSS 적용 시 필요 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
-   
-   <!-- script  -->
-   <script>
-        $(document).ready(function() {
-            // 초기 로드시 아이디 찾기 폼을 보이게 설정하고 버튼 색상 설정
-            $("#findId_container").show();
-            $("#findPassword_container").hide();
-            $(".btn").eq(0).addClass("active"); // 첫 번째 버튼을 활성화
-        });
 
-        function showForm(formId) {
-            $(".form-container").hide();
-            $("#" + formId).show();
-            $(".btn").removeClass("active"); // 모든 버튼의 활성화 클래스 제거
-            if (formId === 'findId_container') {
-                $(".btn").eq(0).addClass("active"); // 첫 번째 버튼 활성화
-            } else {
-                $(".btn").eq(1).addClass("active"); // 두 번째 버튼 활성화
-            }
-        }
-
-        function findId() {
-            console.log("findId 함수가 호출되었습니다.");
-            $.ajax({
-                url: '/user/findId.do',
-                data: {
-                    username: $("#username").val(),
-                    birth: $("#birth").val(),
-                    hp: $("#hp").val()
-                },
-                type: 'POST',
-                success: function(res) {
-                    if (res === "fail") {
-                        alert("일치하는 회원 정보가 없습니다.");
-                    } else {
-                        $("#idBox").text("찾으시는 아이디는 " + res + "입니다.").show();
-                    }
-                },
-                error: function(err) {
-                    alert("오류가 발생했습니다. 다시 시도해 주세요.");
-                }
-            });
-        }
-
-        function findPassword() {
-            $.ajax({
-                url: '/user/findPassword.do',
-                data: {
-                    userid: $("#userid2").val(),
-                    birth: $("#birth2").val(),
-                    hp: $("#hp2").val()
-                },
-                type: 'POST',
-                success: function(res) {
-                    if (res === "fail") {
-                        alert("일치하는 회원 정보가 없습니다.");
-                    } else {
-                        window.location.href = '/user/resetPassword.do?userid=' + $("#userid2").val();
-                    }
-                },
-                error: function(err) {
-                    alert("오류가 발생했습니다. 다시 시도해 주세요.");
-                }
-            });
-            return false;
-        }
-        
-       
-       
-    </script>
-    
- 	
 </head>
 <body>
      
@@ -248,4 +177,80 @@
 		<!-- Template Functions -->
 		<script src="assets/js/functions.js"></script>					
 	</body>
+	
+	   <!-- script  -->
+   <script>
+        $(document).ready(function() {
+            // 초기 로드시 아이디 찾기 폼을 보이게 설정하고 버튼 색상 설정
+            $("#findId_container").show();
+            $("#findPassword_container").hide();
+            $(".btn").eq(0).addClass("active"); // 첫 번째 버튼을 활성화
+        });
+
+        function showForm(formId) {
+            $(".form-container").hide();
+            $("#" + formId).show();
+            $(".btn").removeClass("active"); // 모든 버튼의 활성화 클래스 제거
+            if (formId === 'findId_container') {
+                $(".btn").eq(0).addClass("active"); // 첫 번째 버튼 활성화
+            } else {
+                $(".btn").eq(1).addClass("active"); // 두 번째 버튼 활성화
+            }
+        }
+
+        function findId() {
+            console.log("findId 함수가 호출되었습니다.");
+            var findiddata = {
+            	username: $("#username").val(),
+            	birth: $("#birth").val(),
+                hp: $("#hp").val()
+            }
+            $.ajax({
+            	type: 'post', 
+                url: '/user/findId.do',
+                //dataType : 'json',
+            	contentType : 'application/json',
+                data: JSON.stringify(findiddata),
+                success: function(res) {
+                	console.log(res);
+                    if (res === "fail") {
+                        alert("일치하는 회원 정보가 없습니다.");
+                    } else {
+                        $("#idBox").text("찾으시는 아이디는 " + res + "입니다.");
+                        $("#idBox").show();
+                    }
+                },
+                error: function(err) {
+                	console.log(err);
+                    alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                }
+            });
+        }
+
+        function findPassword() {
+            $.ajax({
+                url: '/user/findPassword.do',
+                data: {
+                    userid: $("#userid2").val(),
+                    birth: $("#birth2").val(),
+                    hp: $("#hp2").val()
+                },
+                type: 'POST',
+                success: function(res) {
+                    if (res === "fail") {
+                        alert("일치하는 회원 정보가 없습니다.");
+                    } else {
+                        window.location.href = '/user/resetPassword.do?userid=' + $("#userid2").val();
+                    }
+                },
+                error: function(err) {
+                    alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                }
+            });
+            return false;
+        }
+        
+       
+       
+    </script>
 </html>

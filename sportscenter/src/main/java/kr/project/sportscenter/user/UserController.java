@@ -3,7 +3,6 @@ package kr.project.sportscenter.user;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -14,10 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Controller
@@ -76,25 +75,47 @@ public class UserController {
 		return "common/alert";
 	}
 	
-	// 아이디 찾기 
-	@PostMapping("/user/findId.do")
-	@ResponseBody
-	public String findId(@RequestParam("username") String username,
-	                         @RequestParam("birth") String birth,
-	                         @RequestParam("hp") String hp) {
-        UserVO result = new UserVO();
-        result.setUsername(username);
-        result.setBirth(birth);
-        result.setHp(hp);
-        result = service.find(result);
-        if (result != null) {
-            // 아이디가 존재할 경우 아이디 반환
-            return result.getUserid();
-    	} else {
-            // 아이디가 존재하지 않을 경우 메시지 반환
-            return "fail";
-    	}
-	} 
+		@GetMapping("/user/findId")
+		public String findIdPage() {
+			return "user/findId";
+		}
+		
+		// 아이디 찾기 
+		@PostMapping("/user/findId.do")
+		@ResponseBody
+		public String findId(@RequestBody UserVO vo) {
+			System.out.println(vo.getUsername());
+	        vo = service.find(vo);
+	        System.out.println(vo);
+	        if (vo != null) {
+	            // 아이디가 존재할 경우 아이디 반환
+	            return vo.getUserid();
+	    	} else {
+	            // 아이디가 존재하지 않을 경우 메시지 반환
+	            return "fail";
+	    	}
+		}
+	
+	
+//	// 아이디 찾기 
+//	@PostMapping("/user/findId.do")
+//	@ResponseBody
+//	public String findId(@RequestParam("username") String username,
+//	                         @RequestParam("birth") String birth,
+//	                         @RequestParam("hp") String hp) {
+//        UserVO result = new UserVO();
+//        result.setUsername(username);
+//        result.setBirth(birth);
+//        result.setHp(hp);
+//        result = service.find(result);
+//        if (result != null) {
+//            // 아이디가 존재할 경우 아이디 반환
+//            return result.getUserid();
+//    	} else {
+//            // 아이디가 존재하지 않을 경우 메시지 반환
+//            return "fail";
+//    	}
+//	} 
 	  
   		//비밀번호 변경
   	@PostMapping("/user/findPassword.do")
