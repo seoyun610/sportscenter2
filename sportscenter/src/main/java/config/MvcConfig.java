@@ -80,15 +80,8 @@ public class MvcConfig implements WebMvcConfigurer {
 		reg.addViewController("/subject/usageInfo.do");
 		reg.addViewController("/subject/registInfo.do");
 		reg.addViewController("/subject/swimDetail.do");
-		reg.addViewController("/subject/healthDetail.do");
-		reg.addViewController("/subject/squashDetail.do");
-		reg.addViewController("/subject/zumbaDetail.do");
-		reg.addViewController("/subject/aquacizeDetail.do");
-		reg.addViewController("/subject/spinningDetail.do");
-		reg.addViewController("/subject/pilatesDetail.do");
-		reg.addViewController("/subject/jumpingDetail.do");
-		reg.addViewController("/subject/flyingDetail.do");
-		
+		reg.addViewController("/common/footer.do");
+		reg.addViewController("/common/header.do");
 	}
 
 	// HikariCP
