@@ -133,10 +133,15 @@
 					<div class="submit-btn-container" style="text-align: center">	
 						<button type="submit" class="btn btn-primary" style="padding: 10px 255px; font-size: 15px;">찾기</button>
 					</div>
+					<div class="submit-btn-container" style="text-align: center">
+					    <button type="button" class="btn btn-primary" style="padding: 10px 248px; font-size: 15px;" onclick="location.href='/user/login.do';">로그인</button>
+					</div>
 		 		</form>
 		 		<!-- 결과 메시지를 표시할 박스 -->
 		 		<div id="idBox" style="display:none; margin-top: 20px; font-size:20px;"></div>
-			</div>
+				</div>
+				
+				
 		
         
         <!-- 비밀번호 찾기 폼-->

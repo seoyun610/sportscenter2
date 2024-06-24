@@ -31,7 +31,7 @@ pageEncoding="UTF-8"%>
 	<nav class="navbar navbar-expand-xl">
 		<div class="container-fluid px-3 px-xl-5">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="#" >
+			<a class="navbar-brand" href="http://localhost:8090/home.do" > 
 				<img class="light-mode-item navbar-brand-item " src="/resources/images/logo.png" alt="logo" style="margin-left: 250px;">
 				<img class="dark-mode-item navbar-brand-item" src="/resources/images/logo-light.svg" alt="logo">
 			</a>

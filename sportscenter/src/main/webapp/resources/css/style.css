@@ -18609,6 +18609,9 @@ textarea.form-control-lg {
 .list-group .list-group-item i, .list-group .list-group-item span {
   margin-right: 5px;
 }
+.list-group-item{
+	color: var(--bs-dark) !important;
+}
 
 .list-group-borderless .list-group-item {
   border: none !important;
@@ -20790,7 +20793,7 @@ small,
 }
 
 .bi.fa-fw {
-  display: inline-block;
+  display: inline-block; 
 }
 
 .preloader {

@@ -70,7 +70,7 @@
 							<form action="/user/updatePassword.do" method="post">
 								<!-- Email -->
 								<div class="mb-4">
-									<label for="InputPwd1" class="form-label">비밀번호 *</label>
+									<label for="InputPwd1" class="form-label">비밀번호</label> 
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
 										<input type="hidden" name="userid" value="${userid}">

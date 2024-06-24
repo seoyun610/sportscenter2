@@ -7,6 +7,7 @@
 <html lang="ko">
 <head>
 <style>
+
 table.list {
   width: 100%;
   border-collapse: collapse;
@@ -28,7 +29,6 @@ table.list tr:hover {
 }
 
 table.list .cancel_btn, table.list .pay_btn {
-  background-color: #4CAF50;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -60,6 +60,9 @@ table.list .pay_btn {
     table.list .pay_btn:hover {
         background-color: #0056b3; /* 파란색 (더 짙은) */
     }
+    .bg-dark-subtle {
+	  background-color: var(--bs-dark-bg-subtle) !important;
+	}
     
 </style>
 <meta charset="UTF-8">
@@ -95,10 +98,17 @@ table.list .pay_btn {
             flex: 1;
             margin-left: 50px;
         }
+        .content-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .content-container > div {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
-    <%@ include file="/WEB-INF/views/mypage/header.jsp"%>
+    <%@ include file="/WEB-INF/views/common/header.jsp"%>
     <!-- =======================Page Banner START -->
     <section class="pt-0" style="padding-bottom: 1rem;">
 	         <!-- Main banner background image -->
@@ -133,7 +143,7 @@ table.list .pay_btn {
     <!-- ======================= Page content START -->
     <section class="pt-0" style="padding-bottom: 25rem;"> 
         <div class="container">
-            <div class="row">
+            <div class="row content-container">
                 <!-- Left sidebar START -->
                 <div class="col-xl-3">
                     <!-- Responsive offcanvas body START -->
@@ -147,10 +157,10 @@ table.list .pay_btn {
                         <div class="offcanvas-body p-3 p-xl-0">
                             <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
                                 <!-- Dashboard menu -->
-                                <div class="list-group list-group-dark list-group-borderless">
+                                <div class="list-group list-group-dark list-group-borderless">  
                                     <a class="list-group-item active" href="/mypage/classView.do"><i class="bi bi-basket fa-fw me-2"></i>수강 중인 강좌</a>
                                     <a class="list-group-item" href="/mypage/verifyPassword.do"><i class="bi bi-pencil-square fa-fw me-2"></i>개인 정보 수정</a>
-                                    <a class="list-group-item" href="#"><i class="bi bi-people fa-fw me-2"></i>수강 내역 확인</a>
+                                    <a class="list-group-item" href="/mypage/classHistory.do"><i class="bi bi-people fa-fw me-2"></i>수강 내역 확인</a>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +226,7 @@ table.list .pay_btn {
             </div>
         </div>
     </section>
-	<%@ include file="/WEB-INF/views/mypage/footer.jsp" %> 
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
     <div class="back-top">
         <i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i>
     </div>
@@ -251,3 +261,4 @@ table.list .pay_btn {
     </script>
 </body>
 </html>
+

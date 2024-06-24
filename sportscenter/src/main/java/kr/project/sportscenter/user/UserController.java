@@ -183,7 +183,9 @@ public class UserController {
   		
 	// 비밀번호 확인 페이지로 이동
 	@GetMapping("/mypage/verifyPassword.do")
-	public String showVerifyPasswordPage() {
+	public String showVerifyPasswordPage(HttpSession sess, Model model) {
+		UserVO login = (UserVO)sess.getAttribute("login");
+		model.addAttribute("vo", login);
 		return "mypage/verifyPassword";
 	}
 
@@ -218,8 +220,9 @@ public class UserController {
 		List<UserVO> classList = service.classView(vo);
 		List<UserVO> retakeClass = service.retakeClass(vo);
 		model.addAttribute("classList", classList);
-		model.addAttribute("retakeClass", retakeClass);
+		model.addAttribute("retakeClass", retakeClass); 
 		model.addAttribute("username", vo.getUsername());
+		model.addAttribute("vo", login);
 		return "mypage/classView";
 	}
   	     
@@ -229,6 +232,7 @@ public class UserController {
 		vo.setUsernum(login.getUsernum());
 		List<UserVO> classHistory = service.classHistory(vo);
 		model.addAttribute("classHistory", classHistory);
+		model.addAttribute("vo", login);
 		return "mypage/classHistory";
 	}
 	
