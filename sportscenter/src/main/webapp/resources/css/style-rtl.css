@@ -21808,11 +21808,11 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   display: flex !important;
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .page-content {
     margin-right: 16.25rem;
   }
-}
+} */
 @media (max-width: 575.98px) {
   .page-content .page-content-wrapper {
     margin: 1rem 0;

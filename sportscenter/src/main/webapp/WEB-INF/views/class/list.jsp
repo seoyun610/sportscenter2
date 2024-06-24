@@ -17,7 +17,15 @@
 	<META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="/js/script.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Eduport- LMS, Education and Course Theme">
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/resources/images/favicon.ico">
+    
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,38 +39,27 @@
 	<link rel="stylesheet" type="text/css" href="/resources/vendor/overlay-scrollbar/css/overlayscrollbars.min.css">
 
 	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/list.css">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="/resources/images/favicon.ico">
-    
     <style>
-    	.table-container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-	    }
-	    table {
-	        margin: 20px 0; /* Optional: Add some margin for spacing */
-	    }
-	    tbody tr td {
+    	tbody tr td {
 	        text-align: center;
 	        vertical-align: middle;
 	    }
-	    .card-footer {
-	        background-color: #f8f9fa; /* 회색 배경 */
-	        color: #6c757d; /* 회색 텍스트 */
+		@media (min-width: 1000px) {
+	        .page-content {
+	            margin: 1.5rem 5rem !important;
+	        }
 	    }
-	    .card-footer .page-link {
-	        color: #6c757d; /* 회색 페이지 링크 */
-	        border-color: #dee2e6; /* 회색 경계 */
-	    }
-	    .card-footer .page-item.active .page-link {
-	        background-color: #6c757d; /* 활성화된 페이지 회색 배경 */
-	        border-color: #6c757d; /* 활성화된 페이지 회색 경계 */
-	        color: #fff; /* 활성화된 페이지 흰색 텍스트 */
-	    }
+	    .mb-3 {
+		  margin: 1rem !important;
+		}
+		.card-footer {
+		  padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
+		  color: var(--bs-card-cap-color);
+		  background-color: var(--bs-card-cap-bg);
+		  border-top: none !important;
+		}
     </style>
 	<script>
 		// var load = false;
@@ -125,116 +122,203 @@
 	</script>
 </head>
 <body>
-	<div class="wrap">
-		<%@ include file="/WEB-INF/views/common/header.jsp" %>
-		<div class="table-container">
-			<div class="sub" style="width: 80%;">
-				<div class="clsSearch">
-					<form method="get" name="searchForm" id="searchForm" action="list.do">
-						<span class="srchSelect">
-							<select id="subtype" name="subtype" size="1">
-								<c:forEach var="vo" items="${smap.list }">
-									<option value="${vo.sportid }" ${vo.sportid == 99 ? 'selected disabled hidden' : ''}>${vo.sporttxt }</option>
-								</c:forEach>
-							</select>
-							<select id="classtime" name="classtime" size="1">
-								<c:forEach var="vo" items="${tmap.list }">
-									<option value="${vo.timeid }" ${vo.timeid == 99 ? 'selected disabled hidden' : ''}>${vo.timetxt }</option>
-								</c:forEach>
-							</select>
-							<select id="classlevel" name="classlevel" size="1">
-								<c:forEach var="vo" items="${lmap.list }">
-									<option value="${vo.levelid }" ${vo.levelid == 99 ? 'selected disabled hidden': ''}>${vo.leveltxt}</option>
-								</c:forEach>
-							</select>
-							<input type="hidden" id="classyear" name="classyear" value="<%=currentYear %>">
-							<input type="hidden" id="classmonth" name="classmonth" value="<%=nextMonth%>">
-							<input type="submit" id="sBtn" value="검색" title="검색">
-						</span>
-					</form>
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	<div class="page-content"> 
+		<div class="page-content-wrapper border">
+			<!-- Title -->
+			<div class="row mb-3">
+				<div class="col-12 d-sm-flex justify-content-between align-items-center mb-4">
+					<h3 class="h3 mb-2 mb-sm-0" style="font-family: 'Noto Sans KR', sans-serif;">수강신청</h3>
 				</div>
-				<table border="1">
-					<tbody>
-						<tr>
-							<th>강좌명</th>
-							<th>종목</th>
-							<th>요일</th>
-							<th>시간</th>
-							<th>등급</th>
-							<th>가격</th>
-							<th>정원</th>
-							<th>현원</th>
+				<!-- Select START -->
+				<div class="col-lg-8 col-xl-9">
+					<!-- Select option -->
+					<div class="row mb-4 align-items-center">
+						<form method="get" name="searchForm" id="searchForm" action="list.do" class="rounded position-relative">
+							<div class="row">
+								<div class="col-md-2 mb-2">
+									<div class="border rounded p-2">
+										<select id="subtype" name="subtype" size="1" class="form-select form-select-sm js-choice border-0" aria-label=".form-select-sm">
+											<c:forEach var="vo" items="${smap.list }">
+												<option value="${vo.sportid }" ${vo.sportid == 99 ? 'selected disabled hidden' : ''}>${vo.sporttxt }</option>
+											</c:forEach>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-2 mb-2">
+									<div class="border rounded p-2">
+										<select id="classtime" name="classtime" size="1" class="form-select form-select-sm js-choice border-0" aria-label=".form-select-sm">
+											<c:forEach var="vo" items="${tmap.list }">
+												<option value="${vo.timeid }" ${vo.timeid == 99 ? 'selected disabled hidden' : ''}>${vo.timetxt }</option>
+											</c:forEach>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-2 mb-2">
+									<div class="border rounded p-2">
+										<select id="classlevel" name="classlevel" size="1" class="form-select form-select-sm js-choice border-0" aria-label=".form-select-sm">
+											<c:forEach var="vo" items="${lmap.list }">
+												<option value="${vo.levelid }" ${vo.levelid == 99 ? 'selected disabled hidden': ''}>${vo.leveltxt}</option>
+											</c:forEach>
+										</select>
+									</div>
+								</div>
+								<input type="hidden" id="classyear" name="classyear" value="<%=currentYear %>">
+								<input type="hidden" id="classmonth" name="classmonth" value="<%=nextMonth%>">
+								<div class="col-md-2 mb-2 text-dark d-flex align-items-center">
+									<input type="submit" id="sBtn" value="검색" title="검색" class="btn btn-primary mt-2 mb-1">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- Select END -->
+				
+				<!-- Table START -->
+				<table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+					<!-- Table head -->
+					<thead style="width:100%; justify-content: space-between;">
+						<tr style="text-align:center; width:100%; justify-content: space-between;">
+							<th scope="col" class="border-0 rounded-start">강좌명</th>
+							<th scope="col" class="border-0">종목</th>
+							<th scope="col" class="border-0">진행 월</th>
+							<th scope="col" class="border-0">요일</th>
+							<th scope="col" class="border-0">시간</th>
+							<th scope="col" class="border-0">등급</th>
+							<th scope="col" class="border-0">가격</th>
+							<th scope="col" class="border-0">정원</th>
+							<th scope="col" class="border-0">현원</th>
+							<th scope="col" class="border-0">신청가능 여부</th>
+							<th scope="col" class="border-0 rounded-end">신청</th>
 						</tr>
+					</thead>
+								
+					<!-- Table body START -->
+					<tbody>
 						<c:if test="${empty map.list }">
 							<tr>
 								<td colspan="9">등록된 과목이 없습니다.</td>
 							</tr>
 						</c:if>
 						<c:forEach var="vo" items="${map.list }"> 
+							<!-- Table row -->
 							<tr>
-								<td rowspan="2">${vo.classname }</td>  
-								<td>${vo.subtypeName }</td>
-								<td>${vo.classday } </td>
-								<td>${vo.formattedClasstime}</td>
-								<td>${vo.classlevelName }</td>
-								<td>${vo.classprice }</td>
-								<td>${vo.classlimit }</td>
-								<td>${vo.classcnt }</td>
-								<c:choose>
-									<c:when test="${currentDay >= 20 && currentDay <= 26}">
+								<!-- Table data start -->
+								<td rowspan="2" class="align-content-center position-relative">
+									<div class="align-items-center position-relative">
+										${vo.classname }
+									</div>
+								</td>  
+								<td>
+									<div class="align-items-center">
+										${vo.subtypeName }	
+									</div>
+								</td>
+								<td>
+									<div class="align-items-center">
+										${vo.classmonth }	
+									</div>
+								</td>
+								<td>
+									<div class="align-items-center">
+										${vo.classYoil }	
+									</div>
+								</td>
+								<td>
+									<div class="align-items-center">
+										${vo.formattedClasstime}	
+									</div>
+								</td>
+								<td>
+									<div class="align-items-center">
+										${vo.classlevelName }	
+									</div>
+								</td>
+								<td>
+									<div class="align-items-center">
+										${vo.classprice }	
+									</div>
+								</td>
+								<td>
+									<div class="align-items-center">
+										${vo.classlimit }	
+									</div>
+								</td>
+								<td>
+									<div class="align-items-center">
+										${vo.classcnt }	
+									</div>
+								</td>
+								<td>
+									<div class="align-items-center">
 										<c:choose>
-											<c:when test="${vo.classlimit > vo.classcnt }">
-												<td>신청 가능</td>
+											<c:when test="${currentDay >= 20 && currentDay <= 26}">
+												<c:choose>
+													<c:when test="${vo.classlimit > vo.classcnt }">
+														신청 가능
+													</c:when>
+													<c:otherwise>
+														신청 불가
+													</c:otherwise>
+												</c:choose>
 											</c:when>
 											<c:otherwise>
 												<td>신청 불가</td>
 											</c:otherwise>
 										</c:choose>
-									</c:when>
-									<c:otherwise>
-										<td>신청 불가</td>
-									</c:otherwise>
-								</c:choose>
-								<td> <input type="button" id="btn" onclick="classSelection(${vo.classid}, ${vo.classlimit}, ${vo.classcnt})" value="신청"></td>
+									</div>
+								</td>
+								<td> 
+									<div class="align-items-center">
+										<input type="button" id="btn" onclick="classSelection(${vo.classid}, ${vo.classlimit}, ${vo.classcnt})" value="신청">
+									</div>
+								</td>
+								<!-- Table data end -->
 							</tr>
 							<tr>
-								<td colspan = "9"> graph </td>
+								<c:set var="classcntval" value="${vo.classcnt }"/> <c:set var="classlimitval" value="${vo.classlimit }"/>
+								<c:set var="percentVal" value="${classcntval / classlimitval * 100}"/>
+								<td colspan = "10"> 
+									<div class="d-flex align-items-center">
+										<progress id="percentage" style="width: 100%;" min="0" max="100" value="${percentVal}"></progress>
+									</div>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-			</div>
-			<!-- Card footer START -->
-			<div class="card-footer bg-transparent pt-0">
-				<!-- Pagination START -->
-				<div class="d-sm-flex justify-content-sm-between align-items-sm-center">
-				    <!-- Content -->
-					<p class="mb-0 text-center text-sm-start">	${map.page }/${map.totalPage }페이지 </p>
-					<!-- Pagination -->
-					<nav class="d-flex justify-content-center mb-0" aria-label="navigation">
-						<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-							<c:if test="${map.prev }">
-								<li><a href="list.do?page=${map.startPage-1 }"> << </a></li>
-							</c:if>
-							<c:forEach var="p" begin="${map.startPage }" end="${map.endPage }">
-								<c:if test="${p == ClassVO.page }">
-								<li><a href='#'; class='current'>${p}</a></li>
+				<!-- Card footer START -->
+				<div class="card-footer bg-transparent mt-3 pt-0">
+					<!-- Pagination START -->
+					<div class="d-sm-flex justify-content-sm-between align-items-sm-center">
+					    <!-- Content -->
+						<p class="mb-0 text-center text-sm-start">	${map.page }/${map.totalPage }페이지 </p>
+						<!-- Pagination -->
+						<nav class="d-flex justify-content-center mb-0" aria-label="navigation">
+							<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+								<c:if test="${map.prev }">
+									<li class="page-item mb-0"><a class="page-link" href="list.do?page=${map.startPage-1 }"> << </a></li>
 								</c:if>
-								<c:if test="${p != ClassVO.page }">
-								<li><a href="list.do?page=${p}">${p }</a></li>
+								<c:forEach var="p" begin="${map.startPage }" end="${map.endPage }">
+									<c:if test="${p == ClassVO.page }">
+										<li class="page-item mb-0 active"><a class="page-link" href='#'; class='current'>${p}</a></li>
+									</c:if>
+									<c:if test="${p != ClassVO.page }">
+										<li class="page-item mb-0"><a class="page-link" href="list.do?page=${p}">${p}</a></li>
+									</c:if>
+								</c:forEach>
+								<c:if test="${map.next }">
+									<li class="page-item mb-0 active"><a class="page-link" href="list.do?page=${map.endPage+1 }"> >> </a></li>
 								</c:if>
-							</c:forEach>
-							<c:if test="${map.next }">
-								<li><a href="list.do?page=${map.endPage+1 }"> >> </a></li>
-							</c:if>
-						</ul>
-					</nav>
+							</ul>
+						</nav>
+					</div>
+					<!-- Pagination END -->
 				</div>
-				<!-- Pagination END -->
-			</div>
-			<!-- Card footer END -->
+				<!-- Card footer END -->
+			</div>			
 		</div>
-		<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	</div>
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>
