@@ -201,7 +201,7 @@
                 <!-- Left sidebar END -->
 
                 <div>
-                <div class="wrap" style="padding-left: 65px;">
+                <div class="wrap" style="padding-left: 65px; width: 120%;">
                 <h3 class="sub_title">수강 내역 확인</h3> 
                     <table class="list">
                         <thead>
