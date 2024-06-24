@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="/resources/vendor/tiny-slider/tiny-slider.css">
     <link rel="stylesheet" type="text/css" href="/resources/vendor/glightbox/css/glightbox.css">
-
+ 
     <!-- Theme CSS -->
     <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
     <style>
