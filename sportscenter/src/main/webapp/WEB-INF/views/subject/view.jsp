@@ -33,128 +33,11 @@
 
   </script>
 </head>
-
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <body>
-<!-- Header START -->
-<header class="navbar-light navbar-sticky header-static text-center">
-	<!-- Nav START -->
-	<nav class="navbar navbar-expand-xl">
-		<div class="container-fluid px-3 px-xl-5">
-			<!-- Logo START -->
-			<a class="navbar-brand" href="#">
-				<img class="light-mode-item navbar-brand-item" src="/resources/images/logo.png" alt="logo">
-				<img class="dark-mode-item navbar-brand-item" src="/resources/images/logo-light.svg" alt="logo">
-			</a>
-			<!-- Logo END -->
-
-			<!-- Responsive navbar toggler -->
-			<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-animation">
-					<span></span>
-					<span></span>
-					<span></span>
-				</span>
-			</button>
-			
-			<!-- Main navbar START -->
-			<div class="navbar-collapse w-100 collapse" style="float: none; margin:0 auto;">
-
-					
-				<!-- Nav Main menu START -->
-				<ul class="navbar-nav navbar-nav-scroll me-auto">
-					<!-- Nav item 2 종목/안내 -->
-						<li class="nav-item dropdown">
-							<a class="nav-link" href="" style="font-size: 18px; font-weight: bold; color: #000;">센터소개</a>
-							<ul class="dropdown-menu" aria-labelledby="demoMenu">
-								<li> <a class="dropdown-item active" href="#">About Us</a></li>
-								<li> <a class="dropdown-item" href="#">Contact Us</a></li>
-						</ul>
-						</li>
-
-					<!-- Nav item 2 종목/안내 -->
-					<li class="nav-item dropdown">
-						<a class="nav-link" href="" style="font-size: 18px; font-weight: bold; color: #000;" >종목/안내</a>
-						<ul class="dropdown-menu" aria-labelledby="demoMenu">
-							<li> <a class="dropdown-item active" href="/subject/index.do">종목 안내</a></li>
-							<li> <a class="dropdown-item" href="/subject/registInfo.do">이용 안내</a></li>
-							<li> <a class="dropdown-item" href="/subject/usageInfo.do">수강 신청</a></li>
-							
-						</ul>
-					</li>
-
-					<!-- Nav item 3 수강 신청 -->
-					<li class="nav-item dropdown">
-						<a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 18px; font-weight: bold; color: #000;">수강신청</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item active" href="/class/list.do">온라인 수강신청</a>
-							</li>
-						</ul>
-					</li>
-
-					<!-- Nav item 4 커뮤니티 -->
-					<li class="nav-item dropdown">
-						<a class="nav-link" href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 18px; font-weight: bold; color: #000;">커뮤니티</a>
-						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item active" href="/notice/index.do">공지사항</a>
-								<a class="dropdown-item" href="/qna/index.do">QnA</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<!-- Nav Search START -->
-				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
-					<div class="nav-item w-100">
-						<form class="position-relative">
-							<input class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search">
-							<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
-								<i class="fas fa-search fs-6 "></i>
-							</button>
-						</form>
-					</div>
-				</div>
-				<!-- Nav Search END -->
-			</div>
-			<!-- Main navbar END -->
-
-			<!-- Profile START -->
-			<!-- 동작 이슈...  -->
-			<div class="dropdown ms-1 ms-lg-0">
-				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-					<img class="avatar-img rounded-circle" src="/resources/images/avatar/01.jpg" alt="avatar">
-				</a>
-				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
-					<!-- Profile info -->
-					<li class="px-3 mb-3">
-						<div class="d-flex align-items-center">
-							<!-- Avatar -->
-							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="resources/images/avatar/01.jpg" alt="avatar">
-							</div>
-							<div>
-								<a class="h6" href="#">Lori Ferguson</a>
-								<p class="small m-0">example@gmail.com</p>
-							</div>
-						</div>
-					</li>
-					<li> <hr class="dropdown-divider"></li>
-					<!-- Links -->
-					<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
-					<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
-					<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
-					<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
-					<li> <hr class="dropdown-divider"></li>
-				</ul>
-			</div>
-			<!-- Profile START -->
-		</div>
-	</nav>
-	<!-- Nav END -->
-</header>
-	<h2 style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; text-align: center;">종목 소개</h2>
+	<div>
+	<h2 style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; text-align: center; margin-top: 40px;">종목 소개</h2>
+	</div>
 	<!--Page content START -->
 		<section class="py-5">
 			<div class="container">
@@ -202,7 +85,7 @@
 					        <div class="card-body px-3">
 					            <!-- Title -->
 					            <h5 class="card-title mb-0">
-					                <a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">수영</a>
+					                <a href="/subject/swimDetail.do" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">수영</a>
 					            </h5>
 					            <!-- Description -->
 					            <p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">수영은 육상 운동과 달리 체중의 대부분을 지지할 필요가 없어 체격 제한 없이 남녀노소 누구나 쉽게 즐길 수 있는 운동입니다.</p>
@@ -241,7 +124,7 @@
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">헬스</a>
+									<a href="/subject/healthDetail.do" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">헬스</a>
 								</h5>
 							<!-- Description -->
 					            <p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">헬스는 지구력, 근력, 유연성, 체력증대를 기르고 다이어트에 도움이 됩니다.</p>
@@ -277,7 +160,7 @@
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">스쿼시</a>
+									<a href="/subject/squashDetail.do" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">스쿼시</a>
 								</h5>
 								<!-- Description -->
 								<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">스쿼시는 실내 코트에서 빠른 반사 신경과 민첩성을 요구하는 라켓 스포츠입니다.</p>
@@ -309,7 +192,7 @@
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">줌바댄스</a>
+									<a href="/subject/zumbaDetail.do" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">줌바댄스</a>
 								</h5>
 								<!-- Description -->
 								<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">줌바댄스는 라틴 음악을 바탕으로 한 신나는 운동입니다.</p>
@@ -341,7 +224,7 @@
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">아쿠아로빅</a>
+									<a href="/subject/aquacizeDetail.do" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">아쿠아로빅</a>
 								</h5>
 								<!-- Description -->
 								<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">아쿠아로빅은 물속에서 즐기는 건강체조입니다.</p>
@@ -374,7 +257,7 @@
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">스피닝</a>
+									<a href="/subject/spinningDetail.do" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">스피닝</a>
 								</h5>
 								<!-- Description -->
 								<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">스피닝은 고정된 바이크 위에서 페달을 밟으며 신나는 음악에 맞춰 율동을 하는 다이내믹한 운동입니다.</p>
@@ -411,7 +294,7 @@
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">필라테스</a>
+									<a href="/subject/pilatesDetail.do" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">필라테스</a>
 								</h5>
 								 <!-- Description -->
             					<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">필라테스는 운동부족과 재활치료, 정신수련을 위해 고안한 근육강화 운동입니다.</p>
@@ -448,7 +331,7 @@
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">점핑트램폴린</a>
+									<a href="/subject/jumpingDetail.do" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">점핑트램폴린</a>
 								</h5>
 								 <!-- Description -->
             					<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">점핑트램폴린은 트램폴린 위에서 다양한 점핑 응용동작을 하면서 칼로리 소모 및 코어근육과 하체를 단련하는 운동입니다.</p>
@@ -486,7 +369,7 @@
 							<div class="card-body px-3">
 								<!-- Title -->
 								<h5 class="card-title mb-0">
-									<a href="" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">플라잉요가</a>
+									<a href="/subject/flyingDetail.do" class="stretched-link" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; font-size: 24px;">플라잉요가</a>
 								</h5>
 								 <!-- Description -->
             					<p class="card-text mt-2" style="font-family: 'Noto Sans KR', sans-serif;">플라잉 요가는 해먹을 사용해 공중에서 다양한 요가 동작을 수행하는 운동입니다.</p>

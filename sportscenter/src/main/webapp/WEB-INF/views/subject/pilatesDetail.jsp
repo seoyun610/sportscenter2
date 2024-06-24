@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>수영 상세페이지</title>
+<title>필라테스 상세페이지</title>
  <!-- Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
@@ -96,9 +96,9 @@ Main banner START -->
 		<div class="row">
 			<div class="col-12">
 				<!-- Card item START -->
-				<div class="card overflow-hidden h-400px h-xl-600px rounded-3" style="background-image:url(/resources/images/bg/bgSwim.jpg); background-position: center left; background-size: cover;">
+				<div class="card overflow-hidden h-400px h-xl-600px rounded-3" style="background-image:url(/resources/images/bg/bgPilates.jpg); background-position: center left; background-size: cover;">
 					<!-- Background dark overlay -->
-					<div class="bg-overlay bg-dark opacity-2"></div>
+					<div class="bg-overlay bg-dark opacity-3"></div>
 					
 					<!-- Card image overlay -->
 					<div class="card-img-overlay d-flex align-items-start flex-column">
@@ -126,7 +126,7 @@ Main banner START -->
 				  <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
 				강좌 개요
 				</h3>
-				<p style="font-size: 19px; color: grey;">수영은 육상 운동과 달리 체중의 대부분을 지지할 필요가 없어 체격 제한없이 남녀노소 누구나 쉽게 즐길 수 있는 운동입니다.</p>
+				<p style="font-size: 19px; color: grey;">줌바댄스는 라틴댄스에서 영감을 받은 댄스피트니스 프로그램으로 라틴음악 및 세계음악을 사용하여 역동적이고, 흥미롭고, 즐거우며, 효과적인 운동입니다. 줌바댄스를 배우는 동안 뛰어난 코어운동으로 복부와 전신의 근육강화를 돕고 높은 열량을 소비하게 되어 건강유지 및 다이어트에 효과적입니다.</p>
 				<h3 style="font-weight: bold; letter-spacing : 0.05em; line-height:200%;">
 				 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
 				프로그램 안내
@@ -152,40 +152,15 @@ Main banner START -->
 	    <tbody class="border-top-0" style="font-family: 'Noto Sans KR', sans-serif; text-align: center; vertical-align: middle;">
 						        <!-- 성인수영 공통 데이터 -->
 					        	<tr>
-						            <td rowspan="3" style="text-align: center; vertical-align: middle;">
-						                <span class="text-body">성인수영</span>
+						            <td rowspan="2" style="text-align: center; vertical-align: middle;">
+						                <span class="text-body">줌바댄스</span>
 						            </td>
-						            <td><span class="text-body">주5일<br>(초급, 중급, 고급, 연수)</span></td>
-						            <td><span class="text-body">월~금</span></td>
-						            <td style="text-align: center; vertical-align: middle;">
-						                <span class="text-body">6:00~7:00</span><br>
-						                <span class="text-body">7:00~8:00</span><br>
-						                <span class="text-body">8:00~9:00</span><br>
-						                <span class="text-body">9:00~10:00</span><br>
-						                <span class="text-body">10:00~11:00</span><br>
-						                <span class="text-body">11:00~12:00</span><br>
-						                <span class="text-body">14:00~15:00</span><br>
-						                <span class="text-body">15:00~16:00</span><br>
-						                <span class="text-body">16:00~17:00</span><br>
-						                <span class="text-body">17:00~18:00</span><br>
-						                <span class="text-body">18:00~19:00</span><br>
-						                <span class="text-body">19:00~20:00</span><br>
-						                <span class="text-body">20:00~21:00</span>
-						            </td>
-						            <td>
-						                <span class="text-body">성인 95,000</span><br>
-						                <span class="text-body">중고생 75,000</span>
-						            </td>
-						        </tr>
-						
-						        <!-- 중급, 고급, 연수 레벨 데이터 -->
-						        <tr>
-						            <td><span class="text-body">주3일<br>(초급, 중급, 고급, 연수)</span></td>
+						            <td><span class="text-body">주3일</span></td>
 						            <td><span class="text-body">월,수,금</span></td>
 						            <td style="text-align: center; vertical-align: middle;">
-						                <span class="text-body">6:00~7:00</span><br>
-						                <span class="text-body">7:00~8:00</span><br>
-						                <span class="text-body">8:00~9:00</span><br>
+						                <span class="text-body">06:00~07:00</span><br>
+						                <span class="text-body">07:00~8:00</span><br>
+						                <span class="text-body">08:00~9:00</span><br>
 						                <span class="text-body">9:00~10:00</span><br>
 						                <span class="text-body">10:00~11:00</span><br>
 						                <span class="text-body">11:00~12:00</span><br>
@@ -198,18 +173,18 @@ Main banner START -->
 						                <span class="text-body">20:00~21:00</span>
 						            </td>
 						            <td>
-						                <span class="text-body">성인 55,000</span><br>
-						                <span class="text-body">중고생 35,000</span>
+						                <span class="text-body">성인 및 청소년: 78,000</span><br>
 						            </td>
+						            
 						        </tr>
-						
 						        <tr>
-						            <td><span class="text-body">주2일<br>(초급, 중급, 고급, 연수)</span></td>
+						         
+						            <td><span class="text-body">주2일</span></td>
 						            <td><span class="text-body">화,목</span></td>
 						            <td style="text-align: center; vertical-align: middle;">
-						                <span class="text-body">6:00~7:00</span><br>
-						                <span class="text-body">7:00~8:00</span><br>
-						                <span class="text-body">8:00~9:00</span><br>
+						                <span class="text-body">06:00~07:00</span><br>
+						                <span class="text-body">07:00~8:00</span><br>
+						                <span class="text-body">08:00~9:00</span><br>
 						                <span class="text-body">9:00~10:00</span><br>
 						                <span class="text-body">10:00~11:00</span><br>
 						                <span class="text-body">11:00~12:00</span><br>
@@ -222,60 +197,27 @@ Main banner START -->
 						                <span class="text-body">20:00~21:00</span>
 						            </td>
 						            <td>
-						                <span class="text-body">성인 45,000</span><br>
-						                <span class="text-body">중고생 25,000</span>
+						                 <span class="text-body">성인 및 청소년: 78,000</span><br>
 						            </td>
+						            
 						        </tr>
-
-		
-									<!-- Table item -->
-									<tr>
-										<!-- Table data -->
-										<td> <span class="text-body">자유수영</span></td>
-
-										<!-- Table data -->
-										<td> <span class="text-body">주5일</span> </td>
-										
-										<!-- Table data -->
-										<td> <span class="text-body">월~금</span> </td>
-										
-										<!-- Table data -->
-										<td style="text-align: center; vertical-align: middle;"> 
-										<span class="text-body">6:00~7:00</span><br> 
-										<span class="text-body">7:00~8:00</span><br> 
-										<span class="text-body">8:00~9:00</span><br>  
-										<span class="text-body">9:00~10:00</span><br> 
-										<span class="text-body">10:00~11:00</span><br> 
-										<span class="text-body">11:00~12:00</span><br> 
-										<span class="text-body">14:00~15:00</span><br>  
-										<span class="text-body">15:00~16:00</span><br> 
-										<span class="text-body">16:00~17:00</span><br> 
-										<span class="text-body">17:00~18:00</span><br>
-										<span class="text-body">18:00~19:00</span><br> 	
-										<span class="text-body">19:00~20:00</span><br> 
-										<span class="text-body">20:00~21:00</span> 		 	
-										</td>
-										
-										<!-- Table data -->
-										<td> <span class="text-body">성인 75,000</span></br>
-										<span class="text-body">중고생 60,000</span>
-										</td>
-									</tr>
 								<!-- Table body END -->
 							</table>
 							<!-- Table END -->
 							<p>*변동사항은 공지사항을 통해 확인해주세요.</p>
-							<h3 style="font-weight: bold; line-height:200%; letter-spacing : 0.02em;">
+							
+							<h3 style="font-weight: bold; line-height:250%; letter-spacing : 0.02em;">
 							 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
-							국제규격의 50m 레인과 국내 최고의 수질
+							운동효과
 							</h3>
-							<P style="font-size: 19px; color: grey;">스포츠문화센터의 수영장은 국제규격의 50m 레인과 철저한 수질관리를 바탕으로 한 국내 최고의 수질 등 최상의 운동 환경을 제공하며, 수영 전문 지도강사가 표준화된 영법 지도서에 따라 체계적인 강습을 제공함으로써 회원들이 각종 영법을 조기에 마스터할 수 있도록 지도하고 있습니다.</P>
-							<a href="/subject/view.do" style="display: inline-block; padding: 18px 30px; font-size: 16px; font-family: 'Noto Sans KR', sans-serif; color: #fff; background-color: #000; border: none; border-radius: 0px; text-decoration: none; text-align: center; transition: background-color 0.3s ease; margin-left:42%;">
+							<P style="font-size: 19px; color: grey;">줌바댄스는 라틴댄스와 피트니스가 결합된 운동으로 신나는 라틴음악에 맞춰 간단한 동작을 반복함으로써 초보자도 쉽게 따라할 수 있어 청장년층으로부터 호응이 매우 높고, 신바람 실버 체조, 도구를 활용한 운동, 두뇌 활동에 좋은 손·유희 등 다양한 건강증진 프로그램운영으로 유연성과 근력강화가 가능한 운동입니다.</P>
+					        <a href="/subject/view.do" style="display: inline-block; padding: 18px 30px; font-size: 16px; font-family: 'Noto Sans KR', sans-serif; color: #fff; background-color: #000; border: none; border-radius: 0px; text-decoration: none; text-align: center; transition: background-color 0.3s ease; margin-left:42%;">
 					            목록으로
 					        </a>
 						</div>
 					</div>
 				</div>
+				
 <!-- =======================
 Action Box START-->
 <section class="pt-0" style="margin-top: 5%;">

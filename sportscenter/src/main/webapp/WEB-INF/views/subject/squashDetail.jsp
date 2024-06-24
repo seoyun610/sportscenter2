@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>수영 상세페이지</title>
+<title>스쿼시 상세페이지</title>
  <!-- Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
@@ -96,9 +96,9 @@ Main banner START -->
 		<div class="row">
 			<div class="col-12">
 				<!-- Card item START -->
-				<div class="card overflow-hidden h-400px h-xl-600px rounded-3" style="background-image:url(/resources/images/bg/bgSwim.jpg); background-position: center left; background-size: cover;">
+				<div class="card overflow-hidden h-400px h-xl-600px rounded-3" style="background-image:url(/resources/images/bg/bgSquash.jpg); background-position: center left; background-size: cover;">
 					<!-- Background dark overlay -->
-					<div class="bg-overlay bg-dark opacity-2"></div>
+					<div class="bg-overlay bg-dark opacity-3"></div>
 					
 					<!-- Card image overlay -->
 					<div class="card-img-overlay d-flex align-items-start flex-column">
@@ -126,7 +126,7 @@ Main banner START -->
 				  <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
 				강좌 개요
 				</h3>
-				<p style="font-size: 19px; color: grey;">수영은 육상 운동과 달리 체중의 대부분을 지지할 필요가 없어 체격 제한없이 남녀노소 누구나 쉽게 즐길 수 있는 운동입니다.</p>
+				<p style="font-size: 19px; color: grey;">스쿼시는 실내 코트에서 빠른 반사 신경과 민첩성을 요구하는 라켓 스포츠입니다. 고강도의 운동으로 심혈관 건강과 근력을 효과적으로 향상시킬 수 있습니다.</p>
 				<h3 style="font-weight: bold; letter-spacing : 0.05em; line-height:200%;">
 				 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
 				프로그램 안내
@@ -152,40 +152,15 @@ Main banner START -->
 	    <tbody class="border-top-0" style="font-family: 'Noto Sans KR', sans-serif; text-align: center; vertical-align: middle;">
 						        <!-- 성인수영 공통 데이터 -->
 					        	<tr>
-						            <td rowspan="3" style="text-align: center; vertical-align: middle;">
-						                <span class="text-body">성인수영</span>
+						            <td rowspan="2" style="text-align: center; vertical-align: middle;">
+						                <span class="text-body">스쿼시</span>
 						            </td>
-						            <td><span class="text-body">주5일<br>(초급, 중급, 고급, 연수)</span></td>
-						            <td><span class="text-body">월~금</span></td>
-						            <td style="text-align: center; vertical-align: middle;">
-						                <span class="text-body">6:00~7:00</span><br>
-						                <span class="text-body">7:00~8:00</span><br>
-						                <span class="text-body">8:00~9:00</span><br>
-						                <span class="text-body">9:00~10:00</span><br>
-						                <span class="text-body">10:00~11:00</span><br>
-						                <span class="text-body">11:00~12:00</span><br>
-						                <span class="text-body">14:00~15:00</span><br>
-						                <span class="text-body">15:00~16:00</span><br>
-						                <span class="text-body">16:00~17:00</span><br>
-						                <span class="text-body">17:00~18:00</span><br>
-						                <span class="text-body">18:00~19:00</span><br>
-						                <span class="text-body">19:00~20:00</span><br>
-						                <span class="text-body">20:00~21:00</span>
-						            </td>
-						            <td>
-						                <span class="text-body">성인 95,000</span><br>
-						                <span class="text-body">중고생 75,000</span>
-						            </td>
-						        </tr>
-						
-						        <!-- 중급, 고급, 연수 레벨 데이터 -->
-						        <tr>
-						            <td><span class="text-body">주3일<br>(초급, 중급, 고급, 연수)</span></td>
+						            <td><span class="text-body">주3일</span></td>
 						            <td><span class="text-body">월,수,금</span></td>
 						            <td style="text-align: center; vertical-align: middle;">
-						                <span class="text-body">6:00~7:00</span><br>
-						                <span class="text-body">7:00~8:00</span><br>
-						                <span class="text-body">8:00~9:00</span><br>
+						                <span class="text-body">06:00~07:00</span><br>
+						                <span class="text-body">07:00~8:00</span><br>
+						                <span class="text-body">08:00~9:00</span><br>
 						                <span class="text-body">9:00~10:00</span><br>
 						                <span class="text-body">10:00~11:00</span><br>
 						                <span class="text-body">11:00~12:00</span><br>
@@ -198,18 +173,20 @@ Main banner START -->
 						                <span class="text-body">20:00~21:00</span>
 						            </td>
 						            <td>
-						                <span class="text-body">성인 55,000</span><br>
-						                <span class="text-body">중고생 35,000</span>
+						                <span class="text-body">성인: 78,000</span><br>
+						                <span class="text-body">청소년: 55,000</span><br>
+						                <span class="text-body">어린이: 40,000</span><br>
 						            </td>
+						            
 						        </tr>
-						
 						        <tr>
-						            <td><span class="text-body">주2일<br>(초급, 중급, 고급, 연수)</span></td>
+						         
+						            <td><span class="text-body">주2일</span></td>
 						            <td><span class="text-body">화,목</span></td>
 						            <td style="text-align: center; vertical-align: middle;">
-						                <span class="text-body">6:00~7:00</span><br>
-						                <span class="text-body">7:00~8:00</span><br>
-						                <span class="text-body">8:00~9:00</span><br>
+						                <span class="text-body">06:00~07:00</span><br>
+						                <span class="text-body">07:00~8:00</span><br>
+						                <span class="text-body">08:00~9:00</span><br>
 						                <span class="text-body">9:00~10:00</span><br>
 						                <span class="text-body">10:00~11:00</span><br>
 						                <span class="text-body">11:00~12:00</span><br>
@@ -222,54 +199,32 @@ Main banner START -->
 						                <span class="text-body">20:00~21:00</span>
 						            </td>
 						            <td>
-						                <span class="text-body">성인 45,000</span><br>
-						                <span class="text-body">중고생 25,000</span>
+						                <span class="text-body">성인: 78,000</span><br>
+						                <span class="text-body">청소년: 55,000</span><br>
+						                <span class="text-body">어린이: 40,000</span><br>
 						            </td>
+						            
 						        </tr>
-
-		
-									<!-- Table item -->
-									<tr>
-										<!-- Table data -->
-										<td> <span class="text-body">자유수영</span></td>
-
-										<!-- Table data -->
-										<td> <span class="text-body">주5일</span> </td>
-										
-										<!-- Table data -->
-										<td> <span class="text-body">월~금</span> </td>
-										
-										<!-- Table data -->
-										<td style="text-align: center; vertical-align: middle;"> 
-										<span class="text-body">6:00~7:00</span><br> 
-										<span class="text-body">7:00~8:00</span><br> 
-										<span class="text-body">8:00~9:00</span><br>  
-										<span class="text-body">9:00~10:00</span><br> 
-										<span class="text-body">10:00~11:00</span><br> 
-										<span class="text-body">11:00~12:00</span><br> 
-										<span class="text-body">14:00~15:00</span><br>  
-										<span class="text-body">15:00~16:00</span><br> 
-										<span class="text-body">16:00~17:00</span><br> 
-										<span class="text-body">17:00~18:00</span><br>
-										<span class="text-body">18:00~19:00</span><br> 	
-										<span class="text-body">19:00~20:00</span><br> 
-										<span class="text-body">20:00~21:00</span> 		 	
-										</td>
-										
-										<!-- Table data -->
-										<td> <span class="text-body">성인 75,000</span></br>
-										<span class="text-body">중고생 60,000</span>
-										</td>
-									</tr>
 								<!-- Table body END -->
 							</table>
 							<!-- Table END -->
+							<p>준비물 : 운동복, 실내 운동화, 수건,샤워도구</p>
 							<p>*변동사항은 공지사항을 통해 확인해주세요.</p>
+							
+							<h3 style="font-weight: bold; line-height:250%; letter-spacing : 0.02em;">
+							 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
+							강습특징, 기초부터 고난도 기술까지 체계적인 강습 제공
+							</h3>
+							<P style="font-size: 19px; color: grey;">스포츠센터는 국제공인 규격(가로 6.4m 세로 9.75m 높이 4.57m)의 스쿼시 코트 3개를 구비하고 성인과 청소년을 대상으로 스쿼시 강습 프로그램을 운영하고 있습니다. 선수 출신의 스쿼시 전문 지도강사를 기용해 포핸드 드라이브에서 발리, 드롭샷 등 고난도 기술에 이르기까지 체계적으로 지도해 드립니다.
+짧은 시간에 많은 운동량을 소화할 수 있는 경제적인 스포츠, 스쿼시로 체력도 기르고 자신감도 되찾아보세요.</P>
+							
 							<h3 style="font-weight: bold; line-height:200%; letter-spacing : 0.02em;">
 							 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
-							국제규격의 50m 레인과 국내 최고의 수질
+							운동효과, 1분당 칼로리 소모량 15㎉… 체중감량 효과 ‘최고’
 							</h3>
-							<P style="font-size: 19px; color: grey;">스포츠문화센터의 수영장은 국제규격의 50m 레인과 철저한 수질관리를 바탕으로 한 국내 최고의 수질 등 최상의 운동 환경을 제공하며, 수영 전문 지도강사가 표준화된 영법 지도서에 따라 체계적인 강습을 제공함으로써 회원들이 각종 영법을 조기에 마스터할 수 있도록 지도하고 있습니다.</P>
+							<P style="font-size: 19px; color: grey;">벽에 맞아 튀어나오는 공을 받아치기 위해서는 신체의 모든 부분을 이용해야 하므로, 근력과 지구력, 민첩성, 심폐기능 향상 등 종합적인 체력증진 효과를 볼 수 있습니다.
+특히 1분당 칼로리 소모량이 15㎉에 달해 체중감량 효과가 뛰어난 스쿼시는 다이어트에 관심이 집중되는 요즘, 현대인들이 가장 선호하는 스포츠로 손꼽히고 있습니다.
+							</P>
 							<a href="/subject/view.do" style="display: inline-block; padding: 18px 30px; font-size: 16px; font-family: 'Noto Sans KR', sans-serif; color: #fff; background-color: #000; border: none; border-radius: 0px; text-decoration: none; text-align: center; transition: background-color 0.3s ease; margin-left:42%;">
 					            목록으로
 					        </a>
