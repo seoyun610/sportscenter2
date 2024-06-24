@@ -98,7 +98,7 @@ Main banner START -->
 				<!-- Card item START -->
 				<div class="card overflow-hidden h-400px h-xl-600px rounded-3" style="background-image:url(/resources/images/bg/bgSwim.jpg); background-position: center left; background-size: cover;">
 					<!-- Background dark overlay -->
-					<div class="bg-overlay bg-dark opacity-2"></div>
+					<div class="bg-overlay bg-dark opacity-1"></div>
 					
 					<!-- Card image overlay -->
 					<div class="card-img-overlay d-flex align-items-start flex-column">

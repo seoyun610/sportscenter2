@@ -98,124 +98,134 @@
  <!-- header와 네비게이션 바 --> 	
 <body>
 <!-- Header -->
-<header class="navbar-light navbar-sticky">
-<!-- Logo Nav START -->
-	<nav class="navbar navbar-expand-xl">
-		<div class="container">
-			<!-- Logo START -->
-			<a class="navbar-brand" href="">
-				<img class="light-mode-item navbar-brand-item" src="/resources/images/logo.svg" alt="logo">
-			</a>
-			
-			<!-- Responsive navbar toggler -->
-			<!--  -->
-				<span class="navbar-toggler-animation">
-					<span></span>
-					<span></span>
-					<span></span>
-				</span>
-			
-			<!-- Main navbar START -->
-			<div class="navbar-collapse w-100 collapse" id="navbarCollapse">
-
-            <!-- Nav Main menu START -->
-				<ul class="navbar-nav navbar-nav-scroll mx-auto">
-					<!-- 종목 안내 -->
-					<li>
-						<a class="nav-link"  href="/subject/index.do">종목 안내</a>
-					</li>
-				
-					<!--이용 안내 -->
-					<li>
-						<a class="nav-link" href="/subject/registInfo.do">이용안내</a>
-					</li>
-
-					<!-- Nav item 3 Account -->
-					<li>
-						<a class="nav-link" href="/subject/usageInfo.do">수강 신청 안내</a>
-					</li>
-					</ul>	
-				</div>
-				<!-- Nav Search START -->
-				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
-					<div class="nav-item w-100">
-						<form class="position-relative">
-							<input class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search">
-							<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
-								<i class="fas fa-search fs-6 "></i>
-							</button>
-						</form>
-					</div>
-				</div>
-				<!-- Nav Search END -->
-				
-				<!-- Profile START -->
-			<div class="dropdown ms-1 ms-lg-0">
-				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-					<img class="avatar-img rounded-circle" src="/resources/images/avatar/01.jpg" alt="avatar">
-				</a>
-				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
-					<!-- Profile info -->
-					<li class="px-3 mb-3">
-						<div class="d-flex align-items-center">
-							<!-- Avatar -->
-							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="/resources/images/avatar/01.jpg" alt="avatar">
-							</div>
-							<div>
-								<a class="h6" href="#">Shinhan</a>
-								<p class="small m-0">example@gmail.com</p>
-							</div>
-						</div>
-					</li>
-          <li> <hr class="dropdown-divider"></li>
-					<!-- Links -->
-					<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
-					<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
-					<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
-					<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
-					<li> <hr class="dropdown-divider"></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-</header>
-<!-- **************** MAIN CONTENT START **************** -->
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <main>
-	
+<main>
 <!-- =======================
-Main Content START -->
-<section class="pb-0 pt-4 pb-md-5">
+Page Banner START -->
+<section class="bg-light py-5">
 	<div class="container">
-		<div class="row">
-			<div class="col-12">
-<!-- Content -->
-					<div >
-						<!-- Title -->
-						<h2 class="mt-2 mb-0 display-5" style="font-weight: bold;">수강 신청 안내</h2>
-						<!-- 등록기간 -->
-						<h3 class="mt-2" style="line-height:50px; font-weight: bold;font"> 등록 기간 </h3>
-						<li style="font-size: 18px;">기존회원(당월회원): 매월 20일(00:10)~26일(23:50)까지(매일 23:50~00:10까지는 온라인시스템 정산으로 등록불가)
-							<p style="line-height:10px; font-size: 18px;">※ 단, 수영 신규기초반(수영을 처음 배우시는 분) 및 신설강습반의 경우는 매월 20일부터 말일까지 가능</p>
-						</li>
-						<li style="font-size: 18px;">온라인등록: 재등록은 매월 20일 00:10부터 26일 23:50까지 / 신규등록은 매월 27일 00:10부터 말일 23:50까지
-							<p style="line-height:10px; font-size: 18px;">※ 단, 매일 23:50~00:10까지는 온라인시스템 정산으로 일시 등록불가</p>
-						</li>
-						<li style="font-size: 18px;">현장등록: 회원안내실 운영시간에 접수가능하며 평일 06:00~21:30
+		<div class="row g-4 g-md-5 position-relative">
+			
+
+			<!-- Title and Search -->
+			<div class="col-lg-10 mx-auto text-center position-relative">
+				
+				<!-- Title -->
+				<h1 class="display-6" style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 20px;">수강 신청</h1>
+			</div>
+			<div class="container d-flex justify-content-center align-items-center">
+					<!-- Category item -->
+					<div class="col-sm-6 col-md-3">
+						<div class="card card-body card p-0">
+							<a class="p-3" href="/class/list.do">
+								<h6 class="mb-0" style="text-align: center;">온라인 수강신청 바로가기</h6>
+							</a>
+						</div>
 					</div>
-					
-					<div >
-						<!-- 온라인 수강신청 -->
-						<h3 class="mt-2" style="line-height:50px; font-weight: bold;font"> 온라인 수강신청 </h3>
-							<li style="font-size: 18px;">기존회원(당월회원): 매월 20일(00:10)~26일(23:50)까지(매일 23:50~00:10까지는 온라인시스템 정산으로 등록불가)</li>
-							<li style="font-size: 18px;">신규회원 및 결원보충: 매월 27일(00:10)~말일(23:50)까지(매일 23:50~00:10까지는 온라인시스템 정산으로 등록불가) <p>※ 신설강습반은 20일(00:10)부터 선착순 접수</p></li>
-							<li style="font-size: 18px;">등록기간 강좌별 등록가능인원(잔여인원)은 매달 20일부터 익월 5일까지 올림픽수영장 홈페이지 [실시간등록현황]을 통해 확인가능 <p>※ 단, 온라인 수강신청은 말일까지만 가능하며 이후 등록은 방문접수만 가능</p></li>
-							<li style="font-size: 18px;">사물함은 재등록만 가능(사물함 배정은 회원안내실로 문의)</li>
-							<li style="font-size: 18px;">홈페이지 가입 필수<p>※ 수강 마감 시 온라인 등록 불가</p></li>
-					</div>
-					<h2 class="mt-2 mb-0 display-5" style="font-weight: bold;">수강신청은 본인 명의로만 가능합니다. </h2>
-				</div>
-				<!-- Title and Info END -->	
+				</div> <!-- Row END -->
+      </div>
+			<!-- Category END -->
+		
+</section> 
+<!-- =======================
+Page Banner END -->
+
+<!-- =======================
+Page content START -->
+<section class="pt-5 pb-0 pb-lg-5" style="font-family: 'Noto Sans KR', sans-serif; vertical-align: middle;" >
+	<div class="container">
+		<h3 style="font-weight: bold;">
+			<img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
+				신청안내
+				</h3>
+					<p style="margin-bottom: 50px;">방문 신청 또는 온라인 신청</p>
+						
+				<h3 style="font-weight: bold;">
+		        	<img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
+		        	신청기간
+		    	</h3>
+		    
+		    <div style="margin-bottom: 5px; display: flex; align-items: center;">
+		        <img src="/resources/images/element/circle.png" alt="목록 동그라미" style="width: 10px; height: 10px; margin-right: 5px;">
+		        <p style="font-weight: bold; margin: 0;">기존회원 :</p>
+		        <p style="margin: 0 0 0 5px;">매월 21일부터 26일</p>
+		    </div>
+		    <p style="margin: 0 0 0 5px;">※ 방문 접수 가능 시간: 평일 06:00 ~ 21:00</p>
+		    <p style="margin: 0 0 0 5px; margin-bottom: 10px;">※ 온라인 접수 가능 시간:  매월 21일 00:10부터 26일 23:50까지</p>
+		    
+		    <div style="margin-bottom: 5px; display: flex; align-items: center;">
+		        <img src="/resources/images/element/circle.png" alt="목록 동그라미" style="width: 10px; height: 10px; margin-right: 5px;">
+		        <p style="font-weight: bold; margin: 0;">신규회원 :</p>
+		        <p style="margin: 0 0 0 5px;"> 27일부터 말일까지</p>
+		    </div>
+		    <p style="margin: 0 0 0 5px;">※ 방문 접수 가능 시간: 평일 06:00 ~ 21:00</p>
+		    <p style="margin: 0 0 0 5px; margin-bottom: 10px;">※ 온라인 접수 가능 시간:  매월 27일 00:10부터 말일 23:50까지</p>
+		    <p style="color: #ec5353; margin-bottom: 50px;">※접수기간은 센터사정에 따라 매월 변경될수 있으니, 공지사항을 꼭 확인하시기 바랍니다.<br/>  
+		    ※프로그램별 최소 인원 미만 접수시 합반 또는 변경(폐강) 될 수 있습니다.</p>
+		    
+		    <h3 style="font-weight: bold;">
+		        	<img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
+		        	온라인 수강신청
+		    	</h3>
+		    
+		    <div style="margin-bottom: 5px; display: flex; align-items: center;">
+		        <img src="/resources/images/element/circle.png" alt="목록 동그라미" style="width: 10px; height: 10px; margin-right: 5px;">
+		        <p style="font-weight: bold; margin: 0;">기존회원 :</p>
+		        <p style="margin: 0 0 0 5px;">매월 21일(00:10)~26일(23:50)까지(매일 23:50~00:10까지는 온라인시스템 정산으로 등록불가)</p>
+		    </div>
+		    <div style="margin-bottom: 5px; display: flex; align-items: center;">
+		        <img src="/resources/images/element/circle.png" alt="목록 동그라미" style="width: 10px; height: 10px; margin-right: 5px;">
+		        <p style="font-weight: bold; margin: 0;">신규회원 :</p>
+		        <p style="margin: 0 0 0 5px;">매월 27일(00:10)~말일(23:50)까지(매일 23:50~00:10까지는 온라인시스템 정산으로 등록불가)</p>
+		    </div>
+		    <div style="margin-bottom: 5px; display: flex; align-items: center;">
+		        <img src="/resources/images/element/circle.png" alt="목록 동그라미" style="width: 10px; height: 10px; margin-right: 5px;">
+		        <p style="margin: 0;">등록기간 강좌별 등록가능인원(잔여인원)은 매달 20일부터 익월 5일까지 홈페이지 [실시간등록현황]을 통해 확인가능</p>
+		    </div>
+		    
+		   <p style="color: #ec5353; margin-bottom: 50px;">※매일 23:50~00:10까지는 온라인시스템 정산으로 등록불가<br/>  
+		  ※단, 온라인 수강신청은 말일까지만 가능하며 이후 등록은 방문접수만 가능<br/>
+		  ※홈페이지 가입 필수/ 수강 마감 시 온라인 등록 불가
+		  </p>
+		  
+		  <h3 style="font-weight: bold;">
+		        	<img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
+		        	환불안내
+		    	</h3>
+		    <div style="margin-bottom: 5px; display: flex; align-items: center;">
+		        <img src="/resources/images/element/circle.png" alt="목록 동그라미" style="width: 10px; height: 10px; margin-right: 5px;">
+		        <p style="font-weight: bold; margin: 0;">개강 전까지:</p>
+		        <p style="margin: 0 0 0 5px;">100% 환불</p>
+		    </div>
+		    
+		    <div style="margin-bottom: 5px; display: flex; align-items: center;">
+		        <img src="/resources/images/element/circle.png" alt="목록 동그라미" style="width: 10px; height: 10px; margin-right: 5px;">
+		        <p style="font-weight: bold; margin: 0;">매달 10일까지:</p>
+		        <p style="margin: 0 0 0 5px;">50% 환불</p>
+		    </div>
+		    
+		      <div style="margin-bottom: 5px; display: flex; align-items: center;">
+		        <img src="/resources/images/element/circle.png" alt="목록 동그라미" style="width: 10px; height: 10px; margin-right: 5px;">
+		        <p style="font-weight: bold; margin: 0;">매달 11일 이후:</p>
+		        <p style="margin: 0 0 0 5px;">취소 및 환불 불가</p>
+		    </div>
+		    
+</section>
+<!-- =======================
+Page content END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<!-- Back to top -->
+<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Template Functions -->
+<script src="assets/js/functions.js"></script>	
 
 
 </body>

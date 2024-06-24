@@ -126,7 +126,7 @@ Main banner START -->
 				  <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
 				강좌 개요
 				</h3>
-				<p style="font-size: 19px; color: grey;">줌바댄스는 라틴댄스에서 영감을 받은 댄스피트니스 프로그램으로 라틴음악 및 세계음악을 사용하여 역동적이고, 흥미롭고, 즐거우며, 효과적인 운동입니다. 줌바댄스를 배우는 동안 뛰어난 코어운동으로 복부와 전신의 근육강화를 돕고 높은 열량을 소비하게 되어 건강유지 및 다이어트에 효과적입니다.</p>
+				<p style="font-size: 19px; color: grey;">스피닝은 실내사이클과 음악, 조명, 신나는 댄스가 어우러진 유산소 운동으로 다이어트 및 스트레스 해소에 탁월합니다.</p>
 				<h3 style="font-weight: bold; letter-spacing : 0.05em; line-height:200%;">
 				 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
 				프로그램 안내
@@ -153,7 +153,7 @@ Main banner START -->
 						        <!-- 성인수영 공통 데이터 -->
 					        	<tr>
 						            <td rowspan="2" style="text-align: center; vertical-align: middle;">
-						                <span class="text-body">줌바댄스</span>
+						                <span class="text-body">스피닝</span>
 						            </td>
 						            <td><span class="text-body">주3일</span></td>
 						            <td><span class="text-body">월,수,금</span></td>
@@ -173,7 +173,7 @@ Main banner START -->
 						                <span class="text-body">20:00~21:00</span>
 						            </td>
 						            <td>
-						                <span class="text-body">성인 및 청소년: 78,000</span><br>
+						                <span class="text-body">성인: 65,000</span><br>
 						            </td>
 						            
 						        </tr>
@@ -197,7 +197,7 @@ Main banner START -->
 						                <span class="text-body">20:00~21:00</span>
 						            </td>
 						            <td>
-						                 <span class="text-body">성인 및 청소년: 78,000</span><br>
+						                 <span class="text-body">성인: 50,000</span><br>
 						            </td>
 						            
 						        </tr>
@@ -208,9 +208,14 @@ Main banner START -->
 							
 							<h3 style="font-weight: bold; line-height:250%; letter-spacing : 0.02em;">
 							 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
-							운동효과
+							다이어트 효과와 스트레스 해소까지
 							</h3>
-							<P style="font-size: 19px; color: grey;">줌바댄스는 라틴댄스와 피트니스가 결합된 운동으로 신나는 라틴음악에 맞춰 간단한 동작을 반복함으로써 초보자도 쉽게 따라할 수 있어 청장년층으로부터 호응이 매우 높고, 신바람 실버 체조, 도구를 활용한 운동, 두뇌 활동에 좋은 손·유희 등 다양한 건강증진 프로그램운영으로 유연성과 근력강화가 가능한 운동입니다.</P>
+							<P style="font-size: 19px; color: grey;">스피닝은 고정된 바이크 위에서 페달을 밝으며 신나는 음악에 맞춰 율동을 하는 다이나믹한 운동입니다. 체지방 감량과 근지구력 강화에 매우 효과적이며 다이어트는 물론 스트레스를 해소할 수 있습니다.</P>
+							<h3 style="font-weight: bold; line-height:250%; letter-spacing : 0.02em;">
+							 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
+							시간당 높은 체지방 감량 효과
+							</h3>
+							<P style="font-size: 19px; color: grey;">스피닝은 실내 사이클과 음악, 조명, 신나는 댄스가 어우러져 시간당 최고의 체지방 감량 효과를 누릴 수 있습니다. 짧은 시간에 빠른 다이어트를 원하는 분들에게 추천합니다.</P>
 					        <a href="/subject/view.do" style="display: inline-block; padding: 18px 30px; font-size: 16px; font-family: 'Noto Sans KR', sans-serif; color: #fff; background-color: #000; border: none; border-radius: 0px; text-decoration: none; text-align: center; transition: background-color 0.3s ease; margin-left:42%;">
 					            목록으로
 					        </a>

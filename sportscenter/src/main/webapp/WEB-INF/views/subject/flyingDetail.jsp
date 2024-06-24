@@ -126,7 +126,7 @@ Main banner START -->
 				  <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
 				강좌 개요
 				</h3>
-				<p style="font-size: 19px; color: grey;">줌바댄스는 라틴댄스에서 영감을 받은 댄스피트니스 프로그램으로 라틴음악 및 세계음악을 사용하여 역동적이고, 흥미롭고, 즐거우며, 효과적인 운동입니다. 줌바댄스를 배우는 동안 뛰어난 코어운동으로 복부와 전신의 근육강화를 돕고 높은 열량을 소비하게 되어 건강유지 및 다이어트에 효과적입니다.</p>
+				<p style="font-size: 19px; color: grey;">플라잉요가는 공중에서의 다양한 동작을 통해 신체의 균형과 유연성을 향상시키고, 스트레스를 해소하는 운동입니다.</p>
 				<h3 style="font-weight: bold; letter-spacing : 0.05em; line-height:200%;">
 				 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
 				프로그램 안내
@@ -173,7 +173,7 @@ Main banner START -->
 						                <span class="text-body">20:00~21:00</span>
 						            </td>
 						            <td>
-						                <span class="text-body">성인 및 청소년: 78,000</span><br>
+						                <span class="text-body">성인: 120,000</span><br>
 						            </td>
 						            
 						        </tr>
@@ -197,7 +197,7 @@ Main banner START -->
 						                <span class="text-body">20:00~21:00</span>
 						            </td>
 						            <td>
-						                 <span class="text-body">성인 및 청소년: 78,000</span><br>
+						                 <span class="text-body">성인: 80,000</span><br>
 						            </td>
 						            
 						        </tr>
@@ -208,9 +208,14 @@ Main banner START -->
 							
 							<h3 style="font-weight: bold; line-height:250%; letter-spacing : 0.02em;">
 							 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
-							운동효과
+							신체의 균형과 유연성 향상
 							</h3>
-							<P style="font-size: 19px; color: grey;">줌바댄스는 라틴댄스와 피트니스가 결합된 운동으로 신나는 라틴음악에 맞춰 간단한 동작을 반복함으로써 초보자도 쉽게 따라할 수 있어 청장년층으로부터 호응이 매우 높고, 신바람 실버 체조, 도구를 활용한 운동, 두뇌 활동에 좋은 손·유희 등 다양한 건강증진 프로그램운영으로 유연성과 근력강화가 가능한 운동입니다.</P>
+							<P style="font-size: 19px; color: grey;">플라잉 요가는 공중에서 다양한 동작을 수행함으로써 몸의 균형을 잡고 유연성을 극대화시키는 데 도움이 됩니다. 이는 근육의 긴장을 완화하고, 관절의 가동 범위를 넓혀줍니다.</P>
+							<h3 style="font-weight: bold; line-height:250%; letter-spacing : 0.02em;">
+							 <img src="/resources/images/element/circle.png" alt="동그라미 이미지" style="width: 30px; height: 30px; margin-right: 10px;">
+							스트레스 해소 및 정신적 안정
+							</h3>
+							<P style="font-size: 19px; color: grey;">정신적인 안정감을 주며, 스트레스를 효과적으로 해소하는 데 도움을 줍니다. 공중에서의 동작은 집중력과 마음의 평화를 증진시켜 일상생활의 스트레스를 줄여줍니다.</P>
 					        <a href="/subject/view.do" style="display: inline-block; padding: 18px 30px; font-size: 16px; font-family: 'Noto Sans KR', sans-serif; color: #fff; background-color: #000; border: none; border-radius: 0px; text-decoration: none; text-align: center; transition: background-color 0.3s ease; margin-left:42%;">
 					            목록으로
 					        </a>

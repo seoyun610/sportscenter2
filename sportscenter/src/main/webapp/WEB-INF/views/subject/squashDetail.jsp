@@ -96,9 +96,9 @@ Main banner START -->
 		<div class="row">
 			<div class="col-12">
 				<!-- Card item START -->
-				<div class="card overflow-hidden h-400px h-xl-600px rounded-3" style="background-image:url(/resources/images/bg/bgSquash.jpg); background-position: center left; background-size: cover;">
+				<div class="card overflow-hidden h-400px h-xl-600px rounded-3" style="background-image:url(/resources/images/bg/bgSquash.png); background-position: center left; background-size: cover;">
 					<!-- Background dark overlay -->
-					<div class="bg-overlay bg-dark opacity-3"></div>
+					<div class="bg-overlay bg-dark opacity-2"></div>
 					
 					<!-- Card image overlay -->
 					<div class="card-img-overlay d-flex align-items-start flex-column">
