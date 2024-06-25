@@ -107,7 +107,7 @@
 			console.log(classId);
 			if (day >= 01 && day <= 29) {
 				if (classLimit > classCnt){
-					location.href = '/class/payCheck.do?retake=0&classid=' + classId;
+					location.href = '/class/payCheck.do?classid=' + classId;
 				} else {
 					alert ('잔여석이 없습니다.')
 				}

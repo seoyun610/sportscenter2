@@ -277,7 +277,7 @@
 	    const day = today.getDate();
 	    // 테스트용
 	    /* setTimeout(() => {
-	    	location.href = '/class/payCheck.do?retake=1&classid=' + classId;
+	    	location.href = '/class/payCheck.do?classid=' + classId;
 		}, 3000); */
 	    if( day >= 20 && day < 25 ) {
 	    	location.href = '/class/payCheck.do?classid=' + classId;

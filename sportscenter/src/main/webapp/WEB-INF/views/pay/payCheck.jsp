@@ -93,7 +93,7 @@
 						            <td> <h4 class="mb-0 ms-lg-3 mt-lg-0">${cvo.subtype}</h4></td>
 						            <td> <h4 class="mb-0 ms-lg-3 mt-lg-0">${cvo.classlevel}</h4></td>
 						            <td> <h4 class="mb-0 ms-lg-3 mt-lg-0">${cvo.classtime}</h4></td>
-						            <td> <h4 class="mb-0 ms-lg-3 mt-lg-0">${cvo.classday}</h4></td>
+						            <td> <h4 class="mb-0 ms-lg-3 mt-lg-0">${cvo.classYoil}</h4></td>
 						            <td class="text-center"> <h4 class="text-success mb-0">${cvo.classprice}</h4></td>
 						        </tr>
 						    </tbody>

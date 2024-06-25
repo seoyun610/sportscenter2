@@ -177,9 +177,8 @@ public class ClassController {
 	}
 	
 	@GetMapping("/class/payCheck.do")
-	public String payCheck(@RequestParam int retake, @RequestParam(name = "classid") int classid, Model model, HttpSession sess) {
-		System.out.println("==============retake================"+ retake);
-		System.out.println("==============classid================" + classid);
+	public String payCheck(@RequestParam(name = "classid") int classid, Model model, HttpSession sess) {
+		System.out.println("==============classid================ " + classid);
 		ClassVO cvo = new ClassVO();
 		UserVO login = (UserVO)sess.getAttribute("login");
 	    cvo.setClassid(classid);
