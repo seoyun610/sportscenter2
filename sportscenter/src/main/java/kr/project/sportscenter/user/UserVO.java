@@ -18,6 +18,8 @@ public class UserVO {
 	private int gender;
 	private int zipcode;
 	
+	private int retake;
+	
 	private int payid;	
 	private int paystate;
 	private int cancelstate;

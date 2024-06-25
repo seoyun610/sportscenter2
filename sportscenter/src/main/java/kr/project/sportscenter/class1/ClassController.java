@@ -27,6 +27,7 @@ import kr.project.sportscenter.sport.SportService;
 import kr.project.sportscenter.sport.SportVO;
 import kr.project.sportscenter.time.TimeService;
 import kr.project.sportscenter.time.TimeVO;
+import kr.project.sportscenter.user.UserService;
 import kr.project.sportscenter.user.UserVO;
 
 
@@ -46,7 +47,7 @@ public class ClassController {
 	private TimeService tservice;
 	
 	@Autowired
-	private PayService pservice;
+	private UserService uservice;
 	
 	@GetMapping("/class/list.do")
 	public String list(Model model, ClassVO cvo, SportVO svo, LevelVO lvo, TimeVO tvo) {
@@ -176,21 +177,63 @@ public class ClassController {
 		return "common/alert";
 	}
 	
+	public boolean checkRetake(UserVO uvo) {
+		List<UserVO> classList = uservice.classView(uvo); // classView는 결제 1, 환불 0인 수업 리턴
+		for(UserVO item : classList) {
+			if(uvo.getClassid() == item.getClassid()) {
+				System.out.println("중복 신청 접근");
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	@GetMapping("/class/payCheck.do")
-	public String payCheck(@RequestParam(name = "classid") int classid, Model model, HttpSession sess) {
-		System.out.println("==============classid================ " + classid);
-		ClassVO cvo = new ClassVO();
+	public String payCheck(UserVO uvo, Model model, HttpSession sess) {
+		System.out.println("==============classid================ " + uvo.getClassid());
+		System.out.println("==============retake================ " + uvo.getRetake());
+		
+		int classid = uvo.getClassid();
+		int retake = uvo.getRetake();
+		
 		UserVO login = (UserVO)sess.getAttribute("login");
-	    cvo.setClassid(classid);
+		ClassVO cvo = new ClassVO();
+		
+		if(checkRetake(uvo)) { // 중복 신청이 아닌 경우 결제 접근 허용
+			if(uvo.getRetake() == 1) { // 재수강 결제인 경우
+				System.out.println("==============payid================ " + uvo.getPayid());
+				int payid = uvo.getPayid();
+				login.setRetake(1);
+				login.setPayid(payid);
+				login.setClassid(classid);
+				cvo.setClassid(classid);
+				model.addAttribute("cvo", cservice.select(cvo));
+				model.addAttribute("uvo", login);
+				return "pay/payCheck";
+			}
+			else if(uvo.getRetake() == 0) { // 신규 수업 결제인 경우
+				login.setRetake(0);
+				login.setClassid(classid);
+				cvo.setClassid(classid);
+				model.addAttribute("cvo", cservice.select(cvo));
+				model.addAttribute("uvo", login);
+				return "pay/payCheck";
+			}
+		} 
+		else { // 중복 신청인 경우 결제 접근 비허용
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "중복 신청 불가능");
+			return "common/alert";
+		}
+		model.addAttribute("cmd", "back");
+		model.addAttribute("msg", "결제 오류");
+		return "common/alert";
 		/*
 		 * if(retake == 1) { System.out.println("==============접근 확인================");
 		 * PayVO pvo = new PayVO(); pvo.setClassid(classid); pvo.setPaystate(0);
 		 * pvo.setUsernum(login.getUsernum()); model.addAttribute("pvo",
 		 * pservice.select(pvo)); }
 		 */
-	    model.addAttribute("uvo",login);
-		model.addAttribute("cvo",cservice.select(cvo));
-		return "pay/payCheck";
 	}
 	
 	@GetMapping("/class/foroff.do")

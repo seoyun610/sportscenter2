@@ -208,9 +208,7 @@ public class UserController {
 	}
   	    
   	    
-  	    
-  	    
-  	    // 수강 중인 수업 조회 
+  	// 수강 중인 수업 조회 
 	@GetMapping("/mypage/classView.do")
 	public String classView(HttpSession sess, Model model, UserVO vo) {
 		UserVO login = (UserVO)sess.getAttribute("login");

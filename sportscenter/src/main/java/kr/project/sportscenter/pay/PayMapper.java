@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface PayMapper {
 	int regist(PayVO vo);
 	List<PayVO> list(PayVO vo);
+	List<PayVO> list2(PayVO vo);
 	List<PayVO> selectThisMonth(PayVO vo);
 	int exists(PayVO vo);
 	int update(PayVO vo);

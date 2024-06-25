@@ -46,6 +46,41 @@
 		</where>
 	</sql>
 
+	<sql id="simpleSearch">
+		<where>
+			<choose>
+				<when test="payid != null and payid != ''">
+					AND payid = #{payid}
+				</when>
+			</choose>
+			<choose>
+				<when test="classid != null and classid != ''">
+					AND classid = #{classid}
+				</when>
+			</choose>
+			<choose>
+				<when test="usernum != null and usernum != ''">
+					AND usernum = #{usernum}
+				</when>
+			</choose>
+			<choose>
+				<when test="paystate != null and paystate != ''">
+					AND paystate = #{paystate}
+				</when>
+			</choose>
+			<choose>
+				<when test="cancelstate != null and cancelstate != ''">
+					AND cancelstate = #{cancelstate}
+				</when>
+			</choose>
+			<choose>
+				<when test="refundstate != null and refundstate != ''">
+					AND refundstate = #{refundstate}
+				</when>
+			</choose>
+		</where>
+	</sql>
+
 	<insert id="addAll" parameterType="java.util.List">
 		INSERT INTO pay (
 			classid, usernum, paystate, cancelstate, refundstate, price
@@ -64,7 +99,12 @@
 		ORDER BY payid DESC
 		LIMIT #{startIdx}, 10
 	</select>
-	
+	<!-- 조회 -->
+	<select id="list2" parameterType="kr.project.sportscenter.pay.PayVO" resultType="kr.project.sportscenter.pay.PayVO">
+		SELECT * 
+		FROM pay
+		<include refid="simpleSearch"/>
+	</select>
 	<!-- 등록 -->
 	<insert id="regist" parameterType="kr.project.sportscenter.pay.PayVO">
 		INSERT INTO pay(
@@ -83,8 +123,9 @@
 	<update id="update" parameterType="kr.project.sportscenter.pay.PayVO">
 		UPDATE pay
 		<set>
+			paymethod = 'card'
 			<if test="paystate != null and paystate != ''">
-				paystate = #{paystate}
+				, paystate = #{paystate}
 			</if>
 			<if test="cancelstate != null and cancelstate != ''">
 				, cancelstate = #{cancelstate}
@@ -92,15 +133,13 @@
 			<if test="refundstate != null and refundstate != ''">
 				, refundstate = #{refundstate}
 			</if>
+			<if test="imp_uid != null and imp_uid != ''">
+				, imp_uid = #{imp_uid}
+			</if>
 			<where>
 				<choose>
 					<when test="payid != null and payid != ''">
 						AND payid = #{payid}
-					</when>
-				</choose>
-				<choose>
-					<when test="imp_uid != null and imp_uid != ''">
-						AND imp_uid = #{imp_uid}
 					</when>
 				</choose>
 			</where> 

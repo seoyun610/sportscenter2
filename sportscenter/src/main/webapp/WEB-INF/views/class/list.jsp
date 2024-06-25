@@ -101,22 +101,20 @@
 			$("classmonth").val(month);
 			$("#searchForm").submit();
 		} */
-		function classSelection(classId, classLimit, classCnt) {
+		async function payment(event) {
+			event.preventDefault();
+			
 			const today = new Date();
 		    const day = today.getDate();
-			console.log(classId);
-			if (day >= 01 && day <= 29) {
-				if (classLimit > classCnt){
+			
+		    if(day >= 20 && day < 25) {
+		    	alert('재수강 기간입니다. \n 마이페이지에서 재수강 여부 확인하세요.');
+		    } else {
+		    	if (classLimit > classCnt){
 					location.href = '/class/payCheck.do?classid=' + classId;
 				} else {
 					alert ('잔여석이 없습니다.')
 				}
-		    } else {
-		    	if( day >= 20 && day < 25 ){
-		    		alert('재수강 기간입니다. \n 마이페이지에서 재수강 여부 확인하세요.');
-		    	} else { 
-		    		alert('신청 기간이 아닙니다.');
-		    	}
 		    }
 		}
 	</script>
@@ -174,8 +172,127 @@
 				</div>
 				<!-- Select END -->
 				
+				<form method="get" action="/class/payCheck.do" name="payForm">
+					<!-- Table START -->
+					<table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+						<!-- Table head -->
+						<thead style="width:100%; justify-content: space-between;">
+							<tr style="text-align:center; width:100%; justify-content: space-between;">
+								<th scope="col" class="border-0 rounded-start">강좌명</th>
+								<th scope="col" class="border-0">종목</th>
+								<th scope="col" class="border-0">진행 월</th>
+								<th scope="col" class="border-0">요일</th>
+								<th scope="col" class="border-0">시간</th>
+								<th scope="col" class="border-0">등급</th>
+								<th scope="col" class="border-0">가격</th>
+								<th scope="col" class="border-0">정원</th>
+								<th scope="col" class="border-0">현원</th>
+								<th scope="col" class="border-0">신청가능 여부</th>
+								<th scope="col" class="border-0 rounded-end">신청</th>
+							</tr>
+						</thead>
+									
+						<!-- Table body START -->
+						<tbody>
+							<c:if test="${empty map.list }">
+								<tr>
+									<td colspan="9">등록된 과목이 없습니다.</td>
+								</tr>
+							</c:if>
+							<c:forEach var="vo" items="${map.list }"> 
+								<!-- Table row -->
+								<tr>
+									<!-- Table data start -->
+									<td rowspan="2" class="align-content-center position-relative">
+										<div class="align-items-center position-relative">
+											${vo.classname }
+										</div>
+									</td>  
+									<td>
+										<div class="align-items-center">
+											${vo.subtypeName }	
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											${vo.classmonth }	
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											${vo.classYoil }	
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											${vo.formattedClasstime}	
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											${vo.classlevelName }	
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											${vo.classprice }	
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											${vo.classlimit }	
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											${vo.classcnt }	
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											<c:choose>
+												<c:when test="${currentDay >= 20 && currentDay <= 26}">
+													<c:choose>
+														<c:when test="${vo.classlimit > vo.classcnt }">
+															신청 가능
+														</c:when>
+														<c:otherwise>
+															신청 불가
+														</c:otherwise>
+													</c:choose>
+												</c:when>
+												<c:otherwise>
+													<td>신청 불가</td>
+												</c:otherwise>
+											</c:choose>
+										</div>
+									</td>
+									<td> 
+										<div class="align-items-center">
+											<input type="submit" id="btn" value="신청">
+											<input type="hidden" name="classid" value="${vo.classid }">
+											<input type="hidden" name="retake" value="0">
+										</div>
+									</td>
+									<!-- Table data end -->
+								</tr>
+								<tr>
+									<c:set var="classcntval" value="${vo.classcnt }"/> <c:set var="classlimitval" value="${vo.classlimit }"/>
+									<c:set var="percentVal" value="${classcntval / classlimitval * 100}"/>
+									<td colspan = "10"> 
+										<div class="d-flex align-items-center">
+											<progress id="percentage" style="width: 100%;" min="0" max="100" value="${percentVal}"></progress>
+										</div>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+				</table>
+					
+					
+				</form>
 				<!-- Table START -->
-				<table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+				<%-- <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
 					<!-- Table head -->
 					<thead style="width:100%; justify-content: space-between;">
 						<tr style="text-align:center; width:100%; justify-content: space-between;">
@@ -270,7 +387,7 @@
 								</td>
 								<td> 
 									<div class="align-items-center">
-										<input type="button" id="btn" onclick="classSelection(${vo.classid}, ${vo.classlimit}, ${vo.classcnt})" value="신청">
+										<input type="button" id="btn" onclick="payment(${vo.classid}, ${vo.classlimit}, ${vo.classcnt})" value="신청">
 									</div>
 								</td>
 								<!-- Table data end -->
@@ -286,7 +403,8 @@
 							</tr>
 						</c:forEach>
 					</tbody>
-				</table>
+				</table> --%>
+				
 				<!-- Card footer START -->
 				<div class="card-footer bg-transparent mt-3 pt-0">
 					<!-- Pagination START -->

@@ -39,7 +39,7 @@ public class PayServiceImpl implements PayService {
 
 	@Override
 	public PayVO list2(PayVO vo) {
-		List<PayVO> list = mapper.list(vo);
+		List<PayVO> list = mapper.list2(vo);
 		PayVO pvo = new PayVO();
 		for(PayVO item : list) {
 			pvo = item;
@@ -59,7 +59,7 @@ public class PayServiceImpl implements PayService {
 
 	@Override
 	public boolean update(PayVO vo) {
-		return mapper.update(vo) == 0 ? false : true;
+		return mapper.update(vo) > 0 ? true : false;
 	}
 
 	@Override

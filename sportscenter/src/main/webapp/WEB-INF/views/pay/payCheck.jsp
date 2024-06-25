@@ -119,7 +119,7 @@
 		    {
 		      pg: "kakaopay",
 		      pay_method: "card",
-		      merchant_uid: '${cvo.classid}' + new Date().getTime(),
+		      merchant_uid: '${uvo.payid}' + '${cvo.classid}' + new Date().getTime(),
 		      name: '${cvo.classname}',
 		      amount: ${cvo.classprice},
 		      buyer_email: '${uvo.userid}',
@@ -131,6 +131,8 @@
 		    	if (rsp.success) {
 		    		var paydata = {
 		    			imp_uid: rsp.imp_uid,
+		    			retake : ${uvo.retake},
+		    			payid : ${uvo.payid},
 			        	classid : ${cvo.classid},
 			        	price : ${cvo.classprice}
 		    		}
@@ -144,7 +146,7 @@
 			        		if (res === "ok"){
 			        			window.location.href = '/mypage/classView.do'
 			        		}else if(res === "bad_request") {
-			        	        alert("강좌가 가득찼습니다. 다른 강좌를 신청해주세요");
+			        	        alert("결제가 완료되지 못했습니다.");
 			        	    }else{
 			        	    	alert("잘못된 접근입니다.");
 			        	    }

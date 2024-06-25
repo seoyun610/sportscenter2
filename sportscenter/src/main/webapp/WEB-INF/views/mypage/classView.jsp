@@ -239,26 +239,31 @@
 					</table>
 				    </div>
 				
-				   <c:if test="${not empty retakeClass }">
+				<c:if test="${not empty retakeClass }">
 					<h3 class="sub_title">재수강 결제 대기 강좌</h3>
-						<table>
-						<thead>
-							<tr>
-					  			<th>수강 강좌 명</th>
-					  			<th>수강 기간</th>
-					  			<th>수강 결제</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="classrvo" items="${retakeClass }">       
-				            <tr>
-								<td class="retakeClassname">${classrvo.classname }</td>
-								<td>${classrvo.formattedClassdate }</td>
-								<td> <input type="button" class="pay_btn" value="결제하기" onclick="payment(${classrvo.classid})"> </td>
-							</tr>
-				        </c:forEach>
-				        </tbody>
-				        </table>
+						<form method="GET" action="/class/payCheck.do" name="retakePay">
+					    	<table>
+					    		<thead>
+									<tr>
+							  			<th>수강 강좌 명</th>
+							  			<th>수강 기간</th>
+							  			<th>수강 결제</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="classrvo" items="${retakeClass }">       
+							            <tr>
+											<td class="retakeClassname">${classrvo.classname }</td>
+											<td>${classrvo.formattedClassdate }</td>
+											<td> <input type="hidden" name="classid" value="${classrvo.classid }"> </td>
+									        <td> <input type="hidden" name="retake" value="1"> </td>
+									        <td> <input type="hidden" name="payid" value="${classrvo.payid }"> </td>
+											<td> <input type="submit" class="pay_btn" value="결제하기"> </td>
+										</tr>
+						        	</c:forEach>
+						        </tbody>
+					        </table>    
+					    </form>
 				</c:if>
 				</div>
 				<!-- Main content END -->
@@ -271,7 +276,7 @@
     </div>
 
 <script>
-	function payment(classId) {
+	function payment(payid, classId) {
 		// console.log(classId);
 		const today = new Date();
 	    const day = today.getDate();
@@ -279,8 +284,8 @@
 	    /* setTimeout(() => {
 	    	location.href = '/class/payCheck.do?classid=' + classId;
 		}, 3000); */
-	    if( day >= 20 && day < 25 ) {
-	    	location.href = '/class/payCheck.do?classid=' + classId;
+	    if( day >= 20 && day < 26 ) {
+	    	location.href = '/class/payCheck.do?retake=1&classid=' + classId;
 	    } else {
 	    	alert('재수강 기간이 아닙니다. \n재수강 기간에 다시 신청해주세요.');
 	    }

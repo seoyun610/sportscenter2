@@ -88,52 +88,85 @@ public class PayController {
 	@PostMapping("/pay/complete.do")
 	public ResponseEntity payComplete(@RequestBody PayVO pvo, Model model, HttpSession sess) throws IamportResponseException {
 	    try {
-	        ClassVO cvo = new ClassVO();
-	        cvo.setClassid(pvo.getClassid());
-	        
-	        cvo = cservice.select(cvo);
-	        System.out.println(cvo.getClassprice());
-	        
-	        if (cvo.getClasslimit() > cvo.getClasscnt()) {
-	        	
-	        	//db에 데이터 값 집어 넣는 식
-	        	//usernum을 넣어줘야함.
-	        	UserVO user = (UserVO)sess.getAttribute("login");
-	        	pvo.setUsernum(user.getUsernum());
-	        	boolean result = service.regist(pvo);
-	        	
-//	        	pvo.setPaystate(1);
-//	        	pvo.setPaymethod("card");
-//	        	System.out.println(pvo.toString());
-//	        	boolean insertPaystate = service.updatePaystate(pvo);
-//	        	
-//	        	
-//	        	if(insertPaystate) {
-//	        		System.out.println("상태 변경 성공");
-//	        	}else {
-//	        		System.out.println("상태 변경 실패");
-//	        	}
-//	        	
-	        	cvo.setClasscnt(cvo.getClasscnt() + 1);
-	        	boolean updatecnt = cservice.updateCnt(cvo);
-	        	if(updatecnt) {
-	        		System.out.println("인원수 증가");
-	        	}else {
-	        		System.out.println("인원수 동일");
-	        	}
-	        	
-	        	if(result) {
-	        		System.out.println("수강신청 성공");
-	        	} else {
-	                System.out.println("수강신청 실패");
-	            }
-	        	
-	            return new ResponseEntity("ok", HttpStatus.OK);
-	        
-	        }else {
-	        	return new ResponseEntity("bad_request", HttpStatus.BAD_REQUEST);
-	        
-	        }
+	    	System.out.println("원래 pvo: " + pvo);
+	    	if(pvo.getRetake() == 1) { // 재수강 결제인 경우
+	    		ClassVO cvo = new ClassVO();
+		        cvo.setClassid(pvo.getClassid());
+		        cvo = cservice.select(cvo);
+		        if (cvo.getClasslimit() > cvo.getClasscnt()) { // 수강인원이 남았는지 확인
+		    		cvo.setClasscnt(cvo.getClasscnt()+1);
+		        	boolean updatecnt = cservice.updateCnt(cvo);
+
+		        	if(updatecnt) {
+		        		System.out.println("인원수 증가 성공");
+			        	PayVO newPvo = new PayVO();
+			        	newPvo = service.list2(pvo);
+			        	System.out.println("list2 결과: " + newPvo);
+			    		newPvo.setPaystate(1);
+			    		newPvo.setImp_uid(pvo.getImp_uid());
+			    		System.out.println("set 처리 후: " + newPvo);
+			    		boolean updatepay = service.update(newPvo);
+			    		if(updatepay) {
+			    			System.out.println("결제정보 업데이트 성공");
+			    			return new ResponseEntity("ok", HttpStatus.OK);
+			    		}
+			    		else {
+			    			System.out.println("결제정보 업데이트 실패");
+			    			return new ResponseEntity("bad_request", HttpStatus.BAD_REQUEST);
+			    			// 롤백 코드
+			    		}
+		        	}
+		        	else {
+		        		System.out.println("인원수 증가 실패");
+		        		return new ResponseEntity("bad_request", HttpStatus.BAD_REQUEST);
+		        		// 롤백 코드
+		        	}	
+		        }
+		        else {
+		        	System.out.println("수강인원이 마감됐습니다.");
+		        	return new ResponseEntity("bad_request", HttpStatus.BAD_REQUEST);
+		        }
+	    	}
+	    	else { // 신규 수업 결제인 경우
+	    		ClassVO cvo = new ClassVO();
+		        cvo.setClassid(pvo.getClassid());
+		        cvo = cservice.select(cvo);
+		        if (cvo.getClasslimit() > cvo.getClasscnt()) {
+		        	cvo.setClasscnt(cvo.getClasscnt()+1);
+		        	boolean updatecnt = cservice.updateCnt(cvo);
+
+		        	if(updatecnt) {
+		        		System.out.println("인원수 증가 성공");
+		        		UserVO user = (UserVO)sess.getAttribute("login");
+			        	PayVO newPvo = new PayVO();
+			        	newPvo.setClassid(pvo.getClassid());
+			        	newPvo.setUsernum(user.getUsernum());
+			    		newPvo.setPaystate(1);
+			    		newPvo.setPrice(pvo.getPrice());
+			    		newPvo.setImp_uid(pvo.getImp_uid());
+			    		boolean insertpay = service.regist(newPvo);
+			    		
+			    		if(insertpay) {
+			    			System.out.println("결제정보 생성 성공");
+			    			return new ResponseEntity("ok", HttpStatus.OK);
+			    		}
+			    		else {
+			    			System.out.println("결제정보 생성 실패");
+			    			return new ResponseEntity("bad_request", HttpStatus.BAD_REQUEST);
+			    			// 롤백 코드
+			    		}
+		        	}
+		        	else {
+		        		System.out.println("인원수 증가 실패");
+		        		return new ResponseEntity("bad_request", HttpStatus.BAD_REQUEST);
+		        		// 롤백 코드
+		        	}
+		        }
+		        else {
+		        	System.out.println("수강인원이 마감됐습니다.");
+		        	return new ResponseEntity("bad_request", HttpStatus.BAD_REQUEST);
+		        }
+	    	}
 	    } catch (Exception e) {
 	    	e.printStackTrace();
 	        return new ResponseEntity("error",HttpStatus.INTERNAL_SERVER_ERROR);

@@ -18,6 +18,8 @@ public class PayVO {
 	private String paymethod;
 	private String imp_uid;
 	
+	private int retake;
+	
 	private String username;
 	
 	// 사용자로부터 전송되어지는 값(검색, 페이징, 필터링(조건))
