@@ -31,6 +31,7 @@
             margin-bottom: 25px; /* 원하는 여백 크기 (예: 10px, 20px 등) */
         }   
         .search-form {
+        	width: 120%;
             margin-top: 10px;
             display: flex;
             flex-direction: column;
@@ -102,9 +103,11 @@
             margin-top: 0px;
         }
         table.list {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
+		  width: 100%;
+		  border-collapse: collapse;
+		  border: 1px solid #ddd;
+		  text-align: left;
+		  padding: 8px;
         }
         table.list th, table.list td {
             padding: 10px;
@@ -201,7 +204,7 @@
                 <!-- Left sidebar END -->
 
                 <div>
-                <div class="wrap" style="padding-left: 65px; width: 120%;">
+                <div class="wrap" style="padding-left: 50px; width:120%;">
                 <h3 class="sub_title">수강 내역 확인</h3> 
                     <table class="list">
                         <thead>

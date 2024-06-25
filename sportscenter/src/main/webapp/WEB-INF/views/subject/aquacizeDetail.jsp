@@ -84,7 +84,7 @@
 	</script>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/mypage/header.jsp" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 <!-- **************** MAIN CONTENT START **************** -->

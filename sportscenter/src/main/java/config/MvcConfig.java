@@ -138,7 +138,8 @@ public class MvcConfig implements WebMvcConfigurer {
 		// url 설정
 		registry.addInterceptor(loginInterception()).excludePathPatterns("/user/login.do")
 				.excludePathPatterns("/reply/index.do").excludePathPatterns("/reply/view.do")
-				.addPathPatterns("/member/edit.do").addPathPatterns("/mypage/classView.do");
+				.addPathPatterns("/member/edit.do").addPathPatterns("/mypage/**")
+				.addPathPatterns("/mypage/verifyPassword.do").addPathPatterns("/mypage/classHistory.do");
 
 		registry.addInterceptor(AdminloginInterception()).addPathPatterns("/notice/edit.do")
 				.addPathPatterns("/admin/**").excludePathPatterns("/admin/adminLogin.do");

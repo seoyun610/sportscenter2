@@ -33,7 +33,7 @@
 
   </script>
 </head>
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %> 
 <body>
 	<div>
 	<h2 style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; text-align: center; margin-top: 40px;">종목 소개</h2>
@@ -410,7 +410,7 @@ Footer START -->
 			<div class="col-lg-3">
 				<!-- logo -->
 				<a class="me-0" href="/home.do">
-					<img class="light-mode-item h-40px" src="resources/images/logo.png" alt="logo">
+					<img class="light-mode-item h-40px" src="/resources/images/logo.png" alt="logo">
 				
 				</a>
 				<p class="my-3" style="font-family: 'Noto Sans KR', sans-serif;">스포츠를 사랑하고 배우고자 하는 모든 이들을 위해 만들어 졌습니다. 함께 스포츠를 즐기며 배우고 성장할 수 있는 공간, 그것이 바로 우리의 목표입니다.</p>

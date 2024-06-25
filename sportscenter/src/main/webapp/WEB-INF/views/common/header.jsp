@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head></head>
@@ -30,7 +31,7 @@
                 <ul class="navbar-nav navbar-nav-scroll me-auto">
                     <!-- Nav item 1 센터소개 -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" style="font-size: 18px; font-weight: bold; color: #000;">센터소개</a>
+                        <a class="nav-link" style="font-size: 18px; font-weight: bold; color: #000;">센터소개</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
                             <li> <a class="dropdown-item active" href="#">About Us</a></li>
                             <li> <a class="dropdown-item" href="#">Contact Us</a></li>
@@ -39,9 +40,9 @@
 
                     <!-- Nav item 2 종목/안내 -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" style="font-size: 18px; font-weight: bold; color: #000;">종목/안내</a>
+                        <a class="nav-link" style="font-size: 18px; font-weight: bold; color: #000;">종목/안내</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
-                            <li> <a class="dropdown-item active" href="/subject/index.do">종목 안내</a></li>
+                            <li> <a class="dropdown-item active" href="/subject/view.do">종목 안내</a></li>
                             <li> <a class="dropdown-item" href="/subject/registInfo.do">이용 안내</a></li>
                             <li> <a class="dropdown-item" href="/subject/usageInfo.do">수강 신청</a></li>
                         </ul>
@@ -49,7 +50,7 @@
 
                     <!-- Nav item 3 수강 신청 -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 18px; font-weight: bold; color: #000;">수강신청</a>
+                        <a class="nav-link" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 18px; font-weight: bold; color: #000;">수강신청</a>
                         <ul class="dropdown-menu" aria-labelledby="pagesMenu">
                             <!-- Dropdown submenu -->
                             <li class="dropdown-submenu dropend">
@@ -60,7 +61,7 @@
 
                     <!-- Nav item 4 커뮤니티 -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 18px; font-weight: bold; color: #000;">커뮤니티</a>
+                        <a class="nav-link" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 18px; font-weight: bold; color: #000;">커뮤니티</a>
                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                             <!-- Dropdown submenu -->
                             <li class="dropdown-submenu dropend">

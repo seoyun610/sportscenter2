@@ -8,44 +8,53 @@
 <head>
 <style>
 
-table.list {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-table.list th, table.list td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-table.list th {
-  background-color: #f2f2f2;
-}
-
-table.list tr:hover {
-  background-color: #f5f5f5;
-}
-
-table.list .cancel_btn, table.list .pay_btn {
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-table.list .cancel_btn:hover, table.list .pay_btn:hover {
-  background-color: #45a049;
-}
-.sub_title {
-        margin-top: 0px; /* 원하는 여백 크기 (예: 10px, 20px 등) */
-}
-table.list .pay_btn {
+	table.list {
+	  width: 100%;
+	  border-collapse: collapse;
+	  font-size: 14px;
+	}
+	
+	table.list th, table.list td {
+	  padding: 10px;
+	  text-align: left;
+	  border-bottom: 1px solid #ddd;
+	}
+	
+	table.list th {
+	  background-color: #f2f2f2;
+	}
+	
+	table.list tr:hover {
+	  background-color: #f5f5f5;
+	}
+	
+	table.list .cancel_btn, table.list .pay_btn {
+	  color: white;
+	  border: none;
+	  padding: 5px 10px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 12px;
+	  cursor: pointer;
+	}
+	
+	.sub_title {
+	        margin-top: 0px; /* 원하는 여백 크기 (예: 10px, 20px 등) */
+	}
+	table.list .pay_btn {
+        background-color: #007bff; /* 파란색 */
+        color: white; /* 흰색 글자 */
+        border: none;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    
+    table.list .cancel_btn {
         background-color: #007bff; /* 파란색 */
         color: white; /* 흰색 글자 */
         border: none;
@@ -63,13 +72,16 @@ table.list .pay_btn {
     .bg-dark-subtle {
 	  background-color: var(--bs-dark-bg-subtle) !important;
 	}
+	.main-content .list {
+	        width: 120%; /* 표의 너비를 120%로 설정 */
+	}
     
 </style>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
-    <title>비밀번호 확인</title>
+    <title>수강중인 강좌</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/resources/images/favicon.ico">
@@ -88,6 +100,35 @@ table.list .pay_btn {
     <!-- Theme CSS -->
     <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
     <style>
+	    table.list th.check {
+		  padding-right: 50px;
+		  text-align: left;
+		}
+		table.list th.period,
+		table.list td.period {
+		  padding-right: 20px;
+		}
+    	table.list {
+		  width: 100%;
+		  border-collapse: collapse;
+		  border: 1px solid #ddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+		
+		table.list th {
+		  background-color: #f2f2f2;
+		  padding: 12px 8px;
+		}
+		
+		table.list td {
+		  padding: 8px;
+		}
+		
+		table.list th,
+		table.list td {
+		  border-bottom: 1px solid #ddd;
+		}
         body {
             display: flex;
             flex-direction: column;
@@ -171,56 +212,54 @@ table.list .pay_btn {
 
                 <!-- Main content START -->
 				<div class="col-xl-9 main-content">
-				    <h3 class="sub_title">수강 중인 강좌</h3>
-				    <div>
+				    <h3 class="sub_title">수강 중인 강좌</h3> 
+				    <div> 
 				        <table class="list">
-				            <thead>
-				                <tr>
-				                    <th>수강 강좌 명</th>
-				                    <th>수강 기간</th>
-				                    <th>수강 취소</th>
-				                </tr>
-				            </thead>
-				            <tbody>
-				                <c:if test="${empty classList}">
-				                    <tr>
-				                        <td class="first" colspan="3">등록된 수강 내역이 없습니다.</td>
-				                    </tr>
-				                </c:if>
-				                <c:forEach var="classlist" items="${classList}">
-				                    <tr>
-				                        <td class="classname" value="${classlist.classname}">${classlist.classname}</td>
-				                        <td>${classlist.formattedClassdate}</td>
-				                        <td><input type="button" class="cancel_btn" value="수강 취소" onclick="cancel();"></td>
-				                    </tr>
-				                </c:forEach>
-				            </tbody>
-				        </table>
+								<thead>
+									<tr>
+										<th>수강 강좌 명</th>
+										<th>수강 기간</th>
+										<th>수강 취소</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:if test="${empty classList }">
+										<tr>
+											<td class="first" colspan="3">등록된 수강 내역이 없습니다.</td>
+										</tr>
+									</c:if>
+									<c:forEach var="classlist" items="${classList }">
+										<tr>
+											<td class="classname" value="${classlist.classname }">${classlist.classname }</td>
+											<td>${classlist.formattedClassdate }</td>
+											<td> <input type="button" class="cancel_btn" value="수강 취소" onclick="cancel(${classlist.payid}, ${classlist.classid});"></td>				
+										</tr>
+					        </c:forEach>
+						</tbody>
+					</table>
 				    </div>
 				
-				    <c:if test="${not empty retakeClass}">
-				        <h3 class="sub_title" style="margin-top: 40px;">재수강 결제 대기 강좌</h3> 
-				        <div>
-				            <table class="list">
-				                <thead>
-				                    <tr>
-				                        <th>수강 강좌 명</th>
-				                        <th>수강 기간</th>
-				                        <th>수강 결제</th>
-				                    </tr>
-				                </thead>
-				                <tbody>
-				                    <c:forEach var="classrvo" items="${retakeClass}">
-				                        <tr>
-				                            <td class="retakeClassname">${classrvo.classname}</td>
-				                            <td>${classrvo.formattedClassdate}</td>
-				                            <td><input type="button" class="pay_btn" value="결제하기" onclick="payment(${classrvo.classid})"></td>
-				                        </tr>
-				                    </c:forEach>
-				                </tbody>
-				            </table>
-				        </div>
-				    </c:if>
+				   <c:if test="${not empty retakeClass }">
+					<h3 class="sub_title">재수강 결제 대기 강좌</h3>
+						<table>
+						<thead>
+							<tr>
+					  			<th>수강 강좌 명</th>
+					  			<th>수강 기간</th>
+					  			<th>수강 결제</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="classrvo" items="${retakeClass }">       
+				            <tr>
+								<td class="retakeClassname">${classrvo.classname }</td>
+								<td>${classrvo.formattedClassdate }</td>
+								<td> <input type="button" class="pay_btn" value="결제하기" onclick="payment(${classrvo.classid})"> </td>
+							</tr>
+				        </c:forEach>
+				        </tbody>
+				        </table>
+				</c:if>
 				</div>
 				<!-- Main content END -->
             </div>
@@ -231,34 +270,34 @@ table.list .pay_btn {
         <i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i>
     </div>
 
-    <script>
-        function payment(classId) {
-            // console.log(classId);
-            const today = new Date();
-            const day = today.getDate();
-            // 테스트용
-            /* setTimeout(() => {
-                location.href = '/class/payCheck.do?retake=1&classid=' + classId;
-            }, 3000); */
-            if( day >= 20 && day < 25 ) {
-                location.href = '/class/payCheck.do?classid=' + classId;
-            } else {
-                alert('재수강 기간이 아닙니다. \n재수강 기간에 다시 신청해주세요.');
-            }
-        }
-        function cancel(payid, classid) {
-            console.log(payid, classid);
-            setTimeout(() => {
-                location.href = '/pay/cancel/' + payid + '/' + classid;
-            }, 800);
-    // 		const day = Date().getDate();
-    // 		if(day >= 1 and day <= 10) {
-    // 			location.href = '/pay/cancel/' + classid;
-    // 		} else {
-    // 			alert('10일 이후 취소 및 환불이 불가합니다.');
-    // 		}
-        }
-    </script>
+<script>
+	function payment(classId) {
+		// console.log(classId);
+		const today = new Date();
+	    const day = today.getDate();
+	    // 테스트용
+	    /* setTimeout(() => {
+	    	location.href = '/class/payCheck.do?retake=1&classid=' + classId;
+		}, 3000); */
+	    if( day >= 20 && day < 25 ) {
+	    	location.href = '/class/payCheck.do?classid=' + classId;
+	    } else {
+	    	alert('재수강 기간이 아닙니다. \n재수강 기간에 다시 신청해주세요.');
+	    }
+	}
+	function cancel(payid, classid) {
+		console.log(payid, classid);
+		setTimeout(() => {
+			location.href = '/pay/cancel/' + payid + '/' + classid;
+		}, 800);
+// 		const day = Date().getDate();
+// 		if(day >= 1 and day <= 10) {
+// 			location.href = '/pay/cancel/' + classid;
+// 		} else {
+// 			alert('10일 이후 취소 및 환불이 불가합니다.');
+// 		}
+	}
+</script>
 </body>
 </html>
 
