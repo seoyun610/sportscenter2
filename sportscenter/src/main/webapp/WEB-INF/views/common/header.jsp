@@ -34,7 +34,7 @@
                         <a class="nav-link" style="font-size: 18px; font-weight: bold; color: #000;">센터소개</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
                             <li> <a class="dropdown-item active" href="#">About Us</a></li>
-                            <li> <a class="dropdown-item" href="#">Contact Us</a></li>
+                            <li> <a class="dropdown-item" href="/center/centerHp.do">Contact Us</a></li>
                         </ul>
                     </li>
 

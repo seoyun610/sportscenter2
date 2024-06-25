@@ -240,9 +240,9 @@
 				    </div>
 				
 				<c:if test="${not empty retakeClass }">
-					<h3 class="sub_title">재수강 결제 대기 강좌</h3>
+					<h3 class="sub_title" style="padding-top:30px;">재수강 결제 대기 강좌</h3>
 						<form method="GET" action="/class/payCheck.do" name="retakePay">
-					    	<table>
+					    	<table class="list">
 					    		<thead>
 									<tr>
 							  			<th>수강 강좌 명</th>
@@ -255,9 +255,9 @@
 							            <tr>
 											<td class="retakeClassname">${classrvo.classname }</td>
 											<td>${classrvo.formattedClassdate }</td>
-											<td> <input type="hidden" name="classid" value="${classrvo.classid }"> </td>
-									        <td> <input type="hidden" name="retake" value="1"> </td>
-									        <td> <input type="hidden" name="payid" value="${classrvo.payid }"> </td>
+											<td style="display: none;"> <input type="hidden" name="classid" value="${classrvo.classid }"> </td>
+									        <td style="display: none;"> <input type="hidden" name="retake" value="1"> </td>
+									        <td style="display: none;"> <input type="hidden" name="payid" value="${classrvo.payid }"> </td>
 											<td> <input type="submit" class="pay_btn" value="결제하기"> </td>
 										</tr>
 						        	</c:forEach>
