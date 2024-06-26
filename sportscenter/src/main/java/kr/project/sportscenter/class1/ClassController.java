@@ -15,9 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.project.sportscenter.level.LevelService;
 import kr.project.sportscenter.level.LevelVO;
@@ -115,8 +117,7 @@ public class ClassController {
             System.out.println("데이터 삽입 실패");
         }
     }
-	
-	
+
 	
 	/*
 	 * @GetMapping("/admin/modify.do") public String modify(Model
@@ -177,6 +178,31 @@ public class ClassController {
 		return "common/alert";
 	}
 	
+	@GetMapping("/admin/classDetail/{classid}")
+	public String classDetail(@PathVariable int classid, Model model) {
+		System.out.println("=======classid======= " + classid);
+		UserVO uvo = new UserVO();
+		uvo.setClassid(classid);
+		uvo.setPaystate(1);
+		Map<String, Object> map = uservice.classDetailUser(uvo);
+        List<UserVO> list = (List<UserVO>) map.get("list");
+        System.out.println("===확인===");
+        System.out.println(list);
+        int count = 0;
+        for(UserVO item : list) {
+        	count++;
+        }
+        System.out.println("===카운트=== " + count);
+        ClassVO cvo = new ClassVO();
+        cvo.setClassid(classid);
+        cvo = cservice.select(cvo);
+        model.addAttribute("list", list);
+		model.addAttribute("cvo", cvo);
+		model.addAttribute("count", count);
+		return "admin/classDetail";
+	}
+	
+	// payCheck.do에서 사용
 	public boolean checkRetake(UserVO uvo) {
 		List<UserVO> classList = uservice.classView(uvo); // classView는 결제 1, 환불 0인 수업 리턴
 		for(UserVO item : classList) {
@@ -209,7 +235,7 @@ public class ClassController {
 				cvo.setClassid(classid);
 				model.addAttribute("cvo", cservice.select(cvo));
 				model.addAttribute("uvo", login);
-				return "pay/payCheck";
+				return "/pay/payCheck";
 			}
 			else if(uvo.getRetake() == 0) { // 신규 수업 결제인 경우
 				login.setRetake(0);
@@ -217,7 +243,7 @@ public class ClassController {
 				cvo.setClassid(classid);
 				model.addAttribute("cvo", cservice.select(cvo));
 				model.addAttribute("uvo", login);
-				return "pay/payCheck";
+				return "/pay/payCheck";
 			}
 		} 
 		else { // 중복 신청인 경우 결제 접근 비허용

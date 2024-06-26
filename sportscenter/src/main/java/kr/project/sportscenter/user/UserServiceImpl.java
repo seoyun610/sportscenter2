@@ -86,5 +86,13 @@ public class UserServiceImpl implements UserService{
 		return map;
 	}
 
+	@Override
+	public Map<String, Object> classDetailUser(UserVO vo) {
+		List<UserVO> list = mapper.classDetailUser(vo);
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		return map;
+	}
+
 	
 }

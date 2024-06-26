@@ -41,5 +41,6 @@ public interface UserMapper {
 	List<UserVO> classHistory(UserVO vo);
 	
 	List<UserVO> findUser(UserVO vo);
+	List<UserVO> classDetailUser(UserVO vo);
 	int count(UserVO vo);
 }

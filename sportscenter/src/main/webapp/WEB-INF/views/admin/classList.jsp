@@ -15,7 +15,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>수업관리</title>
+	<title>강좌 정보 관리</title>
 	<META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -103,9 +103,6 @@
 				</div>
 			</div>
 
-			
-			
-
 			<form method="get" action="modify.do" id="classForm" name="classForm">
 				<table class="table table-dark-gray align-middle p-4 mb-4 table-hover" id="listTable" name="listTable">
 				<thead>
@@ -149,7 +146,8 @@
 				</tbody>
 				</table>
 				<input type="submit" id="classBtn" value="선택수정" class="btn btn-primary mb-0"/>
-				<input type="button" onclick="classDel();" value="선택삭제" class="btn btn-primary mb-0" >
+				<input type="button" onclick="classDelete();" value="선택삭제" class="btn btn-primary mb-0" >
+				<input type="button" onclick="classDetail();" value="상세보기" class="btn btn-primary mb-0">
 			</form>
 			
 			
@@ -222,14 +220,19 @@
      	}
     }
     
-    function classDel() {
+    function classDelete() {
       	var classid = $("input:checkbox[name='classid']:checked").val();
        	console.log("값 확인: " + classid);
        	if(confirm("정말 강좌를 삭제하시겠습니까?")){
        		location.href="/admin/delete/" + classid;
        	}
     }
-        
+    
+    function classDetail() {
+    	var classid =  $("input:checkbox[name='classid']:checked").val();
+    	location.href="/admin/classDetail/" + classid;
+    }
+    
     function checkOnlyOnce(currentCheckbox) {
        	const checkboxes = document.getElementsByName("classid");
        	let checkedCnt = 0;

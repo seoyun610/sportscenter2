@@ -28,5 +28,5 @@ public interface UserService {
 	List<UserVO> retakeClass(UserVO vo);
 	List<UserVO> classHistory(UserVO vo);
 	Map<String, Object> findUser(UserVO vo);
-
+	Map<String, Object> classDetailUser(UserVO vo);
 }

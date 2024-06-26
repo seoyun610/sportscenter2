@@ -7,7 +7,7 @@
 <html lang="ko">
 <head> 
     <meta charset="utf-8">
-    <title></title>
+    <title>회원 정보</title>
     <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -95,48 +95,49 @@
 							</c:if>
 							
 							<!-- Table row -->
-						<c:forEach var="vo" items="${map.list }" >  
-							<tr>
-								<td>
-									<div class="align-items-center position-relative">
-										<!-- Title -->
-										<h5 class="table-responsive-title mb-0 ms-2" >	
-											<a>${vo.username }</a>
-										</h5>
-									</div>
-								</td>
-								<td>
-									<div class="align-items-center">
-										<h5 class="mb-0 fw-light">${vo.hp }</h5>
-									</div>
-								</td>
-								<td>
-									<div class="align-items-center">
-										<h5 class="mb-0 fw-light">
-										<c:choose>
-							            	<c:when test="${vo.gender == 1}">남자</c:when>
-							               	<c:when test="${vo.gender == 2}">여자</c:when>
-						               	<c:otherwise /> </c:choose></h5>
-									</div>
-								</td>
-								<td>
-									<div class="align-items-center">
-										<h5 class="mb-0 fw-light">${vo.birth }</h5>
-									</div>
-								</td>
-								<td>
-									<div class="align-items-center">
-										<h5 class="mb-0 fw-light">${vo.email }</h5>
-									</div>
-								</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-</div>
-</div>
-</div>
-</div>
+							<c:forEach var="vo" items="${map.list }" >  
+								<tr>
+									<td>
+										<div class="align-items-center position-relative">
+											<!-- Title -->
+											<h5 class="table-responsive-title mb-0 ms-2" >	
+												<a>${vo.username }</a>
+											</h5>
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											<h5 class="mb-0 fw-light">${vo.hp }</h5>
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											<h5 class="mb-0 fw-light">
+											<c:choose>
+								            	<c:when test="${vo.gender == 1}">남자</c:when>
+								               	<c:when test="${vo.gender == 2}">여자</c:when>
+							               	<c:otherwise /> </c:choose></h5>
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											<h5 class="mb-0 fw-light">${vo.birth }</h5>
+										</div>
+									</td>
+									<td>
+										<div class="align-items-center">
+											<h5 class="mb-0 fw-light">${vo.email }</h5>
+										</div>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- Card body END -->
+		</div>
+	</div>
 </div>
 </main>
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>

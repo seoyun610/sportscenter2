@@ -276,20 +276,20 @@
     </div>
 
 <script>
-	function payment(payid, classId) {
-		// console.log(classId);
-		const today = new Date();
-	    const day = today.getDate();
-	    // 테스트용
-	    /* setTimeout(() => {
-	    	location.href = '/class/payCheck.do?classid=' + classId;
-		}, 3000); */
-	    if( day >= 20 && day < 26 ) {
-	    	location.href = '/class/payCheck.do?retake=1&classid=' + classId;
-	    } else {
-	    	alert('재수강 기간이 아닙니다. \n재수강 기간에 다시 신청해주세요.');
-	    }
-	}
+// 	function payment(payid, classId) {
+// 		// console.log(classId);
+// 		const today = new Date();
+// 	    const day = today.getDate();
+// 	    // 테스트용
+// 	    /* setTimeout(() => {
+// 	    	location.href = '/class/payCheck.do?classid=' + classId;
+// 		}, 3000); */
+// 	    if( day >= 20 && day < 26 ) {
+// 	    	location.href = '/class/payCheck.do?retake=1&classid=' + classId;
+// 	    } else {
+// 	    	alert('재수강 기간이 아닙니다. \n재수강 기간에 다시 신청해주세요.');
+// 	    }
+// 	}
 	function cancel(payid, classid) {
 		console.log(payid, classid);
 		setTimeout(() => {

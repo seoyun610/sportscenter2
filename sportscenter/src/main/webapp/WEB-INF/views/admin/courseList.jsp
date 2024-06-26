@@ -16,7 +16,7 @@
 <html lang="ko">
 <head> 
     <meta charset="utf-8">
-    <title></title>
+    <title>모든 수강정보</title>
     <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -60,7 +60,7 @@
 	<div class="page-content-wrapper border">
    	<div class="row mb-3">
 			<div class="col-12 d-sm-flex justify-content-between align-items-center mb-4">
-				<h2 class="h3 mb-2 mb-sm-0" > 수강 정보 관리</h2>
+				<h2 class="h3 mb-2 mb-sm-0" >모든 수강정보</h2>
 			</div>
 	</div>
 	<!-- Card START -->

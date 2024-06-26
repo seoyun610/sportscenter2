@@ -180,4 +180,13 @@
 		<include refid="searchSql"/>
 	</select>
 	
+	<!-- 수업별 유저 조회 -->
+	<select id="classDetailUser" parameterType="kr.project.sportscenter.user.UserVO" resultType="kr.project.sportscenter.user.UserVO">
+		SELECT u.usernum, u.userid, u.username, u.hp, u.email, u.gender, u.birth,
+			   p.payid, p.classid, p.paystate
+		FROM pay p
+		INNER JOIN user u ON p.usernum = u.usernum
+		WHERE p.classid = #{classid}
+			  and p.paystate = 1
+	</select>
 </mapper> 
