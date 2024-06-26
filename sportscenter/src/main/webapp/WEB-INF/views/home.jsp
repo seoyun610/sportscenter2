@@ -276,7 +276,7 @@ Popular course START -->
 									<a href="#" class="h6 mb-0"><i class="far fa-heart"></i></a>
 								</div>
 								<!-- Title -->
-								<h5 class="card-title fw-normal"><a href="#">수영</a></h5>
+								<h5 class="card-title fw-normal"><a href="/subject/swimDetail.do">수영</a></h5>
 								<p class="mb-2 text-truncate-2">수영은 육상 운동과 달리 체중의 대부분을 지지할 필요가 없어 체격 제한 없이 남녀노소 누구나 쉽게 즐길 수 있는 운동입니다.</p>
 								<!-- Rating star -->
 								<ul class="list-inline mb-0">
@@ -292,7 +292,7 @@ Popular course START -->
 							<div class="card-footer pt-0 pb-3">
 								<hr>
 								<div class="d-flex justify-content-between">
-									<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>50min</span>
+									<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>1hour</span>
 								</div>
 							</div>
 						</div>
@@ -311,7 +311,7 @@ Popular course START -->
 									<a href="#" class="text-danger"><i class="fas fa-heart"></i></a>
 								</div>
 								<!-- Title -->
-								<h5 class="card-title fw-normal"><a href="#">헬스</a></h5>
+								<h5 class="card-title fw-normal"><a href="/subject/healthDetail.do">헬스</a></h5>
 								<p class="mb-2 text-truncate-2">지구력, 근력, 유연성, 체력증대를 기르고 다이어트에 도움이 됩니다.</p>
 								<!-- Rating star -->
 								<ul class="list-inline mb-0">
@@ -346,7 +346,7 @@ Popular course START -->
 									<a href="#" class="h6 fw-light mb-0"><i class="far fa-heart"></i></a>
 								</div>
 								<!-- Title -->
-								<h5 class="card-title fw-normal"><a href="#">필라테스</a></h5>
+								<h5 class="card-title fw-normal"><a href="/subject/pilatesDetail.do">필라테스</a></h5>
 								<p class="mb-2 text-truncate-2">필라테스는 제1차 세계대전 당시 영국 랭커스터 포로수용소에서 인턴으로 근무하던 독일의 스포츠 연구가, 요제프 필라테스가 포로들의 운동부족과 재활치료, 정신수련을 위해 고안한 근육강화 운동입니다.</p>
 								<!-- Rating star -->
 								<ul class="list-inline mb-0">
@@ -362,7 +362,7 @@ Popular course START -->
 							<div class="card-footer pt-0 pb-3">
 								<hr>
 								<div class="d-flex justify-content-between">
-									<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>50min</span>
+									<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>1hour</span>
 								</div>
 							</div>
 						</div>
@@ -381,7 +381,7 @@ Popular course START -->
 									<a href="#" class="text-danger"><i class="fas fa-heart"></i></a>
 								</div>
 								<!-- Title -->
-								<h5 class="card-title fw-normal"><a href="#">점핑트램폴린</a></h5>
+								<h5 class="card-title fw-normal"><a href="/subject/jumpingDetail.do">점핑트램폴린</a></h5>
 								<p class="mb-2 text-truncate-2">점핑트램폴린은 트램폴린 위에서 다양한 점핑 응용동작을 하면서 칼로리 소모 및 코어근육과 하체를 단련하는 운동입니다.</p>
 								<!-- Rating star -->
 								<ul class="list-inline mb-0">
@@ -397,7 +397,7 @@ Popular course START -->
 							<div class="card-footer pt-0 pb-3">
 								<hr>
 								<div class="d-flex justify-content-between">
-									<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>50min</span>
+									<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>1hour</span>
 								</div>
 							</div>
 						</div>
@@ -1282,7 +1282,7 @@ Footer START -->
 						<h3 class="mb-2 mb-md-4">센터소개</h3>
 						<ul class="nav flex-column">
 							<li class="nav-item"><a class="nav-link" href="/center/facility.do">시설 안내</a></li>
-							<li class="nav-item"><a class="nav-link" href="/center/centerHp.do">업무별 연락처</a></li> 
+							<li class="nav-item"><a class="nav-link" href="/center/centerHp.do">업무별 연락처</a></li>
 						</ul>
 					</div>
 									

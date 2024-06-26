@@ -15,6 +15,23 @@
     <link rel="stylesheet" href="/css/contents.css"/>
     <script src="/js/script.js"></script>
     <script src="/smarteditor/js/HuskyEZCreator.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/resources/images/favicon.ico">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
+     
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" type="text/css" href="/resources/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="/resources/vendor/tiny-slider/tiny-slider.css">
+    <link rel="stylesheet" type="text/css" href="/resources/vendor/glightbox/css/glightbox.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
     <script>
     var oEditors = [];
     $(function() {
@@ -42,38 +59,56 @@
     }
     </script>
 </head> 
+ <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <body>
-        <div class="sub">
-            <div class="size">
-                <h3 class="sub_title">Qna 게시판</h3>
-                <div class="bbs">
-                <form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data" >
-                    <table class="board_write">
-                        <tbody>
-                        <tr>
-                            <th>제목</th>
-                            <td>
-                                <input type="text" name="qnatitle" id="title" class="wid100" value=""/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>내용</th>
-                            <td>
-                                <textarea name="qnacontent" id="content" style="width:100%;"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>첨부파일</th>
-                            <td>
-                                <input type="file" name="file" id="file" class="wid100"/>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                        <a class="btn" href="javascript:goSave();">저장 </a>
-                    </form>
-                </div>
-            </div>
-        </div>
+
+     
+
+
+<!-- Back to top -->
+<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+
+<!-- Bootstrap JS -->
+<script src="/resources/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="/resources/vendor/choices/js/choices.min.js"></script>
+<script src="/resources/vendor/aos/aos.js"></script>
+<script src="/resources/vendor/glightbox/js/glightbox.js"></script>
+<script src="/resources/vendor/quill/js/quill.min.js"></script>
+<script src="/resources/vendor/stepper/js/bs-stepper.min.js"></script>
+
+<!-- Template Functions -->
+<script src="/resources/js/functions.js"></script>
+<body>
+    <h1 style="text-align: center; margin-top: 50px; font-weight: bold;"> QnA</h1>
+     <form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data">
+     	
+        <table style="width: 50%; border-collapse: collapse; margin-bottom: 15px; margin: auto;">
+        	<tbody>
+            <tr>
+                <td colspan="2" style="padding: 10px; border: 1px solid #ddd;">
+                    <label for="title" style="display: block; margin-bottom: 5px;">글 제목</label>
+                    <input type="text" class="form-control" placeholder="글 제목" name="qnatitle" id="title" maxlength="50" style="width: 100%; padding: 10px; border: 1px solid #ccc;">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding: 10px; border: 1px solid #ddd;">
+                    <label for="content" style="display: block; margin-bottom: 5px;">글 내용</label>
+                    <textarea class="form-control" placeholder="글 내용을 작성해주세요" name="qnacontent" id="content" maxlength="3000" style="width: 100%; padding: 10px; border: 1px solid #ccc; height: 150px;"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">
+                    <label for="file" style="display: block; margin-bottom: 5px;">첨부파일</label>
+                    <input type="file" name="file" id="file" style="margin-top: 10px;">
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+            <a class="btn" href="javascript:goSave();" style="background-color: #000; color: #fff; padding: 8px 16px; border-radius: 3px; text-decoration: none; margin-left: 820px; margin-top: 30px;">저장 </a>
+    </form>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body> 
 </html>
