@@ -230,7 +230,7 @@
 									</c:if>
 									<c:forEach var="classlist" items="${classList }">
 										<tr>
-											<td class="classname" value="${classlist.classname }">${classlist.classname }</td>
+											<td class="classname" value="${classlist.classname }"  style="padding-right:25px;">${classlist.classname }</td>
 											<td>${classlist.formattedClassdate }</td>
 											<td> <input type="button" class="cancel_btn" value="수강 취소" onclick="cancel(${classlist.payid}, ${classlist.classid});"></td>				
 										</tr>

@@ -51,8 +51,8 @@ pageEncoding="UTF-8"%>
 					<div class="col-6 col-md-4">
 						<h3 class="mb-2 mb-md-4"style="font-family: 'Noto Sans KR', sans-serif;">센터소개</h3>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#" style="font-family: 'Noto Sans KR', sans-serif;">About us</a></li>
-							<li class="nav-item"><a class="nav-link" href="#" style="font-family: 'Noto Sans KR', sans-serif;">Contact us</a></li>
+							<li class="nav-item"><a class="nav-link" href="#" style="font-family: 'Noto Sans KR', sans-serif;">시설 안내</a></li>
+							<li class="nav-item"><a class="nav-link" href="#" style="font-family: 'Noto Sans KR', sans-serif;">업무별 연락처</a></li>
 						</ul>
 					</div>
 									

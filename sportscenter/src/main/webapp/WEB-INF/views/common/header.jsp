@@ -33,8 +33,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link" style="font-size: 18px; font-weight: bold; color: #000;">센터소개</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
-                            <li> <a class="dropdown-item active" href="#">About Us</a></li>
-                            <li> <a class="dropdown-item" href="/center/centerHp.do">Contact Us</a></li>
+                            <li> <a class="dropdown-item active" href="/center/facility.do">시설 안내</a></li>
+                            <li> <a class="dropdown-item" href="/center/centerHp.do">업무별 연락처</a></li>
                         </ul>
                     </li>
 

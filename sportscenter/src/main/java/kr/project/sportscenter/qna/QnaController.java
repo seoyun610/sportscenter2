@@ -54,6 +54,7 @@ public class QnaController {
 		return "common/alert";
 	}
 	
+	
 	//Qna 글 상세 화면 요청 
 	@GetMapping("/qna/view.do")
 	public String view(Model model, QnaVO vo, ReplyVO rvo, HttpSession sess) {
