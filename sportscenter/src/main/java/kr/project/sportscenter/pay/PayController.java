@@ -205,6 +205,7 @@ public class PayController {
 		ClassVO cvo = new ClassVO();
 		cvo.setClassid(classid);
 		cvo = cservice.select(cvo);
+		System.out.println("===cvo의 month=== " + cvo.getClassmonth());
 		
 		PayVO pvo = new PayVO();
 		pvo.setPayid(payid); 
@@ -212,9 +213,8 @@ public class PayController {
 		pvo = service.list2(pvo);
 		int pre_price = pvo.getPrice();
 		int cancel_price;
-		
-		// if(cvo.getClassmonth() == month && day >= 1 && day <= 10) {
-		if(cvo.getClassmonth() == month) {
+
+		if((cvo.getClassmonth() == month && (day >= 1 && day <= 10)) || cvo.getClassmonth() == (month+1)) {
 			cancel_price = (int) (pre_price * 0.5);
 			cvo.setClassprice(cancel_price);
 			pvo.setPrice(cancel_price);
@@ -222,6 +222,16 @@ public class PayController {
 			model.addAttribute("pvo", pvo);
 			return "pay/cancel";
 		} else {
+			if(cvo.getClassmonth() == month && !(day >=1 && day <= 10)) {
+				model.addAttribute("msg", "환불 기간이 지났습니다.");
+				model.addAttribute("url", "/mypage/classView.do");
+				return "common/alert";
+			}
+			else if (cvo.getClassmonth() != month || cvo.getClassmonth() != (month-1)) {
+				model.addAttribute("msg", "환불 기간이 지났습니다.");
+				model.addAttribute("url", "/mypage/classView.do");
+				return "common/alert";
+			}
 			model.addAttribute("msg", "환불 오류");
 			model.addAttribute("url", "/mypage/classView.do");
 			return "common/alert";

@@ -79,7 +79,7 @@
 						            <th>등급</th>
 						            <th>시간</th>
 						            <th>요일</th>
-						            <th>금액</th>
+						            <th>결제 금액</th>
 						        </tr>
 						    </thead>
 						    <tbody class="border-top-0">
