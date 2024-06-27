@@ -219,7 +219,7 @@
                     <div class="sub">
                         <div class="size">
                             <h3 class="sub_title">회원정보수정</h3>
-                            <form name="frm" id="frm" action="edit.do" method="post">
+                            <form name="frm" id="frm" action="update.do" method="post">
                                 <table class="board_write">
                                     <colgroup>
                                         <col width="50%" />
@@ -299,7 +299,7 @@
 
     <!-- JavaScript libraries -->
     <script>
-        $(document).ready(function() {
+
             var dupCheck = false;
 
             function goSave() {
@@ -317,15 +317,15 @@
                     }
                 }
                 
-                if ($("#pwd").val() == '') {
-                    var reg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
-                    if ($("#pwd").val().match(reg) == null) {
-                        alert('비밀번호를 입력하세요');
-                        $("#pwd").val('');
-                        $("#pwd_check").val('');
-                        return;
-                    }
-                }
+//                 if ($("#pwd").val() == '') {
+//                     var reg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
+//                     if ($("#pwd").val().match(reg) == null) {
+//                         alert('비밀번호를 입력하세요');
+//                         $("#pwd").val('');
+//                         $("#pwd_check").val('');
+//                         return;
+//                     }
+//                 }
 
                 if ($("#hp").val() == '') {
                     alert('전화번호를 입력하세요');
@@ -342,7 +342,6 @@
             }
 
             $(".pay_btn").click(goSave);
-        });
     </script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>

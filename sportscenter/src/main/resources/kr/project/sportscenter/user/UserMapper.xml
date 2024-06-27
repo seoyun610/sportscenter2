@@ -70,10 +70,7 @@
 	<update id="update" parameterType="kr.project.sportscenter.user.UserVO">
 	    UPDATE user
 	    <set>
-	        <if test="pwd != ''">
-	            pwd = MD5(#{pwd}),
-	        </if>
-			pwd = MD5(#{pwd}),
+			pwd=MD5(#{pwd}),
 	        hp = #{hp},
 	        zipcode = #{zipcode},
 	        addr = #{addr},
