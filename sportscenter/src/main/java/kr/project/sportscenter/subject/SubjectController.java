@@ -19,11 +19,11 @@ public class SubjectController {
     private SubjectService service;
 
 	// 목록 조회
-    @GetMapping("/subject/index.do")
-    public String listsubject(Model model, SubjectVO vo) {
-        model.addAttribute("map", service.list(vo));
-        return "subject/index"; 
-    }
+//    @GetMapping("/subject/index.do")
+//    public String listsubject(Model model, SubjectVO vo) {
+//        model.addAttribute("map", service.list(vo));
+//        return "subject/index"; 
+//    }
     // 상세 조회 
     @GetMapping("/subject/view.do")
 	public String view(Model model, SubjectVO vo) {
@@ -32,59 +32,60 @@ public class SubjectController {
 	}
     
     // 작성 
-    @GetMapping("/subject/write.do")
-	public String write() {
-		return "subject/write";
-	}
-	@PostMapping("/subject/insert.do")
-	public String insert(Model model, HttpSession sess, HttpServletRequest request, SubjectVO vo, MultipartFile file) {
-		AdminVO login = (AdminVO)sess.getAttribute("adminLogin"); 
-		vo.setAdminnum(login.getAdminnum());
-		int r = service.insert(vo, sess, file, request);
-		if (r > 0) {
-			model.addAttribute("cmd", "move");
-			model.addAttribute("msg", "정상적으로 저장되었습니다.");
-			model.addAttribute("url", "index.do");
-		} else {
-			model.addAttribute("cmd", "back");
-			model.addAttribute("msg", "등록 오류");
-		}
-		return "common/alert";
-	}
+//    @GetMapping("/subject/write.do")
+//	public String write() {
+//		return "subject/write";
+//	}
+    
+//	@PostMapping("/subject/insert.do")
+//	public String insert(Model model, HttpSession sess, HttpServletRequest request, SubjectVO vo, MultipartFile file) {
+//		AdminVO login = (AdminVO)sess.getAttribute("adminLogin"); 
+//		vo.setAdminnum(login.getAdminnum());
+//		int r = service.insert(vo, sess, file, request);
+//		if (r > 0) {
+//			model.addAttribute("cmd", "move");
+//			model.addAttribute("msg", "정상적으로 저장되었습니다.");
+//			model.addAttribute("url", "index.do");
+//		} else {
+//			model.addAttribute("cmd", "back");
+//			model.addAttribute("msg", "등록 오류");
+//		}
+//		return "common/alert";
+//	}
 	
 	// 수정 
-	@GetMapping("/subject/edit.do")
-	public String edit(Model model, SubjectVO vo) {
-		model.addAttribute("vo", service.detail(vo, false));
-		return "notice/edit";
-	}
-	@PostMapping("/subject/update.do")
-	public String update(Model model, HttpServletRequest request, SubjectVO vo, MultipartFile file) {
-		int r = service.update(vo, file, request);
-		if (r > 0) {
-			model.addAttribute("cmd", "move");
-			model.addAttribute("msg", "정상적으로 수정되었습니다.");
-			model.addAttribute("url", "index.do");
-		} else {
-			model.addAttribute("cmd", "back");
-			model.addAttribute("msg", "등록 오류");
-		}
-		return "common/alert";
-	}
-	
-	// 삭제
-	@GetMapping("/subject/delete.do")
-	public String delete(Model model, HttpServletRequest request, SubjectVO vo, MultipartFile file) {
-		int r = service.delete(vo, request);
-		if (r > 0) {
-			model.addAttribute("cmd", "move");
-			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
-			model.addAttribute("url", "index.do");
-		} else {
-			model.addAttribute("cmd", "back");
-			model.addAttribute("msg", "등록 오류");
-		}
-		return "common/alert";
-	}
+//	@GetMapping("/subject/edit.do")
+//	public String edit(Model model, SubjectVO vo) {
+//		model.addAttribute("vo", service.detail(vo, false));
+//		return "notice/edit";
+//	}
+//	@PostMapping("/subject/update.do")
+//	public String update(Model model, HttpServletRequest request, SubjectVO vo, MultipartFile file) {
+//		int r = service.update(vo, file, request);
+//		if (r > 0) {
+//			model.addAttribute("cmd", "move");
+//			model.addAttribute("msg", "정상적으로 수정되었습니다.");
+//			model.addAttribute("url", "index.do");
+//		} else {
+//			model.addAttribute("cmd", "back");
+//			model.addAttribute("msg", "등록 오류");
+//		}
+//		return "common/alert";
+//	}
+//	
+//	// 삭제
+//	@GetMapping("/subject/delete.do")
+//	public String delete(Model model, HttpServletRequest request, SubjectVO vo, MultipartFile file) {
+//		int r = service.delete(vo, request);
+//		if (r > 0) {
+//			model.addAttribute("cmd", "move");
+//			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+//			model.addAttribute("url", "index.do");
+//		} else {
+//			model.addAttribute("cmd", "back");
+//			model.addAttribute("msg", "등록 오류");
+//		}
+//		return "common/alert";
+//	}
         
 }

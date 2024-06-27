@@ -263,7 +263,7 @@
 												</c:choose>
 											</c:when>
 											<c:otherwise>
-												<td>신청 불가</td>
+												신청 불가
 											</c:otherwise>
 										</c:choose>
 									</div>

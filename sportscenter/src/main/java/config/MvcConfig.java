@@ -90,6 +90,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		reg.addViewController("/subject/flyingDetail.do");
 		reg.addViewController("/center/centerHp.do");
 		reg.addViewController("/center/facility.do");
+		reg.addViewController("/qna/reply.do");
 		
 	}
 
