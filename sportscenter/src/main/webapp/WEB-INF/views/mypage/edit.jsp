@@ -317,15 +317,15 @@
                     }
                 }
                 
-//                 if ($("#pwd").val() == '') {
-//                     var reg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
-//                     if ($("#pwd").val().match(reg) == null) {
-//                         alert('비밀번호를 입력하세요');
-//                         $("#pwd").val('');
-//                         $("#pwd_check").val('');
-//                         return;
-//                     }
-//                 }
+                if ($("#pwd").val() == '') {
+                    var reg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
+                    if ($("#pwd").val().match(reg) == null) {
+                        alert('비밀번호를 입력하세요');
+                        $("#pwd").val('');
+                        $("#pwd_check").val('');
+                        return;
+                    }
+                }
 
                 if ($("#hp").val() == '') {
                     alert('전화번호를 입력하세요');
