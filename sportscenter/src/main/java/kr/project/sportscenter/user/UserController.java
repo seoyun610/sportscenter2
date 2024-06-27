@@ -166,7 +166,7 @@ public class UserController {
   		return "mypage/edit";
 	}
   		
-	@PostMapping("/mypage/update.do")
+	@PostMapping("/mypage/edit.do")
 	public String update(UserVO vo, Model model) {
 		int r = service.update(vo);
 		String msg = "";
