@@ -24,6 +24,11 @@
 		where qnaid = #{qnaid}
 	</select>
 	
+	<select id="detail" parameterType="kr.project.sportscenter.reply.ReplyVO" resultType="kr.project.sportscenter.reply.ReplyVO">
+		SELECT *
+		FROM reply
+		WHERE replyid=#{replyid}
+	</select>
 	
 	<update id="update" parameterType="kr.project.sportscenter.reply.ReplyVO">
 		UPDATE reply SET 
@@ -33,6 +38,6 @@
 	</update>
 	
 	<delete id="delete" parameterType="int">
-		delete from reply where qnaid = #{qnaid}
+		delete from reply where replyid = #{replyid}
 	</delete>
 </mapper>

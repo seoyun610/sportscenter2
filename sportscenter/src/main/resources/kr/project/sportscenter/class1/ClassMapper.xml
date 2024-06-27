@@ -73,7 +73,7 @@
 		SELECT * 
 		FROM class
 		<include refid="searchSql"/>
-		ORDER BY classid DESC
+		ORDER BY classmonth DESC
 		LIMIT #{startIdx}, 10
 	</select>
 	

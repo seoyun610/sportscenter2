@@ -79,15 +79,15 @@
         }
     }
     
-    function commentDel(qnaid) {
+    function commentDel(replyid) {
         if (confirm("답글을 삭제하시겠습니까?")) {
             $.ajax ({
-                url: '/qna/delete.do',
+                url: '/reply/delete.do',
                 type: 'GET',
-                data: { qnaid: qnaid },
+                data: { replyid: replyid },
                 success: function(res) {
                     if (res.trim() != "") {
-                        alert('문의글이 정상적으로 삭제되었습니다.');
+                        alert('댓글이 정상적으로 삭제되었습니다.');
                         location.href='adminQna.do';
                     }
                 }

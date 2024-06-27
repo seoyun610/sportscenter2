@@ -15,5 +15,5 @@ public interface ReplyService {
 	int delete(ReplyVO vo);
 //	List<ReplyVO> all(ReplyVO vo);
 	int update(ReplyVO vo);
-	
+	ReplyVO detail(ReplyVO vo);
 }

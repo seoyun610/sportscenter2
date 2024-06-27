@@ -13,5 +13,5 @@ public interface ReplyMapper {
 	int delete(int qnaid);
 	//List<ReplyVO> all(ReplyVO vo);
 	int update(ReplyVO vo);
-
+	ReplyVO detail(ReplyVO vo);
 }

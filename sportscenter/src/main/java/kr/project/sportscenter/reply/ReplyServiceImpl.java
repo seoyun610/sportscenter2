@@ -38,7 +38,7 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	public int delete(ReplyVO vo) {
-		return mapper.delete(vo.getQnaid());
+		return mapper.delete(vo.getReplyid());
 	}
 
 //	@Override
@@ -70,5 +70,10 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public List<ReplyVO> list(ReplyVO vo) {
 		return mapper.list(vo);
+	}
+
+	@Override
+	public ReplyVO detail(ReplyVO vo) {
+		return mapper.detail(vo);
 	}
 }

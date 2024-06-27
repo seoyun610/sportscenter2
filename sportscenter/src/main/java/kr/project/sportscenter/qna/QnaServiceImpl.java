@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.project.sportscenter.reply.ReplyMapper;
+
 
 
 @Service 
@@ -18,7 +20,6 @@ public class QnaServiceImpl implements QnaService {
 
 	@Autowired
 	private QnaMapper mapper;
-	
 
 	@Override
 	public int insert(QnaVO vo, MultipartFile file, HttpServletRequest request) {

@@ -64,8 +64,9 @@ public class ReplyController {
 		}
 		
 		@GetMapping("/reply/delete.do")
-		public String delete(@RequestParam("qnaid") int qnaid, ReplyVO vo, Model model) {
-			vo.setQnaid(qnaid);
+		public String delete(@RequestParam("replyid") int replyid, ReplyVO vo, Model model) {
+			System.out.println("=== " + replyid);
+			vo.setReplyid(replyid);
 			int r = service.delete(vo);
 			if (r > 0) {
 				model.addAttribute("cmd", "move");
