@@ -220,7 +220,7 @@
                  				
 				                 <c:if test="${not isQnaidExist}">
 							    <form method="post" name="frm" id="frm"> 
-				  				    	<h5>댓글 작성</h5>
+				  				    	<h5>답글 작성</h5>
 				 				        <input type="text" name="replycontent" id="replycontent"> 
 				 				        <input type="button" class="btn" onclick="goSave();" value="등록"> 
 				                         <input type="hidden" id="qnaid" name="qnaid" value="${QnaVO.qnaid}">

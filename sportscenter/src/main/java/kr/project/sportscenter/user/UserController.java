@@ -166,20 +166,22 @@ public class UserController {
   		return "mypage/edit";
 	}
   		
-	@PostMapping("/mypage/edit.do")
-	public String update(UserVO vo, Model model) {
-		int r = service.update(vo);
-		String msg = "";
-		String url = "edit.do";
-		if (r > 0) {
-			msg = "정상적으로 수정되었습니다.";
-		} else {
-			msg = "수정 오류";
-		}
-		model.addAttribute("msg",msg);
-		model.addAttribute("url",url);
-		return "common/alert";
-	}
+  	@PostMapping("/mypage/update.do")
+  	public String update(UserVO vo, Model model) {
+  	    int r = service.update(vo);
+  	    System.out.println(service.update(vo));
+  	    String msg = "";
+  	    String url = "edit.do";
+  	    if (r > 0) {
+  	        msg = "정상적으로 수정되었습니다.";
+  	    } else {
+  	        msg = "수정 오류";
+  	    }
+  	    model.addAttribute("msg", msg);
+  	    model.addAttribute("url", url);
+  	    model.addAttribute("vo", vo); 
+  	    return "common/alert";
+  	}
   		
   		
 	// 비밀번호 확인 페이지로 이동
